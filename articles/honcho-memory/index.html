@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Added Reasoning Memory to My AI Agent Using Honcho — and Why You Should Too</title>
+  <meta name="description" content="A step-by-step guide to setting up Honcho as a memory layer for AI agents. Covers architecture, setup, costs, and lessons learned from running it in production.">
+  <meta property="og:title" content="How I Added Reasoning Memory to My AI Agent Using Honcho">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-04-04">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.7; max-width: 740px; margin: 0 auto; padding: 40px 20px; background: #fafafa; }
+    h1 { font-size: 2em; line-height: 1.2; margin-bottom: 16px; color: #0f172a; }
+    .subtitle { font-size: 1.15em; color: #64748b; margin-bottom: 32px; }
+    h2 { font-size: 1.5em; margin: 48px 0 16px; color: #0f172a; border-left: 4px solid #22d3ee; padding-left: 12px; }
+    h3 { font-size: 1.2em; margin: 32px 0 12px; color: #1e293b; }
+    p { margin-bottom: 16px; }
+    a { color: #0891b2; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; border-radius: 12px; margin: 24px 0; display: block; }
+    .caption { font-size: 0.85em; color: #94a3b8; text-align: center; margin-top: -16px; margin-bottom: 24px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 20px; border-radius: 12px; overflow-x: auto; margin: 20px 0; font-size: 0.9em; }
+    code { font-family: 'SF Mono', 'Fira Code', monospace; }
+    pre code { background: none; padding: 0; }
+    p code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+    blockquote { border-left: 4px solid #fb923c; background: #fffbeb; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+    blockquote p { margin: 0; color: #92400e; }
+    ul, ol { margin: 16px 0; padding-left: 24px; }
+    li { margin-bottom: 8px; }
+    strong { color: #0f172a; }
+    .tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; margin-right: 8px; margin-bottom: 8px; }
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 48px 0; }
+    .highlight-box { background: linear-gradient(135deg, #0f172a, #1e293b); color: #f1f5f9; padding: 24px; border-radius: 12px; margin: 24px 0; }
+    .highlight-box p { color: #cbd5e1; }
+    .highlight-box strong { color: #22d3ee; }
+  </style>
+</head>
+<body>
+<article>
+
+<h1>How I Added Reasoning Memory to My AI Agent Using Honcho — and Why You Should Too</h1>
+<p class="subtitle">A complete guide to giving your AI agent long-term memory that actually reasons about your conversations — for under $0.03/day.</p>
+<img src="https://vinoth12940.github.io/blog/articles/honcho-memory/images/honcho-hero.png" alt="Memory That Reasons — AI agent connected to cloud memory">
+<p style="font-size: 0.85em; color: #94a3b8; text-align: center; margin-top: -16px; margin-bottom: 24px;">Giving your AI agent memory that actually reasons about your conversations</p>
+
+
+
+<p>I run a personal AI agent 24/7 on a VPS. It sends me market briefings, tracks cricket scores, writes articles, manages my server, and handles code tasks — all through Telegram.</p>
+
+<p>But there was a problem: <strong>it kept forgetting things.</strong></p>
+
+<p>Not just old conversations. It would forget my preferences, my timezone, the structure of my projects, even what we were working on yesterday. I'd have to repeat context every session. The built-in memory system — a simple text file injected into the system prompt — had a 4,400 character limit. That's roughly 15 facts before it starts overwriting the oldest ones.</p>
+
+<p>After months of frustration, I integrated <a href="https://honcho.dev">Honcho</a> — a cloud-based memory service that doesn't just store facts, but <em>reasons</em> about them. It now indexes every conversation, extracts conclusions automatically, and injects relevant context into each new turn.</p>
+
+<p>Here's how I set it up, what it cost, and what I learned.</p>
+
+<hr>
+
+<h2>The Problem with Built-in Agent Memory</h2>
+
+<p>Most AI agents — whether it's Claude Code, Codex, or a custom setup like mine — ship with some form of persistent memory. Usually it's a markdown file that gets read and injected into the system prompt.</p>
+
+<p>This approach works for a while, but it has fundamental limitations:</p>
+
+<ul>
+<li><strong>Size ceiling:</strong> 4,400 characters sounds like a lot until you try to fit your timezone, security preferences, project structure, coding style, tool configurations, and recurring tasks into it</li>
+<li><strong>No semantic search:</strong> It's a flat text file. The agent can't "find related things" — it only sees the exact text</li>
+<li><strong>Manual curation:</strong> You (or the agent) must constantly decide what to keep and what to delete</li>
+<li><strong>No reasoning:</strong> The memory doesn't understand <em>you</em>. It stores facts, not insights</li>
+</ul>
+
+<p>There's also a session search feature — it can look through past conversation transcripts. But this is expensive (uses token context), slow, and doesn't surface cross-session patterns.</p>
+
+<p>I needed something that could remember <em>everything</em>, find <em>relevant</em> things, and <em>learn</em> from patterns.</p>
+
+<hr>
+
+<h2>Enter Honcho: Memory That Reasons</h2>
+
+<p><a href="https://honcho.dev">Honcho</a> is an open-source memory library with a managed cloud service, built by Plastic Labs. Their tagline is "Memory That Reasons," and after using it in production for several months, I can confirm that's exactly what it does.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/honcho-memory/images/honcho-architecture.png" alt="Honcho Architecture Diagram showing how agent memory flows through Honcho cloud">
+<p class="caption">Architecture: How your AI agent connects to Honcho's reasoning memory layer</p>
+
+<p>Here's the core idea: every message you send to your agent gets forwarded to Honcho. In the background, Honcho's reasoning engine (called <strong>Neuromancer</strong>) processes these messages and generates <strong>conclusions</strong> — insights about you, your preferences, your patterns, and your work.</p>
+
+<p>These conclusions are stored as <strong>peer representations</strong> — dynamic profiles that evolve over time. When your agent starts a new conversation, it queries Honcho for relevant context using <code>get_context()</code>, which is <strong>free and unlimited</strong>.</p>
+
+<p>The result? Your agent starts each conversation already knowing who you are, what you're working on, and what matters to you — without you having to repeat anything.</p>
+
+<h3>Key Concepts</h3>
+
+<ul>
+<li><strong>Sessions:</strong> Each conversation maps to a session in Honcho. Messages are stored per-session</li>
+<li><strong>Peers:</strong> There's a peer for you (the user) and a peer for the agent. Honcho builds separate models for each</li>
+<li><strong>Conclusions:</strong> Auto-generated insights like "User prefers concise responses" or "User's primary codebase is a Next.js dashboard"</li>
+<li><strong>Representations:</strong> The full profile built from all conclusions — this is what makes the memory "reason"</li>
+<li><strong>Dreaming:</strong> Background reasoning that continuously optimizes peer models without impacting performance</li>
+</ul>
+
+<hr>
+
+<h2>Why I Chose Honcho Over Alternatives</h2>
+
+<p>I evaluated several memory solutions before settling on Honcho. Here's what I found:</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/honcho-memory/images/honcho-cost-comparison.png" alt="Cost comparison chart of different memory solutions">
+<p class="caption">Cost comparison of popular agent memory solutions</p>
+
+<ul>
+<li><strong>Honcho Cloud:</strong> $2/M tokens ingested. The <code>get_context()</code> call that runs every turn is completely free. Background dreaming is also free. At my usage level (~40 sessions/day), this costs roughly <strong>$0.03/day</strong> — about $1/month</li>
+<li><strong>Built-in memory:</strong> Free, but limited to 4,400 characters. No search, no reasoning. Fine for basic needs</li>
+<li><strong>Mem0:</strong> $99/month for the developer plan. The free tier gives you 100 memories per month, which is barely usable</li>
+<li><strong>Zep:</strong> $25/month for the Flex plan. Has interesting temporal awareness (knows <em>when</em> facts were true), but expensive for personal use</li>
+</ul>
+
+<blockquote>
+<p><strong>The deciding factor:</strong> Honcho gives you $100 in free credits on signup. At my usage rate, that's roughly <strong>9 years</strong> of free memory. And the only thing you pay for is ingestion — retrieval is completely free.</p>
+</blockquote>
+
+<hr>
+
+<h2>The Setup: 3 Steps, 5 Minutes</h2>
+
+<p>Here's how I set up Honcho with my agent. The process is straightforward, but there are a few pitfalls I'll cover.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/honcho-memory/images/honcho-setup-flow.png" alt="3-step setup flow for Honcho memory">
+<p class="caption">Setup overview — get API key, configure agent, verify</p>
+
+<h3>Step 1: Get Your API Key</h3>
+
+<p>Head to <a href="https://honcho.dev">honcho.dev</a> and create an account. You'll get an API key immediately, and $100 in free credits will be applied automatically. No credit card required.</p>
+
+<p>Once you have your key, add it to your environment:</p>
+
+<pre><code># Add to your agent's .env file
+HONCHO_API_KEY=hch-v3-your-key-here</code></pre>
+
+<h3>Step 2: Run the Setup Wizard</h3>
+
+<p>If your agent has a Honcho integration (mine does through Hermes), there's usually a setup command:</p>
+
+<pre><code>$ hermes honcho setup</code></pre>
+
+<p>This interactive wizard asks you a few questions:</p>
+
+<ul>
+<li><strong>Workspace name:</strong> A logical grouping for your agent's memory (I used "hermes")</li>
+<li><strong>User peer name:</strong> Your identifier (used for the user model)</li>
+<li><strong>AI peer name:</strong> The agent's identifier (used for the agent model)</li>
+<li><strong>Memory mode:</strong> Choose "hybrid" — this keeps your local memory file AND adds Honcho on top</li>
+<li><strong>Write frequency:</strong> Choose "async" — messages are sent to Honcho in the background, no blocking</li>
+<li><strong>Recall mode:</strong> Choose "hybrid" — combines local memory with Honcho context</li>
+</ul>
+
+<blockquote>
+<p><strong>Pitfall — duplicate .env entries:</strong> The setup wizard may write an empty <code>HONCHO_API_KEY=</code> line to your .env file <em>before</em> your real key. Since most tools read the first match, your agent will get an empty key and fail with "Invalid API key." Always check for duplicates after running setup:</p>
+</blockquote>
+
+<pre><code># Check for duplicate entries
+grep -n "HONCHO_API_KEY" ~/.hermes/.env
+
+# If you see an empty one, remove it
+sed -i 'Nd' ~/.hermes/.env  # Replace N with the line number</code></pre>
+
+<h3>Step 3: Verify and Seed</h3>
+
+<p>After setup, verify the connection:</p>
+
+<pre><code>$ hermes honcho status
+
+Honcho status
+──────────────────────────────────
+  Enabled:        True
+  API key:        ...xxxxx
+  Workspace:      hermes
+  User peer:      your-username
+  AI peer:        your-agent-name
+  Session key:    hermes-agent
+  Recall mode:    hybrid
+  Memory mode:    hybrid
+  Write freq:     async
+
+  Connection... OK</code></pre>
+
+<p>Next, seed your existing memory into Honcho so it starts with context. I pushed my agent's identity file (SOUL.md) and existing memory files:</p>
+
+<pre><code># Seed the agent's identity
+hermes honcho identity ~/.hermes/SOUL.md
+
+# Verify it worked
+hermes honcho identity --show</code></pre>
+
+<p>If you have existing conversation history, you can push those sessions too. I wrote a script that imported 274 past sessions — the bulk ingestion cost about $16 of free credits, leaving ~$84 for ongoing use (still ~7+ years at current rates).</p>
+
+<hr>
+
+<h2>How It Works in Practice</h2>
+
+<p>After running Honcho for several months, here's what the actual experience looks like.</p>
+
+<h3>Automatic Context Injection</h3>
+
+<p>Every time I start a new conversation, the agent automatically queries Honcho for context. This means the agent already knows:</p>
+
+<ul>
+<li>My timezone and scheduling preferences</li>
+<li>My coding style and project conventions</li>
+<li>What we worked on in previous sessions</li>
+<li>My communication preferences (concise, no fluff)</li>
+<li>Security-conscious behavior patterns</li>
+</ul>
+
+<p>I don't have to provide any of this upfront. The agent just... knows.</p>
+
+<h3>Intelligent Recall</h3>
+
+<p>When I say something like "where were we?" or "what did we fix last time?", the agent uses Honcho's semantic search to find relevant past conversations and synthesize the answer. This works across <strong>hundreds of sessions</strong> — something that would be impossibly expensive with raw context search.</p>
+
+<h3>Ongoing Learning</h3>
+
+<p>The most impressive part: Honcho's background reasoning (dreaming) continuously extracts new conclusions from conversations. I don't have to explicitly "save" memories. Every interaction potentially improves the agent's understanding of me.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/honcho-memory/images/honcho-before-after.png" alt="Before and after comparison of agent memory">
+<p class="caption">Before vs After: the difference Honcho makes in daily agent interactions</p>
+
+<hr>
+
+<h2>The Hybrid Approach: Why I Keep Both</h2>
+
+<p>I didn't replace my built-in memory — I <strong>layered</strong> Honcho on top of it. Here's why the "hybrid" mode matters:</p>
+
+<ul>
+<li><strong>Local memory is instant:</strong> It's a text file. No API calls, no latency. Critical for high-frequency facts like timezone, active model, and server paths</li>
+<li><strong>Honcho is for depth:</strong> It handles the things that don't fit in 4,400 characters — conversation history, user modeling, cross-session patterns, semantic recall</li>
+<li><strong>Redundancy:</strong> If Honcho is down, the agent still has its local memory. If the local memory gets corrupted, Honcho has the full history</li>
+</ul>
+
+<div class="highlight-box">
+<p><strong>Recommendation:</strong> Always start with "hybrid" mode. You can switch to "honcho-only" later if you want, but there's no going back without losing local memory writes. Hybrid gives you the best of both worlds.</p>
+</div>
+
+<hr>
+
+<h2>Cost Breakdown: Real Numbers</h2>
+
+<p>After several months of production use, here are my actual numbers:</p>
+
+<ul>
+<li><strong>Sessions indexed:</strong> 347+ conversations</li>
+<li><strong>Conclusions extracted:</strong> 87+ automated insights about my preferences and patterns</li>
+<li><strong>Daily cost:</strong> ~$0.03 (roughly 15,000 tokens ingested per day across ~40 sessions)</li>
+<li><strong>Monthly cost:</strong> ~$0.92</li>
+<li><strong>Free credits remaining:</strong> $84 after bulk session import</li>
+<li><strong>Estimated runway:</strong> ~7+ years at current usage</li>
+</ul>
+
+<p>For context, the <code>get_context()</code> call that runs on every single conversation turn costs <strong>absolutely nothing</strong>. You only pay for ingestion ($2/M tokens). Background dreaming is also free.</p>
+
+<blockquote>
+<p><strong>The key insight:</strong> The expensive part of memory is never the storage or retrieval — it's the reasoning. Honcho bundles reasoning into the ingestion cost, making it dramatically cheaper than running your own reasoning pipeline.</p>
+</blockquote>
+
+<hr>
+
+<h2>Lessons Learned</h2>
+
+<p>Here are the things I wish I knew before setting up Honcho:</p>
+
+<h3>1. Watch Out for .env Duplication</h3>
+<p>Already covered above, but it's worth repeating because it bit me twice. The setup wizard can write stale entries. Always <code>grep</code> your .env file after setup.</p>
+
+<h3>2. Peer IDs Must Match Everywhere</h3>
+<p>If you manually create peers or push sessions with a script, make sure the peer IDs match what the gateway uses. Mismatched peer IDs means the gateway connects successfully but <code>honcho_profile</code> returns empty — all your data is invisible. Check your <code>honcho.json</code> configuration.</p>
+
+<h3>3. Session Names Don't Need to Match</h3>
+<p>Imported sessions get different names than live gateway sessions (e.g., "imported-abc123" vs "telegram-1234567890"). This is fine — Honcho's semantic search works across all sessions in a workspace regardless of naming.</p>
+
+<h3>4. Bulk Import is Worth It</h3>
+<p>Importing past sessions costs tokens (~$16 for 274 sessions), but it means Honcho has context from day one. Without seeding, it takes weeks of conversations for the memory to become truly useful.</p>
+
+<h3>5. Monitor Your Dashboard</h3>
+<p>If your agent has a dashboard, check it periodically. The Honcho page should show a growing conclusion count and active status. If conclusions stop growing, something's wrong with the ingestion pipeline.</p>
+
+<hr>
+
+<h2>What's Next</h2>
+
+<p>Honcho 3.0 introduced significant improvements to the reasoning pipeline, and the team is actively developing features like enhanced dreaming (where background reasoning becomes even more powerful) and improved temporal awareness.</p>
+
+<p>For my setup, the next step is pushing the remaining session history and fine-tuning what conclusions get extracted. But even at the current state, the difference in agent quality is night and day.</p>
+
+<p>If you're running any kind of persistent AI agent — whether it's Claude Code, a custom bot, or a full assistant like mine — Honcho is worth the 5-minute setup. The free credits make it risk-free, and the improvement in agent memory is immediate.</p>
+
+<hr>
+
+<h2>Useful Links</h2>
+
+<ul>
+<li><a href="https://honcho.dev">Honcho Official Site</a> — Sign up and get your API key</li>
+<li><a href="https://docs.honcho.dev">Honcho Documentation</a> — Architecture, quickstart, API reference</li>
+<li><a href="https://github.com/plastic-labs/honcho">Honcho GitHub</a> — Open-source memory library</li>
+<li><a href="https://github.com/plastic-labs/honcho-python">Honcho Python SDK</a> — Python integration</li>
+<li><a href="https://blog.plasticlabs.ai/blog/Honcho-3">Announcing Honcho 3.0</a> — Reasoning, dreaming, and pricing changes</li>
+</ul>
+
+<hr>
+
+<p style="text-align: center; color: #94a3b8; margin-top: 32px;">Thanks for reading. If you found this useful, consider following for more articles on self-hosted AI infrastructure and agent development.</p>
+
+</article>
+</body>
+</html>
