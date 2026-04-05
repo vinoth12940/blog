@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Built a Full Admin Dashboard for My AI Agent — Here's How</title>
+  <meta property="og:title" content="I Built a Full Admin Dashboard for My AI Agent — Here's How">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="How I turned a headless CLI agent running on a €4/month VPS into a glassmorphic web dashboard with 15 pages, real-time monitoring, and full configuration management.">
+  <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/dashboard.png">
+  <meta property="article:published_time" content="2026-04-02">
+  <meta name="author" content="Vinoth">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; color: #1a1a1a; }
+    h1 { font-size: 2em; line-height: 1.2; margin-bottom: 8px; }
+    .subtitle { color: #666; font-size: 1.1em; margin-bottom: 30px; }
+    h2 { font-size: 1.4em; margin-top: 40px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+    h3 { font-size: 1.15em; margin-top: 28px; }
+    p { margin-bottom: 16px; }
+    strong { color: #111; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; }
+    pre code { background: none; padding: 0; color: inherit; }
+    blockquote { border-left: 4px solid #a78bfa; padding-left: 20px; margin: 20px 0; color: #555; font-style: italic; }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+    th, td { border: 1px solid #e5e7eb; padding: 10px 14px; text-align: left; }
+    th { background: #f9fafb; font-weight: 600; }
+    img { max-width: 100%; border-radius: 8px; margin: 20px 0; }
+    ul, ol { margin-bottom: 16px; padding-left: 24px; }
+    li { margin-bottom: 6px; }
+    a { color: #3b82f6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tag { display: inline-block; background: #f3f4f6; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; color: #555; margin-right: 6px; margin-bottom: 6px; }
+    .caption { text-align: center; color: #888; font-size: 0.9em; margin-top: -12px; margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+<article>
+
+<h1>I Built a Full Admin Dashboard for My AI Agent — Here's How</h1>
+<p class="subtitle"><em>How I turned a headless CLI agent running on a €4/month VPS into a glassmorphic web dashboard with 15 pages, real-time monitoring, and full configuration management.</em></p>
+
+<hr>
+
+<h2>The Problem: My AI Agent Was a Black Box</h2>
+
+<p>I run <a href="https://github.com/nousresearch/hermes-agent">Hermes Agent</a> — an autonomous AI coding assistant — on a Hetzner Cloud VPS (4 vCPU AMD EPYC, 8GB RAM, €4/month). It connects to Telegram, processes cron jobs, manages my schedule, and even writes cricket score updates.</p>
+
+<p>But here's the thing: <strong>I had no visibility into what it was doing.</strong></p>
+
+<p>Want to check if the gateway is running? SSH in, run <code>systemctl status hermes-gateway</code>. Want to see CPU usage? <code>htop</code>. Want to modify the config? <code>vim ~/.hermes/config.yaml</code>. Want to see conversation history? Query SQLite manually.</p>
+
+<p>It worked, but it was tedious. I wanted a single pane of glass to monitor everything, modify configurations, and manage the agent — all from my browser.</p>
+
+<p>So I built one.</p>
+
+<h2>What I Built</h2>
+
+<p><strong>Hermes Admin Dashboard</strong> — a Next.js 16 web application that exposes every aspect of the agent through a clean, dark-themed UI. No external database. No separate backend. It reads directly from the agent's existing data sources.</p>
+
+<p>Here's the main dashboard page:</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/dashboard.png" alt="Hermes Admin Dashboard - Main overview page showing system stats, connected platforms, and quick action buttons">
+<p class="caption">The main dashboard — live CPU, memory, and disk stats, gateway status, connected platforms, and quick action buttons.</p>
+
+<h3>📊 15 Pages Across 4 Categories</h3>
+
+<p><strong>Monitoring:</strong></p>
+<ul>
+  <li><strong>Dashboard</strong> — System overview with live CPU/memory/disk charts, gateway status, connected platforms (Telegram, Discord, Slack, etc.), Hermes version, and quick action buttons (restart gateway, clear logs, run all cron jobs, take backup)</li>
+  <li><strong>Alerts</strong> — Create threshold-based alert rules for CPU, memory, and gateway status. Alerts are checked every 30 seconds and queued for Telegram delivery</li>
+  <li><strong>Audit Log</strong> — Every dashboard action (config changes, cron operations, platform restarts) is timestamped and logged</li>
+</ul>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/alerts.png" alt="Alert Rules page showing alert creation form and active rules">
+<p class="caption">Alert Rules — create CPU, memory, and gateway threshold alerts with Telegram notifications.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/audit.png" alt="Audit Log page showing tracked dashboard actions">
+<p class="caption">Audit Log — every config change, cron operation, and platform restart is recorded.</p>
+
+<p><strong>Configuration:</strong></p>
+<ul>
+  <li><strong>Configuration</strong> — Structured form editor for <code>config.yaml</code> with real-time validation (detects empty API keys, validates model names, flags duplicate providers). Toggle between form view and raw YAML</li>
+  <li><strong>Env Variables</strong> — View and edit <code>.env</code> with masked sensitive values</li>
+  <li><strong>Agent MD</strong> — View and edit the agent's development guide</li>
+  <li><strong>Soul MD</strong> — View and edit the agent's personality/behavior config</li>
+</ul>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/config.png" alt="Configuration editor showing model settings, agent settings, and personality configs">
+<p class="caption">Configuration Editor — structured form for config.yaml with tabs for Models, API Keys, Display, and Gateway.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/env-vars.png" alt="Environment Variables page showing masked API keys">
+<p class="caption">Environment Variables — view and edit .env with sensitive values automatically masked.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/agent-md.png" alt="Agent MD editor showing the agent development guide">
+<p class="caption">Agent MD — view and edit the agent's development guide directly in the browser.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/soul-md.png" alt="Soul MD editor showing personality configuration">
+<p class="caption">Soul MD — edit the agent's personality, behavior, and communication style.</p>
+
+<p><strong>Data:</strong></p>
+<ul>
+  <li><strong>Sessions</strong> — Browse conversation history with search, pagination, and message-level detail view</li>
+  <li><strong>Memory</strong> — View agent memory, user profile, and soul data</li>
+  <li><strong>Files</strong> — Full filesystem browser with directory navigation</li>
+  <li><strong>Logs</strong> — Browse log files with search, level filtering, and live streaming via Server-Sent Events</li>
+  <li><strong>Skills</strong> — Browse installed skills with descriptions and categories</li>
+  <li><strong>Cron Jobs</strong> — Full CRUD: create, run, pause, resume, delete. Inline prompt editing, schedule presets, run history with success/fail timeline</li>
+  <li><strong>Processes</strong> — View background processes managed by the agent</li>
+</ul>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/sessions.png" alt="Session history page showing conversation list">
+<p class="caption">Session History — browse all conversations with search and pagination.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/memory.png" alt="Memory viewer showing user profile, agent memory, and soul data">
+<p class="caption">Memory Viewer — inspect what the agent remembers about you, its notes, and its soul data.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/files.png" alt="File browser showing directory navigation">
+<p class="caption">File Browser — navigate the entire Hermes filesystem from your browser.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/logs.png" alt="Log viewer with search and filtering">
+<p class="caption">Log Viewer — browse log files with search, level filtering, and live streaming.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/skills.png" alt="Skills browser showing all installed skills by category">
+<p class="caption">Skills Browser — all installed skills organized by category (devops, mlops, research, etc).</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/cron.png" alt="Cron Jobs manager showing active scheduled tasks">
+<p class="caption">Cron Jobs Manager — create, run, pause, and delete scheduled jobs with one click.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/processes.png" alt="Processes page showing background processes">
+<p class="caption">Background Processes — monitor all active Hermes processes.</p>
+
+<p><strong>Tools:</strong></p>
+<ul>
+  <li><strong>Model Playground</strong> — Test any LLM model interactively. Send prompts, compare responses, verify API connectivity</li>
+  <li><strong>Config Backups</strong> — Automatic backups before any config change, one-click restore</li>
+</ul>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/playground.png" alt="Model Playground for testing LLM models">
+<p class="caption">Model Playground — test any LLM model interactively, verify API connectivity, and compare responses.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/backups.png" alt="Config Backups page showing backup history">
+<p class="caption">Config Backups — automatic backups before every edit, with one-click restore.</p>
+
+<h3>The Tech Stack</h3>
+
+<table>
+  <tr><th>Layer</th><th>Technology</th></tr>
+  <tr><td>Framework</td><td>Next.js 16 (App Router, Server Components, Standalone mode)</td></tr>
+  <tr><td>UI</td><td>React 19, Tailwind CSS 4, Lucide React icons</td></tr>
+  <tr><td>Charts</td><td>Recharts</td></tr>
+  <tr><td>Auth</td><td>JWT (jose) + bcryptjs, middleware-based route protection</td></tr>
+  <tr><td>Data</td><td>Reads from SQLite (sessions), YAML (config), log files, env files</td></tr>
+  <tr><td>Exposure</td><td>Cloudflare Tunnel (zero open ports, auto HTTPS)</td></tr>
+  <tr><td>Testing</td><td>Playwright (18 E2E tests)</td></tr>
+</table>
+
+<p><strong>Total: 52 source files, ~7,800 lines of code, 23 API routes.</strong></p>
+
+<h2>Architecture: Zero Infrastructure Overhead</h2>
+
+<p>The key design decision was <strong>no additional infrastructure</strong>. The dashboard doesn't create its own database or message queue. It reads directly from what the agent already generates:</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/hermes-admin-dashboard/images/architecture-diagram.png" alt="Architecture diagram showing Browser, Cloudflare Tunnel, Next.js Server, File System, System Commands, and Hermes Agent">
+<p class="caption">System architecture — Browser → Cloudflare Tunnel → Next.js Server → File System / System Commands / Hermes Agent.</p>
+
+<p>No Redis. No PostgreSQL. No Docker. The Next.js standalone server runs directly on the VPS alongside Hermes, using <strong>74MB of RAM</strong>.</p>
+
+<h2>The Tricky Parts</h2>
+
+<h3>1. Platform Detection</h3>
+
+<p>Hermes supports 6 messaging platforms. Credentials can be in <code>config.yaml</code> OR in <code>.env</code> (environment variables like <code>TELEGRAM_BOT_TOKEN</code>). I had to check both sources:</p>
+
+<pre><code>// Check config.yaml
+const hasConfig = !!config.telegram?.bot_token;
+
+// Check .env
+const hasEnv = !!process.env.TELEGRAM_BOT_TOKEN;
+
+// Platform is enabled if EITHER has credentials
+const enabled = hasConfig || hasEnv;</code></pre>
+
+<p>This fixed a bug where Telegram showed as "Disabled" even though it was running fine via env vars.</p>
+
+<h3>2. Config Validation</h3>
+
+<p>The <code>config.yaml</code> has a critical gotcha: setting <code>api_key: ''</code> in the YAML <strong>overrides</strong> environment variables. This silently breaks auth for cron jobs and background tasks. The dashboard now detects this:</p>
+
+<ul>
+  <li>⚠️ Empty <code>api_key</code> fields highlighted in red</li>
+  <li>⚠️ Model names validated against known providers</li>
+  <li>⚠️ Duplicate provider entries flagged</li>
+  <li>⚠️ Disabled sections warned</li>
+</ul>
+
+<h3>3. Action Buttons That Actually Work</h3>
+
+<p>My first version had 4 action buttons on the dashboard (Restart Gateway, Clear Logs, Run All Cron, Take Backup). They looked great but <strong>3 of 4 silently failed</strong>. The frontend was sending requests to API endpoints that didn't exist:</p>
+
+<ul>
+  <li><code>POST /api/logs?action=clear</code> — no POST handler existed</li>
+  <li><code>POST /api/cron?action=run-all</code> — no <code>run-all</code> action existed</li>
+  <li>The buttons had no success/error feedback</li>
+</ul>
+
+<p>Nothing crashed, but nothing happened either. The <code>catch {}</code> blocks swallowed everything silently. I had to build the missing backend handlers, parse JSON responses, and show success/error banners.</p>
+
+<h3>4. Alert Creation — The Nested Object Bug</h3>
+
+<p>The alert form sends data as flat fields: <code>{type: "cpu", threshold: 80, operator: "gt"}</code>. But the backend expected a nested object: <code>{type: "cpu", condition: {threshold: 80, operator: "gt"}}</code>. Every create attempt failed with "type and condition are required."</p>
+
+<p>Fixed with optional chaining to accept both formats:</p>
+
+<pre><code>const threshold = alert.condition?.threshold ?? alert.threshold ?? 80;
+const operator = alert.condition?.operator ?? alert.operator ?? 'gt';</code></pre>
+
+<h2>Security</h2>
+
+<p>Since the dashboard exposes config files (with API keys), environment variables, and system stats, security was critical:</p>
+
+<ul>
+  <li><strong>JWT auth</strong> with bcrypt password hashing on all routes</li>
+  <li><strong>Middleware-based</strong> protection — unauthenticated users hit <code>/login</code></li>
+  <li><strong>Path traversal prevention</strong> on all file operations</li>
+  <li><strong>Blocked system directories</strong> (<code>/proc</code>, <code>/sys</code>, <code>/dev</code>)</li>
+  <li><strong>Cloudflare Tunnel</strong> — zero open ports, DDoS protection, auto HTTPS</li>
+  <li><strong>Audit logging</strong> — every configuration change is recorded with timestamps</li>
+</ul>
+
+<h2>Real-World Performance</h2>
+
+<p>Running on the same €4/month Hetzner VPS alongside Hermes Agent:</p>
+
+<table>
+  <tr><th>Metric</th><th>Value</th></tr>
+  <tr><td>Dashboard memory usage</td><td>~74 MB</td></tr>
+  <tr><td>Build size (standalone)</td><td>60 MB</td></tr>
+  <tr><td>Source files</td><td>52</td></tr>
+  <tr><td>Lines of code</td><td>~7,800</td></tr>
+  <tr><td>API routes</td><td>23</td></tr>
+  <tr><td>Pages</td><td>15 (+ login)</td></tr>
+  <tr><td>Time to first paint</td><td>&lt; 200ms</td></tr>
+  <tr><td>Auto-refresh interval</td><td>5 seconds</td></tr>
+  <tr><td>E2E tests</td><td>18</td></tr>
+</table>
+
+<p>The agent itself uses ~1.1 GB of the 8 GB RAM. The dashboard adds negligible overhead.</p>
+
+<h2>What's Next</h2>
+
+<ul>
+  <li>WebSocket-based real-time updates (replace polling)</li>
+  <li>Dark/light theme toggle</li>
+  <li>Multi-user roles (admin/viewer)</li>
+  <li>Agent chat interface embedded in dashboard</li>
+  <li>Docker deployment option</li>
+  <li>Metrics export (Prometheus endpoint)</li>
+</ul>
+
+<h2>Lessons Learned</h2>
+
+<ol>
+  <li><strong>Always build the backend first.</strong> I built 4 beautiful action buttons that called non-existent API endpoints. They looked like they worked (loading spinners!), but silently did nothing.</li>
+  <li><strong>Validate your data contracts early.</strong> The flat-vs-nested object mismatch for alerts took one line to fix but an hour to debug because the error message was generic.</li>
+  <li><strong>Silent <code>catch {}</code> blocks are evil.</strong> Every error should at least log. I replaced all empty catches with proper error feedback.</li>
+  <li><strong>Read from existing data sources when possible.</strong> No need for a separate database when your agent already stores everything in SQLite, YAML, and log files.</li>
+  <li><strong>Cloudflare Tunnel is the easiest way to expose a local service.</strong> Zero open ports, auto HTTPS, DDoS protection. One command and it's live.</li>
+</ol>
+
+<h2>The Repo</h2>
+
+<p>All code is open source: <a href="https://github.com/vinoth12940/hermes-dashboard">github.com/vinoth12940/hermes-dashboard</a></p>
+
+<p>Built with Next.js 16, React 19, Tailwind CSS 4, and zero additional infrastructure.</p>
+
+<hr>
+
+<p><em>If you're running AI agents or self-hosted services on a VPS, I'd love to hear how you monitor them. Drop a comment!</em></p>
+
+<p>
+  <span class="tag">#AI</span>
+  <span class="tag">#NextJS</span>
+  <span class="tag">#WebDevelopment</span>
+  <span class="tag">#SelfHosted</span>
+  <span class="tag">#DevOps</span>
+  <span class="tag">#React</span>
+  <span class="tag">#Dashboard</span>
+  <span class="tag">#OpenSource</span>
+</p>
+
+</article>
+</body>
+</html>
