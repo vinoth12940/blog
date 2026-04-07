@@ -145,15 +145,15 @@
 </head>
 <body>
     <article>
-        <h1>GLM-5.1: 94% of Claude Opus Coding at 1/8th the Price</h1>
+        <h1>GLM-5.1: 94% of Claude Opus Coding at a Fraction of the Price</h1>
         <p class="subtitle">Z.ai's post-training upgrade narrows the open-vs-closed gap to 2.6 points — trained entirely without Nvidia hardware</p>
         <div class="meta">April 7, 2026 · AI Models · 8 min read</div>
 
-        <p>On March 27, 2026, Z.ai (formerly Zhipu AI) quietly released GLM-5.1 — a post-training upgrade to their flagship GLM-5 model. No keynote. No livestream. Just a model drop that sent shockwaves through the developer community.</p>
+        <p>On March 27, 2026, Z.ai (formerly Zhipu AI) quietly released GLM-5.1 — a post-training upgrade to their flagship GLM-5 model. No keynote. No livestream. Just a model drop that got developers talking.</p>
 
-        <p>Why? Because this model codes at <strong>94.6% of Claude Opus 4.6's level</strong>, costs <strong>$3.20 per million output tokens</strong> (vs Claude's ~$25), and was trained entirely on Huawei Ascend chips — without a single Nvidia GPU in sight.</p>
+        <p>Why? Because this model codes at <strong>94.6% of Claude Opus 4.6's level</strong> (per Z.ai's own benchmarks), costs <strong>$3.20 per million output tokens</strong> (vs Claude's $25), and was trained entirely on Huawei Ascend chips — without a single Nvidia GPU in sight.</p>
 
-        <p>If you're paying $200/month for Claude Pro and wondering if there's a better way, this one's for you.</p>
+        <p>If you're paying $100-200/month for Claude Max and wondering if there's a better way, this one's for you.</p>
 
         <hr>
 
@@ -180,10 +180,14 @@
             </div>
         </div>
 
+        <blockquote>
+            Important caveat: The 45.3 coding score and 94.6% figure are Z.ai's own benchmarks, measured using Claude Code as the testing instrument. As of this writing, they have not been independently verified by third-party evaluation labs. Take them as promising early signals, not settled science.
+        </blockquote>
+
         <ul>
             <li><strong>Coding Score:</strong> 45.3 points — up from GLM-5's 35.4 (a 28% jump)</li>
             <li><strong>Gap to Opus 4.6:</strong> Just 2.6 points (Claude scored 47.9)</li>
-            <li><strong>SWE-bench Verified:</strong> 77.8% — only 3.6 percentage points behind Claude Opus 4.6 (~81.4%)</li>
+            <li><strong>SWE-bench Verified:</strong> 77.8% for GLM-5 (GLM-5.1's independent SWE-bench score is not yet published) — only 3.6 percentage points behind Claude Opus 4.6 (~81.4%)</li>
             <li><strong>LMArena:</strong> #1 among open-weights models on both Text Arena and Code Arena</li>
             <li><strong>Context window:</strong> 200K tokens (~300 pages of text)</li>
         </ul>
@@ -194,20 +198,20 @@
 
         <h2>The Price Destroyer: GLM-5.1 vs Everyone Else</h2>
 
-        <p>This is where it gets absurd. Let's talk about API pricing:</p>
+        <p>This is where it gets interesting. Let's talk about API pricing:</p>
 
         <img src="https://vinoth12940.github.io/blog/articles/glm-5-1-review/images/pricing-comparison.png" alt="Price comparison chart: GLM-5.1 vs Claude Opus vs GPT-5.4">
         <p class="caption">API pricing per million tokens — output prices. GLM-5.1 dramatically undercuts the competition.</p>
 
         <ul>
             <li><strong>GLM-5.1:</strong> $1.00 input / $3.20 output per million tokens</li>
-            <li><strong>Claude Opus 4.6:</strong> ~$15 input / ~$75 output per million tokens</li>
+            <li><strong>Claude Opus 4.6:</strong> $5 input / $25 output per million tokens</li>
             <li><strong>GPT-5.4:</strong> ~$2.50 input / ~$10 output per million tokens</li>
             <li><strong>Coding Plan:</strong> $10/month for unlimited use (Lite/Pro/Max tiers)</li>
         </ul>
 
         <blockquote>
-            At $3.20 per million output tokens vs Claude's ~$75, GLM-5.1 is roughly <strong>23x cheaper</strong> for output-heavy coding workflows. Even compared to GPT-5.4, it's 3x cheaper.
+            At $3.20 per million output tokens vs Claude's $25, GLM-5.1 is roughly <strong>7.8x cheaper</strong> for output-heavy coding workflows. Even compared to GPT-5.4, it's 3x cheaper.
         </blockquote>
 
         <p>For the $10/month Coding Plan, you get unlimited access to GLM-5.1 across all tiers (Lite, Pro, Max). That's not a typo. Ten dollars a month for near-Claude-level coding.</p>
@@ -216,7 +220,7 @@
 
         <h2>Trained Entirely on Huawei Chips — No Nvidia Required</h2>
 
-        <p>Here's the part that has the industry talking: GLM-5 (and by extension, GLM-5.1) was trained on <strong>100,000 Huawei Ascend 910 AI processors</strong> using the MindSpore framework. Zero Nvidia GPUs.</p>
+        <p>Here's the part that has the industry talking: GLM-5 (and by extension, GLM-5.1) was trained on <strong>100,000 Huawei Ascend 910B AI processors</strong> using the MindSpore framework. Zero Nvidia GPUs.</p>
 
         <p>Zhipu developed custom optimizations for Huawei's architecture:</p>
 
@@ -229,7 +233,7 @@
         <p>This isn't just a technical flex. It's proof that the <strong>Nvidia moat is narrowing</strong>. US export controls on advanced AI chips were designed to slow Chinese AI development. Instead, they accelerated domestic chip investment. GLM-5.1 is living proof.</p>
 
         <blockquote>
-            A 744B parameter model (44B active, Mixture-of-Experts), MIT-licensed, trained on Chinese silicon, coding at 94.6% of Claude. The geopolitical implications are massive.
+            A 744B parameter model (40B active, Mixture-of-Experts), MIT-licensed, trained on Chinese silicon, coding at 94.6% of Claude. The geopolitical implications are significant.
         </blockquote>
 
         <hr>
@@ -265,7 +269,7 @@
 
         <p>The result? My monthly AI bill dropped from ~$50 to <strong>$10</strong> — while getting better code output. The 28% coding improvement over GLM-5 is immediately noticeable in debugging sessions and code review.</p>
 
-        <p>For agentic workflows — where the AI autonomously writes, tests, and iterates on code — GLM-5.1's compatibility with <strong>Claude Code</strong> and <strong>OpenClaw</strong> is a huge win. Drop-in replacement, same tooling.</p>
+        <p>For agentic workflows — where the AI autonomously writes, tests, and iterates on code — GLM-5.1's compatibility with <strong>Claude Code</strong> and <strong>OpenCode</strong> is a huge win. Drop-in replacement, same tooling.</p>
 
         <hr>
 
@@ -276,17 +280,17 @@
         <ul>
             <li><strong>GLM-5 weights:</strong> Available now on HuggingFace and GitHub (MIT license)</li>
             <li><strong>GLM-5.1 weights:</strong> Confirmed MIT, release date TBD</li>
-            <li><strong>Architecture:</strong> 744B total parameters, 44B active (Mixture-of-Experts)</li>
-            <li><strong>Training hardware:</strong> 100,000 Huawei Ascend 910 processors</li>
+            <li><strong>Architecture:</strong> 744B total parameters, 40B active (Mixture-of-Experts)</li>
+            <li><strong>Training hardware:</strong> 100,000 Huawei Ascend 910B processors</li>
         </ul>
 
-        <p>When the weights drop, expect the community to quantize it (GGUF, GPTQ) within days. A 44B active-parameter MoE model quantized to Q4 could run on consumer hardware — think Mac Mini M4 with 24GB RAM, or a single RTX 4090.</p>
+        <p>When the weights drop, expect the community to quantize it (GGUF, GPTQ) within days. A 40B active-parameter MoE model quantized to Q4 could run on consumer hardware — think Mac Mini M4 with 24GB RAM, or a single RTX 4090.</p>
 
         <hr>
 
         <h2>Z.ai: The Company Behind the Model</h2>
 
-        <p>Zhipu AI (rebranded as Z.ai) IPO'd on the Hong Kong Stock Exchange in January 2026 at a <strong>$31.3 billion valuation</strong> — making it one of the most valuable AI companies in China. They're not a startup scrapping by. They're a well-funded competitor to OpenAI, Anthropic, and Google DeepMind.</p>
+        <p>Zhipu AI (rebranded as Z.ai) went public on the Hong Kong Stock Exchange in January 2026, raising approximately USD $559 million at a valuation of around <strong>$6.57 billion</strong> — making it one of the most valuable AI companies in China. They're a well-funded competitor to OpenAI, Anthropic, and Google DeepMind.</p>
 
         <p>The GLM family tree:</p>
 
@@ -326,7 +330,7 @@
             </ul>
         </div>
 
-        <p>The $10/month Coding Plan is a no-brainer to test. If you're paying $200/month for Claude Pro, try routing just your coding tasks through GLM-5.1 for a week. You might be surprised.</p>
+        <p>The $10/month Coding Plan is a no-brainer to test. If you're paying $100-200/month for Claude Max, try routing just your coding tasks through GLM-5.1 for a week. You might be surprised.</p>
 
         <hr>
 
@@ -341,7 +345,7 @@
             <li>Smart model routing beats <strong>single-model loyalty</strong> every time</li>
         </ul>
 
-        <p>The question isn't whether open-source AI will catch up to closed-source. It's whether the closed-source companies can justify their pricing when it does.</p>
+        <p>The question isn't whether open-source AI will catch up to closed-source. It's whether closed-source companies can justify their pricing once parity arrives.</p>
 
         <p>GLM-5.1 suggests they can't.</p>
 
