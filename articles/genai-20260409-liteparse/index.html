@@ -215,6 +215,11 @@ const shots = await parser.screenshot(pdfBytes, [1, 2, 3]);</pre>
     <pre>npm install -g @llamaindex/liteparse  # CLI first
 pip install liteparse</pre>
 
+    <div class="callout">
+        <div class="callout-title">Python vs TypeScript: Know the Differences</div>
+        <p>The Python wrapper is a <strong>thin subprocess wrapper</strong> around the Node.js CLI. It supports <code>parse()</code>, <code>batch_parse()</code>, and per-call options — but does <strong>not</strong> expose <code>outputFormat: "json"</code> (bounding boxes), <code>searchItems()</code>, or <code>screenshot()</code>. For those features, use the TypeScript library directly or call the CLI via <code>subprocess</code> with <code>--format json</code>.</p>
+    </div>
+
     <h3>Basic Parsing</h3>
 
     <pre>from liteparse import LiteParse
@@ -231,7 +236,16 @@ for page in result.pages:
 
     <h3>Full Configuration</h3>
 
-    <pre>result = parser.parse(
+    <p>The constructor accepts <code>cli_path</code> (to override CLI auto-detection) and <code>install_if_not_available</code> (to control auto-install behavior). All parsing options are passed per-call:</p>
+
+    <pre>from liteparse import LiteParse
+
+parser = LiteParse(
+    cli_path="/usr/local/bin/lit",           # optional: override auto-detected CLI
+    install_if_not_available=True,            # auto-install CLI via npm on first use
+)
+
+result = parser.parse(
     "document.pdf",
     ocr_enabled=True,
     ocr_server_url="http://localhost:8828/ocr",
@@ -239,28 +253,148 @@ for page in result.pages:
     dpi=300,
     target_pages="1-5",
     password="secret",
-)</pre>
+    max_pages=10,                             # hard limit on pages parsed
+    preserve_very_small_text=True,            # keep small text fragments
+)
 
-    <h3>Parse from Bytes</h3>
+print(result.text)</pre>
 
-    <pre>with open("document.pdf", "rb") as f:
+    <h3>Parse from Bytes (Web Upload Pattern)</h3>
+
+    <p>If you already have file contents in memory — for example, from a Flask or FastAPI upload — pass them directly to <code>parse()</code>:</p>
+
+    <pre>from liteparse import LiteParse
+
+parser = LiteParse()
+
+# From a local file
+with open("document.pdf", "rb") as f:
     pdf_bytes = f.read()
 
 result = parser.parse(pdf_bytes)
-print(result.text)</pre>
+print(result.text)
+
+# From a web request (FastAPI example)
+from fastapi import FastAPI, UploadFile
+
+app = FastAPI()
+parser = LiteParse()
+
+@app.post("/parse")
+async def parse_upload(file: UploadFile):
+    contents = await file.read()
+    result = parser.parse(contents)
+    return {"text": result.text, "pages": len(result.pages)}</pre>
 
     <h3>Batch Parsing (Faster for Multiple Files)</h3>
 
     <p>Batch mode reuses the PDF engine and is significantly faster than parsing files one at a time:</p>
 
-    <pre>result = parser.batch_parse(
+    <pre>from liteparse import LiteParse
+
+parser = LiteParse()
+
+result = parser.batch_parse(
     input_dir="./documents",
     output_dir="./output",
-    recursive=True,
-    extension_filter=".pdf",
+    ocr_enabled=False,                        # disable OCR for speed on native-text PDFs
+    recursive=True,                           # include subdirectories
+    extension_filter=".pdf",                   # only parse PDFs
 )
 
 print(f"Output written to: {result.output_dir}")</pre>
+
+    <h3>JSON Output with Bounding Boxes (via CLI)</h3>
+
+    <p>Since the Python wrapper doesn't expose <code>outputFormat: "json"</code>, use <code>subprocess</code> to get bounding boxes — then parse the JSON in Python:</p>
+
+    <pre>import json
+import subprocess
+
+def parse_with_bounding_boxes(file_path: str, dpi: int = 150) -> dict:
+    """Parse a PDF and return JSON with bounding boxes via the CLI."""
+    result = subprocess.run(
+        ["lit", "parse", file_path, "--format", "json", "--dpi", str(dpi)],
+        capture_output=True, text=True, check=True,
+    )
+    return json.loads(result.stdout)
+
+data = parse_with_bounding_boxes("report.pdf")
+
+for page in data["pages"]:
+    page_num = page["page"]
+    for item in page["textItems"]:
+        print(
+            f"  [{item['x']}, {item['y']}] → "
+            f"[{item['x'] + item['width']}, {item['y'] + item['height']}] "
+            f"{item['text']}"
+        )</pre>
+
+    <h3>Visual Citations: Find Text + Screenshot Pages</h3>
+
+    <p>Here's a complete Python workflow that parses a PDF, searches for a phrase, and uses the CLI to generate page screenshots:</p>
+
+    <pre>import json
+import subprocess
+from pathlib import Path
+
+def find_phrase_in_pdf(pdf_path: str, phrase: str) -> list:
+    """Find a phrase across PDF pages and return matches with coordinates."""
+    result = subprocess.run(
+        ["lit", "parse", pdf_path, "--format", "json"],
+        capture_output=True, text=True, check=True,
+    )
+    data = json.loads(result.stdout)
+    matches = []
+
+    for page in data["pages"]:
+        # Concatenate all text items on this page
+        full_text = " ".join(item["text"] for item in page["textItems"])
+        if phrase.lower() in full_text.lower():
+            # Find matching items
+            for item in page["textItems"]:
+                if phrase.lower() in item["text"].lower():
+                    matches.append({
+                        "page": page["page"],
+                        "text": item["text"],
+                        "x": item["x"],
+                        "y": item["y"],
+                        "width": item["width"],
+                        "height": item["height"],
+                    })
+
+    return matches
+
+def screenshot_pages(pdf_path: str, output_dir: str, pages: list[int] = None):
+    """Generate page screenshots via CLI."""
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    args = ["lit", "screenshot", pdf_path, "-o", str(output_dir)]
+    if pages:
+        args.extend(["--target-pages", ",".join(str(p) for p in pages)])
+
+    subprocess.run(args, check=True)
+    return list(output_dir.glob("*.png"))
+
+# Usage
+matches = find_phrase_in_pdf("report.pdf", "Revenue grew")
+for m in matches:
+    print(f"Page {m['page']}: \"{m['text']}\" at ({m['x']}, {m['y']})")
+
+# Screenshot only the pages with matches
+matched_pages = list(set(m["page"] for m in matches))
+screenshots = screenshot_pages("report.pdf", "./screenshots", matched_pages)
+print(f"Generated {len(screenshots)} screenshots")</pre>
+
+    <h3>Performance Tips</h3>
+
+    <ul>
+        <li><strong>Disable OCR</strong> if your documents have selectable text: <code>parser.parse("doc.pdf", ocr_enabled=False)</code></li>
+        <li><strong>Use batch mode</strong> for multiple files to avoid cold-start overhead</li>
+        <li><strong>Limit pages</strong> if you only need specific sections: <code>target_pages="1-5"</code></li>
+        <li><strong>Lower DPI</strong> for text-only extraction: <code>dpi=72</code> (default is 150)</li>
+    </ul>
 
     <hr>
 
