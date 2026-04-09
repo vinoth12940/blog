@@ -66,7 +66,7 @@
 
     <ul>
         <li><strong>Firefox JavaScript exploit development:</strong> Claude Opus 4.6 managed to turn discovered vulnerabilities into working shell exploits only 2 times out of several hundred attempts (near 0%). Mythos Preview? <strong>181 working exploits out of roughly 250 attempts — a 72.4% success rate</strong>.</li>
-        <li><strong>OSS-Fuzz benchmark (7,000 entry points):</strong> Opus 4.6 and Sonnet 4.6 each achieved only a single crash at Tier 3 severity. Mythos Preview achieved <strong>595 crashes at Tiers 1-2, a handful at Tiers 3-4, and 10 full control flow hijacks at Tier 5</strong> — the highest severity level.</li>
+        <li><strong>OSS-Fuzz benchmark (7,000 entry points):</strong> Opus 4.6 and Sonnet 4.6 each achieved only a single crash at Tier 3 severity. Mythos Preview achieved <strong>hundreds of crashes at Tiers 1-2 and 10 full control flow hijacks at Tier 5</strong> — the highest severity level.</li>
         <li><strong>Zero-day discovery:</strong> Mythos found zero-day vulnerabilities in <em>every major operating system and every major web browser</em>.</li>
     </ul>
 
@@ -81,8 +81,8 @@
     <ul>
         <li><strong>Browser sandbox escape:</strong> Mythos wrote a web browser exploit that chained together four separate vulnerabilities, using a JIT heap spray technique to escape both the renderer <em>and</em> the operating system sandboxes. This is the kind of multi-vulnerability chain that top-tier exploit developers spend months building.</li>
         <li><strong>Linux privilege escalation:</strong> It autonomously developed local privilege escalation exploits by exploiting subtle race conditions and KASLR (Kernel Address Space Layout Randomization) bypasses.</li>
-        <li><strong>FreeBSD NFS root exploit:</strong> Mythos wrote a remote code execution exploit for FreeBSD's NFS server that granted full root access to unauthenticated users — by splitting a 20-gadget ROP (Return-Oriented Programming) chain across multiple network packets.</li>
-        <li><strong>Ancient bug discovery:</strong> It found a <strong>27-year-old bug in OpenBSD</strong> — an operating system famous for its obsessive focus on security. Many of the vulnerabilities it finds are 10-20 years old, hiding in plain sight.</li>
+        <li><strong>FreeBSD NFS root exploit:</strong> Mythos wrote a remote code execution exploit for FreeBSD's NFS server (CVE-2026-4747, a 17-year-old vulnerability) that granted full root access to unauthenticated users — by splitting a 20-gadget ROP (Return-Oriented Programming) chain across 6 consecutive RPC requests.</li>
+        <li><strong>Ancient bug discovery:</strong> It found a <strong>27-year-old bug in OpenBSD</strong> — a separate finding from the FreeBSD exploit — in an operating system famous for its obsessive focus on security. Many of the vulnerabilities it finds are 10-20 years old, hiding in plain sight.</li>
     </ul>
 
     <p>Perhaps most unsettling: Anthropic engineers with <em>no formal security training</em> asked Mythos to find remote code execution vulnerabilities overnight and woke up to complete, working exploits. You don't need to be a security expert anymore. The model handles the expertise.</p>
@@ -102,7 +102,7 @@
     <p>Instead of releasing Mythos publicly — or shelving it entirely — Anthropic chose a middle path. Project Glasswing gives controlled access to the model for defensive purposes:</p>
 
     <ul>
-        <li><strong>Launch partners:</strong> AWS, Apple, Google, Microsoft, Cisco, CrowdStrike, NVIDIA, Broadcom, Palo Alto Networks, JPMorganChase, and the Linux Foundation</li>
+        <li><strong>Launch partners:</strong> AWS, Anthropic, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, the Linux Foundation, Microsoft, NVIDIA, and Palo Alto Networks</li>
         <li><strong>Extended access:</strong> Over 40 additional organizations that build or maintain critical software infrastructure</li>
         <li><strong>Financial commitment:</strong> Up to $100M in Mythos Preview usage credits, plus $4M in direct donations to open-source security organizations</li>
     </ul>
