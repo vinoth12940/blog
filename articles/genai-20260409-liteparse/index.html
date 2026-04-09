@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiteParse: The Open-Source Document Parser That Runs Entirely on Your Machine</title>
+    <meta property="og:title" content="LiteParse: The Open-Source Document Parser That Runs Entirely on Your Machine">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-04-09">
+    <meta name="description" content="LlamaParse is being deprecated. LiteParse is its open-source, locally-running replacement — no API keys, no cloud, no LLMs. Here's how to use it with TypeScript and Python.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, 'Times New Roman', serif; line-height: 1.8; color: #1a1a1a; max-width: 720px; margin: 0 auto; padding: 40px 20px; background: #fff; }
+        h1 { font-size: 2.2em; margin-bottom: 20px; line-height: 1.3; color: #0a0a0a; }
+        h2 { font-size: 1.6em; margin: 40px 0 15px; color: #111; }
+        h3 { font-size: 1.3em; margin: 30px 0 12px; color: #222; }
+        p { margin-bottom: 18px; font-size: 1.05em; }
+        .subtitle { font-size: 1.2em; color: #555; font-style: italic; margin-bottom: 30px; }
+        .meta { color: #888; font-size: 0.9em; margin-bottom: 30px; }
+        img { max-width: 100%; height: auto; margin: 25px 0; display: block; border-radius: 6px; }
+        .caption { font-size: 0.85em; color: #777; text-align: center; margin-top: -15px; margin-bottom: 25px; }
+        hr { border: none; border-top: 1px solid #e0e0e0; margin: 35px 0; }
+        blockquote { border-left: 4px solid #2563eb; padding: 15px 20px; margin: 20px 0; background: #eff6ff; border-radius: 0 6px 6px 0; font-style: italic; }
+        pre { background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 6px; overflow-x: auto; margin: 20px 0; font-size: 0.9em; line-height: 1.6; }
+        code { font-family: 'Courier New', monospace; }
+        p code { background: #f1f5f9; color: #334155; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+        ul, ol { margin: 15px 0 15px 25px; }
+        li { margin-bottom: 8px; font-size: 1.05em; }
+        strong { color: #0a0a0a; }
+        .callout { background: #fff7ed; border: 1px solid #fdba74; border-radius: 6px; padding: 15px 20px; margin: 20px 0; }
+        .callout-title { font-weight: bold; color: #c2410c; margin-bottom: 8px; }
+        .callout-blue { background: #eff6ff; border: 1px solid #93c5fd; border-radius: 6px; padding: 15px 20px; margin: 20px 0; }
+        .callout-blue-title { font-weight: bold; color: #1d4ed8; margin-bottom: 8px; }
+        .comparison { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px; margin: 20px 0; }
+        .comparison-title { font-weight: bold; font-size: 1.1em; margin-bottom: 12px; }
+        .tag { display: inline-block; background: #f1f5f9; color: #475569; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; margin: 2px; }
+        .footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #888; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>LiteParse: The Open-Source Document Parser That Runs Entirely on Your Machine</h1>
+    <p class="subtitle">LlamaParse is being deprecated. LiteParse is its free, local replacement — no API keys, no cloud, no LLMs required. With spatial layout, bounding boxes, and built-in OCR.</p>
+    <p class="meta">April 9, 2026 &middot; Document Parsing / Open Source</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20260409-liteparse/images/hero-liteparse.png" alt="Abstract visualization of document parsing — flowing data streams extracted from structured documents">
+    <p class="caption">LiteParse extracts structured text from documents locally, with spatial layout and bounding boxes</p>
+
+    <p>Every developer building RAG pipelines has hit the same wall — your PDF parser either costs money, sends your documents to a cloud API, or produces garbage output. LlamaParse, LlamaIndex's flagship cloud document parser, is now being deprecated (May 1, 2026), and users are being migrated to <code>llama-cloud</code> which still requires API keys and per-page pricing.</p>
+
+    <p>Enter <strong>LiteParse</strong> — LlamaIndex's fully open-source, locally-running answer to document parsing. No API keys. No cloud calls. No LLMs needed. Just fast, accurate PDF parsing with spatial layout, bounding boxes, built-in OCR, and multi-format support. It has already racked up <strong>4.1k GitHub stars</strong> and 324+ commits with active development.</p>
+
+    <p>Here's everything you need to know about LiteParse, with real code examples in both TypeScript and Python.</p>
+
+    <hr>
+
+    <h2>Why LiteParse?</h2>
+
+    <p>LlamaParse (the cloud version) was great at what it did — but it required an API key and sent your documents through LlamaIndex's servers. For privacy-conscious applications, air-gapped environments, or just keeping costs at zero, that's a dealbreaker.</p>
+
+    <p>LiteParse represents a fundamentally different philosophy — <strong>everything runs on your machine</strong>. Here's what it brings to the table:</p>
+
+    <ul>
+        <li><strong>Zero cloud dependencies</strong> — your documents never leave your machine</li>
+        <li><strong>Spatial text parsing</strong> — text comes back positioned where it appears on the page</li>
+        <li><strong>Bounding boxes for every text element</strong> — perfect for visual citations in RAG</li>
+        <li><strong>Built-in OCR</strong> via Tesseract.js, with pluggable external OCR servers (EasyOCR, PaddleOCR)</li>
+        <li><strong>Multi-format support</strong> — PDF, DOCX, XLSX, PPTX, images, and more</li>
+        <li><strong>Page screenshots</strong> — render PDF pages as images for LLM vision workflows</li>
+        <li><strong>Agent skill integration</strong> — works as a Claude Code or Cursor skill out of the box</li>
+        <li><strong>Available in TypeScript and Python</strong></li>
+        <li><strong>MIT licensed</strong></li>
+    </ul>
+
+    <div class="callout">
+        <div class="callout-title">LiteParse vs LlamaParse Cloud at a Glance</div>
+        <ul>
+            <li><strong>LiteParse:</strong> Open-source, local-only, free, MIT license, spatial layout + bounding boxes, no API key</li>
+            <li><strong>LlamaParse Cloud:</strong> Cloud API, per-page pricing ($0.003/page after free tier), LLM-powered multimodal parsing, custom prompts, managed infra</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>Getting Started</h2>
+
+    <h3>Installation</h3>
+
+    <p>Install globally via npm:</p>
+
+    <pre>npm i -g @llamaindex/liteparse</pre>
+
+    <p>Or via Homebrew (macOS and Linux):</p>
+
+    <pre>brew tap run-llama/liteparse
+brew install llamaindex-liteparse</pre>
+
+    <h3>Quick CLI Demo</h3>
+
+    <p>Once installed, parsing a document is a single command:</p>
+
+    <pre># Parse a PDF and print text to stdout
+lit parse document.pdf
+
+# Save output to a file
+lit parse document.pdf -o output.txt
+
+# Get structured JSON with bounding boxes
+lit parse document.pdf --format json -o output.json
+
+# Parse only specific pages
+lit parse document.pdf --target-pages "1-5,10,15-20"</pre>
+
+    <h3>Batch Parsing</h3>
+
+    <p>Process an entire directory at once:</p>
+
+    <pre>lit batch-parse ./pdfs ./outputs</pre>
+
+    <h3>Page Screenshots</h3>
+
+    <p>Generate page images for LLM vision workflows:</p>
+
+    <pre>lit screenshot document.pdf -o ./screenshots</pre>
+
+    <hr>
+
+    <h2>TypeScript: Library Usage</h2>
+
+    <p>The CLI is great for quick tasks, but the real power comes from using LiteParse programmatically.</p>
+
+    <pre>npm install @llamaindex/liteparse</pre>
+
+    <h3>Basic Parsing</h3>
+
+    <pre>import { LiteParse } from "@llamaindex/liteparse";
+
+const parser = new LiteParse({ ocrEnabled: true });
+const result = await parser.parse("document.pdf");
+
+// Full document text with layout preserved
+console.log(result.text);
+
+// Per-page data
+for (const page of result.pages) {
+  console.log(`Page ${page.pageNum}: ${page.textItems.length} text items`);
+}</pre>
+
+    <h3>JSON Output with Bounding Boxes</h3>
+
+    <p>This is where LiteParse really shines — every text element comes with spatial coordinates (x, y, width, height) in <strong>PDF points</strong> (1 point = 1/72 inch), with the origin at the top-left corner.</p>
+
+    <pre>const parser = new LiteParse({ outputFormat: "json" });
+const result = await parser.parse("document.pdf");
+
+for (const page of result.json?.pages || []) {
+  for (const item of page.textItems) {
+    console.log(
+      `[${item.x}, ${item.y}] → [${item.x + item.width}, ${item.y + item.height}] ${item.text}`
+    );
+  }
+}</pre>
+
+    <h3>Full Configuration</h3>
+
+    <pre>const parser = new LiteParse({
+  ocrEnabled: true,
+  ocrServerUrl: "http://localhost:8828/ocr",
+  ocrLanguage: "fra",
+  dpi: 300,
+  outputFormat: "json",
+  targetPages: "1-10",
+  password: "secret", // for encrypted/protected documents
+});</pre>
+
+    <h3>Parse from Memory (Zero Disk I/O)</h3>
+
+    <p>You can pass raw bytes directly. For PDFs, this means <strong>zero disk I/O</strong> — no temp files written:</p>
+
+    <pre>import { readFile } from "fs/promises";
+
+const parser = new LiteParse();
+
+// From a file read
+const pdfBytes = await readFile("document.pdf");
+const result = await parser.parse(pdfBytes);
+
+// From an HTTP response
+const response = await fetch("https://example.com/document.pdf");
+const buffer = Buffer.from(await response.arrayBuffer());
+const result2 = await parser.parse(buffer);</pre>
+
+    <h3>Generate Page Screenshots</h3>
+
+    <p>Useful for sending PDF pages directly to LLMs for vision-based analysis:</p>
+
+    <pre>const parser = new LiteParse();
+const screenshots = await parser.screenshot("document.pdf");
+
+for (const shot of screenshots) {
+  console.log(`Page ${shot.pageNum}: ${shot.width}x${shot.height}`);
+  // shot.imageBuffer contains the raw PNG/JPG data
+}
+
+// Parse specific pages only from a buffer
+const pdfBytes = await readFile("document.pdf");
+const shots = await parser.screenshot(pdfBytes, [1, 2, 3]);</pre>
+
+    <hr>
+
+    <h2>Python: Library Usage</h2>
+
+    <p>The Python package (<code>pip install liteparse</code>, version 1.2.1) wraps the Node.js CLI under the hood. <strong>Node.js (>= 18)</strong> must be installed, and Python >= 3.10 is required.</p>
+
+    <pre>npm install -g @llamaindex/liteparse  # CLI first
+pip install liteparse</pre>
+
+    <h3>Basic Parsing</h3>
+
+    <pre>from liteparse import LiteParse
+
+parser = LiteParse()
+result = parser.parse("document.pdf")
+
+# Full document text
+print(result.text)
+
+# Per-page data
+for page in result.pages:
+    print(f"Page {page.pageNum}: {len(page.textItems)} text items")</pre>
+
+    <h3>Full Configuration</h3>
+
+    <pre>result = parser.parse(
+    "document.pdf",
+    ocr_enabled=True,
+    ocr_server_url="http://localhost:8828/ocr",
+    ocr_language="fra",
+    dpi=300,
+    target_pages="1-5",
+    password="secret",
+)</pre>
+
+    <h3>Parse from Bytes</h3>
+
+    <pre>with open("document.pdf", "rb") as f:
+    pdf_bytes = f.read()
+
+result = parser.parse(pdf_bytes)
+print(result.text)</pre>
+
+    <h3>Batch Parsing (Faster for Multiple Files)</h3>
+
+    <p>Batch mode reuses the PDF engine and is significantly faster than parsing files one at a time:</p>
+
+    <pre>result = parser.batch_parse(
+    input_dir="./documents",
+    output_dir="./output",
+    recursive=True,
+    extension_filter=".pdf",
+)
+
+print(f"Output written to: {result.output_dir}")</pre>
+
+    <hr>
+
+    <h2>Bounding Boxes and Visual Citations</h2>
+
+    <p>One of LiteParse's most powerful features for RAG systems is spatial awareness. Every text element has coordinates, which means you can show users <em>exactly where</em> in a document a piece of information came from.</p>
+
+    <h3>Converting PDF Points to Image Pixels</h3>
+
+    <p>Text coordinates are in PDF points, but screenshots are in pixels. You need to scale by DPI/72:</p>
+
+    <pre>const DPI = 150;
+const SCALE = DPI / 72; // ~2.08x
+
+function itemToPixels(item, dpi = 150) {
+  const scale = dpi / 72;
+  return {
+    x: item.x * scale,
+    y: item.y * scale,
+    width: item.width * scale,
+    height: item.height * scale,
+  };
+}</pre>
+
+    <h3>Searching for Phrases with searchItems</h3>
+
+    <p>A single phrase like "0°C to 70°C" may span multiple adjacent text items. LiteParse provides a <code>searchItems</code> utility that concatenates consecutive items, finds matches, and returns merged text items with combined bounding boxes:</p>
+
+    <pre>import { LiteParse, searchItems } from "@llamaindex/liteparse";
+
+const parser = new LiteParse({ outputFormat: "json" });
+const result = await parser.parse("report.pdf");
+
+for (const page of result.json.pages) {
+  const matches = searchItems(page.textItems, {
+    phrase: "0°C to 70°C"
+  });
+  for (const match of matches) {
+    console.log(
+      `Found "${match.text}" at (${match.x}, ${match.y}) ${match.width}×${match.height}`
+    );
+  }
+}</pre>
+
+    <div class="callout-blue">
+        <div class="callout-blue-title">Use Case: RAG with Visual Citations</div>
+        <p>Parse a document, find relevant text with an LLM, then use the bounding boxes to highlight the exact region on a page screenshot. This gives users verifiable proof of where information was sourced from — critical for legal, medical, and financial document AI.</p>
+    </div>
+
+    <hr>
+
+    <h2>OCR: Built-in and Pluggable</h2>
+
+    <p>LiteParse uses OCR selectively — only on embedded images or pages where native text extraction didn't find text. This keeps parsing fast while still capturing text from scanned documents.</p>
+
+    <h3>Built-in Tesseract.js (Bundled, No Extra Install)</h3>
+
+    <pre># English (default)
+lit parse document.pdf
+
+# French
+lit parse document.pdf --ocr-language fra
+
+# Japanese
+lit parse document.pdf --ocr-language jpn
+
+# Disable OCR entirely for speed on native-text PDFs
+lit parse document.pdf --no-ocr</pre>
+
+    <h3>External OCR Servers (GPU-Accelerated)</h3>
+
+    <p>For higher accuracy or GPU acceleration, point LiteParse at an HTTP OCR server:</p>
+
+    <pre># EasyOCR server
+git clone https://github.com/run-llama/liteparse.git
+cd liteparse/ocr/easyocr
+pip install -r requirements.txt
+python server.py
+
+# Parse with EasyOCR
+lit parse document.pdf --ocr-server-url http://localhost:8828/ocr</pre>
+
+    <p>PaddleOCR works identically — start its server and point LiteParse at the same endpoint.</p>
+
+    <h3>Custom OCR Servers</h3>
+
+    <p>Integrate any OCR engine by implementing a simple HTTP API:</p>
+
+    <ul>
+        <li><strong>Endpoint:</strong> <code>POST /ocr</code></li>
+        <li><strong>Request:</strong> multipart form with <code>file</code> (image binary) and optional <code>language</code> (ISO 639-1)</li>
+        <li><strong>Response:</strong> <code>{"results": [{"text": "...", "bbox": [x1, y1, x2, y2]}]}</code></li>
+    </ul>
+
+    <hr>
+
+    <h2>Multi-Format Support</h2>
+
+    <p>LiteParse handles more than just PDFs. It auto-converts other formats to PDF using system tools, then runs the same parsing pipeline.</p>
+
+    <ul>
+        <li><strong>Office documents</strong> (via LibreOffice): <code>.doc</code>, <code>.docx</code>, <code>.ppt</code>, <code>.pptx</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.csv</code>, <code>.tsv</code>, <code>.rtf</code>, <code>.odt</code>, <code>.odp</code>, <code>.ods</code></li>
+        <li><strong>Images</strong> (via ImageMagick): <code>.jpg</code>, <code>.png</code>, <code>.gif</code>, <code>.bmp</code>, <code>.tiff</code>, <code>.webp</code>, <code>.svg</code></li>
+    </ul>
+
+    <p>Install the required system dependency, then parse anything:</p>
+
+    <pre># Install LibreOffice for Office docs
+brew install --cask libreoffice  # macOS
+apt-get install libreoffice       # Ubuntu
+
+# Install ImageMagick for images
+brew install imagemagick           # macOS
+apt-get install imagemagick        # Ubuntu
+
+# Then parse anything
+lit parse report.docx
+lit parse slides.pptx --format json
+lit parse scan.png</pre>
+
+    <hr>
+
+    <h2>Agent Integration: Claude Code and Cursor</h2>
+
+    <p>LiteParse ships as a <strong>coding agent skill</strong> via Vercel's skills utility. Once installed, your AI coding agent can parse documents, generate screenshots, and extract text on the fly:</p>
+
+    <pre>npx skills add run-llama/llamaparse-agent-skills --skill liteparse</pre>
+
+    <p>After installation, you can prompt your agent with natural language:</p>
+
+    <ul>
+        <li>"Parse this PDF and extract the text as JSON"</li>
+        <li>"Extract text from all the DOCX files in the <code>./contracts</code> folder"</li>
+        <li>"Screenshot pages 1-5 of this PDF at 300 DPI"</li>
+        <li>"Get the bounding boxes for all text on page 3"</li>
+    </ul>
+
+    <p>Default behavior can be configured via a <code>liteparse.config.json</code> file in your project root:</p>
+
+    <pre>{
+  "ocrLanguage": "en",
+  "ocrEnabled": true,
+  "maxPages": 1000,
+  "dpi": 150,
+  "outputFormat": "json"
+}</pre>
+
+    <hr>
+
+    <h2>When to Use LiteParse vs LlamaParse Cloud</h2>
+
+    <div class="comparison">
+        <div class="comparison-title">Decision Framework</div>
+        <p><strong>Choose LiteParse when:</strong></p>
+        <ul>
+            <li>You need local/air-gapped processing (no cloud allowed)</li>
+            <li>You want zero recurring costs</li>
+            <li>You need spatial layout and bounding boxes for RAG citations</li>
+            <li>You're building agents that parse documents on the fly</li>
+            <li>You process small-to-medium document volumes</li>
+        </ul>
+        <p><strong>Choose LlamaParse Cloud (llama-cloud) when:</strong></p>
+        <ul>
+            <li>You need multimodal parsing with vision LLMs for complex layouts</li>
+            <li>You need custom parsing prompts that require LLM understanding</li>
+            <li>You handle massive document volumes at enterprise scale</li>
+            <li>You want managed infrastructure with no ops overhead</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>Environment Variables for Production</h2>
+
+    <p>For Docker containers, CI/CD pipelines, or air-gapped deployments:</p>
+
+    <ul>
+        <li><code>TESSDATA_PREFIX</code> — Path to Tesseract <code>.traineddata</code> files for offline environments</li>
+        <li><code>LITEPARSE_TMPDIR</code> — Override temp directory for format conversion (defaults to system tmp)</li>
+    </ul>
+
+    <hr>
+
+    <h2>Wrapping Up</h2>
+
+    <p>LiteParse fills a gap that's been growing in the document parsing ecosystem — a fast, free, local parser that doesn't sacrifice quality. The combination of spatial layout parsing, bounding boxes, and pluggable OCR makes it particularly compelling for RAG systems where knowing <em>where</em> text came from matters as much as the text itself.</p>
+
+    <p>With 4.1k stars, MIT licensing, and active development (the last commit was 2 days ago as of this writing), LlamaIndex is clearly investing in LiteParse as the local-first complement to their cloud offering. If you're building document-heavy AI applications, it's worth a serious look.</p>
+
+    <p>Install it, parse a document, and see if the bounding box output changes how you think about document processing.</p>
+
+    <hr>
+
+    <div class="footer">
+        <p><strong>Links:</strong></p>
+        <ul>
+            <li>GitHub: <a href="https://github.com/run-llama/liteparse">github.com/run-llama/liteparse</a> (4.1k stars)</li>
+            <li>Docs: <a href="https://developers.llamaindex.ai/liteparse/">developers.llamaindex.ai/liteparse</a></li>
+            <li>PyPI: <code>pip install liteparse</code> (v1.2.1)</li>
+            <li>npm: <code>npm install @llamaindex/liteparse</code></li>
+        </ul>
+        <p style="margin-top: 15px;">
+            <span class="tag">Document Parsing</span>
+            <span class="tag">RAG</span>
+            <span class="tag">OCR</span>
+            <span class="tag">LlamaIndex</span>
+            <span class="tag">Open Source</span>
+        </p>
+    </div>
+</article>
+</body>
+</html>
