@@ -69,13 +69,13 @@
         <li><strong>Page screenshots</strong> — render PDF pages as images for LLM vision workflows</li>
         <li><strong>Agent skill integration</strong> — works as a Claude Code or Cursor skill out of the box</li>
         <li><strong>Available in TypeScript and Python</strong></li>
-        <li><strong>MIT licensed</strong></li>
+        <li><strong>Apache 2.0 licensed</strong></li>
     </ul>
 
     <div class="callout">
         <div class="callout-title">LiteParse vs LlamaParse Cloud at a Glance</div>
         <ul>
-            <li><strong>LiteParse:</strong> Open-source, local-only, free, MIT license, spatial layout + bounding boxes, no API key</li>
+            <li><strong>LiteParse:</strong> Open-source, local-only, free, Apache 2.0 license, spatial layout + bounding boxes, no API key</li>
             <li><strong>LlamaParse Cloud:</strong> Cloud API, per-page pricing ($0.003/page after free tier), LLM-powered multimodal parsing, custom prompts, managed infra</li>
         </ul>
     </div>
@@ -352,7 +352,7 @@ lit parse document.pdf --ocr-server-url http://localhost:8828/ocr</pre>
     <ul>
         <li><strong>Endpoint:</strong> <code>POST /ocr</code></li>
         <li><strong>Request:</strong> multipart form with <code>file</code> (image binary) and optional <code>language</code> (ISO 639-1)</li>
-        <li><strong>Response:</strong> <code>{"results": [{"text": "...", "bbox": [x1, y1, x2, y2]}]}</code></li>
+        <li><strong>Response:</strong> <code>{"results": [{"text": "...", "bbox": [x1, y1, x2, y2], "confidence": 0.95}]}</code></li>
     </ul>
 
     <hr>
@@ -362,8 +362,8 @@ lit parse document.pdf --ocr-server-url http://localhost:8828/ocr</pre>
     <p>LiteParse handles more than just PDFs. It auto-converts other formats to PDF using system tools, then runs the same parsing pipeline.</p>
 
     <ul>
-        <li><strong>Office documents</strong> (via LibreOffice): <code>.doc</code>, <code>.docx</code>, <code>.ppt</code>, <code>.pptx</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.csv</code>, <code>.tsv</code>, <code>.rtf</code>, <code>.odt</code>, <code>.odp</code>, <code>.ods</code></li>
-        <li><strong>Images</strong> (via ImageMagick): <code>.jpg</code>, <code>.png</code>, <code>.gif</code>, <code>.bmp</code>, <code>.tiff</code>, <code>.webp</code>, <code>.svg</code></li>
+        <li><strong>Office documents</strong> (via LibreOffice): <code>.doc</code>, <code>.docx</code>, <code>.docm</code>, <code>.ppt</code>, <code>.pptx</code>, <code>.pptm</code>, <code>.xls</code>, <code>.xlsx</code>, <code>.xlsm</code>, <code>.csv</code>, <code>.tsv</code>, <code>.rtf</code>, <code>.odt</code>, <code>.odp</code>, <code>.ods</code></li>
+        <li><strong>Images</strong> (via ImageMagick): <code>.jpg</code>, <code>.jpeg</code>, <code>.png</code>, <code>.gif</code>, <code>.bmp</code>, <code>.tiff</code>, <code>.webp</code>, <code>.svg</code></li>
     </ul>
 
     <p>Install the required system dependency, then parse anything:</p>
@@ -448,7 +448,7 @@ lit parse scan.png</pre>
 
     <p>LiteParse fills a gap that's been growing in the document parsing ecosystem — a fast, free, local parser that doesn't sacrifice quality. The combination of spatial layout parsing, bounding boxes, and pluggable OCR makes it particularly compelling for RAG systems where knowing <em>where</em> text came from matters as much as the text itself.</p>
 
-    <p>With 4.1k stars, MIT licensing, and active development (the last commit was 2 days ago as of this writing), LlamaIndex is clearly investing in LiteParse as the local-first complement to their cloud offering. If you're building document-heavy AI applications, it's worth a serious look.</p>
+    <p>With 4.1k stars, Apache 2.0 licensing, and active development, LlamaIndex is clearly investing in LiteParse as the local-first complement to their cloud offering. If you're building document-heavy AI applications, it's worth a serious look.</p>
 
     <p>Install it, parse a document, and see if the bounding box output changes how you think about document processing.</p>
 
