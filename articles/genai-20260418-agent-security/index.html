@@ -77,7 +77,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
         <li><strong>47% of organizations</strong> experienced an AI agent security incident in the past year, according to a Cloud Security Alliance study published April 16, 2026.</li>
         <li><strong>30+ MCP-related CVEs</strong> were disclosed in the first 60 days of 2026, affecting the connector protocol that bridges AI agents to external tools.</li>
         <li><strong>The Axios npm supply chain attack</strong> in March 2026 demonstrated that compromised packages can reach systems through autonomous agent workflows — Axios has approximately 100 million weekly downloads across sources.</li>
-        <li><strong>Machine-to-human identity ratios</strong> have reached 100-to-1 in cloud environments, with attackers increasingly targeting service accounts and AI agent identities for lateral movement (CSA, March 2026).</li>
+        <li><strong>Machine-to-human identity ratios</strong> have reached 100-to-1 in cloud environments, with attackers increasingly targeting service accounts and AI agent identities for lateral movement (ManageEngine 2026 Identity Security Outlook).</li>
     </ul>
 
     <blockquote>
@@ -104,7 +104,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <h3>ClawJacked: Password Brute-Force via Localhost WebSocket (February 2026)</h3>
 
-    <p>The second vulnerability, dubbed <strong>"ClawJacked"</strong> by Oasis Security and disclosed in late February 2026, is a separate issue (often confused with CVE-2026-25253). Patched in version <strong>2026.2.25</strong>, this one exploits missing rate limiting:</p>
+    <p>The second vulnerability, dubbed <strong>"ClawJacked"</strong> by Oasis Security and disclosed in late February 2026, is a separate issue (often confused with CVE-2026-25253). Patched in version <strong>2026.2.26</strong>, this one exploits missing rate limiting:</p>
 
     <ol>
         <li><strong>Rate-limit bypass:</strong> OpenClaw's WebSocket server exempted <code>127.0.0.1</code> connections from rate limiting — a common convenience for local development.</li>
@@ -126,7 +126,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <h3>The Axios Incident (March 2026)</h3>
 
-    <p>On March 31, 2026, Microsoft disclosed that the Axios npm package had been compromised through a supply chain attack. A threat actor compromised the npm account of a core Axios maintainer and published malicious versions containing a cross-platform remote access Trojan (RAT).</p>
+    <p>On April 1, 2026, Microsoft disclosed that the Axios npm package had been compromised through a supply chain attack on March 31. A threat actor compromised the npm account of a core Axios maintainer and published malicious versions containing a cross-platform remote access Trojan (RAT).</p>
 
     <p>Here's where it gets relevant to agents: the malicious payload was delivered through <code>plain-crypto-js@4.2.1</code>, a typosquat of the legitimate <code>crypto-js</code> library. The attacker published it as a clean package first, then poisoned it in a coordinated second publish timed to coincide with the Axios release. Socket's automated scanner flagged it within six minutes, but that window was enough.</p>
 
@@ -136,7 +136,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <p>On April 3, 2026, Microsoft's <code>@azure-devops/mcp</code> npm package was found to have a missing authentication layer on a server handling Azure DevOps work items, repositories, and pipelines (CVE-2026-32211, CVSS 9.1). Any MCP client connecting to this server could access all of those resources without credentials.</p>
 
-    <p>OWASP's MCP Top 10 specifically lists insufficient authentication as <strong>MCP07</strong>, and this CVE was exactly the outcome they predicted.</p>
+    <p>OWASP's MCP Top 10 specifically lists insufficient authentication and authorization as <strong>MCP07</strong>, and this CVE was exactly the outcome they predicted.</p>
 
     <h3>The Pattern</h3>
 
