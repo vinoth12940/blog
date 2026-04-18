@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>When AI Agents Go Wrong: Lessons from the April 2026 Agent Security Crisis</title>
-    <meta property="og:title" content="When AI Agents Go Wrong: Lessons from the April 2026 Agent Security Crisis">
+    <title>When AI Agents Go Wrong: Lessons from the Early 2026 Agent Security Crisis</title>
+    <meta property="og:title" content="When AI Agents Go Wrong: Lessons from the Early 2026 Agent Security Crisis">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-04-18">
     <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20260418-agent-security/images/hero.png">
-    <meta name="description" content="OpenClaw RCE, MCP supply chain poisoning, and the CSA study showing 47% of orgs hit by agent incidents. Here's what went wrong and how to defend your agents.">
+    <meta name="description" content="OpenClaw CVE-2026-25253, ClawJacked brute-force, MCP supply chain attacks, and the CSA study showing 47% of orgs hit by agent incidents. Here's what went wrong and how to defend your agents.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
@@ -49,17 +49,17 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 </head>
 <body>
 <article>
-    <h1>When AI Agents Go Wrong: Lessons from the April 2026 Agent Security Crisis</h1>
+    <h1>When AI Agents Go Wrong: Lessons from the Early 2026 Agent Security Crisis</h1>
     <div class="meta">April 18, 2026 &middot; 8 min read &middot; Security / AI Agents</div>
 
     <div class="img-container">
         <img src="https://vinoth12940.github.io/blog/articles/genai-20260418-agent-security/images/hero.png" alt="When AI Agents Go Wrong — agent security crisis illustration">
-        <p class="caption">April 2026 saw multiple agent security incidents that exposed how quickly autonomous systems can become attack surfaces.</p>
+        <p class="caption">A series of agent security incidents in early 2026 exposed how quickly autonomous systems can become attack surfaces.</p>
     </div>
 
-    <p>AI agents are no longer experiments running in notebooks. They're deploying code to production, managing infrastructure, browsing the web, and executing shell commands — often with the permissions of the developer who set them up. That power makes them incredibly useful. It also makes them incredibly dangerous when things go wrong.</p>
+    <p>AI agents are no longer experiments running in notebooks. They're deploying code to production, managing infrastructure, browsing the web, and executing shell commands — often with the permissions of the developer who set them up. That power makes them genuinely useful. It also makes them genuinely dangerous when things go wrong.</p>
 
-    <p>April 2026 delivered a brutal reminder. In the span of two weeks, a critical OpenClaw vulnerability enabled one-click remote code execution on developer machines, a supply chain attack hijacked one of the most-downloaded npm packages through AI agent workflows, and the Cloud Security Alliance published a study showing that nearly half of organizations have already experienced an AI agent security incident.</p>
+    <p>By mid-April 2026, the pattern was unmistakable. Over the preceding weeks, a critical OpenClaw vulnerability enabled one-click remote code execution on developer machines, a supply chain attack hijacked one of the most-downloaded npm packages through AI agent workflows, and the Cloud Security Alliance published a study showing that nearly half of organizations have already experienced an AI agent security incident.</p>
 
     <p>This isn't hypothetical anymore. Here's what happened, what researchers learned, and what you should do before putting an agent anywhere near your production systems.</p>
 
@@ -76,42 +76,47 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
     <ul>
         <li><strong>47% of organizations</strong> experienced an AI agent security incident in the past year, according to a Cloud Security Alliance study published April 16, 2026.</li>
         <li><strong>30+ MCP-related CVEs</strong> were disclosed in the first 60 days of 2026, affecting the connector protocol that bridges AI agents to external tools.</li>
-        <li><strong>The Axios npm supply chain attack</strong> in March 2026 demonstrated that compromised packages can reach systems through autonomous agent workflows — Axios has over 70 million weekly downloads.</li>
+        <li><strong>The Axios npm supply chain attack</strong> in March 2026 demonstrated that compromised packages can reach systems through autonomous agent workflows — Axios has approximately 100 million weekly downloads across sources.</li>
         <li><strong>Machine-to-human identity ratios</strong> have reached 100-to-1 in cloud environments, with attackers increasingly targeting service accounts and AI agent identities for lateral movement (CSA, March 2026).</li>
     </ul>
 
     <blockquote>
-        <p>"The risk posed by AI agent scope violations is no longer theoretical — it is increasingly common."</p>
+        <p>"The risk posed by AI agent scope violations is no longer theoretical but increasingly common."</p>
         <p>— Cloud Security Alliance, April 2026</p>
     </blockquote>
 
     <hr>
 
-    <h2>Incident 1: OpenClaw — One-Click Remote Code Execution</h2>
+    <h2>Incident 1: OpenClaw — Two Critical Vulnerabilities</h2>
 
-    <p>OpenClaw, the open-source AI coding agent, became the highest-profile agent security story of April 2026 when researchers disclosed a vulnerability chain that allowed any website to silently take full control of a developer's local agent instance.</p>
+    <p>OpenClaw, the open-source AI coding agent, became the highest-profile agent security story of early 2026 when researchers disclosed <strong>two separate vulnerabilities</strong> — both enabling full control of a developer's local agent instance, but through fundamentally different mechanisms.</p>
 
-    <h3>What Happened (CVE-2026-25253)</h3>
+    <h3>CVE-2026-25253: Token Exfiltration via Malicious Gateway (January 2026)</h3>
 
-    <p>Oasis Security published research detailing what they dubbed "ClawJacked." The attack works in two stages:</p>
+    <p>The first vulnerability, <strong>CVE-2026-25253</strong>, was disclosed on February 3, 2026 and patched in version <strong>2026.1.29</strong>. The attack exploits OpenClaw's <code>gatewayUrl</code> query parameter:</p>
 
     <ol>
-        <li><strong>Token exfiltration:</strong> A developer visits a malicious website. Through a crafted payload, the site triggers OpenClaw to make a tool call that leaks its authentication token to an attacker-controlled endpoint.</li>
-        <li><strong>WebSocket hijacking:</strong> Armed with the stolen token, the attacker connects to the OpenClaw WebSocket server running on <code>localhost:18789</code>. Because the server failed to validate the <code>Origin</code> header, the connection succeeds — and the attacker now has full agent control, including shell access.</li>
+        <li><strong>Token exfiltration:</strong> A developer visits a malicious website that triggers OpenClaw to make a tool call. The tool call sends the agent's authentication token to an attacker-controlled endpoint, using a crafted <code>gatewayUrl</code> parameter in the request.</li>
+        <li><strong>WebSocket hijacking:</strong> Armed with the stolen token, the attacker connects to the OpenClaw WebSocket server running on <code>localhost:18789</code>. The result: full agent control, including shell access — all from a single click on a malicious link.</li>
     </ol>
 
-    <p>The result: a single malicious link delivers full remote code execution on the victim's machine, with no plugins, extensions, or user interaction beyond clicking the link.</p>
+    <p>The root cause was a <strong>trust boundary violation</strong> — OpenClaw's architecture assumed that any <code>gatewayUrl</code> provided in a tool call was trustworthy. The agent runtime forwarded authentication tokens to attacker-controlled servers without validation.</p>
+
+    <h3>ClawJacked: Password Brute-Force via Localhost WebSocket (February 2026)</h3>
+
+    <p>The second vulnerability, dubbed <strong>"ClawJacked"</strong> by Oasis Security and disclosed in late February 2026, is a separate issue (often confused with CVE-2026-25253). Patched in version <strong>2026.2.25</strong>, this one exploits missing rate limiting:</p>
+
+    <ol>
+        <li><strong>Rate-limit bypass:</strong> OpenClaw's WebSocket server exempted <code>127.0.0.1</code> connections from rate limiting — a common convenience for local development.</li>
+        <li><strong>Password brute-force:</strong> An attacker who can reach localhost (via a malicious website, browser extension, or local script) can brute-force the gateway password over the WebSocket connection with no throttling.</li>
+    </ol>
+
+    <p>Both vulnerabilities share a common theme: <strong>localhost was treated as a trusted network boundary when it isn't</strong>. The browser — where malicious websites run — can connect to localhost services, making the local agent runtime reachable from the same context as untrusted web content.</p>
 
     <div class="callout-red">
         <div class="callout-title">Why This Matters</div>
-        <p style="color: #c9c9c9; font-style: normal;">This isn't a theoretical proof-of-concept. The vulnerability existed in production installations of OpenClaw. The patch (version 2026.2.25) was released before public disclosure, but any unpatched instance remains vulnerable. The core issue — missing origin validation on a localhost WebSocket — is a pattern that could exist in other agent runtimes.</p>
+        <p style="color: #c9c9c9; font-style: normal;">These aren't theoretical proof-of-concepts. Both vulnerabilities existed in production installations. Patches were released before public disclosure, but any unpatched instance remains vulnerable. The core issue — trusting the localhost boundary and missing rate limiting on agent runtimes — is a pattern that could exist in other agent runtimes beyond OpenClaw.</p>
     </div>
-
-    <h3>The Root Cause</h3>
-
-    <p>The fundamental problem was a <strong>trust boundary violation</strong>. OpenClaw's architecture assumed that anything connecting to its local WebSocket was authorized, because it was "local." But the browser — where malicious websites run — can connect to localhost services. The agent runtime trusted the network boundary that didn't actually exist.</p>
-
-    <p>Endor Labs noted that traditional SAST tools cannot identify issues in LLM-to-tool communication flows, conversation state management, or agent-specific trust boundaries. This is a new category of vulnerability that requires new tooling.</p>
 
     <hr>
 
@@ -125,7 +130,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <p>Here's where it gets relevant to agents: the malicious payload was delivered through <code>plain-crypto-js@4.2.1</code>, a typosquat of the legitimate <code>crypto-js</code> library. The attacker published it as a clean package first, then poisoned it in a coordinated second publish timed to coincide with the Axios release. Socket's automated scanner flagged it within six minutes, but that window was enough.</p>
 
-    <p>The twist: <strong>AI coding agents autonomously running <code>npm install</code></strong> can install compromised packages without human review. If an agent's workflow includes dependency installation (which most do), a poisoned package can infect a system in what researchers described as a "179-minute window" — the time between the malicious publish and npm audit detecting it.</p>
+    <p>The twist: <strong>AI coding agents autonomously running <code>npm install</code></strong> can install compromised packages without human review. If an agent's workflow includes dependency installation (which most do), a poisoned package can infect a system rapidly. In this case, the malicious packages were live for approximately 2 hours 54 minutes (from 00:21 UTC to 03:15 UTC when npm removed them) — Socket's automated scanner flagged plain-crypto-js within 6 minutes of publication, but that window was enough for thousands of installs.</p>
 
     <h3>Azure DevOps MCP Server — Missing Authentication</h3>
 
@@ -135,7 +140,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <h3>The Pattern</h3>
 
-    <p>What connects these incidents: agents automatically installing and connecting to tools, without the security review that a human would perform. The MCP ecosystem is growing fast — OX Security found 7,000+ exposed MCP servers and 200+ open-source projects using the protocol. Speed is outpacing security.</p>
+    <p>What connects these incidents: agents automatically installing and connecting to tools, without the security review that a human would perform. The MCP ecosystem is growing rapidly — security researchers have identified thousands of exposed MCP servers and hundreds of open-source projects using the protocol, making surface area a real concern. Speed is outpacing security.</p>
 
     <hr>
 
@@ -146,7 +151,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
         <p class="caption">The typical attack chain: from initial prompt injection to full system compromise.</p>
     </div>
 
-    <p>Looking across the April 2026 incidents, a common attack pattern emerges:</p>
+    <p>Looking across the early 2026 incidents, a common attack pattern emerges:</p>
 
     <ol>
         <li><strong>Prompt injection:</strong> The attacker delivers malicious input through a website, email, poisoned document, or even a compromised data source that the agent is instructed to process.</li>
@@ -179,12 +184,12 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <h3>Layer 2: Agent Runtime Hardening</h3>
 
-    <p>The agent runtime itself needs guardrails. This is where most of the April 2026 failures occurred.</p>
+    <p>The agent runtime itself needs guardrails. This is where most of the early 2026 failures occurred.</p>
 
     <ul>
         <li><strong>Capability flags:</strong> Make every dangerous action (shell execution, file writes, network requests, API calls) opt-in rather than opt-out. Default to read-only.</li>
         <li><strong>Audit logging:</strong> Log every prompt, tool call, and decision. Not for performance — for post-mortems. You will need this.</li>
-        <li><strong>Origin validation:</strong> If your agent exposes a WebSocket or HTTP endpoint, validate the <code>Origin</code> header. CVE-2026-25253 happened because OpenClaw didn't.</li>
+        <li><strong>Origin validation:</strong> If your agent exposes a WebSocket or HTTP endpoint, validate the <code>Origin</code> header. Rate-limit all connections, including those from localhost. Both OpenClaw vulnerabilities exploited the assumption that localhost connections are inherently trustworthy.</li>
         <li><strong>Session timeouts:</strong> Agent sessions should expire. Long-lived sessions with persistent credentials are persistent attack surfaces.</li>
     </ul>
 
@@ -217,8 +222,8 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
     <ol>
         <li><strong>Pin dependencies and verify supply chain.</strong> Use lockfiles (package-lock.json, Pipfile.lock). Run SCA scanning on every install. Only install packages from verified publishers with signed releases.</li>
         <li><strong>Sandbox all tool execution.</strong> Use gVisor, Firecracker, or container isolation. The agent's code runs in a sandbox — your infrastructure does not.</li>
-        <li><strong>Enforce capability flags.</strong> Dangerous actions must be opt-in and logged. Never grant broad permissions by default. Review what each tool access actually needs.</li>
-        <li><strong>Validate WebSocket and HTTP origins.</strong> Prevent cross-site WebSocket hijacking (CSWSH) and CSRF attacks on agent runtimes. This single check would have prevented CVE-2026-25253.</li>
+        <li><strong>Enforce capability flags.</strong> Dangerous actions must be opt-in and logged. Never grant broad permissions by default. Review what access each tool actually needs.</li>
+        <li><strong>Validate WebSocket and HTTP origins.</strong> Prevent cross-site WebSocket hijacking (CSWSH) and CSRF attacks on agent runtimes. Rate-limit all connections, including localhost. This single check would have prevented both OpenClaw vulnerabilities.</li>
         <li><strong>Implement human-in-the-loop gating.</strong> Require explicit approval for destructive operations. Start conservative — you can always automate more later.</li>
         <li><strong>Runtime monitoring and audit trails.</strong> Log every prompt, tool call, and agent decision. Set up alerts for anomalous behavior patterns (unusual tool combinations, high-frequency calls, access to sensitive resources).</li>
     </ol>
@@ -231,11 +236,9 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <p>The Cloud Security Alliance's April 2026 study makes one thing clear: agent security incidents are not edge cases — they're becoming the norm. As organizations rush to deploy autonomous systems, the gap between deployment velocity and security maturity is widening.</p>
 
-    <p>The April 2026 incidents share a common thread: <strong>agents were given capabilities without corresponding safeguards</strong>. OpenClaw's WebSocket didn't validate origins. MCP servers shipped without authentication. AI agents installed npm packages without dependency review. In each case, the vulnerability wasn't exotic — it was a basic security control that was skipped in the rush to ship.</p>
+    <p>The early 2026 incidents share a common thread: <strong>agents were given capabilities without corresponding safeguards</strong>. OpenClaw's WebSocket didn't validate origins or enforce rate limits on localhost. MCP servers shipped without authentication. AI agents installed npm packages without dependency review. In each case, the vulnerability wasn't exotic — it was a basic security control that was skipped in the rush to ship.</p>
 
-    <blockquote>
-        <p>"Assume the agent is untrusted by default. Contain, observe, and gate all powerful actions. The question isn't whether your agent will encounter a malicious input — it's whether you're ready when it does."</p>
-    </blockquote>
+    <p>Assume the agent is untrusted by default. Contain, observe, and gate all powerful actions. The question isn't whether your agent will encounter a malicious input — it's whether you're ready when it does.</p>
 
     <hr>
 
