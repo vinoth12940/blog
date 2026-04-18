@@ -76,7 +76,7 @@
         <div class="callout-title">LiteParse vs LlamaParse Cloud at a Glance</div>
         <ul>
             <li><strong>LiteParse:</strong> Open-source, local-only, free, Apache 2.0 license, spatial layout + bounding boxes, no API key</li>
-            <li><strong>LlamaParse Cloud:</strong> Cloud API, per-page pricing ($0.003/page after free tier), LLM-powered multimodal parsing, custom prompts, managed infra</li>
+            <li><strong>LlamaParse Cloud:</strong> Cloud API, credit-based pricing (roughly 1–90 credits/page depending on mode; 1,000 credits ≈ $1), LLM-powered multimodal parsing, custom prompts, managed infra</li>
         </ul>
     </div>
 
@@ -521,7 +521,7 @@ lit parse scan.png</pre>
 
     <p>LiteParse ships as a <strong>coding agent skill</strong> via Vercel's skills utility. Once installed, your AI coding agent can parse documents, generate screenshots, and extract text on the fly:</p>
 
-    <pre>npx skills add run-llama/llamaparse-agent-skills/liteparse</pre>
+    <pre>npx skills add run-llama/llamaparse-agent-skills --skill liteparse</pre>
 
     <p>After installation, you can prompt your agent with natural language:</p>
 
@@ -540,7 +540,9 @@ lit parse scan.png</pre>
   "maxPages": 1000,
   "dpi": 150,
   "outputFormat": "json",
-  "preciseBoundingBox": true
+  "preciseBoundingBox": true,
+  "preserveVerySmallText": false,
+  "password": "optional_password"
 }</pre>
 
     <hr>
