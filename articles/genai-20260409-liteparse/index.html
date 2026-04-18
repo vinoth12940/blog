@@ -7,7 +7,7 @@
     <meta property="og:title" content="LiteParse: The Open-Source Document Parser That Runs Entirely on Your Machine">
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2026-04-09">
-    <meta name="description" content="LlamaParse is being deprecated. LiteParse is its open-source, locally-running replacement — no API keys, no cloud, no LLMs. Here's how to use it with TypeScript and Python.">
+    <meta name="description" content="LiteParse is LlamaIndex's free, open-source, local-first document parser — no API keys, no cloud, no LLMs. Here's how to use it with TypeScript and Python.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Georgia, 'Times New Roman', serif; line-height: 1.8; color: #1a1a1a; max-width: 720px; margin: 0 auto; padding: 40px 20px; background: #fff; }
@@ -40,15 +40,15 @@
 <body>
 <article>
     <h1>LiteParse: The Open-Source Document Parser That Runs Entirely on Your Machine</h1>
-    <p class="subtitle">LlamaParse is being deprecated. LiteParse is its free, local replacement — no API keys, no cloud, no LLMs required. With spatial layout, bounding boxes, and built-in OCR.</p>
+    <p class="subtitle">LiteParse is LlamaIndex's free, open-source, local-first document parser — no API keys, no cloud, no LLMs required. With spatial layout, bounding boxes, and built-in OCR.</p>
     <p class="meta">April 9, 2026 &middot; Document Parsing / Open Source</p>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20260409-liteparse/images/hero-liteparse.png" alt="Abstract visualization of document parsing — flowing data streams extracted from structured documents">
     <p class="caption">LiteParse extracts structured text from documents locally, with spatial layout and bounding boxes</p>
 
-    <p>Every developer building RAG pipelines has hit the same wall — your PDF parser either costs money, sends your documents to a cloud API, or produces garbage output. LlamaParse, LlamaIndex's flagship cloud document parser, is now being deprecated (May 1, 2026), and users are being migrated to <code>llama-cloud</code> which still requires API keys and per-page pricing.</p>
+    <p>Every developer building RAG pipelines has hit the same wall — your PDF parser either costs money, sends your documents to a cloud API, or produces garbage output. LlamaIndex's cloud parser, LlamaParse, is excellent for complex layouts, but it requires an API key and per-page costs. For developers who need local, free, and privacy-first parsing, LlamaIndex has now open-sourced <strong>LiteParse</strong>.</p>
 
-    <p>Enter <strong>LiteParse</strong> — LlamaIndex's fully open-source, locally-running answer to document parsing. No API keys. No cloud calls. No LLMs needed. Just fast, accurate PDF parsing with spatial layout, bounding boxes, built-in OCR, and multi-format support. It has already racked up <strong>4.1k GitHub stars</strong> and 324+ commits with active development.</p>
+    <p>LiteParse is a fully open-source, locally-running document parser from LlamaIndex. No API keys. No cloud calls. No LLMs needed. Just fast, accurate PDF parsing with spatial layout, bounding boxes, built-in OCR, and multi-format support. Launched in March 2026, it's already seeing active development and growing community adoption.</p>
 
     <p>Here's everything you need to know about LiteParse, with real code examples in both TypeScript and Python.</p>
 
@@ -210,7 +210,7 @@ const shots = await parser.screenshot(pdfBytes, [1, 2, 3]);</pre>
 
     <h2>Python: Library Usage</h2>
 
-    <p>The Python package (<code>pip install liteparse</code>, version 1.2.1) wraps the Node.js CLI under the hood. <strong>Node.js (>= 18)</strong> must be installed, and Python >= 3.10 is required.</p>
+    <p>The Python package (<code>pip install liteparse</code>) wraps the Node.js CLI under the hood. <strong>Node.js (>= 18)</strong> must be installed, and Python >= 3.10 is required.</p>
 
     <pre>npm install -g @llamaindex/liteparse  # CLI first
 pip install liteparse</pre>
@@ -521,7 +521,7 @@ lit parse scan.png</pre>
 
     <p>LiteParse ships as a <strong>coding agent skill</strong> via Vercel's skills utility. Once installed, your AI coding agent can parse documents, generate screenshots, and extract text on the fly:</p>
 
-    <pre>npx skills add run-llama/llamaparse-agent-skills --skill liteparse</pre>
+    <pre>npx skills add run-llama/llamaparse-agent-skills/liteparse</pre>
 
     <p>After installation, you can prompt your agent with natural language:</p>
 
@@ -539,7 +539,8 @@ lit parse scan.png</pre>
   "ocrEnabled": true,
   "maxPages": 1000,
   "dpi": 150,
-  "outputFormat": "json"
+  "outputFormat": "json",
+  "preciseBoundingBox": true
 }</pre>
 
     <hr>
@@ -582,7 +583,7 @@ lit parse scan.png</pre>
 
     <p>LiteParse fills a gap that's been growing in the document parsing ecosystem — a fast, free, local parser that doesn't sacrifice quality. The combination of spatial layout parsing, bounding boxes, and pluggable OCR makes it particularly compelling for RAG systems where knowing <em>where</em> text came from matters as much as the text itself.</p>
 
-    <p>With 4.1k stars, Apache 2.0 licensing, and active development, LlamaIndex is clearly investing in LiteParse as the local-first complement to their cloud offering. If you're building document-heavy AI applications, it's worth a serious look.</p>
+    <p>With Apache 2.0 licensing and active development since its March 2026 launch, LlamaIndex is clearly investing in LiteParse as the local-first complement to their cloud offering. If you're building document-heavy AI applications, it's worth a serious look.</p>
 
     <p>Install it, parse a document, and see if the bounding box output changes how you think about document processing.</p>
 
@@ -591,9 +592,9 @@ lit parse scan.png</pre>
     <div class="footer">
         <p><strong>Links:</strong></p>
         <ul>
-            <li>GitHub: <a href="https://github.com/run-llama/liteparse">github.com/run-llama/liteparse</a> (4.1k stars)</li>
+            <li>GitHub: <a href="https://github.com/run-llama/liteparse">github.com/run-llama/liteparse</a></li>
             <li>Docs: <a href="https://developers.llamaindex.ai/liteparse/">developers.llamaindex.ai/liteparse</a></li>
-            <li>PyPI: <code>pip install liteparse</code> (v1.2.1)</li>
+            <li>PyPI: <code>pip install liteparse</code></li>
             <li>npm: <code>npm install @llamaindex/liteparse</code></li>
         </ul>
         <p style="margin-top: 15px;">
