@@ -1,0 +1,364 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "darkbg",
+      "x": 20,
+      "y": -60,
+      "width": 970,
+      "height": 700,
+      "backgroundColor": "#1e1e2e",
+      "fillStyle": "solid",
+      "strokeColor": "transparent",
+      "strokeWidth": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 270,
+      "y": 20,
+      "width": 420,
+      "height": 33,
+      "text": "Secure Agent Architecture",
+      "fontSize": 28,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "originalText": "Secure Agent Architecture",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "layer1",
+      "x": 100,
+      "y": 80,
+      "width": 480,
+      "height": 120,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#4a9eed",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "layer1_name",
+          "type": "text"
+        },
+        {
+          "id": "layer1_items",
+          "type": "text"
+        },
+        {
+          "id": "arrow_down_0",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "layer1_name",
+      "x": 105,
+      "y": 90,
+      "width": 470,
+      "height": 30,
+      "text": "Input Validation Layer",
+      "fontSize": 22,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "layer1",
+      "originalText": "Input Validation Layer",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "layer1_items",
+      "x": 120,
+      "y": 130,
+      "width": 440,
+      "height": 60,
+      "text": "Prompt sanitization\nInput validation\nRate limiting",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "layer1",
+      "originalText": "Prompt sanitization\nInput validation\nRate limiting",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_down_0",
+      "x": 340,
+      "y": 200,
+      "width": 0,
+      "height": 60,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ],
+      "strokeColor": "#4a9eed",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "layer1",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "layer2",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "layer2",
+      "x": 100,
+      "y": 260,
+      "width": 480,
+      "height": 120,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "layer2_name",
+          "type": "text"
+        },
+        {
+          "id": "layer2_items",
+          "type": "text"
+        },
+        {
+          "id": "arrow_down_1",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "layer2_name",
+      "x": 105,
+      "y": 270,
+      "width": 470,
+      "height": 30,
+      "text": "Agent Runtime",
+      "fontSize": 22,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "layer2",
+      "originalText": "Agent Runtime",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "layer2_items",
+      "x": 120,
+      "y": 310,
+      "width": 440,
+      "height": 60,
+      "text": "Capability flags\nAudit logging\nSandbox execution",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "layer2",
+      "originalText": "Capability flags\nAudit logging\nSandbox execution",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow_down_1",
+      "x": 340,
+      "y": 380,
+      "width": 0,
+      "height": 60,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ],
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "layer2",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "layer3",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "layer3",
+      "x": 100,
+      "y": 440,
+      "width": 480,
+      "height": 120,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#22c55e",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "layer3_name",
+          "type": "text"
+        },
+        {
+          "id": "layer3_items",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "layer3_name",
+      "x": 105,
+      "y": 450,
+      "width": 470,
+      "height": 30,
+      "text": "Tool Execution Layer",
+      "fontSize": 22,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "layer3",
+      "originalText": "Tool Execution Layer",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "layer3_items",
+      "x": 120,
+      "y": 490,
+      "width": 440,
+      "height": 60,
+      "text": "Least-privilege containers\nNetwork isolation\nReproducible builds",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "layer3",
+      "originalText": "Least-privilege containers\nNetwork isolation\nReproducible builds",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "annot",
+      "x": 650,
+      "y": 170,
+      "width": 260,
+      "height": 140,
+      "backgroundColor": "#5c4d1a",
+      "fillStyle": "solid",
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "annot_text",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "annot_text",
+      "x": 660,
+      "y": 195,
+      "width": 240,
+      "height": 80,
+      "text": "Human-in-the-loop\ngating on destructive\nactions",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "annot",
+      "originalText": "Human-in-the-loop\ngating on destructive\nactions",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "annot_arrow",
+      "x": 650,
+      "y": 240,
+      "width": 70,
+      "height": 80,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -70,
+          80
+        ]
+      ],
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "annot",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "layer2",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      }
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#1e1e2e"
+  }
+}

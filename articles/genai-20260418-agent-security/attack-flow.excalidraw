@@ -1,0 +1,452 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "darkbg",
+      "x": 3,
+      "y": -65,
+      "width": 793,
+      "height": 770,
+      "backgroundColor": "#1e1e2e",
+      "fillStyle": "solid",
+      "strokeColor": "transparent",
+      "strokeWidth": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 83,
+      "y": 15,
+      "width": 633,
+      "height": 28,
+      "text": "The Attack Chain: How Agents Get Compromised",
+      "fontSize": 24,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "originalText": "The Attack Chain: How Agents Get Compromised",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "step1",
+      "x": 140,
+      "y": 70,
+      "width": 520,
+      "height": 50,
+      "backgroundColor": "#5c1a1a",
+      "fillStyle": "solid",
+      "strokeColor": "#ef4444",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "step1_title",
+          "type": "text"
+        },
+        {
+          "id": "arrow1",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "step1_title",
+      "x": 145,
+      "y": 75,
+      "width": 510,
+      "height": 30,
+      "text": "Prompt Injection",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "step1",
+      "originalText": "Prompt Injection",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "step1_desc",
+      "x": 182,
+      "y": 125,
+      "width": 436,
+      "height": 20,
+      "text": "Malicious input via website, email, or poisoned data",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "originalText": "Malicious input via website, email, or poisoned data",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow1",
+      "x": 400,
+      "y": 120,
+      "width": 0,
+      "height": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          70
+        ]
+      ],
+      "strokeColor": "#ef4444",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "step1",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "step2",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "step2",
+      "x": 140,
+      "y": 190,
+      "width": 520,
+      "height": 50,
+      "backgroundColor": "#5c3d1a",
+      "fillStyle": "solid",
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "step2_title",
+          "type": "text"
+        },
+        {
+          "id": "arrow2",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "step2_title",
+      "x": 145,
+      "y": 195,
+      "width": 510,
+      "height": 30,
+      "text": "Token/Credential Theft",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "step2",
+      "originalText": "Token/Credential Theft",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "step2_desc",
+      "x": 198,
+      "y": 245,
+      "width": 403,
+      "height": 20,
+      "text": "Agent exfiltrates auth tokens through tool calls",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "originalText": "Agent exfiltrates auth tokens through tool calls",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow2",
+      "x": 400,
+      "y": 240,
+      "width": 0,
+      "height": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          70
+        ]
+      ],
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "step2",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "step3",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "step3",
+      "x": 140,
+      "y": 310,
+      "width": 520,
+      "height": 50,
+      "backgroundColor": "#5c4d1a",
+      "fillStyle": "solid",
+      "strokeColor": "#eab308",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "step3_title",
+          "type": "text"
+        },
+        {
+          "id": "arrow3",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "step3_title",
+      "x": 145,
+      "y": 315,
+      "width": 510,
+      "height": 30,
+      "text": "Lateral Movement",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "step3",
+      "originalText": "Lateral Movement",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "step3_desc",
+      "x": 165,
+      "y": 365,
+      "width": 470,
+      "height": 20,
+      "text": "Attacker pivots via WebSocket hijacking (CVE-2026-25253)",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "originalText": "Attacker pivots via WebSocket hijacking (CVE-2026-25253)",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow3",
+      "x": 400,
+      "y": 360,
+      "width": 0,
+      "height": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          70
+        ]
+      ],
+      "strokeColor": "#eab308",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "step3",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "step4",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "step4",
+      "x": 140,
+      "y": 430,
+      "width": 520,
+      "height": 50,
+      "backgroundColor": "#5c3d1a",
+      "fillStyle": "solid",
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "step4_title",
+          "type": "text"
+        },
+        {
+          "id": "arrow4",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "step4_title",
+      "x": 145,
+      "y": 435,
+      "width": 510,
+      "height": 30,
+      "text": "Privilege Escalation",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "step4",
+      "originalText": "Privilege Escalation",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "step4_desc",
+      "x": 186,
+      "y": 485,
+      "width": 428,
+      "height": 20,
+      "text": "Agent executes shell commands with user permissions",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "originalText": "Agent executes shell commands with user permissions",
+      "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow4",
+      "x": 400,
+      "y": 480,
+      "width": 0,
+      "height": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          70
+        ]
+      ],
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 2,
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "step4",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "step5",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "step5",
+      "x": 140,
+      "y": 550,
+      "width": 520,
+      "height": 50,
+      "backgroundColor": "#5c1a1a",
+      "fillStyle": "solid",
+      "strokeColor": "#ef4444",
+      "strokeWidth": 2,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "step5_title",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "step5_title",
+      "x": 145,
+      "y": 555,
+      "width": 510,
+      "height": 30,
+      "text": "Full System Compromise",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "step5",
+      "originalText": "Full System Compromise",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "step5_desc",
+      "x": 228,
+      "y": 605,
+      "width": 344,
+      "height": 20,
+      "text": "RCE, data exfiltration, persistent access",
+      "fontSize": 14,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "originalText": "RCE, data exfiltration, persistent access",
+      "autoResize": true
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#1e1e2e"
+  }
+}

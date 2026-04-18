@@ -1,0 +1,272 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "darkbg",
+      "x": -35,
+      "y": -60,
+      "width": 970,
+      "height": 590,
+      "backgroundColor": "#1e1e2e",
+      "fillStyle": "solid",
+      "strokeColor": "transparent",
+      "strokeWidth": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 248,
+      "y": 20,
+      "width": 403,
+      "height": 33,
+      "text": "The Scale of the Problem",
+      "fontSize": 28,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "originalText": "The Scale of the Problem",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "card1",
+      "x": 45,
+      "y": 80,
+      "width": 390,
+      "height": 170,
+      "backgroundColor": "#1a1a2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4a9eed",
+      "strokeWidth": 3,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "card1_num",
+          "type": "text"
+        },
+        {
+          "id": "card1_desc",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "card1_num",
+      "x": 50,
+      "y": 95,
+      "width": 380,
+      "height": 40,
+      "text": "47%",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card1",
+      "originalText": "47%",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "card1_desc",
+      "x": 60,
+      "y": 145,
+      "width": 360,
+      "height": 80,
+      "text": "of organizations experienced\nan AI agent security incident\n(CSA, April 2026)",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card1",
+      "originalText": "of organizations experienced\nan AI agent security incident\n(CSA, April 2026)",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "card2",
+      "x": 465,
+      "y": 80,
+      "width": 390,
+      "height": 170,
+      "backgroundColor": "#1a1a2e",
+      "fillStyle": "solid",
+      "strokeColor": "#ef4444",
+      "strokeWidth": 3,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "card2_num",
+          "type": "text"
+        },
+        {
+          "id": "card2_desc",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "card2_num",
+      "x": 470,
+      "y": 95,
+      "width": 380,
+      "height": 40,
+      "text": "30+",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card2",
+      "originalText": "30+",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "card2_desc",
+      "x": 480,
+      "y": 145,
+      "width": 360,
+      "height": 80,
+      "text": "MCP-related CVEs disclosed in\nfirst 60 days of 2026",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card2",
+      "originalText": "MCP-related CVEs disclosed in\nfirst 60 days of 2026",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "card3",
+      "x": 45,
+      "y": 280,
+      "width": 390,
+      "height": 170,
+      "backgroundColor": "#1a1a2e",
+      "fillStyle": "solid",
+      "strokeColor": "#f59e0b",
+      "strokeWidth": 3,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "card3_num",
+          "type": "text"
+        },
+        {
+          "id": "card3_desc",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "card3_num",
+      "x": 50,
+      "y": 295,
+      "width": 380,
+      "height": 40,
+      "text": "70M+",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card3",
+      "originalText": "70M+",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "card3_desc",
+      "x": 60,
+      "y": 345,
+      "width": 360,
+      "height": 80,
+      "text": "weekly downloads of Axios \u2014\ntarget of March 2026\nsupply chain attack",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card3",
+      "originalText": "weekly downloads of Axios \u2014\ntarget of March 2026\nsupply chain attack",
+      "autoResize": true
+    },
+    {
+      "type": "rectangle",
+      "id": "card4",
+      "x": 465,
+      "y": 280,
+      "width": 390,
+      "height": 170,
+      "backgroundColor": "#1a1a2e",
+      "fillStyle": "solid",
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 3,
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "card4_num",
+          "type": "text"
+        },
+        {
+          "id": "card4_desc",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "card4_num",
+      "x": 470,
+      "y": 295,
+      "width": 380,
+      "height": 40,
+      "text": "100:1",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card4",
+      "originalText": "100:1",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "card4_desc",
+      "x": 480,
+      "y": 345,
+      "width": 360,
+      "height": 80,
+      "text": "machine-to-human identity ratio \u2014\nattackers target service accounts",
+      "fontSize": 16,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "card4",
+      "originalText": "machine-to-human identity ratio \u2014\nattackers target service accounts",
+      "autoResize": true
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#1e1e2e"
+  }
+}

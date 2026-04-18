@@ -1,0 +1,158 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "darkbg",
+      "x": 36,
+      "y": 0,
+      "width": 748,
+      "height": 395,
+      "backgroundColor": "#1e1e2e",
+      "fillStyle": "solid",
+      "strokeColor": "transparent",
+      "strokeWidth": 0
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 162,
+      "y": 80,
+      "width": 496,
+      "height": 43,
+      "text": "When AI Agents Go Wrong",
+      "fontSize": 36,
+      "fontFamily": 1,
+      "strokeColor": "#e5e5e5",
+      "originalText": "When AI Agents Go Wrong",
+      "autoResize": true
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "x": 116,
+      "y": 140,
+      "width": 588,
+      "height": 24,
+      "text": "Lessons from the April 2026 Agent Security Crisis",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "strokeColor": "#a0a0a0",
+      "originalText": "Lessons from the April 2026 Agent Security Crisis",
+      "autoResize": true
+    },
+    {
+      "type": "ellipse",
+      "id": "shield",
+      "x": 370,
+      "y": 235,
+      "width": 80,
+      "height": 80,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2
+    },
+    {
+      "type": "line",
+      "id": "exc_line",
+      "x": 410,
+      "y": 257,
+      "width": 0,
+      "height": 22,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          22
+        ]
+      ],
+      "strokeColor": "#e5e5e5",
+      "strokeWidth": 3
+    },
+    {
+      "type": "ellipse",
+      "id": "exc_dot",
+      "x": 406,
+      "y": 285,
+      "width": 8,
+      "height": 8,
+      "backgroundColor": "#e5e5e5",
+      "fillStyle": "solid",
+      "strokeColor": "transparent",
+      "strokeWidth": 0
+    },
+    {
+      "type": "line",
+      "id": "deco1",
+      "x": 310,
+      "y": 275,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -40,
+          0
+        ]
+      ],
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2
+    },
+    {
+      "type": "line",
+      "id": "deco2",
+      "x": 510,
+      "y": 275,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          40,
+          0
+        ]
+      ],
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2
+    },
+    {
+      "type": "ellipse",
+      "id": "deco_c1",
+      "x": 260,
+      "y": 269,
+      "width": 12,
+      "height": 12,
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2
+    },
+    {
+      "type": "ellipse",
+      "id": "deco_c2",
+      "x": 548,
+      "y": 269,
+      "width": 12,
+      "height": 12,
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeColor": "#8b5cf6",
+      "strokeWidth": 2
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#1e1e2e"
+  }
+}
