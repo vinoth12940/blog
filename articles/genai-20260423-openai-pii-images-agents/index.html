@@ -59,6 +59,8 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
 
     <p>What makes this interesting isn't the problem — plenty of PII detection tools exist. It's the approach: Privacy Filter is <strong>open-weight, runs on-device, and uses only 50 million active parameters</strong> out of its 1.5 billion total. That's small enough to run on a laptop without a GPU, fast enough for real-time filtering, and accurate enough (96% F1 on the PII-Masking-300k benchmark) to trust in production pipelines.</p>
 
+    <p>Traditional PII detection relies on regex patterns (matching email formats, phone number structures) or named entity recognition (NER) models that tag known entity types. Both approaches break on edge cases — regex can't tell the difference between "Apple" the company and "Apple" a person's name, and NER models often over-redact or miss context-dependent identifiers. Privacy Filter instead uses <strong>context-aware language understanding</strong> — it reads the surrounding text to determine whether a name or number is actually sensitive in that specific context. "John Smith" in a news article stays untouched. "John Smith" in an HR document gets redacted.</p>
+
     <h3>How It Works</h3>
 
     <p>Privacy Filter uses a token classification approach — it labels input text in a single forward pass rather than generating output token by token. This makes it significantly faster than generative approaches and more predictable for enterprise pipelines. The model supports documents up to 128,000 tokens, which covers virtually any business document you'd throw at it.</p>
@@ -81,7 +83,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
         <li><strong>Secrets</strong> — Passwords, API keys, and authentication tokens</li>
     </ul>
 
-    <p>The model is smart enough to distinguish between public information and data linked to private individuals. "John Smith" in a news article stays untouched. "John Smith" in an HR document gets redacted. This context-awareness is what separates it from simple regex matching.</p>
+    <p>The model's context-awareness is what separates it from simple regex matching — it considers the surrounding text to determine whether a detected name or number is actually sensitive in that context, reducing unnecessary redaction while still catching the items that matter.</p>
 
     <h3>Key Specs</h3>
 
@@ -210,7 +212,7 @@ hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
     <h2>What This Means for Developers</h2>
 
     <ul>
-        <li><strong>For privacy-first products:</strong> Privacy Filter is a drop-in, Apache 2.0 component. 50M active parameters means you can run it in preprocessing pipelines without adding meaningful latency or cost. Fine-tune it for your domain and you've got enterprise-grade PII detection without depending on any API.</li>
+        <li><strong>For privacy-first products:</strong> Privacy Filter is a drop-in, Apache 2.0 component that can serve as a pre-processing layer in data pipelines — including agent workflows, logging pipelines, and moderation systems. 50M active parameters means you can run it without adding meaningful latency or cost. Fine-tune it for your domain and you've got enterprise-grade PII detection without depending on any API.</li>
         <li><strong>For content and marketing tools:</strong> gpt-image-2's text rendering changes what's possible in automated content generation. Product mockups, branded social assets, localized marketing materials — things that previously required a designer and hours of Photoshop work are now promptable.</li>
         <li><strong>For enterprise automation:</strong> Workspace agents abstract away the complexity of building production AI workflows. But they're currently limited to ChatGPT's paid plans and Slack. If you need custom tool integrations or more control, the <strong>Agents SDK update from April 15</strong> — which added native sandboxes, configurable memory, and a model-native harness — is the developer-focused counterpart to workspace agents.</li>
     </ul>
