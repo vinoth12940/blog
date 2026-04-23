@@ -515,6 +515,75 @@
       "strokeColor": "#a0a0a0",
       "originalText": "benchmark average",
       "autoResize": true
+    },
+    {
+      "type": "arrow",
+      "id": "arrow-input-model",
+      "x": 285,
+      "y": 157,
+      "width": 174,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          174,
+          0
+        ]
+      ],
+      "strokeColor": "#888888",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow-model-cats",
+      "x": 785,
+      "y": 205,
+      "width": 60,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          60,
+          0
+        ]
+      ],
+      "strokeColor": "#888888",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow-model-f1",
+      "x": 549,
+      "y": 311,
+      "width": 0,
+      "height": 149,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          149
+        ]
+      ],
+      "strokeColor": "#ff6b6b",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "endArrowhead": "arrow"
     }
   ],
   "appState": {
