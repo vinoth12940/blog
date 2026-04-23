@@ -33,7 +33,7 @@
       "type": "text",
       "x": 250,
       "y": 20,
-      "width": 400,
+      "width": 421,
       "height": 40,
       "angle": 0,
       "strokeColor": "#e5e5e5",
@@ -77,7 +77,9 @@
       "strokeStyle": "solid",
       "roughness": 1,
       "opacity": 90,
-      "roundness": { "type": 3 },
+      "roundness": {
+        "type": 3
+      },
       "seed": 100020,
       "version": 1,
       "isDeleted": false,
@@ -85,7 +87,9 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"]
+      "groupIds": [
+        "col1"
+      ]
     },
     {
       "id": "col1-header",
@@ -110,7 +114,9 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"],
+      "groupIds": [
+        "col1"
+      ],
       "text": "DALL-E 3 (2024)",
       "fontSize": 20,
       "fontFamily": 3,
@@ -144,15 +150,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"],
-      "text": "✗  Garbled text",
+      "groupIds": [
+        "col1"
+      ],
+      "text": "\u2717  Garbled text",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✗  Garbled text",
+      "originalText": "\u2717  Garbled text",
       "lineHeight": 1.25
     },
     {
@@ -160,7 +168,7 @@
       "type": "text",
       "x": 70,
       "y": 185,
-      "width": 210,
+      "width": 232,
       "height": 25,
       "angle": 0,
       "strokeColor": "#ef4444",
@@ -178,15 +186,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"],
-      "text": "✗  1024px max resolution",
+      "groupIds": [
+        "col1"
+      ],
+      "text": "\u2717  1024px max resolution",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✗  1024px max resolution",
+      "originalText": "\u2717  1024px max resolution",
       "lineHeight": 1.25
     },
     {
@@ -212,15 +222,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"],
-      "text": "✗  No thinking mode",
+      "groupIds": [
+        "col1"
+      ],
+      "text": "\u2717  No thinking mode",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✗  No thinking mode",
+      "originalText": "\u2717  No thinking mode",
       "lineHeight": 1.25
     },
     {
@@ -246,15 +258,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"],
-      "text": "✗  No editing support",
+      "groupIds": [
+        "col1"
+      ],
+      "text": "\u2717  No editing support",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✗  No editing support",
+      "originalText": "\u2717  No editing support",
       "lineHeight": 1.25
     },
     {
@@ -272,7 +286,9 @@
       "strokeStyle": "solid",
       "roughness": 1,
       "opacity": 90,
-      "roundness": { "type": 3 },
+      "roundness": {
+        "type": 3
+      },
       "seed": 100040,
       "version": 1,
       "isDeleted": false,
@@ -280,14 +296,16 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"]
+      "groupIds": [
+        "col2"
+      ]
     },
     {
       "id": "col2-header",
       "type": "text",
       "x": 335,
       "y": 95,
-      "width": 220,
+      "width": 284,
       "height": 30,
       "angle": 0,
       "strokeColor": "#f59e0b",
@@ -305,7 +323,9 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"],
+      "groupIds": [
+        "col2"
+      ],
       "text": "GPT Image 1.5 (Dec 2025)",
       "fontSize": 20,
       "fontFamily": 3,
@@ -339,15 +359,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"],
-      "text": "✗  Better text",
+      "groupIds": [
+        "col2"
+      ],
+      "text": "\u2717  Better text",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✗  Better text",
+      "originalText": "\u2717  Better text",
       "lineHeight": 1.25
     },
     {
@@ -373,15 +395,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"],
-      "text": "✗  1536px resolution",
+      "groupIds": [
+        "col2"
+      ],
+      "text": "\u2717  1536px resolution",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✗  1536px resolution",
+      "originalText": "\u2717  1536px resolution",
       "lineHeight": 1.25
     },
     {
@@ -407,15 +431,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"],
-      "text": "✓  Basic editing",
+      "groupIds": [
+        "col2"
+      ],
+      "text": "\u2713  Basic editing",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Basic editing",
+      "originalText": "\u2713  Basic editing",
       "lineHeight": 1.25
     },
     {
@@ -441,15 +467,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"],
-      "text": "✓  Improved coherence",
+      "groupIds": [
+        "col2"
+      ],
+      "text": "\u2713  Improved coherence",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Improved coherence",
+      "originalText": "\u2713  Improved coherence",
       "lineHeight": 1.25
     },
     {
@@ -467,7 +495,9 @@
       "strokeStyle": "solid",
       "roughness": 1,
       "opacity": 90,
-      "roundness": { "type": 3 },
+      "roundness": {
+        "type": 3
+      },
       "seed": 100060,
       "version": 1,
       "isDeleted": false,
@@ -475,14 +505,16 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"]
+      "groupIds": [
+        "col3"
+      ]
     },
     {
       "id": "col3-header",
       "type": "text",
       "x": 605,
       "y": 95,
-      "width": 220,
+      "width": 262,
       "height": 30,
       "angle": 0,
       "strokeColor": "#22c55e",
@@ -500,7 +532,9 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
+      "groupIds": [
+        "col3"
+      ],
       "text": "GPT Image 2 (Apr 2026)",
       "fontSize": 20,
       "fontFamily": 3,
@@ -534,15 +568,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "✓  Near-perfect text",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "\u2713  Near-perfect text",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Near-perfect text",
+      "originalText": "\u2713  Near-perfect text",
       "lineHeight": 1.25
     },
     {
@@ -568,15 +604,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "✓  2K resolution",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "\u2713  2K resolution",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  2K resolution",
+      "originalText": "\u2713  2K resolution",
       "lineHeight": 1.25
     },
     {
@@ -602,15 +640,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "✓  Thinking mode",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "\u2713  Thinking mode",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Thinking mode",
+      "originalText": "\u2713  Thinking mode",
       "lineHeight": 1.25
     },
     {
@@ -636,15 +676,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "✓  Multi-panel comics",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "\u2713  Multi-panel comics",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Multi-panel comics",
+      "originalText": "\u2713  Multi-panel comics",
       "lineHeight": 1.25
     },
     {
@@ -670,15 +712,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "✓  Web search",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "\u2713  Web search",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Web search",
+      "originalText": "\u2713  Web search",
       "lineHeight": 1.25
     },
     {
@@ -686,7 +730,7 @@
       "type": "text",
       "x": 610,
       "y": 290,
-      "width": 210,
+      "width": 223,
       "height": 25,
       "angle": 0,
       "strokeColor": "#22c55e",
@@ -704,15 +748,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "✓  Multilingual support",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "\u2713  Multilingual support",
       "fontSize": 16,
       "fontFamily": 3,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 16,
       "containerId": null,
-      "originalText": "✓  Multilingual support",
+      "originalText": "\u2713  Multilingual support",
       "lineHeight": 1.25
     },
     {
@@ -730,7 +776,9 @@
       "strokeStyle": "solid",
       "roughness": 0,
       "opacity": 80,
-      "roundness": { "type": 2 },
+      "roundness": {
+        "type": 2
+      },
       "seed": 100080,
       "version": 1,
       "isDeleted": false,
@@ -739,7 +787,16 @@
       "link": null,
       "locked": false,
       "groupIds": [],
-      "points": [[0, 0], [15, 0]],
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          0
+        ]
+      ],
       "lastCommittedPoint": null,
       "startBinding": null,
       "endBinding": null,
@@ -761,7 +818,9 @@
       "strokeStyle": "solid",
       "roughness": 0,
       "opacity": 80,
-      "roundness": { "type": 2 },
+      "roundness": {
+        "type": 2
+      },
       "seed": 100081,
       "version": 1,
       "isDeleted": false,
@@ -770,7 +829,16 @@
       "link": null,
       "locked": false,
       "groupIds": [],
-      "points": [[0, 0], [15, 0]],
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          0
+        ]
+      ],
       "lastCommittedPoint": null,
       "startBinding": null,
       "endBinding": null,
@@ -782,7 +850,7 @@
       "type": "text",
       "x": 305,
       "y": 278,
-      "width": 30,
+      "width": 40,
       "height": 18,
       "angle": 0,
       "strokeColor": "#a0a0a0",
@@ -816,7 +884,7 @@
       "type": "text",
       "x": 575,
       "y": 278,
-      "width": 30,
+      "width": 40,
       "height": 18,
       "angle": 0,
       "strokeColor": "#a0a0a0",
@@ -868,15 +936,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col1"],
-      "text": "Rating: ★★☆☆☆",
+      "groupIds": [
+        "col1"
+      ],
+      "text": "Rating: \u2605\u2605\u2606\u2606\u2606",
       "fontSize": 15,
       "fontFamily": 3,
       "textAlign": "center",
       "verticalAlign": "top",
       "baseline": 15,
       "containerId": null,
-      "originalText": "Rating: ★★☆☆☆",
+      "originalText": "Rating: \u2605\u2605\u2606\u2606\u2606",
       "lineHeight": 1.25
     },
     {
@@ -902,15 +972,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col2"],
-      "text": "Rating: ★★★☆☆",
+      "groupIds": [
+        "col2"
+      ],
+      "text": "Rating: \u2605\u2605\u2605\u2606\u2606",
       "fontSize": 15,
       "fontFamily": 3,
       "textAlign": "center",
       "verticalAlign": "top",
       "baseline": 15,
       "containerId": null,
-      "originalText": "Rating: ★★★☆☆",
+      "originalText": "Rating: \u2605\u2605\u2605\u2606\u2606",
       "lineHeight": 1.25
     },
     {
@@ -936,15 +1008,17 @@
       "updated": 1,
       "link": null,
       "locked": false,
-      "groupIds": ["col3"],
-      "text": "Rating: ★★★★★",
+      "groupIds": [
+        "col3"
+      ],
+      "text": "Rating: \u2605\u2605\u2605\u2605\u2605",
       "fontSize": 15,
       "fontFamily": 3,
       "textAlign": "center",
       "verticalAlign": "top",
       "baseline": 15,
       "containerId": null,
-      "originalText": "Rating: ★★★★★",
+      "originalText": "Rating: \u2605\u2605\u2605\u2605\u2605",
       "lineHeight": 1.25
     },
     {
@@ -952,7 +1026,7 @@
       "type": "text",
       "x": 300,
       "y": 470,
-      "width": 300,
+      "width": 428,
       "height": 18,
       "angle": 0,
       "strokeColor": "#a0a0a0",
@@ -971,14 +1045,14 @@
       "link": null,
       "locked": false,
       "groupIds": [],
-      "text": "→ Each generation: better text, higher res, more features",
+      "text": "\u2192 Each generation: better text, higher res, more features",
       "fontSize": 13,
       "fontFamily": 3,
       "textAlign": "center",
       "verticalAlign": "top",
       "baseline": 13,
       "containerId": null,
-      "originalText": "→ Each generation: better text, higher res, more features",
+      "originalText": "\u2192 Each generation: better text, higher res, more features",
       "lineHeight": 1.25
     }
   ],
