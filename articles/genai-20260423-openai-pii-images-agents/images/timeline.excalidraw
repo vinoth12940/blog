@@ -41,12 +41,12 @@
       "y": 62,
       "width": 366,
       "height": 22,
-      "text": "Three major releases in 72 hours",
+      "text": "Three major releases in 48 hours",
       "fontSize": 16,
       "fontFamily": 3,
       "strokeColor": "#a0a0a0",
       "textAlign": "center",
-      "originalText": "Three major releases in 72 hours",
+      "originalText": "Three major releases in 48 hours",
       "autoResize": true
     },
     {
@@ -283,12 +283,12 @@
       "y": 330,
       "width": 84,
       "height": 20,
-      "text": "Apr 23",
+      "text": "Apr 22",
       "fontSize": 14,
       "fontFamily": 3,
       "strokeColor": "#888888",
       "textAlign": "center",
-      "originalText": "Apr 23",
+      "originalText": "Apr 22",
       "autoResize": true
     }
   ],

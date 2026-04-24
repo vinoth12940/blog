@@ -9,7 +9,7 @@
       "x": 0,
       "y": 0,
       "width": 1149,
-      "height": 311,
+      "height": 345,
       "backgroundColor": "#1e1e2e",
       "fillStyle": "solid",
       "strokeWidth": 0,
@@ -58,11 +58,11 @@
       "y": 80,
       "width": 206,
       "height": 26,
-      "text": "DALL-E 3 (2024)",
+      "text": "DALL-E 3 (Oct 2023)",
       "fontSize": 18,
       "fontFamily": 3,
       "strokeColor": "#e5e5e5",
-      "originalText": "DALL-E 3 (2024)",
+      "originalText": "DALL-E 3 (Oct 2023)",
       "autoResize": true
     },
     {
@@ -355,6 +355,21 @@
       "strokeStyle": "solid",
       "roughness": 1,
       "endArrowhead": "arrow"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "x": 386,
+      "y": 313,
+      "width": 377,
+      "height": 17,
+      "text": "* GPT Image 1 (Apr 2025) omitted for brevity",
+      "fontSize": 12,
+      "fontFamily": 3,
+      "strokeColor": "#777777",
+      "textAlign": "center",
+      "originalText": "* GPT Image 1 (Apr 2025) omitted for brevity",
+      "autoResize": true
     }
   ],
   "appState": {
