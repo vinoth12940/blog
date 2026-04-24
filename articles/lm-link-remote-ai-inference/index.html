@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Your Mac's AI Models From Any Server — Zero Config, Zero Cost</title>
+    <meta property="og:title" content="Run Your Mac's AI Models From Any Server — Zero Config, Zero Cost">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-04-24">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/lm-link-remote-ai-inference/images/architecture.png">
+    <meta name="description" content="How I connected my MacBook Pro's GPU to a cloud VPS using LM Studio's LM Link — running Qwen 3.6 27B remotely with zero configuration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+.meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+p { margin-bottom: 1.25rem; color: #c9c9c9; }
+a { color: #60a5fa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+blockquote p { color: #93c5fd; margin-bottom: 0; }
+ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+li { margin-bottom: 0.5rem; }
+li strong { color: #e5e5e5; }
+hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+.img-container { margin: 2rem 0; }
+.img-container img { width: 100%; border-radius: 12px; }
+.caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+.warning { border-left-color: #f59e0b; }
+.warning p { color: #fcd34d; }
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+.stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+.stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+
+<h1>Run Your Mac's AI Models From Any Server — Zero Config, Zero Cost</h1>
+
+<div class="meta">April 24, 2026 · 10 min read · AI, Self-Hosting, DevOps</div>
+
+<p>I have a MacBook Pro M4 with 48GB unified memory sitting on my desk. It can run a 27B parameter model at 12 tokens/second — faster than most cloud inference APIs. But I also have an AI assistant running 24/7 on a headless cloud VPS. The VPS has no GPU. It can't run local models.</p>
+
+<p>What if I could combine them? Use the Mac's raw inference power from the VPS, without configuring VPNs, opening firewall ports, or paying for relay servers?</p>
+
+<p>That's exactly what <a href="https://lmstudio.ai/link">LM Link</a> does. It's LM Studio's new P2P networking feature — and it took me under 5 minutes to set up.</p>
+
+<div class="img-container">
+    <img src="https://vinoth12940.github.io/blog/articles/lm-link-remote-ai-inference/images/architecture.png" alt="LM Link architecture showing MacBook Pro, Cloud VPS, and GPU Rig connected in an encrypted mesh">
+    <p class="caption">LM Link creates an end-to-end encrypted mesh between your devices. No ports, no public IPs needed.</p>
+</div>
+
+<h2>The Problem: GPUs at Home, Agents in the Cloud</h2>
+
+<p>If you're running AI agents, coding assistants, or automated workflows, you've probably hit this problem: your cloud server doesn't have a GPU, and your local machine with a GPU isn't always accessible.</p>
+
+<p>The traditional solutions are painful:</p>
+
+<ul>
+    <li><strong>Tailscale / WireGuard:</strong> Requires installation on every device, manual key management, subnet configuration, and network troubleshooting when NAT traversal fails.</li>
+    <li><strong>Cloud GPU instances:</strong> An A10 (24GB VRAM) on Lambda Labs costs $0.86/hr — that's $627/month if you leave it running 24/7. An A100 is $1.48/hr ($1,080/month). Not practical for background inference.</li>
+    <li><strong>ngrok / Cloudflare Tunnel:</strong> Exposes a local port to the internet. Works, but you're routing through a third-party relay, adding latency and creating a public endpoint you need to secure.</li>
+    <li><strong>SSH tunnels:</strong> Fragile. They break when your connection drops. They don't auto-reconnect. You'll spend more time debugging tunnels than building things.</li>
+</ul>
+
+<p>LM Link solves this differently — it's a P2P mesh VPN built directly into LM Studio, powered by Tailscale under the hood, but with zero configuration required from you.</p>
+
+<h2>What is LM Link?</h2>
+
+<p><a href="https://lmstudio.ai/link">LM Link</a> is a feature in LM Studio that lets you connect multiple devices together into a private, encrypted network. Once connected, any model loaded on any device becomes available on every device in the network — as if it were running locally on <code>localhost:1234</code>.</p>
+
+<p>Key details:</p>
+
+<ul>
+    <li><strong>End-to-end encrypted:</strong> Built on Tailscale mesh VPNs. Your data never touches LM Studio's servers — only device metadata is shared for discovery.</li>
+    <li><strong>No port forwarding:</strong> Tailscale handles NAT traversal automatically. Works behind routers, firewalls, and carrier-grade NAT.</li>
+    <li><strong>OpenAI-compatible API:</strong> Once linked, your local <code>localhost:1234</code> endpoint transparently proxies to remote models. Any tool that works with LM Studio (Codex, Claude Code, OpenCode, custom scripts) works with LM Link without changes.</li>
+    <li><strong>Free tier:</strong> Up to 2 users, 5 devices each (10 devices total) — no credit card required.</li>
+    <li><strong>Headless support:</strong> Works on servers without a GUI via <code>llmster</code>, LM Studio's headless daemon.</li>
+</ul>
+
+<h2>Setup: 4 Commands, 5 Minutes</h2>
+
+<div class="img-container">
+    <img src="https://vinoth12940.github.io/blog/articles/lm-link-remote-ai-inference/images/setup-flow.png" alt="4-step setup flow diagram showing install, login, link enable, and use models">
+    <p class="caption">The entire setup is 4 commands. No configuration files, no network settings.</p>
+</div>
+
+<p>Here's exactly what I did to connect my MacBook Pro to my Hetzner cloud VPS.</p>
+
+<h3>Step 1: Install LM Studio (Mac) + llmster (VPS)</h3>
+
+<p>On your Mac, download LM Studio from <a href="https://lmstudio.ai/">lmstudio.ai</a> and load your model. I'm running <strong>Qwen 3.6 27B</strong> (Q4_K_M quantization, ~17GB) — a dense 27B parameter model from Alibaba that outperforms much larger models on coding benchmarks.</p>
+
+<p>On your headless server, install llmster — LM Studio's CLI-only daemon:</p>
+
+<pre><code># Install llmster on any Linux server
+curl -fsSL https://lmstudio.ai/install.sh | bash
+
+# Add to PATH
+export PATH="$HOME/.lmstudio/bin:$PATH"</code></pre>
+
+<blockquote class="warning">
+<p>⚠️ On Ubuntu, <code>ldconfig</code> must be on your PATH. If the install fails, run: <code>export PATH="/usr/sbin:$PATH"</code> before the install command.</p>
+</blockquote>
+
+<h3>Step 2: Login on Both Devices</h3>
+
+<pre><code># On the VPS — shows a pairing code
+lms login
+
+# Visit https://lmstudio.ai/pairing in your browser
+# Enter the code shown in the terminal
+# Authentication successful!</code></pre>
+
+<p>On your Mac, if you're using the LM Studio GUI, you can log in from the app settings. On headless servers, the CLI gives you a pairing code to enter in your browser. No API keys to manage — just a one-time browser auth.</p>
+
+<h3>Step 3: Enable LM Link</h3>
+
+<pre><code># On the VPS
+lms link enable
+# LM Link is enabled and online.
+
+# Check status
+lms link status
+# This device: ubuntu-8gb-hel1-2
+# Status: Online
+#
+# Found 1 device:
+#   - Mac.lan
+#     Status: connected
+#     Loaded Models:
+#       - qwen/qwen3.6-27b</code></pre>
+
+<p>That's it. The devices discovered each other automatically. No IP addresses, no port numbers, no configuration files.</p>
+
+<h3>Step 4: Start the Local Server</h3>
+
+<pre><code># Start the OpenAI-compatible server on the VPS
+lms server start -p 1234
+
+# Test it
+curl http://localhost:1234/v1/models
+# Returns ALL models across your linked devices!</code></pre>
+
+<p>The server on the VPS now acts as a transparent proxy. When you call <code>localhost:1234</code>, it routes to whichever device has the model loaded — over the encrypted mesh.</p>
+
+<h2>Real Performance: Qwen 3.6 27B Over P2P</h2>
+
+<p>Here's what I'm actually getting, running Qwen 3.6 27B on a MacBook Pro M4 (48GB unified memory) accessed from a Hetzner VPS in Finland:</p>
+
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="number">12.08</div>
+        <div class="label">Tokens / Second</div>
+    </div>
+    <div class="stat-card">
+        <div class="number">1.18s</div>
+        <div class="label">Time to First Token</div>
+    </div>
+    <div class="stat-card">
+        <div class="number">180</div>
+        <div class="label">Predicted Tokens</div>
+    </div>
+    <div class="stat-card">
+        <div class="number">$0.00</div>
+        <div class="label">Monthly Cost</div>
+    </div>
+</div>
+
+<p>That's <strong>12 tokens/second for a 27B model</strong>, accessed from a different country over a P2P mesh — with zero inference cost. For comparison, GPT-4o-mini costs $0.15/1M input tokens and $0.60/1M output tokens. If you're running agents that make thousands of API calls per day, this adds up fast.</p>
+
+<p>Qwen 3.6 27B is a capable model. According to Qwen's own benchmarks (evaluated with their internal agent scaffold), it scores <strong>77.2% on SWE-bench Verified</strong> — matching or exceeding Qwen3.5-397B-A17B's 76.2% — and <strong>59.3% on Terminal-Bench 2.0</strong>, matching Claude 4.5 Opus. It also supports vision and tool use natively.</p>
+
+<blockquote>
+<p>💡 Note: These benchmarks use Qwen's internal evaluation harness. Independent third-party verification on production tasks is still limited as of April 2026. Always test with your own workloads before making architectural decisions.</p>
+</blockquote>
+
+<h2>Vision Support Works Too</h2>
+
+<p>LM Link transparently passes through all API features, including multimodal vision requests. I tested it with a base64-encoded image:</p>
+
+<pre><code>curl http://localhost:1234/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen/qwen3.6-27b",
+    "messages": [{
+      "role": "user",
+      "content": [
+        {"type": "text", "text": "What is this image?"},
+        {"type": "image_url", "image_url": {
+          "url": "data:image/png;base64,..."
+        }}
+      ]
+    }],
+    "max_tokens": 100
+  }'</code></pre>
+
+<p>The response came back correctly identifying the image content — the Android mascot in this case — processed entirely on the MacBook's GPU, routed through the encrypted mesh to my VPS. Vision inference adds some latency but is entirely usable for document analysis, screenshot understanding, and diagram interpretation.</p>
+
+<blockquote class="warning">
+<p>⚠️ One limitation: LM Link's vision endpoint currently only accepts base64-encoded images, not URLs. You'll need to download and encode images client-side before sending them.</p>
+</blockquote>
+
+<h2>Practical Use Cases</h2>
+
+<p>Why would you want this setup? Here's how I'm using it:</p>
+
+<ul>
+    <li><strong>AI agents on headless servers:</strong> My AI assistant runs 24/7 on a VPS. With LM Link, it can use powerful local models for tasks that don't need cloud-grade intelligence — saving API costs dramatically.</li>
+    <li><strong>Coding assistant backends:</strong> Tools like Codex, Claude Code, and OpenCode can point to <code>localhost:1234</code> and use your linked models. No changes to the tool configuration needed.</li>
+    <li><strong>Multi-GPU pooling:</strong> Have a GPU rig at home and a Mac at the office? Link them both. Load different models on each device, and route requests to whichever has the right model.</li>
+    <li><strong>CI/CD inference:</strong> Run llmster in your CI pipeline and use LM Link to access models without deploying API keys or paying per-token costs.</li>
+    <li><strong>Embeddings:</strong> LM Link also exposes embedding models. I have <code>text-embedding-nomic-embed-text-v1.5</code> available alongside Qwen — useful for RAG pipelines running on remote servers.</li>
+</ul>
+
+<h2>Disabling Thinking Mode</h2>
+
+<p>Qwen 3.6 has a "thinking" mode enabled by default — it spends tokens on an internal reasoning chain before producing output. This is great for complex reasoning but wasteful for simple tasks. With thinking mode on, a 5-word response consumed 500+ tokens.</p>
+
+<p>To disable it, go to your model settings in LM Studio and turn off reasoning. The difference is dramatic:</p>
+
+<ul>
+    <li><strong>Thinking ON:</strong> 9 tokens of actual output + 491 tokens of reasoning = 500 total tokens</li>
+    <li><strong>Thinking OFF:</strong> 9 tokens of actual output + 0 reasoning = 9 total tokens</li>
+</ul>
+
+<p>That's a <strong>55x reduction in token usage</strong> for simple tasks. Always turn this off when you're using the model for straightforward generation.</p>
+
+<h2>What I'd Improve</h2>
+
+<p>LM Link is still in Preview, and a few things could be better:</p>
+
+<ul>
+    <li><strong>No headless login:</strong> The <code>lms login</code> command requires entering a pairing code in a browser. There's no API-key or device-token auth for fully automated server setup. You need manual interaction once.</li>
+    <li><strong>No systemd integration:</strong> llmster doesn't ship with a systemd service file. If the daemon crashes, it won't auto-restart unless you set that up yourself.</li>
+    <li><strong>Vision requires base64 only:</strong> URL-based image passing doesn't work through the proxy. Every image needs to be downloaded and encoded client-side, which adds complexity and memory overhead.</li>
+    <li><strong>No load balancing:</strong> If the same model is loaded on multiple devices, there's no way to distribute requests across them. You'd need to build that layer yourself.</li>
+    <li><strong>No rate limiting or access control:</strong> Anyone with access to <code>localhost:1234</code> on your server can use your linked models. Secure it with firewall rules or a reverse proxy.</li>
+</ul>
+
+<h2>The Bottom Line</h2>
+
+<p>LM Link is the simplest way I've found to use local models from remote servers. No VPN configuration, no port forwarding, no certificates — install, login, link, done.</p>
+
+<p>If you have a Mac with decent unified memory (or any machine with a GPU) and you're running AI workloads in the cloud, LM Link lets you get free inference without sacrificing the convenience of cloud deployment. The 12 tokens/second I'm getting over P2P is more than enough for agent tasks, code generation, and document processing.</p>
+
+<p>The free tier supports up to 10 devices across 2 users — more than enough for most individual setups. And since it's built on Tailscale's battle-tested mesh networking, the security and reliability are solid.</p>
+
+<p>Go try it: <a href="https://lmstudio.ai/link">lmstudio.ai/link</a></p>
+
+<hr>
+
+<p><strong>Tags:</strong> LM Studio, LM Link, Local LLM, Self-Hosting, P2P, AI Agents, Qwen, Tailscale</p>
+
+</article>
+</body>
+</html>
