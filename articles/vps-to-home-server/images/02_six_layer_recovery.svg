@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#bg)" rx="16"/>
+  <text x="450" y="45" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">6-Layer Self-Healing Architecture</text>
+  <text x="450" y="70" text-anchor="middle" fill="#64748b" font-size="12">If anything dies, it comes back. Automatically.</text>
+  <rect x="60" y="95" width="780" height="55" rx="10" fill="#1e1e2e" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="80" y="118" fill="#c4b5fd" font-size="11" font-weight="bold">LAYER 1</text>
+  <text x="160" y="118" fill="#e2e8f0" font-size="13">systemctl enable — Auto-start on boot</text>
+  <text x="720" y="128" fill="#22c55e" font-size="11">enabled</text>
+  <rect x="60" y="160" width="780" height="55" rx="10" fill="#1e1e2e" stroke="#6366f1" stroke-width="2"/>
+  <text x="80" y="183" fill="#a5b4fc" font-size="11" font-weight="bold">LAYER 2</text>
+  <text x="160" y="183" fill="#e2e8f0" font-size="13">Restart=always — Auto-restart on crash (5-60s)</text>
+  <text x="720" y="193" fill="#22c55e" font-size="11">active</text>
+  <rect x="60" y="225" width="780" height="55" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <text x="80" y="248" fill="#93c5fd" font-size="11" font-weight="bold">LAYER 3</text>
+  <text x="160" y="248" fill="#e2e8f0" font-size="13">Docker restart: always — Containers survive reboots</text>
+  <text x="720" y="258" fill="#22c55e" font-size="11">running</text>
+  <rect x="60" y="290" width="780" height="55" rx="10" fill="#1e1e2e" stroke="#06b6d4" stroke-width="2"/>
+  <text x="80" y="313" fill="#67e8f9" font-size="11" font-weight="bold">LAYER 4</text>
+  <text x="160" y="313" fill="#e2e8f0" font-size="13">Watchdog cron (*/2 min) — Restarts dead services</text>
+  <text x="720" y="323" fill="#22c55e" font-size="11">every 2m</text>
+  <rect x="60" y="355" width="780" height="55" rx="10" fill="#1e1e2e" stroke="#f59e0b" stroke-width="2"/>
+  <text x="80" y="378" fill="#fcd34d" font-size="11" font-weight="bold">LAYER 5</text>
+  <text x="160" y="378" fill="#e2e8f0" font-size="13">Cloudflare Tunnel — Auto-reconnect, no port forwarding</text>
+  <text x="720" y="388" fill="#22c55e" font-size="11">connected</text>
+  <rect x="60" y="420" width="780" height="55" rx="10" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="80" y="443" fill="#86efac" font-size="11" font-weight="bold">LAYER 6</text>
+  <text x="160" y="443" fill="#e2e8f0" font-size="13">BIOS Auto Power-On — Unplug, replug, PC boots itself</text>
+  <text x="720" y="453" fill="#fbbf24" font-size="11">BIOS setting</text>
+</svg>
