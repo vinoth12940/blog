@@ -6,9 +6,9 @@
   <title>I Fired My Cloud Server and Moved My AI Agent to a Mini PC Under My Desk</title>
   <meta property="og:title" content="I Fired My Cloud Server and Moved My AI Agent to a Mini PC Under My Desk">
   <meta property="og:type" content="article">
-  <meta property="og:description" content="How I migrated my always-on AI agent from a $20/month Hetzner VPS to a MinisForum mini PC at home — Linux dual-boot, 23GB rsync, self-healing systemd, and zero monthly cost.">
+  <meta property="og:description" content="How I migrated my always-on AI agent from a $20/month a cloud provider VPS to a MinisForum mini PC at home — Linux dual-boot, 23GB rsync, self-healing systemd, and zero monthly cost.">
   <meta property="article:published_time" content="2026-05-07">
-  <meta name="author" content="Vinoth">
+  <meta name="author" content="the author">
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; color: #1a1a1a; }
     h1 { font-size: 2em; line-height: 1.2; margin-bottom: 8px; }
@@ -45,13 +45,13 @@
 
 <p>I had a problem.</p>
 
-<p>My AI agent <strong>Hermes</strong> — a Python-based assistant that runs my Telegram bots, sends me daily GenAI briefings, tracks the stock market, manages my web dashboard, and handles a dozen other automated tasks — was living on a Hetzner VPS in Germany for <strong>$20/month</strong>.</p>
+<p>My AI agent <strong>Hermes</strong> — a Python-based assistant that runs my Telegram bots, sends me daily GenAI briefings, tracks the stock market, manages my web dashboard, and handles a dozen other automated tasks — was living on a a cloud provider VPS in Europe for <strong>$20/month</strong>.</p>
 
 <p>Every morning at 12:00 PM, Hermes wakes up and scans 10+ RSS feeds, crawls X/Twitter for announcements from AnthropicAI, OpenAI, GoogleAI, MetaAI, MistralAI, checks Reddit, reads official blogs, and compiles a comprehensive GenAI Daily Briefing — then delivers it to my Telegram. At 12:45 PM, it does the same for the US stock market.</p>
 
 <p>All running on someone else's machine. In another country. That I was paying for.</p>
 
-<p>I had a <strong>MinisForum UM760 Slim</strong> sitting on my desk — AMD Ryzen 7 6800H, 32GB DDR5, 512GB NVMe. Tiny. Silent. 15 watts at idle.</p>
+<p>I had a <strong>Mini PC</strong> sitting on my desk — AMD Ryzen 7 6800H, 32GB DDR5, 512GB NVMe. Tiny. Silent. 15 watts at idle.</p>
 
 <p>It was time to move home.</p>
 
@@ -81,7 +81,7 @@
 
 <p>Plugged in ethernet. Nothing. Ran <code>ip link</code> — only loopback and a Docker bridge. No ethernet interface at all.</p>
 
-<p>The MinisForum UM760 Slim uses a <strong>Realtek RTL8125</strong> 2.5GbE chip. The kernel's <code>r8169</code> driver doesn't support it. The proprietary <code>r8125</code> driver wasn't included.</p>
+<p>The Mini PC uses a <strong>Realtek RTL8125</strong> 2.5GbE chip. The kernel's <code>r8169</code> driver doesn't support it. The proprietary <code>r8125</code> driver wasn't included.</p>
 
 <p>I tried everything:</p>
 <ul>
@@ -96,14 +96,14 @@
 
 <blockquote>If you're buying a mini PC for a Linux home server, check the ethernet chipset. Realtek RTL8125 is notorious. Ubuntu 24.04+ and Mint 22+ include the firmware.</blockquote>
 
-<h2>Chapter 2: The Migration — 23GB from Germany to My Desk</h2>
+<h2>Chapter 2: The Migration — 23GB from Europe to My Desk</h2>
 
 <p>Three machines involved:</p>
-<pre><code>Hetzner VPS (37.27.190.184)     ← Source (Germany)
+<pre><code>a cloud provider VPS (your-vps-ip)     ← Source (Europe)
        ↕ (internet)
 MacBook                          ← Control plane
        ↕ (local network)
-MinisForum PC (192.168.1.50)    ← Destination (under my desk)</code></pre>
+MinisForum PC (192.168.x.x)    ← Destination (under my desk)</code></pre>
 
 <p>The VPS and PC couldn't talk directly. But my MacBook could reach both.</p>
 
@@ -133,7 +133,7 @@ MinisForum PC (192.168.1.50)    ← Destination (under my desk)</code></pre>
   --exclude=".lmstudio/" \
   --exclude="*.lock" --exclude="*.pid" \
   -e "ssh -o StrictHostKeyChecking=no" \
-  hermes@37.27.190.184:/home/hermes/ \
+  hermes@your-vps-ip:/home/hermes/ \
   /home/hermes/ \
   > /tmp/hermes_rsync.log 2>&1 &</code></pre>
 
@@ -169,7 +169,7 @@ getUpdates request; make sure that only one bot instance is running</code></pre>
 
 <p>The VPS gateway was <strong>still running</strong> — disabled but not killed. Two machines fighting for one Telegram bot token.</p>
 
-<pre><code>ssh hermes@37.27.190.184 "sudo kill -9 $(pgrep -f hermes_cli)"</code></pre>
+<pre><code>ssh hermes@your-vps-ip "sudo kill -9 $(pgrep -f hermes_cli)"</code></pre>
 
 <p>Silence. The PC was now the only one talking to Telegram.</p>
 
@@ -237,7 +237,7 @@ done</code></pre>
   <li><strong>Monthly cost:</strong> $20 → $0</li>
   <li><strong>RAM:</strong> 8GB → 32GB DDR5</li>
   <li><strong>Disk:</strong> 40GB → 492GB NVMe</li>
-  <li><strong>Latency:</strong> 120ms (Germany) → &lt;1ms (my desk)</li>
+  <li><strong>Latency:</strong> 120ms (Europe) → &lt;1ms (my desk)</li>
   <li><strong>Data location:</strong> Someone else's server → Under my desk</li>
   <li><strong>Power bill impact:</strong> ~$1.50/month at 15W idle</li>
 </ul>
