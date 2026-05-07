@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Fired My Cloud Server and Moved My AI Agent to a Mini PC Under My Desk</title>
+  <meta property="og:title" content="I Fired My Cloud Server and Moved My AI Agent to a Mini PC Under My Desk">
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="How I migrated my always-on AI agent from a $20/month Hetzner VPS to a MinisForum mini PC at home — Linux dual-boot, 23GB rsync, self-healing systemd, and zero monthly cost.">
+  <meta property="article:published_time" content="2026-05-07">
+  <meta name="author" content="Vinoth">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; color: #1a1a1a; }
+    h1 { font-size: 2em; line-height: 1.2; margin-bottom: 8px; }
+    .subtitle { color: #666; font-size: 1.1em; margin-bottom: 30px; }
+    h2 { font-size: 1.4em; margin-top: 40px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+    h3 { font-size: 1.15em; margin-top: 28px; }
+    p { margin-bottom: 16px; }
+    strong { color: #111; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; }
+    pre code { background: none; padding: 0; color: inherit; }
+    blockquote { border-left: 4px solid #a78bfa; padding-left: 20px; margin: 20px 0; color: #555; font-style: italic; }
+    ul, ol { margin-bottom: 16px; padding-left: 24px; }
+    li { margin-bottom: 6px; }
+    a { color: #3b82f6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .callout { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 20px; margin: 20px 0; }
+    .callout.warning { background: #fefce8; border-color: #fde68a; }
+    .callout.info { background: #eff6ff; border-color: #bfdbfe; }
+    .callout strong { color: inherit; }
+    .comparison { margin: 20px 0; }
+    .comparison li { margin-bottom: 8px; }
+    .comparison strong { min-width: 140px; display: inline-block; }
+    .tag { display: inline-block; background: #f3f4f6; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; color: #555; margin-right: 6px; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+<article>
+
+<h1>I Fired My Cloud Server and Moved My AI Agent to a Mini PC Under My Desk</h1>
+<p class="subtitle"><em>A step-by-step journey: dual-booting Linux Mint with Windows, migrating 23GB of AI agent data, and building a self-healing home server that costs $0/month.</em></p>
+
+<hr>
+
+<p>I had a problem.</p>
+
+<p>My AI agent <strong>Hermes</strong> — a Python-based assistant that runs my Telegram bots, sends me daily GenAI briefings, tracks the stock market, manages my web dashboard, and handles a dozen other automated tasks — was living on a Hetzner VPS in Germany for <strong>$20/month</strong>.</p>
+
+<p>Every morning at 12:00 PM, Hermes wakes up and scans 10+ RSS feeds, crawls X/Twitter for announcements from AnthropicAI, OpenAI, GoogleAI, MetaAI, MistralAI, checks Reddit, reads official blogs, and compiles a comprehensive GenAI Daily Briefing — then delivers it to my Telegram. At 12:45 PM, it does the same for the US stock market.</p>
+
+<p>All running on someone else's machine. In another country. That I was paying for.</p>
+
+<p>I had a <strong>MinisForum UM760 Slim</strong> sitting on my desk — AMD Ryzen 7 6800H, 32GB DDR5, 512GB NVMe. Tiny. Silent. 15 watts at idle.</p>
+
+<p>It was time to move home.</p>
+
+<h2>Chapter 1: Dual-Booting Linux Mint with Windows</h2>
+
+<p>The MinisForum came with Windows 11. I wanted to keep Windows but also run Linux for the server.</p>
+
+<h3>Shrinking the Windows Partition</h3>
+
+<p>Booted into Windows, opened <strong>Disk Management</strong>, right-clicked C:, and shrank it by 200GB. That gave me unallocated space for Linux.</p>
+
+<h3>Creating the Bootable USB</h3>
+
+<p>On my MacBook, I downloaded <strong>Linux Mint 22 Cinnamon</strong> ISO and used <strong>BalenaEtcher</strong> to flash it onto a USB drive.</p>
+
+<h3>The Install</h3>
+
+<p>Plugged the USB in, pressed <strong>F11</strong> for boot menu, selected the USB. Mint's live desktop appeared. Clicked <strong>"Install Linux Mint"</strong>.</p>
+
+<p>Chose <strong>"Something else"</strong> for manual partitioning. Created a 492GB ext4 partition at <code>/</code>. Kept the existing EFI partition. Hit Install.</p>
+
+<h3>The First Problem — No Internet</h3>
+
+<p>Mint installed beautifully. Then I opened Firefox.</p>
+
+<p><strong>No internet.</strong></p>
+
+<p>Plugged in ethernet. Nothing. Ran <code>ip link</code> — only loopback and a Docker bridge. No ethernet interface at all.</p>
+
+<p>The MinisForum UM760 Slim uses a <strong>Realtek RTL8125</strong> 2.5GbE chip. The kernel's <code>r8169</code> driver doesn't support it. The proprietary <code>r8125</code> driver wasn't included.</p>
+
+<p>I tried everything:</p>
+<ul>
+  <li><code>sudo modprobe r8169</code> — didn't work</li>
+  <li>iPhone USB tethering — couldn't get it working</li>
+  <li>Downloading the driver on Mac and transferring via USB — chicken-and-egg (needed build tools, needed internet for build tools)</li>
+</ul>
+
+<div class="callout warning">
+<strong>The fix:</strong> I reinstalled Mint, this time connecting ethernet <em>before</em> booting the installer. Mint 22 includes <code>linux-firmware</code> which has the RTL8125 firmware blob. On the fresh install, ethernet came up immediately.
+</div>
+
+<blockquote>If you're buying a mini PC for a Linux home server, check the ethernet chipset. Realtek RTL8125 is notorious. Ubuntu 24.04+ and Mint 22+ include the firmware.</blockquote>
+
+<h2>Chapter 2: The Migration — 23GB from Germany to My Desk</h2>
+
+<p>Three machines involved:</p>
+<pre><code>Hetzner VPS (37.27.190.184)     ← Source (Germany)
+       ↕ (internet)
+MacBook                          ← Control plane
+       ↕ (local network)
+MinisForum PC (192.168.1.50)    ← Destination (under my desk)</code></pre>
+
+<p>The VPS and PC couldn't talk directly. But my MacBook could reach both.</p>
+
+<h3>Prepare the PC</h3>
+
+<pre><code>sudo apt update && sudo apt install -y \
+  openssh-server curl git python3 python3-venv python3-pip \
+  docker.io docker-compose rsync jq sqlite3 htop tmux</code></pre>
+
+<p>Created a <code>hermes</code> user with passwordless sudo and docker group access.</p>
+
+<h3>The SSH Key Nightmare</h3>
+
+<p>I copied my Mac's SSH key to the PC using <code>sudo tee</code>. The command said it succeeded. The file existed. But SSH to the VPS gave <strong>Permission denied</strong>.</p>
+
+<p>After an hour of debugging, I discovered the key file was <strong>0 bytes</strong>. The <code>sudo tee</code> over SSH had silently failed.</p>
+
+<div class="callout info">
+<strong>Lesson:</strong> Never trust <code>sudo tee</code> over SSH for key files. Use <code>scp</code> or generate fresh keys on the destination machine.
+</div>
+
+<p>I generated a fresh keypair on the PC and added its public key to the VPS from my Mac. 2 seconds vs 1 hour of debugging.</p>
+
+<h3>The Big Rsync</h3>
+
+<pre><code>nohup rsync -avz --progress \
+  --exclude=".lmstudio/" \
+  --exclude="*.lock" --exclude="*.pid" \
+  -e "ssh -o StrictHostKeyChecking=no" \
+  hermes@37.27.190.184:/home/hermes/ \
+  /home/hermes/ \
+  > /tmp/hermes_rsync.log 2>&1 &</code></pre>
+
+<p>23GB. 500,000+ files. Running at ~50 MB/s. The worst part was <code>node_modules</code> — hundreds of thousands of tiny files.</p>
+
+<p><strong>Result:</strong> 289,935 files transferred. 19.2GB total. Sessions. Memories. Skills. The 580MB state database with 2,400+ conversation histories. All of it.</p>
+
+<h2>Chapter 3: Making It Run</h2>
+
+<h3>Node.js Version Trap</h3>
+
+<p>First crash:</p>
+<pre><code>You are using Node.js 18.19.1. Vite requires Node.js version 20.19+ or 22.12+.</code></pre>
+
+<p>Mint ships Node 18. Hermes Workspace uses Vite which needs 20+.</p>
+
+<pre><code>curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+sudo apt install -y nodejs</code></pre>
+
+<h3>Docker Compose v1 vs v2</h3>
+
+<p>VPS used <code>docker compose</code> (v2 plugin). Mint had <code>docker-compose</code> (v1). SearXNG compose file used v2 syntax. Fixed by adding <code>version: "3.8"</code> and removing the <code>name:</code> field.</p>
+
+<h3>The Port Mismatch</h3>
+
+<p>Hermes config expected SearXNG on port <strong>8888</strong>. Docker mapped it to <strong>8080</strong>. Web search was silently broken.</p>
+
+<h3>The Telegram Polling War</h3>
+
+<p>After starting everything, logs showed:</p>
+<pre><code>WARNING: Telegram polling conflict. Error: Conflict: terminated by other 
+getUpdates request; make sure that only one bot instance is running</code></pre>
+
+<p>The VPS gateway was <strong>still running</strong> — disabled but not killed. Two machines fighting for one Telegram bot token.</p>
+
+<pre><code>ssh hermes@37.27.190.184 "sudo kill -9 $(pgrep -f hermes_cli)"</code></pre>
+
+<p>Silence. The PC was now the only one talking to Telegram.</p>
+
+<h2>Chapter 4: The Cron Jobs That Make It Worth It</h2>
+
+<p>Here's what runs every day without me lifting a finger:</p>
+
+<h3>Daily GenAI Briefing (12:00 PM)</h3>
+
+<p>Hermes becomes a research journalist:</p>
+<ul>
+  <li><strong>RSS Feeds:</strong> TechCrunch AI, Anthropic, OpenAI, Google AI, HuggingFace, The Verge, Ars Technica, Decrypt, VentureBeat, AI News</li>
+  <li><strong>X/Twitter:</strong> @AnthropicAI, @OpenAI, @GoogleAI, @GoogleDeepMind, @MetaAI, @MistralAI, @karpathy</li>
+  <li><strong>Official Blogs:</strong> Anthropic, OpenAI, Meta AI</li>
+  <li><strong>Reddit:</strong> r/MachineLearning, r/LocalLLaMA, r/artificial</li>
+  <li><strong>Catch-all:</strong> "AI news today", "AI startup funding"</li>
+</ul>
+
+<p>Compiles into: Top Stories, Model Releases, Tools & Frameworks, Industry Moves, Community Highlights, Quick Links. Delivered to Telegram. 46 successful runs so far.</p>
+
+<h3>US Stock Market Briefing (12:45 PM)</h3>
+
+<p>Fetches Yahoo Finance data: Major Indices, Sector Performance, Top Gainers/Losers, Commodities, Treasury Yields, Outlook. Also 46 successful runs.</p>
+
+<h3>GenAI Article Writer (Wed & Sat, 3 PM)</h3>
+
+<p>Researches trending topics, writes a full Medium article with Gemini-generated images, pushes to my GitHub Pages blog, and gives me a LinkedIn post ready to paste. 10 articles published so far.</p>
+
+<h2>Chapter 5: Making It Bulletproof</h2>
+
+<p>A home server is useless if it dies every time the power flickers. Six layers of auto-recovery:</p>
+
+<h3>Layer 1: Systemd Auto-Start</h3>
+<p>All 5 services are <code>enabled</code> — start automatically on boot.</p>
+
+<h3>Layer 2: Auto-Restart on Crash</h3>
+<p>Every service has <code>Restart=always</code> with <code>RestartSec=5-60s</code>. Die, come back in seconds.</p>
+
+<h3>Layer 3: Docker Restart Policy</h3>
+<pre><code>services:
+  searxng:
+    restart: always</code></pre>
+
+<h3>Layer 4: Watchdog Cron (Every 2 Minutes)</h3>
+
+<pre><code>#!/bin/bash
+SERVICES="hermes-gateway hermes-dashboard hermes-workspace 
+          excalidraw-canvas cloudflared-tunnel"
+
+for svc in $SERVICES; do
+    if ! systemctl is-active --quiet "$svc"; then
+        systemctl restart "$svc"
+    fi
+done</code></pre>
+
+<h3>Layer 5: Cloudflare Tunnel Auto-Reconnect</h3>
+<p>No port forwarding. No static IP. No DDNS. Credential-based auth, reconnects automatically.</p>
+
+<h3>Layer 6: BIOS Auto Power-On</h3>
+<p><strong>Del</strong> during boot → Advanced → Power Management → "Restore on AC Power Loss" → "Power On". Unplug, replug, PC turns itself on and everything starts.</p>
+
+<h2>The Final Result</h2>
+
+<ul class="comparison">
+  <li><strong>Monthly cost:</strong> $20 → $0</li>
+  <li><strong>RAM:</strong> 8GB → 32GB DDR5</li>
+  <li><strong>Disk:</strong> 40GB → 492GB NVMe</li>
+  <li><strong>Latency:</strong> 120ms (Germany) → &lt;1ms (my desk)</li>
+  <li><strong>Data location:</strong> Someone else's server → Under my desk</li>
+  <li><strong>Power bill impact:</strong> ~$1.50/month at 15W idle</li>
+</ul>
+
+<h2>What I'd Do Differently</h2>
+
+<ul>
+  <li><strong>Check the ethernet chipset before buying.</strong> RTL8125 works on modern distros but cost me 2 hours.</li>
+  <li><strong>Don't dual-boot a server.</strong> Dedicate the whole machine to Linux. Windows is for gaming, Linux is for serving — pick one per machine.</li>
+  <li><strong>Generate fresh SSH keys.</strong> Don't copy them over SSH. 2 seconds vs 1 hour.</li>
+  <li><strong>Install Node.js 22 from the start.</strong> Skip the distro's outdated version.</li>
+  <li><strong>Verify ports match your config.</strong> SearXNG 8080 vs 8888 was a silent failure.</li>
+</ul>
+
+<h2>Is This Worth It?</h2>
+
+<p><strong>Absolutely.</strong> $20/month saved. 4x more RAM. 12x more disk. Sub-millisecond latency. My data lives in my apartment. And it heals itself.</p>
+
+<p>The setup took about 5-6 hours. But now it's done. Forever.</p>
+
+<p>If you're running a personal project on a VPS just because "that's how it's done" — stop. Look under your desk.</p>
+
+<hr>
+
+<p>
+  <span class="tag">Self-Hosting</span>
+  <span class="tag">Home Server</span>
+  <span class="tag">AI Agent</span>
+  <span class="tag">Linux</span>
+  <span class="tag">Mini PC</span>
+  <span class="tag">Hermes</span>
+  <span class="tag">Migration</span>
+  <span class="tag">Edge Computing</span>
+</p>
+
+</article>
+</body>
+</html>
