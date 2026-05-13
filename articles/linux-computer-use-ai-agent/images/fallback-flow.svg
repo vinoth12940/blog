@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Hermes computer use backend fallback flow</title>
+  <desc id="desc">Flowchart showing macOS uses cua-driver first, while Linux falls back to the HTTP backend if the CUA XFCE container is reachable.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#3b82f6"/>
+    </marker>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="900" height="520" fill="#0a0a0a"/>
+  <text x="450" y="44" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#e5e5e5">Backend Selection Fallback</text>
+  <text x="450" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#9ca3af">Zero change to macOS behavior, HTTP bridge for Linux</text>
+
+  <rect x="358" y="104" width="184" height="58" rx="29" fill="#111827" stroke="#3b82f6" stroke-width="2" filter="url(#soft)"/>
+  <text x="450" y="139" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#e5e5e5">_get_backend()</text>
+
+  <path d="M450 162 V198" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M450 198 L545 248 L450 298 L355 248 Z" fill="#111827" stroke="#fb923c" stroke-width="2" filter="url(#soft)"/>
+  <text x="450" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#e5e5e5">macOS?</text>
+  <text x="450" y="265" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#9ca3af">sys.platform == darwin</text>
+
+  <path d="M355 248 H222" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="286" y="235" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">yes</text>
+  <rect x="54" y="206" width="168" height="84" rx="14" fill="#111827" stroke="#a78bfa" stroke-width="2" filter="url(#soft)"/>
+  <text x="138" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#e5e5e5">Try cua-driver</text>
+  <text x="138" y="262" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#9ca3af">native macOS backend</text>
+
+  <path d="M222 248 H300 V356 H360" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+  <text x="288" y="345" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">import fails</text>
+
+  <path d="M545 248 H666" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="604" y="235" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">no / forced http</text>
+  <rect x="666" y="206" width="180" height="84" rx="14" fill="#111827" stroke="#a78bfa" stroke-width="2" filter="url(#soft)"/>
+  <text x="756" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#e5e5e5">CuaHttpBackend</text>
+  <text x="756" y="262" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#9ca3af">HERMES_* = http</text>
+
+  <path d="M756 290 V356 H540" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M450 316 L540 356 L450 396 L360 356 Z" fill="#111827" stroke="#fb923c" stroke-width="2" filter="url(#soft)"/>
+  <text x="450" y="353" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#e5e5e5">Container</text>
+  <text x="450" y="374" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#e5e5e5">reachable?</text>
+
+  <path d="M450 396 V444" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="474" y="424" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">yes</text>
+  <rect x="340" y="444" width="220" height="48" rx="24" fill="#0f2f1a" stroke="#22c55e" stroke-width="2"/>
+  <text x="450" y="474" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#d1fae5">computer_use available</text>
+
+  <path d="M540 356 H710 V434" stroke="#fb923c" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+  <text x="626" y="342" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">no</text>
+  <rect x="602" y="434" width="216" height="48" rx="24" fill="#2a1408" stroke="#fb923c" stroke-width="2"/>
+  <text x="710" y="464" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#fed7aa">tool unavailable</text>
+
+  <path d="M138 206 V134 H358" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+  <text x="193" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">works → done</text>
+</svg>

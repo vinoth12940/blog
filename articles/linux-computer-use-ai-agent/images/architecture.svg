@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
+  <title id="title">Hermes computer use on headless Linux architecture</title>
+  <desc id="desc">Hermes Gateway sends computer use calls to http_backend.py, which talks to the CUA XFCE container REST API. The container exposes an XFCE desktop and noVNC for debugging.</desc>
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+  <rect width="900" height="480" fill="#0a0a0a"/>
+  <text x="450" y="46" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#e5e5e5">Headless Linux Computer Use Bridge</text>
+  <text x="450" y="74" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" fill="#9ca3af">Hermes gets desktop eyes without a physical display</text>
+
+  <rect x="42" y="144" width="174" height="118" rx="16" fill="#111827" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="76" cy="178" r="10" fill="#3b82f6" filter="url(#glow)"/>
+  <text x="129" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e5e5e5">Hermes Gateway</text>
+  <text x="129" y="207" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#9ca3af">agent sessions</text>
+  <text x="129" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#9ca3af">computer_use calls</text>
+
+  <rect x="272" y="144" width="190" height="118" rx="16" fill="#111827" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="307" cy="178" r="10" fill="#a78bfa" filter="url(#glow)"/>
+  <text x="367" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e5e5e5">http_backend.py</text>
+  <text x="367" y="207" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#9ca3af">CuaHttpBackend</text>
+  <text x="367" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#9ca3af">SSE JSON parser</text>
+
+  <rect x="520" y="144" width="160" height="118" rx="16" fill="#111827" stroke="#fb923c" stroke-width="2"/>
+  <circle cx="552" cy="178" r="10" fill="#fb923c" filter="url(#glow)"/>
+  <text x="600" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e5e5e5">REST API</text>
+  <text x="600" y="207" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#9ca3af">127.0.0.1:8000</text>
+  <text x="600" y="226" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#9ca3af">/status + /cmd</text>
+
+  <rect x="728" y="112" width="132" height="182" rx="18" fill="#111827" stroke="#22c55e" stroke-width="2"/>
+  <circle cx="760" cy="148" r="10" fill="#22c55e" filter="url(#glow)"/>
+  <text x="794" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#e5e5e5">Docker</text>
+  <text x="794" y="177" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">CUA XFCE</text>
+  <rect x="753" y="198" width="82" height="48" rx="8" fill="#0f1729" stroke="#1f2937"/>
+  <text x="794" y="226" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#e5e5e5">Desktop</text>
+  <text x="794" y="268" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#9ca3af">1280×720</text>
+
+  <path d="M216 203 H272" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M462 203 H520" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M680 203 H728" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrow)" fill="none"/>
+
+  <rect x="560" y="344" width="214" height="78" rx="14" fill="#111827" stroke="#1f2937" stroke-width="2"/>
+  <text x="667" y="374" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#e5e5e5">noVNC Debug View</text>
+  <text x="667" y="399" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#9ca3af">127.0.0.1:6080</text>
+  <path d="M794 294 C794 332 742 336 704 344" stroke="#a78bfa" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)" fill="none"/>
+
+  <rect x="98" y="344" width="340" height="78" rx="14" fill="#0f1729" stroke="#1f2937"/>
+  <text x="268" y="374" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#e5e5e5">Actions over HTTP</text>
+  <text x="268" y="399" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#9ca3af">screenshot · click · type · scroll · drag · key</text>
+</svg>

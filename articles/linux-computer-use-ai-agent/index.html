@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Gave My AI Agent Eyes on a Headless Linux Server</title>
+    <meta name="description" content="How I brought Hermes Agent's macOS-only computer_use tool to my headless Linux home server with a CUA XFCE Docker container and a small HTTP backend.">
+    <meta property="og:title" content="I Gave My AI Agent Eyes on a Headless Linux Server">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-05-12">
+    <meta property="og:description" content="A practical bridge that makes Hermes Agent computer_use work on headless Linux through a Dockerized XFCE desktop and REST API.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/linux-computer-use-ai-agent/images/architecture.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.75}article{max-width:780px;margin:0 auto;padding:2rem 1.5rem}h1{font-size:2.25rem;font-weight:700;line-height:1.2;color:#fff;margin-bottom:1rem}.meta{color:#888;font-size:.9rem;margin-bottom:2rem}h2{font-size:1.5rem;font-weight:600;color:#fff;margin-top:2.5rem;margin-bottom:1rem}h3{font-size:1.15rem;font-weight:600;color:#d4d4d4;margin-top:1.75rem;margin-bottom:.75rem}p{margin-bottom:1.25rem;color:#c9c9c9}a{color:#60a5fa;text-decoration:none}a:hover{text-decoration:underline}code{font-family:'JetBrains Mono',monospace;background:#1a1a2e;padding:.15rem .4rem;border-radius:4px;font-size:.85em;color:#f472b6}pre{background:#111827;border:1px solid #1f2937;border-radius:8px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0}pre code{background:none;padding:0;color:#e5e7eb;font-size:.85rem;line-height:1.6}blockquote{border-left:3px solid #3b82f6;padding:1rem 1.25rem;margin:1.5rem 0;background:#0f1729;border-radius:0 8px 8px 0}blockquote p{color:#93c5fd;margin-bottom:0}ul,ol{margin:1rem 0 1.5rem 1.5rem;color:#c9c9c9}li{margin-bottom:.5rem}li strong{color:#e5e5e5}hr{border:none;border-top:1px solid #1f2937;margin:2.5rem 0}.img-container{margin:2rem 0}.img-container img{width:100%;border-radius:12px;border:1px solid #1f2937;background:#0a0a0a}.caption{text-align:center;color:#6b7280;font-size:.85rem;margin-top:.5rem}.warning{border-left-color:#f59e0b}.warning p{color:#fcd34d}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1.5rem 0}.stat-card{background:#111827;border:1px solid #1f2937;border-radius:8px;padding:1.25rem}.stat-card .number{font-size:1.75rem;font-weight:700;color:#60a5fa}.stat-card .label{font-size:.85rem;color:#9ca3af}@media(max-width:640px){.stat-grid{grid-template-columns:1fr}h1{font-size:1.9rem}article{padding:1.5rem 1rem}}
+    </style>
+</head>
+<body>
+<article>
+    <h1>I Gave My AI Agent Eyes on a Headless Linux Server</h1>
+    <div class="meta">May 12, 2026 &middot; Vinoth &middot; 8 min read &middot; Hermes Agent, Linux, Computer Use</div>
+
+    <p>Running an AI agent on a headless server is great until the agent needs to <strong>see</strong> something.</p>
+
+    <p>My Hermes Agent lives 24/7 on a Minisforum UM760 Slim with an AMD Ryzen 5 7640HS, 16GB RAM, and Linux Mint 22.3. It is my always-on home server. It can run commands, edit files, browse the web through tools, and answer from Telegram. But when a task needed a real desktop, the story ended quickly: no monitor, no GUI, no display.</p>
+
+    <p>Hermes already has a built-in <code>computer_use</code> tool. The problem was that it only worked on macOS because the existing backend uses <code>cua-driver</code>, which relies on macOS-only SkyLight private APIs. On Linux, the tool was simply unavailable.</p>
+
+    <blockquote>
+        <p>I did not want a theoretical demo. I wanted every Hermes session on my Linux server to have a real 1280x720 desktop it could screenshot, click, type into, and debug visually when needed.</p>
+    </blockquote>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/linux-computer-use-ai-agent/images/architecture.png" alt="Architecture diagram showing Hermes Gateway connected to http_backend.py, REST API, Docker XFCE desktop, and noVNC">
+        <p class="caption">The bridge: Hermes talks HTTP, the container provides a real XFCE desktop.</p>
+    </div>
+
+    <hr>
+
+    <h2>The Dead End</h2>
+
+    <p>The original Hermes path is clean on macOS: call the <code>computer_use</code> tool, load the <code>CuaDriverBackend</code>, and let <code>cua-driver</code> control the desktop.</p>
+
+    <p>That path does not exist on my server. Linux Mint on a headless box has no native SkyLight API, no attached display, and no GUI session waiting for an agent. The useful part of Hermes was already running perfectly, but the one feature that needed pixels was locked to another operating system.</p>
+
+    <p>The constraints were simple: keep macOS unchanged, keep Linux local to <code>127.0.0.1</code>, use a real desktop, and make it survive reboots.</p>
+
+    <hr>
+
+    <h2>The Idea: A Desktop in Docker</h2>
+
+    <p>The solution was <a href="https://github.com/trycua/cua">trycua/cua</a>, specifically the <a href="https://cua.ai/docs/cua/reference/desktop-sandbox/linux-container/xfce">CUA XFCE Linux container</a>. It packages an XFCE desktop with a REST API for computer-use actions. It also exposes noVNC on port <code>6080</code>, which is useful when I want to see what the agent is seeing.</p>
+
+    <p>The container I used is <code>trycua/cua-xfce:latest</code>. The image is 5.66GB, the REST API listens on <code>http://127.0.0.1:8000</code>, and the desktop resolution is fixed at <code>1280x720</code>.</p>
+
+    <pre><code>docker run -d --name cua-desktop --restart unless-stopped \
+  -p 127.0.0.1:8000:8000 -p 127.0.0.1:6080:6080 \
+  -e RESOLUTION=1280x720 trycua/cua-xfce:latest</code></pre>
+
+    <p>That command gives Hermes a full XFCE desktop, REST endpoints for actions, and a noVNC debug window on <code>127.0.0.1:6080</code>.</p>
+
+    <hr>
+
+    <h2>The Implementation</h2>
+
+    <p>I added a new file: <code>tools/computer_use/http_backend.py</code>. It is 218 lines, 8.5KB, and defines <code>CuaHttpBackend</code>, a Linux-friendly backend that inherits from Hermes' existing <code>ComputerUseBackend</code> interface.</p>
+
+    <p>The backend uses a reused <code>requests.Session</code>, a 30-second timeout per API call, and the container's <code>/cmd</code> endpoint. The CUA server returns SSE-style responses like <code>data: {...}</code>, so the backend also strips that wrapper before parsing JSON.</p>
+
+    <h3>The backend shape</h3>
+
+    <pre><code>class CuaHttpBackend(ComputerUseBackend):
+    """Drives a CUA XFCE container via its REST /cmd endpoint."""
+
+    def __init__(self, url: str = _DEFAULT_URL) -&gt; None:
+        self._url = url.rstrip("/")
+        self._session = requests.Session()
+
+    def is_available(self) -&gt; bool:
+        try:
+            r = self._session.get(f"{self._url}/status", timeout=5)
+            return r.status_code == 200 and r.json().get("status") == "ok"
+        except Exception:
+            return False</code></pre>
+
+    <p>The methods mirror the normal computer-use contract: <code>start()</code>, <code>stop()</code>, <code>is_available()</code>, <code>capture()</code>, <code>click()</code>, <code>type_text()</code>, <code>key()</code>, <code>drag()</code>, <code>scroll()</code>, <code>list_apps()</code>, and <code>focus_app()</code>.</p>
+
+    <h3>The SSE parser</h3>
+
+    <pre><code>def _cmd(self, command: str, **params) -&gt; Dict[str, Any]:
+    """Send a command to /cmd and parse the SSE response."""
+    payload = {"command": command}
+    if params:
+        payload["params"] = params
+    r = self._session.post(
+        f"{self._url}/cmd",
+        json=payload,
+        timeout=_TIMEOUT,
+    )
+    r.raise_for_status()
+    text = r.text.strip()
+    # Handle SSE "data: {...}" wrapper
+    if text.startswith("data: "):
+        text = text[len("data: "):]
+    # Sometimes multiple lines
+    for line in text.split("\n"):
+        line = line.strip()
+        if line.startswith("data: "):
+            line = line[len("data: "):]
+        if line.startswith("{"):
+            return json.loads(line)
+    raise RuntimeError(f"Could not parse response: {text[:200]}")</code></pre>
+
+    <h3>The fallback in Hermes</h3>
+
+    <p>The second change was in <code>tools/computer_use/tool.py</code>. The key is that macOS still gets first chance. If <code>cua-driver</code> imports and starts, nothing changes. If it fails, Hermes tries the HTTP backend. I can also force the HTTP backend with <code>HERMES_COMPUTER_USE_BACKEND=http</code>.</p>
+
+    <pre><code>def _get_backend() -&gt; ComputerUseBackend:
+    global _backend
+    with _backend_lock:
+        if _backend is None:
+            backend_name = os.environ.get("HERMES_COMPUTER_USE_BACKEND", "cua").lower()
+            if backend_name in {"cua", "cua-driver", ""}:
+                try:
+                    from tools.computer_use.cua_backend import CuaDriverBackend
+                    _backend = CuaDriverBackend()
+                except Exception:
+                    # cua-driver (macOS) not available — fall back to HTTP
+                    from tools.computer_use.http_backend import CuaHttpBackend
+                    _backend = CuaHttpBackend()
+            elif backend_name in {"http", "cua-http"}:
+                from tools.computer_use.http_backend import CuaHttpBackend
+                _backend = CuaHttpBackend()
+            elif backend_name == "noop":  # pragma: no cover
+                _backend = _NoopBackend()
+            else:
+                raise RuntimeError(f"Unknown HERMES_COMPUTER_USE_BACKEND={backend_name!r}")
+            _backend.start()
+        return _backend</code></pre>
+
+    <p>I also changed <code>check_computer_use_requirements()</code> so Linux returns <code>True</code> when the container API is reachable. That is what makes the <code>computer_use</code> tool show up in Hermes sessions instead of disappearing on Linux.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/linux-computer-use-ai-agent/images/fallback-flow.png" alt="Flowchart showing macOS cua-driver first, then HTTP backend fallback, then availability based on container health">
+        <p class="caption">The fallback is intentionally boring: native macOS first, HTTP container backend only when needed.</p>
+    </div>
+
+    <hr>
+
+    <h2>Wiring It Into Production</h2>
+
+    <p>A desktop container is only useful if it is actually running when the agent needs it. Docker's <code>--restart unless-stopped</code> handles host reboots, and I added a health check to my <code>maintenance.sh</code>, which runs every 5 minutes from crontab.</p>
+
+    <pre><code># Check CUA Desktop Container (Docker, port 8000)
+CUA_RUNNING=$(docker ps --filter name=cua-desktop --format '{{.Status}}' 2&gt;/dev/null)
+if [ -z "$CUA_RUNNING" ]; then
+    log "[WARN] cua-desktop container is NOT running. Starting..."
+    docker start cua-desktop &gt;/dev/null 2&gt;&amp;1 || \
+        docker run -d --name cua-desktop --restart unless-stopped \
+            -p 127.0.0.1:8000:8000 -p 127.0.0.1:6080:6080 \
+            -e RESOLUTION=1280x720 trycua/cua-xfce:latest &gt;/dev/null 2&gt;&amp;1
+    sleep 3
+fi
+
+CUA_HEALTH=$(curl -s --connect-timeout 3 http://127.0.0.1:8000/status 2&gt;/dev/null || echo "")
+if echo "$CUA_HEALTH" | grep -q '"ok"'; then
+    log "[OK] cua-desktop container is healthy"
+else
+    log "[WARN] cua-desktop API not responding — restarting"
+    docker restart cua-desktop &gt;/dev/null 2&gt;&amp;1
+fi</code></pre>
+
+    <p>The important part is the two-layer recovery:</p>
+    <ul>
+        <li><strong>Container down:</strong> start the existing container, or create it if it does not exist.</li>
+        <li><strong>Container running but API unhealthy:</strong> restart the container and check again.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Verified Results</h2>
+
+    <p>After wiring it up, I tested the real path end to end. The results were concrete:</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">1280×720</div>
+            <div class="label">Screenshot resolution</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">111KB</div>
+            <div class="label">Captured PNG size</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">ok</div>
+            <div class="label">Container API status</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">True</div>
+            <div class="label">Hermes requirements check</div>
+        </div>
+    </div>
+
+    <pre><code>{"status":"ok","os_type":"linux"}</code></pre>
+
+    <p><code>check_computer_use_requirements()</code> now returns <code>True</code> on my Linux server when the container is reachable, and <code>computer_use</code> is available in all Hermes sessions. That was the real success condition.</p>
+
+    <hr>
+
+    <h2>What I Will Actually Use It For</h2>
+
+    <p>This is not about letting an agent randomly click around my server. The value is in the stubborn tasks that do not fit cleanly into shell commands or headless browser automation.</p>
+
+    <ul>
+        <li><strong>Medium publishing:</strong> Medium import and editor flows are visual, stateful, and often hostile to pure headless automation.</li>
+        <li><strong>Visual QA:</strong> when I generate articles, dashboards, or diagrams, the agent can inspect the rendered page instead of only reading the source.</li>
+        <li><strong>Web automation edge cases:</strong> some workflows need a real desktop session, not just HTTP requests or a browser DOM.</li>
+    </ul>
+
+    <p>For normal automation, I still prefer APIs, scripts, and deterministic tools. The desktop is the fallback for the places where the web is messy.</p>
+
+    <hr>
+
+    <h2>Lessons Learned</h2>
+
+    <p>The surprising part was not the Docker container. That worked cleanly. The tricky part was making the integration feel native to Hermes without breaking the macOS path.</p>
+
+    <ul>
+        <li><strong>Backward compatibility matters:</strong> the safest patch was a fallback, not a replacement.</li>
+        <li><strong>Availability checks are product behavior:</strong> if <code>check_computer_use_requirements()</code> says <code>False</code>, the tool effectively does not exist for the agent.</li>
+        <li><strong>Health checks are not optional:</strong> an always-on agent needs boring maintenance more than clever demos.</li>
+        <li><strong>SSE wrappers are easy to miss:</strong> the API response looked like JSON, but it arrived wrapped as <code>data: {...}</code>.</li>
+    </ul>
+
+    <blockquote class="warning">
+        <p>This is a bridge, not a claim that Hermes has native Linux computer use. The bridge depends on the CUA XFCE container being installed, running, and reachable locally.</p>
+    </blockquote>
+
+    <hr>
+
+    <h2>What Is Next</h2>
+
+    <p>I opened <a href="https://github.com/NousResearch/hermes-agent/issues/15876">GitHub issue #15876</a> on <a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a> to propose native Linux computer use support. The issue was created on April 26, 2026 and is still open.</p>
+
+    <p>Once Hermes adds native Linux support, I will revert the custom code. Until then, this container bridge gives my headless home server something it never had before: eyes.</p>
+
+    <p>And for my day-to-day use, that is enough. Hermes can keep running on Linux Mint, stay online 24/7, and now, when the job demands a desktop, it can finally look.</p>
+</article>
+</body>
+</html>
