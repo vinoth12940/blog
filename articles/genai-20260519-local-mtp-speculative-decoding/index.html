@@ -58,6 +58,11 @@
 
     <p>After a weekend of methodical optimization — trying llama.cpp with MTP, investigating TurboQuant, and finally discovering MTPLX — I went from that 7 tok/s baseline to <strong>18.3 tok/s</strong> on the same hardware. That's a <strong>2.6x improvement</strong>, and it's mathematically correct sampling, not a greedy approximation.</p>
 
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260519-local-mtp-speculative-decoding/images/01_hero.png" alt="MTP speculative decoding pipeline on Apple Silicon: draft, verify, accept phases with MTPLX">
+        <p class="caption">MTP speculative decoding pipeline on Apple Silicon: from 7 tok/s baseline to 18.3 tok/s with MLX native MTP depth 3</p>
+    </div>
+
     <p>Here's the full journey, the benchmarks, and how I wired it into my AI agent as a local inference backend.</p>
 
     <div class="stat-grid">
@@ -128,6 +133,11 @@
     </table>
 
     <p>That's already a 50% improvement over baseline. But I was leaving performance on the table because llama.cpp's MTP implementation doesn't fully exploit Apple Silicon's GPU — it's a general-purpose C++ runtime, not optimized for Metal.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260519-local-mtp-speculative-decoding/images/02_benchmarks.png" alt="Performance comparison chart: baseline 7 tok/s, llama.cpp 10.5, MTPLX 18.3, LAN 14.3">
+        <p class="caption">Decode speed across four configurations on the same M4 Pro hardware. MTPLX achieves 2.6x baseline throughput.</p>
+    </div>
 
     <h2>Phase 2: The Dead Ends</h2>
 
@@ -236,6 +246,11 @@ curl http://&lt;macbook-ip&gt;:8000/v1/chat/completions \
        "messages":[{"role":"user","content":"hello"}]}'</code></pre>
 
     <p>Got a response at 14.3 tok/s over the LAN. The slight drop from 18.3 (local) to 14.3 (over WiFi) is expected — network latency adds a small overhead per streaming chunk.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260519-local-mtp-speculative-decoding/images/03_architecture.png" alt="Architecture diagram: MacBook MTPLX server connected to Linux Hermes agent via LAN">
+        <p class="caption">Architecture: MacBook Pro M4 running MTPLX serves Qwen 27B to a Linux home server running Hermes Agent over WiFi LAN</p>
+    </div>
 
     <h2>Lessons Learned</h2>
 
