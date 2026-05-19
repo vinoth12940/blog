@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Got 18 tok/s From a 27B Model on a MacBook: MLX + Native MTP Speculative Decoding on Apple Silicon</title>
+    <meta property="og:title" content="I Got 18 tok/s From a 27B Model on a MacBook: MLX + Native MTP Speculative Decoding on Apple Silicon">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-05-19T12:00:00Z">
+    <meta name="description" content="How I set up Qwen 3.6 27B with native MTP speculative decoding on Apple Silicon using MLX, going from 10.5 tok/s on llama.cpp to 18.3 tok/s with MTPLX — and wired it into my AI agent as a local inference backend.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .comparison-table th { text-align: left; padding: 0.75rem 1rem; background: #111827; color: #e5e5e5; font-size: 0.9rem; border-bottom: 2px solid #1f2937; }
+        .comparison-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #1f2937; color: #c9c9c9; font-size: 0.9rem; }
+        .comparison-table tr:hover { background: #0f1729; }
+        .highlight { color: #60a5fa; font-weight: 600; }
+    </style>
+</head>
+<body>
+<article>
+
+    <h1>I Got 18 tok/s From a 27B Model on a MacBook: MLX + Native MTP Speculative Decoding on Apple Silicon</h1>
+    <div class="meta">May 19, 2026 · 12 min read · Local AI / Apple Silicon / Inference Optimization</div>
+
+    <p>Running a 27-billion parameter model locally at usable speeds has been the dream since Apple Silicon made unified memory practical. The hardware is there — 48 GB of unified memory on an M4 Pro can hold a quantized 27B model with room to spare. The bottleneck has always been <strong>memory bandwidth</strong>: ~120 GB/s on the M4 Pro versus ~936 GB/s on an RTX 3090.</p>
+
+    <p>That means a dense 27B model at Q4 quantization (~17 GB per forward pass) tops out around 7 tokens per second baseline. Useful for batch tasks, painful for interactive chat.</p>
+
+    <p>After a weekend of methodical optimization — trying llama.cpp with MTP, investigating TurboQuant, and finally discovering MTPLX — I went from that 7 tok/s baseline to <strong>18.3 tok/s</strong> on the same hardware. That's a <strong>2.6x improvement</strong>, and it's mathematically correct sampling, not a greedy approximation.</p>
+
+    <p>Here's the full journey, the benchmarks, and how I wired it into my AI agent as a local inference backend.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">18.3</div>
+            <div class="label">tok/s decode speed (MTPLX MTP D3)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">2.6x</div>
+            <div class="label">speedup over vanilla inference</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">~16 GB</div>
+            <div class="label">model footprint in memory</div>
+        </div>
+    </div>
+
+    <h2>The Problem: Memory Bandwidth Is Your Ceiling</h2>
+
+    <p>On Apple Silicon, inference speed for dense models is almost entirely determined by memory bandwidth. The GPU compute is fast enough — it's shuffling 17 GB of weights through the memory controller every single token that creates the bottleneck.</p>
+
+    <p>Simple math: 120 GB/s ÷ 17 GB/token ≈ <strong>7 tokens/second theoretical maximum</strong> for a 27B Q4 model on M4 Pro. No amount of software optimization changes that fundamental limit. You need to either:</p>
+
+    <ul>
+        <li><strong>Reduce the data moved per token</strong> (smaller model, MoE, or aggressive quantization)</li>
+        <li><strong>Get more tokens per forward pass</strong> (speculative decoding, multi-token prediction)</li>
+        <li><strong>Both</strong></li>
+    </ul>
+
+    <p>We went with option two: speculative decoding using the model's own built-in MTP heads.</p>
+
+    <h2>What Is Multi-Token Prediction (MTP)?</h2>
+
+    <p>Traditional autoregressive models predict one token at a time. MTP models — like Qwen 3.6 — have additional prediction heads that can <strong>draft multiple future tokens in a single forward pass</strong>.</p>
+
+    <p>The trick is speculative decoding: a "draft" phase proposes K tokens using the cheap MTP heads, then a "verify" phase runs the full model once on all K tokens in parallel. If the draft was correct, you just got K+1 tokens for the price of one verification pass.</p>
+
+    <blockquote>
+        <p>The key insight: you're not reducing the bandwidth per forward pass — you're getting more accepted tokens per forward pass. If MTP depth-3 accepts an average of 2 out of 3 drafted tokens, you've roughly tripled your effective throughput.</p>
+    </blockquote>
+
+    <p>Qwen 3.6 27B ships with native MTP heads built into the model architecture. No external drafter model needed. No extra RAM. The heads are already there — you just need a runtime that knows how to use them.</p>
+
+    <h2>Phase 1: llama.cpp with MTP — 10.5 tok/s</h2>
+
+    <p>My first attempt used llama.cpp compiled with MTP support (the <code>am17an/llama.cpp</code> fork with <code>--spec-type draft-mtp</code>). I downloaded the Unsloth Q4_K_XL quantized GGUF model and launched the server:</p>
+
+    <pre><code>llama-server \
+  -m Qwen3.6-27B-UD-Q4_K_XL.gguf \
+  --port 8001 \
+  --spec-type draft-mtp \
+  --spec-draft-n-max 3 \
+  --flash-attn \
+  --cache-type-k q8_0 \
+  --cache-type-v q8_0 \
+  --mlock \
+  --reasoning off \
+  -c 4096 -b 512</code></pre>
+
+    <p>Results:</p>
+
+    <table class="comparison-table">
+        <tr><th>Configuration</th><th>Decode Speed</th><th>MTP Acceptance</th></tr>
+        <tr><td>Baseline (no MTP)</td><td>~7 tok/s</td><td>N/A</td></tr>
+        <tr><td>MTP + thinking ON</td><td>8.9 tok/s</td><td>~84%</td></tr>
+        <tr><td>MTP + thinking OFF</td><td>9.5 tok/s</td><td>~86%</td></tr>
+        <tr><td>MTP + optimized flags</td><td class="highlight">10.5 tok/s</td><td>~86%</td></tr>
+    </table>
+
+    <p>That's already a 50% improvement over baseline. But I was leaving performance on the table because llama.cpp's MTP implementation doesn't fully exploit Apple Silicon's GPU — it's a general-purpose C++ runtime, not optimized for Metal.</p>
+
+    <h2>Phase 2: The Dead Ends</h2>
+
+    <h3>TurboQuant — Not Ready for Mac</h3>
+
+    <p>TurboQuant is a KV cache compression technique (2-4 bit) that could reduce memory pressure on long contexts. I investigated it thoroughly:</p>
+
+    <ul>
+        <li>The mainline llama.cpp PR (#21089) is <strong>CPU-only, not yet merged</strong></li>
+        <li>Existing forks are CUDA-focused</li>
+        <li>It only compresses KV cache — doesn't help with the <strong>weight bandwidth bottleneck</strong> that limits decode speed</li>
+        <li>No Metal/Apple Silicon backend exists</li>
+    </ul>
+
+    <p>Verdict: not viable for Apple Silicon today. Worth watching for future long-context scenarios where KV cache size dominates.</p>
+
+    <h3>MoE Models — Promising but Different Path</h3>
+
+    <p>A Mixture-of-Experts model like Qwen 3.6 35B-A3B only activates ~3B parameters per token (versus 27B dense), which could theoretically hit <strong>25-40+ tok/s</strong> on the same hardware. But that requires a different model download and wasn't what I wanted to optimize for this exercise.</p>
+
+    <h2>Phase 3: MTPLX — 18.3 tok/s</h2>
+
+    <p>This is where things got interesting. I discovered <a href="https://github.com/youssofal/MTPLX">MTPLX</a> — a purpose-built MLX runtime for native MTP speculative decoding on Apple Silicon.</p>
+
+    <p>What makes MTPLX different from everything else:</p>
+
+    <ul>
+        <li><strong>MLX-native:</strong> Built on Apple's own MLX framework, with custom Metal kernels registered as primitives. No generic C++ abstraction layer.</li>
+        <li><strong>Math-correct sampling at temperature:</strong> Uses probability-ratio acceptance (Leviathan-Chen rejection sampling) with residual correction. Most fast-decode tools use greedy argmax, which silently breaks the target distribution at T > 0. MTPLX's approach is provably exact.</li>
+        <li><strong>Zero extra RAM:</strong> Uses the model's own built-in MTP heads as the drafter. No second model loaded.</li>
+        <li><strong>Real serving surface:</strong> Ships with OpenAI + Anthropic compatible APIs out of the box.</li>
+        <li><strong>Custom Metal kernels:</strong> Includes a small-M quantized matrix-vector kernel (<code>verify_qmv</code>) optimized for M=3..6 verify shapes, and a GDN linear-attention kernel with innovation tape replay for deterministic rollback.</li>
+    </ul>
+
+    <h3>Installation and Setup</h3>
+
+    <p>One command via Homebrew:</p>
+
+    <pre><code>brew install youssofal/mtplx/mtplx
+mtplx pull Youssofal/Qwen3.6-27B-MTPLX-Optimized-Speed
+mtplx serve --profile sustained --reasoning off --mtp --depth 3</code></pre>
+
+    <p>That's it. The model downloads, the server starts, and you get an OpenAI-compatible API at <code>http://127.0.0.1:8000/v1</code> plus a browser chat UI.</p>
+
+    <h3>Results</h3>
+
+    <table class="comparison-table">
+        <tr><th>Metric</th><th>llama.cpp MTP</th><th>MTPLX MTP D3</th></tr>
+        <tr><td>Decode speed</td><td>10.5 tok/s</td><td class="highlight">18.3 tok/s</td></tr>
+        <tr><td>End-to-end (incl. prefill)</td><td>~10 tok/s</td><td>15.4 tok/s</td></tr>
+        <tr><td>First-32 sliding tok/s</td><td>~10.5</td><td class="highlight">20.1 tok/s</td></tr>
+        <tr><td>TTFT (27-token prompt)</td><td>~0.8s</td><td>0.66s</td></tr>
+        <tr><td>MTP depth</td><td>n_max=3</td><td>D3 (verified)</td></tr>
+        <tr><td>Memory active / peak</td><td>~18 GB</td><td>16.2 / 18.6 GB</td></tr>
+        <tr><td>Model format</td><td>GGUF Q4_K_XL</td><td>MLX optimized safetensors</td></tr>
+        <tr><td>API format</td><td>llama-server</td><td>OpenAI + Anthropic compatible</td></tr>
+    </table>
+
+    <p>The <strong>2.6x speedup over baseline</strong> (7 tok/s → 18.3 tok/s) comes from MTPLX's verify-only cost being dominated by quantized matrix-vector ops at small batch sizes, where the custom Metal kernel shines. The MTP acceptance at depth-3 shows per-position rates of ~73% / ~48% / ~32%, producing 39 accepted drafts, 17 corrections, and 7 bonus tokens over 25 verify calls.</p>
+
+    <h2>Wiring It Into an AI Agent</h2>
+
+    <p>Speed is nice, but the real win is making it available to an agent. My setup runs <a href="https://github.com/nousresearch/hermes">Hermes</a> on a home server (Linux), and I wanted it to use the MacBook as a local inference backend.</p>
+
+    <h3>Step 1: Expose MTPLX on the LAN</h3>
+
+    <pre><code>mtplx serve \
+  --model Youssofal/Qwen3.6-27B-MTPLX-Optimized-Speed \
+  --profile sustained \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --api-key &lt;your-key-here&gt; \
+  --reasoning off \
+  --mtp --depth 3</code></pre>
+
+    <blockquote class="warning">
+        <p><strong>Security note:</strong> Always set an API key when binding to <code>0.0.0.0</code>. MTPLX enforces this — it refuses to start on non-localhost without authentication. Use a strong key and keep both machines on the same trusted network.</p>
+    </blockquote>
+
+    <h3>Step 2: Add Provider to Hermes Config</h3>
+
+    <p>In <code>~/.hermes/config.yaml</code>, I added a new provider block pointing to the MacBook's IP:</p>
+
+    <pre><code>providers:
+  # ... existing providers ...
+
+  mtplx:
+    name: Qwen3.6 27B MTPLX MacBook (18 tok/s MTP D3)
+    base_url: http://&lt;macbook-ip&gt;:8000/v1
+    api_key: &lt;your-key-here&gt;
+    default_model: mtxpl-qwen36-27b-optimized-speed
+    transport: chat_completions
+    models:
+      mtxpl-qwen36-27b-optimized-speed: mtxpl-qwen36-27b-optimized-speed</code></pre>
+
+    <h3>Step 3: Restart and Verify</h3>
+
+    <pre><code># Restart the gateway to pick up new config
+sudo systemctl restart hermes-gateway
+
+# Test from the Linux machine
+curl http://&lt;macbook-ip&gt;:8000/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer &lt;your-key&gt;' \
+  -d '{"model":"mtplx-qwen36-27b-optimized-speed",
+       "messages":[{"role":"user","content":"hello"}]}'</code></pre>
+
+    <p>Got a response at 14.3 tok/s over the LAN. The slight drop from 18.3 (local) to 14.3 (over WiFi) is expected — network latency adds a small overhead per streaming chunk.</p>
+
+    <h2>Lessons Learned</h2>
+
+    <ol>
+        <li><strong>Framework matters more than you'd think.</strong> The same model on the same hardware went from 10.5 tok/s (llama.cpp) to 18.3 tok/s (MLX) — a 74% improvement from software alone. Apple Silicon-specific optimizations in MLX make a real difference.</li>
+        <li><strong>MTP acceptance rates degrade with depth, but that's fine.</strong> At D3, acceptance drops to ~32% at the third position. But the verify cost is dominated by the small-M qmv kernel, so even partial acceptance at depth 3 is faster than no MTP at all.</li>
+        <li><strong>Math-correct sampling is non-negotiable for agent work.</strong> If you're using the model as a coding or task agent, greedy argmax approximation at temperature > 0 produces silently wrong outputs. MTPLX's probability-ratio acceptance ensures the output distribution matches the target model exactly.</li>
+        <li><strong>Thinking/reasoning mode is a speed trap.</strong> Qwen's reasoning mode consumes tokens on internal chain-of-thought that you don't see. Turning it off (<code>--reasoning off</code>) gave an immediate ~7% speed boost with no quality loss for most tasks.</li>
+        <li><strong>Dense 27B is bandwidth-limited. MoE is the next frontier.</strong> Even at 18.3 tok/s, a dense 27B model is fighting the memory bandwidth ceiling. A MoE model like Qwen 3.6 35B-A3B (only 3B active params) could theoretically hit 25-40+ tok/s on the same hardware.</li>
+    </ol>
+
+    <h2>What's Next</h2>
+
+    <ul>
+        <li><strong>MoE model testing:</strong> Download and benchmark Qwen 3.6 35B-A3B with MTPLX or llama.cpp for the real speed leap.</li>
+        <li><strong>Fan control (ThermalForge):</strong> The tune benchmark requires ThermalForge for sustained max-fan mode. Setting up passwordless sudo for fan control could squeeze out another 10-15% under sustained load.</li>
+        <li><strong>TurboQuant watch:</strong> Once the CPU PR lands in mainline llama.cpp and gets Metal support, KV cache compression could help with long-context scenarios.</li>
+        <li><strong>Smart routing:</strong> Configure Hermes to route simple tasks to the local MTPLX backend and complex reasoning to cloud models, optimizing for both speed and cost.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Summary</h2>
+
+    <p>Getting 18.3 tok/s from a 27B model on a MacBook Pro isn't magic — it's the combination of Apple's MLX framework, custom Metal kernels optimized for speculative verify shapes, native MTP heads built into Qwen 3.6, and mathematically correct rejection sampling that preserves the target distribution.</p>
+
+    <p>The setup is a one-liner install, a model download, and a single command to start serving. Wiring it into an agent via OpenAI-compatible API took five minutes. The result is a local inference backend that's fast enough for interactive use, accurate enough for agent work, and private enough to never leave your network.</p>
+
+    <p>If you're running AI agents on Apple Silicon and haven't tried MTPLX yet, you're leaving ~75% of your potential inference speed on the table.</p>
+
+    <hr>
+
+    <p><em>Tested on Apple M4 Pro (48 GB unified memory), macOS Tahoe 26.4, MTPLX v0.3.6, MLX 0.31.2, Qwen 3.6 27B MTPLX Optimized Speed model. All benchmarks measured with temperature 0.6, top_p 0.95, top_k 20, MTP depth 3, reasoning mode off. Your mileage will vary with hardware, model version, and network conditions.</em></p>
+
+</article>
+</body>
+</html>
