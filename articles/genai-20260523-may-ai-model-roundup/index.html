@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May 2026 Broke the Rules: 12M Tokens, 35-Hour Agents, and AI Infrastructure Under Attack</title>
+    <meta property="og:title" content="May 2026 Broke the Rules: 12M Tokens, 35-Hour Agents, and AI Infrastructure Under Attack">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-05-23">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20260523-may-ai-model-roundup/images/01_hero_overview.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>May 2026 Broke the Rules: 12M Tokens, 35-Hour Agents, and AI Infrastructure Under Attack</h1>
+    <div class="meta">May 23, 2026 · 12 min read · AI Models / Agents / Security</div>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260523-may-ai-model-roundup/images/01_hero_overview.png" alt="May 2026 AI overview: SubQ's 12M tokens, Qwen 3.7-Max agent capabilities, and AI security incidents">
+        <p class="caption">Three stories that redefined the AI landscape in a single month</p>
+    </div>
+
+    <p>Three things happened in May 2026 that, taken together, mark a turning point for AI. A startup from Miami proved you don't need quadratic attention to get frontier performance — and showed the math with a 12-million-token context window. Alibaba's Qwen team demonstrated an AI coding agent that ran for 35 hours straight on hardware it had never seen before. And the security community had a rough month, with an LLM inference flaw exploited in under 13 hours and 513,000 lines of Anthropic's source code leaking through npm source maps.</p>
+
+    <p>These aren't isolated events. They point to a shift: the AI conversation is moving from "which model is smartest" to questions about architecture fundamentals, agent reliability at scale, and who is securing the infrastructure everyone is building on.</p>
+
+    <hr>
+
+    <h2>Story 1: SubQ and the End of Quadratic Attention</h2>
+
+    <p>Since the 2017 "Attention Is All You Need" paper, every major LLM has shared the same bottleneck: dense attention scales quadratically. Double the context, quadruple the compute. This is why GPT-5.5 caps at 128K, Claude at 200K, and Gemini at 1M — and why most real-world deployments use RAG, chunking, and retrieval pipelines instead of feeding everything into the model at once.</p>
+
+    <p>On May 5, a Miami-based startup called <strong>Subquadratic</strong> released <strong>SubQ 1M-Preview</strong>, claiming to be the first fully subquadratic LLM. Their architecture — called <strong>SSA (Subquadratic Sparse Attention)</strong> — doesn't compare every token to every other token. Instead, it uses content-dependent routing to select only the tokens that matter for any given query, keeping the selection mechanism itself subquadratic.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260523-may-ai-model-roundup/images/02_ssa_vs_transformer.png" alt="Architecture comparison: Standard Transformer O(n²) dense attention vs SubQ's SSA O(n·k) sparse attention">
+        <p class="caption">Standard transformers compare all token pairs (O(n²)). SSA selects only relevant pairs (O(n·k)), keeping accuracy while cutting compute.</p>
+    </div>
+
+    <h3>The Numbers</h3>
+
+    <p>Subquadratic's benchmarks are narrow — only three tests, all focused on long-context retrieval and coding — but the results are worth examining:</p>
+
+    <ul>
+        <li><strong>12M token context window</strong> — 12x larger than the previous frontier. At 12M tokens, SubQ maintains 92.1% on needle-in-a-haystack retrieval. No other frontier model operates at this scale.</li>
+        <li><strong>RULER 128K: 95.6%</strong> — essentially tied with Claude Opus 4.6 (94.8%)</li>
+        <li><strong>SWE-Bench Verified: 81.8%</strong> — ahead of Opus 4.6 (80.8%) and DeepSeek V4 Pro (80.0%), though behind Opus 4.7 (87.6%)</li>
+        <li><strong>MRCR v2 (1M tokens): 65.9%</strong> — the production score. Their research result was 83%, a 17-point gap they haven't fully explained. Still beats Claude Opus 4.7 (32.2%) and Gemini 3.1 Pro (26.3%) by wide margins</li>
+        <li><strong>52x faster</strong> than FlashAttention at 1M tokens. ~1,000x reduction in attention compute at 12M tokens</li>
+    </ul>
+
+    <h3>The Cost Difference</h3>
+
+    <p>Here's what caught my attention. A RULER 128K run costs SubQ roughly <strong>$8</strong>. The same benchmark on Claude Opus 4.7 costs approximately <strong>$2,600</strong>. That's not a marginal improvement — it's a category shift. If these numbers hold under independent verification, it changes the economics of long-context AI from "luxury feature" to "default infrastructure."</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">$8</div>
+            <div class="label">SubQ RULER 128K run cost</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">$2,600</div>
+            <div class="label">Opus 4.7 RULER 128K run cost</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">12M</div>
+            <div class="label">token context window (12x frontier)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">52x</div>
+            <div class="label">faster than FlashAttention at 1M tokens</div>
+        </div>
+    </div>
+
+    <h3>The Caveats</h3>
+
+    <p>This is a $29M seed-stage startup, not Google or Anthropic. The CTO confirmed SubQ doesn't train from scratch — it builds on open-source base models (likely DeepSeek or Kimi families) with the SSA attention mechanism layered on top. The model card is listed as "coming soon." Each benchmark was run only once due to high inference cost. The 17-point gap between research and production MRCR v2 scores needs explanation.</p>
+
+    <p>There's also a cautionary precedent. <strong>Magic.dev</strong> announced a 100M-token context window in August 2024 with a claimed 1000x efficiency advantage, raising over $500M. As of early 2026, there is no public evidence of their model being used in production anywhere.</p>
+
+    <blockquote>
+        <p>"SubQ is either the biggest breakthrough since the Transformer... or it's AI Theranos." — Dan McAteer, AI researcher</p>
+    </blockquote>
+
+    <p>Subquadratic plans a <strong>50M token context</strong> by Q4 2026. If they deliver, and if the benchmarks hold up to independent scrutiny, the RAG ecosystem as we know it starts to look very different. Not gone — RAG still matters for permissions, auditability, and cross-session persistence — but no longer the default answer for "how do I give my model more context?"</p>
+
+    <hr>
+
+    <h2>Story 2: Qwen 3.7-Max — The Agent That Runs for 35 Hours</h2>
+
+    <p>On May 19, Alibaba's Qwen team released <strong>Qwen3.7-Max</strong>, positioning it not as a chatbot upgrade but as an "agent foundation model." The distinction matters. Where previous model releases competed on benchmarks like MMLU and GPQA, Qwen3.7-Max targets something different: <strong>sustained autonomous execution across diverse agent scaffolds</strong>.</p>
+
+    <p>The headline demonstration: Qwen3.7-Max optimized SGLang's <code>Extend Attention</code> operator — a production-grade variable-length multi-head attention kernel — running autonomously for <strong>35 consecutive hours</strong> on T-Head ZW-M890 PPUs. Hardware it had never seen during training.</p>
+
+    <h3>Why This Is Different</h3>
+
+    <p>Most agent benchmarks test short, single-session tasks: "fix this bug," "write this function," "refactor this file." Qwen3.7-Max targets multi-thousand-step workflows where the agent has to plan, execute, recover from errors, and maintain coherence over a work session that spans days, not minutes.</p>
+
+    <p>The technical approach is what they call <strong>cross-harness RL training</strong>. Instead of training the model to work well with one specific agent framework (Claude Code, OpenClaw, Qwen Code), they decompose training into three orthogonal components — Task, Harness, and Verifier — and recombine them during training. This forces the model to learn generalizable problem-solving strategies rather than framework-specific shortcuts.</p>
+
+    <h3>The Benchmarks</h3>
+
+    <p>Qwen3.7-Max doesn't win everything. But it consistently places at or near the top across a wider range of agent benchmarks than any competitor:</p>
+
+    <ul>
+        <li><strong>TerminalBench 2.0-Terminus: 69.7</strong> — #1 globally, ahead of DeepSeek V4-Pro Max (67.9)</li>
+        <li><strong>SWE-Pro: 60.6</strong> — #1, ahead of K2.6 Thinking (59.5)</li>
+        <li><strong>GPQA Diamond: 92.4%</strong> — beats Claude Opus 4.6 (91.3%)</li>
+        <li><strong>MCP-Mark: 60.8</strong> — #1, ahead of GLM-5.1 (57.5)</li>
+        <li><strong>MRCR-v2 128K: 90.4</strong> — ahead of Qwen 3.6-Plus (85.9)</li>
+        <li><strong>SWE-Bench Verified: 80.4</strong> — near Opus 4.6 Max (80.8), but clearly behind on this specific metric</li>
+    </ul>
+
+    <p>The pattern is clear: Qwen3.7-Max delivers consistent top-tier performance <strong>across different agent frameworks</strong>, rather than dominating any single benchmark. All evaluation environments were unseen during training — the model had no exposure to the test scaffolds.</p>
+
+    <h3>What It Means for Developers</h3>
+
+    <p>Qwen3.7-Max isn't open-weight yet (no API pricing announced as of writing). But the signal is important: the frontier is moving from "how smart is the model" to "how reliably can it execute complex tasks over hours or days." The cross-harness approach means you don't need to buy into a specific agent framework to get good performance — the model adapts to your tooling, not the other way around.</p>
+
+    <p>One detail that stood out: Qwen3.7-Max scored <strong>47.2 on NL2repo</strong> — the benchmark for generating entire repositories from natural language descriptions. It's not #1 (Opus 4.6 Max scored 47.6), but the fact that it's competitive on full-repo generation while also leading on kernel optimization and tool use suggests breadth that matters for real engineering work.</p>
+
+    <hr>
+
+    <h2>Story 3: AI Infrastructure Under Attack</h2>
+
+    <p>While the model releases grabbed headlines, the security side of May 2026 was a wake-up call. Three incidents stand out.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260523-may-ai-model-roundup/images/03_security_timeline.png" alt="Timeline of AI security incidents in March-May 2026: Claude Code leak, LMDeploy CVE, Verizon report">
+        <p class="caption">March–May 2026: Three incidents that reshaped AI security thinking</p>
+    </div>
+
+    <h3>CVE-2026-33626: Exploited in 12 Hours</h3>
+
+    <p>LMDeploy, an open-source LLM inference engine used in production by teams running their own models, disclosed an SSRF (Server-Side Request Forgery) vulnerability on April 20. The flaw was in how LMDeploy loaded images for vision-language models — an attacker could craft a request that made the inference server fetch arbitrary internal URLs.</p>
+
+    <p>The first exploit arrived <strong>12 hours and 31 minutes</strong> after disclosure.</p>
+
+    <p>This isn't a theoretical risk. The exploit allowed attackers to pivot from the AI inference endpoint into internal networks — accessing metadata services, internal APIs, and databases that were never meant to be exposed. Sysdig's analysis showed the attack chain was straightforward: send a prompt with a crafted image URL, let the model's image-loading mechanism do the rest.</p>
+
+    <blockquote class="warning">
+        <p>The window between vulnerability disclosure and exploitation of AI infrastructure has collapsed to hours, not days. Traditional patching cycles (weekly, monthly) are not fast enough.</p>
+    </blockquote>
+
+    <h3>Claude Code Source Leak: 513K Lines</h3>
+
+    <p>On March 31, Anthropic accidentally published the internal source code for <strong>Claude Code</strong> — their terminal-based coding agent — via npm source maps. The leak exposed 513,000 lines of source code detailing how Claude Code interacts with operating systems, manages file operations, and executes commands.</p>
+
+    <p>The cause was mundane: human error in the release packaging process. Nobody caught it before shipping. By the time it was discovered, the code was permanently mirrored across GitHub and various archives.</p>
+
+    <p>The security implication isn't about Anthropic's proprietary algorithms — it's about the <strong>blueprint for agentic logic</strong> being public. Anyone building offensive tools now has a reference implementation for how a major AI company structures its agent's OS interaction model. The r/sysadmin community reaction was blunt: "AI tooling in production environments needs the same security review as any other third-party code."</p>
+
+    <h3>Verizon DBIR 2026: AI Breaches Hit #1</h3>
+
+    <p>Verizon's 2026 Data Breach Investigations Report, released May 19, reviewed over 31,000 security incidents. The finding: <strong>AI-related data breaches surpassed stolen credentials</strong> as the top attack vector for the first time. Software flaw exploitation, accelerated by AI-assisted vulnerability discovery, became the dominant method.</p>
+
+    <p>Palo Alto Networks' May 2026 "Defender's Guide" update outlined four immediate steps for agentic defense. The FIRST vulnerability forecast for 2026 warned that the race between AI-accelerated exploit development and AI-accelerated defense will define the security landscape for the rest of the year.</p>
+
+    <hr>
+
+    <h2>The Pattern: Three Fronts, One Shift</h2>
+
+    <p>Look at these three stories together and a pattern emerges:</p>
+
+    <ul>
+        <li><strong>Architecture:</strong> SubQ challenges the assumption that quadratic attention is unavoidable. If SSA holds up, the context window constraint that has shaped every AI engineering decision since 2017 starts to dissolve.</li>
+        <li><strong>Agents:</strong> Qwen 3.7-Max treats agent capabilities as a first-class training objective, not a side effect of being a good chatbot. The cross-harness results suggest the model can adapt to any tooling ecosystem rather than locking you into one vendor's framework.</li>
+        <li><strong>Security:</strong> The LMDeploy incident, the Claude Code leak, and the Verizon report all point to the same conclusion — AI infrastructure is becoming the primary attack surface, and the tools and processes for securing it are lagging behind the pace of deployment.</li>
+    </ul>
+
+    <p>The conversation is no longer "which model scores highest on MMLU." It's "can I trust a model to run for 35 hours without breaking things?" and "is my inference endpoint a backdoor into my internal network?" and "do I actually need RAG if I can fit 12 million tokens into a single context window?"</p>
+
+    <hr>
+
+    <h2>What to Watch</h2>
+
+    <ul>
+        <li><strong>SubQ's independent verification:</strong> The benchmarks are self-reported with single runs. If independent labs (HuggingFace, LMSYS) confirm the numbers, it changes the architecture conversation. If they don't, it's Magic.dev all over again.</li>
+        <li><strong>SubQ Code vs. Claude Code:</strong> Subquadratic is shipping a CLI coding agent that loads entire codebases into a single context window. If it works as claimed, it's a fundamentally different approach to AI-assisted development — no chunking, no ranking, no multi-agent coordination overhead.</li>
+        <li><strong>Qwen 3.7-Max pricing and availability:</strong> No API pricing or open weights yet. When they ship, the cost-per-token for 35-hour autonomous agent sessions will determine whether this is a research demo or a production tool.</li>
+        <li><strong>AI inference security standards:</strong> The LMDeploy CVE was an SSRF through image loading — a basic web security flaw, not something exotic. As more teams self-host LLMs, expect more of these. The 12-hour exploit window means manual patching is dead.</li>
+        <li><strong>Google's Antigravity 2.0 and Managed Agents:</strong> Google I/O 2026 also shipped managed agents in the Gemini API — a single API call that spins up a full agent with persistent state. If Google's infrastructure play meets SubQ's architecture innovation, the agent platform space gets very competitive.</li>
+    </ul>
+
+    <hr>
+
+    <h2>The Takeaway</h2>
+
+    <p>May 2026 didn't give us a single "best model." It gave us three signals that the rules of the game are changing. The quadratic attention ceiling might not be permanent. Agent reliability is becoming measurable and competitive. And the security of AI infrastructure is no longer a niche concern — it's the fastest-growing attack vector in the industry.</p>
+
+    <p>The teams that treat these as connected — architecture enabling agents, agents requiring security, security constraining architecture — will be the ones building the next generation of AI systems. The teams still optimizing for MMLU scores will be optimizing the wrong metric.</p>
+
+</article>
+</body>
+</html>

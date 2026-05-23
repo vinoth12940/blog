@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="900" height="420" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold">May 2026: Three Stories That Changed AI</text>
+  <text x="450" y="66" text-anchor="middle" fill="#64748b" font-size="12">The month the rules broke — context limits, agent runtimes, and security assumptions</text>
+
+  <!-- Card 1: SubQ -->
+  <rect x="30" y="90" width="270" height="280" rx="12" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="30" y="90" width="270" height="44" rx="12" fill="url(#blue)"/>
+  <text x="165" y="118" text-anchor="middle" fill="white" font-size="14" font-weight="bold">SubQ — 12M Token Context</text>
+  <text x="50" y="160" fill="#94a3b8" font-size="11">Architecture:</text>
+  <text x="50" y="178" fill="#e2e8f0" font-size="12" font-weight="bold">Subquadratic Sparse Attention</text>
+  <text x="50" y="202" fill="#94a3b8" font-size="11">Key Result:</text>
+  <text x="50" y="220" fill="#60a5fa" font-size="18" font-weight="bold">12M tokens</text>
+  <text x="50" y="244" fill="#94a3b8" font-size="11">Efficiency:</text>
+  <text x="50" y="262" fill="#22c55e" font-size="14" font-weight="bold">52x faster than FlashAttn</text>
+  <text x="50" y="286" fill="#94a3b8" font-size="11">Cost:</text>
+  <text x="50" y="304" fill="#fbbf24" font-size="13" font-weight="bold">$8 vs $2,600 for Opus</text>
+  <text x="50" y="328" fill="#94a3b8" font-size="11">SWE-Bench:</text>
+  <text x="50" y="346" fill="#e2e8f0" font-size="13" font-weight="bold">81.8%</text>
+  <circle cx="275" cy="345" r="5" fill="#22c55e"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+
+  <!-- Card 2: Qwen 3.7 -->
+  <rect x="315" y="90" width="270" height="280" rx="12" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <rect x="315" y="90" width="270" height="44" rx="12" fill="url(#green)"/>
+  <text x="450" y="118" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Qwen 3.7-Max — Agent Era</text>
+  <text x="335" y="160" fill="#94a3b8" font-size="11">Focus:</text>
+  <text x="335" y="178" fill="#e2e8f0" font-size="12" font-weight="bold">Agent Foundation Model</text>
+  <text x="335" y="202" fill="#94a3b8" font-size="11">Autonomous Run:</text>
+  <text x="335" y="220" fill="#60a5fa" font-size="18" font-weight="bold">35 hours straight</text>
+  <text x="335" y="244" fill="#94a3b8" font-size="11">Coding (TermBench 2.0):</text>
+  <text x="335" y="262" fill="#22c55e" font-size="14" font-weight="bold">69.7 — #1 globally</text>
+  <text x="335" y="286" fill="#94a3b8" font-size="11">GPQA Diamond:</text>
+  <text x="335" y="304" fill="#fbbf24" font-size="13" font-weight="bold">92.4% — beats Opus 4.6</text>
+  <text x="335" y="328" fill="#94a3b8" font-size="11">Cross-harness:</text>
+  <text x="335" y="346" fill="#e2e8f0" font-size="13" font-weight="bold">Claude Code + OpenClaw + Qwen</text>
+  <circle cx="560" cy="345" r="5" fill="#22c55e"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle>
+
+  <!-- Card 3: Security -->
+  <rect x="600" y="90" width="270" height="280" rx="12" fill="#1e1e2e" stroke="#ef4444" stroke-width="2"/>
+  <rect x="600" y="90" width="270" height="44" rx="12" fill="url(#red)"/>
+  <text x="735" y="118" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Security — Under Attack</text>
+  <text x="620" y="160" fill="#94a3b8" font-size="11">LMDeploy CVE:</text>
+  <text x="620" y="178" fill="#ef4444" font-size="14" font-weight="bold">Exploited in 12 hours</text>
+  <text x="620" y="202" fill="#94a3b8" font-size="11">Claude Code Leak:</text>
+  <text x="620" y="220" fill="#fbbf24" font-size="13" font-weight="bold">513K lines of source</text>
+  <text x="620" y="244" fill="#94a3b8" font-size="11">Verizon Report:</text>
+  <text x="620" y="262" fill="#e2e8f0" font-size="13" font-weight="bold">AI breaches surpass</text>
+  <text x="620" y="280" fill="#e2e8f0" font-size="13" font-weight="bold">stolen credentials</text>
+  <text x="620" y="304" fill="#94a3b8" font-size="11">Palo Alto May Update:</text>
+  <text x="620" y="322" fill="#ef4444" font-size="13" font-weight="bold">AI-driven exploits now</text>
+  <text x="620" y="340" fill="#ef4444" font-size="13" font-weight="bold">mainstream threat</text>
+  <circle cx="845" cy="345" r="5" fill="#ef4444"><animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/></circle>
+
+  <!-- Bottom bar -->
+  <text x="450" y="400" text-anchor="middle" fill="#475569" font-size="10">Sources: subq.ai, qwen.ai, sysdig.com, verizon.com — May 2026</text>
+</svg>
