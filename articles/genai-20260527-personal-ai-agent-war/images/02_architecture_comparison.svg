@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrowRight" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4"/>
+    </marker>
+  </defs>
+  <rect width="900" height="500" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">Architecture: Where Your Agent Lives</text>
+  <text x="450" y="58" text-anchor="middle" fill="#64748b" font-size="11">Self-hosted vs Cloud-hosted agent substrate comparison</text>
+
+  <!-- LEFT COLUMN: Self-Hosted -->
+  <text x="225" y="88" text-anchor="middle" fill="#fb923c" font-size="13" font-weight="bold">SELF-HOSTED (OpenClaw)</text>
+
+  <!-- User -->
+  <rect x="125" y="100" width="200" height="42" rx="10" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="225" y="126" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="bold">👤 You (Owner)</text>
+  <line x1="225" y1="142" x2="225" y2="160" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Your Hardware -->
+  <rect x="100" y="162" width="250" height="52" rx="10" fill="#1e1e2e" stroke="#fb923c" stroke-width="2"/>
+  <text x="225" y="185" text-anchor="middle" fill="#fb923c" font-size="12" font-weight="bold">🖥️ Your Hardware</text>
+  <text x="225" y="202" text-anchor="middle" fill="#94a3b8" font-size="10">Mac mini · Mini PC · VPS · Tailscale</text>
+  <line x1="225" y1="214" x2="225" y2="232" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- OpenClaw Agent -->
+  <rect x="100" y="234" width="250" height="52" rx="10" fill="#1e1e2e" stroke="#a78bfa" stroke-width="2"/>
+  <text x="225" y="257" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">🦞 OpenClaw Agent</text>
+  <text x="225" y="274" text-anchor="middle" fill="#94a3b8" font-size="10">LLM API · MCP Tools · Memory</text>
+  <line x1="225" y1="286" x2="225" y2="304" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Your Services -->
+  <rect x="100" y="306" width="250" height="52" rx="10" fill="#1e1e2e" stroke="#06b6d4" stroke-width="2"/>
+  <text x="225" y="329" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="bold">📧 Your Services</text>
+  <text x="225" y="346" text-anchor="middle" fill="#94a3b8" font-size="10">WhatsApp · Telegram · Gmail · Discord</text>
+
+  <!-- Control badge -->
+  <rect x="140" y="375" width="170" height="28" rx="14" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="1"/>
+  <text x="225" y="394" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">✓ FULL CONTROL · YOU UNPLUG</text>
+
+  <!-- Divider -->
+  <line x1="450" y1="85" x2="450" y2="410" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- RIGHT COLUMN: Cloud-Hosted -->
+  <text x="675" y="88" text-anchor="middle" fill="#3b82f6" font-size="13" font-weight="bold">CLOUD-HOSTED (Gemini Spark)</text>
+
+  <!-- User -->
+  <rect x="575" y="100" width="200" height="42" rx="10" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="675" y="126" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="bold">👤 You (Subscriber)</text>
+  <line x1="675" y1="142" x2="675" y2="160" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Google Cloud -->
+  <rect x="550" y="162" width="250" height="52" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <text x="675" y="185" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="bold">☁️ Google Cloud VMs</text>
+  <text x="675" y="202" text-anchor="middle" fill="#94a3b8" font-size="10">Managed infrastructure · Always on</text>
+  <line x1="675" y1="214" x2="675" y2="232" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Spark Agent -->
+  <rect x="550" y="234" width="250" height="52" rx="10" fill="#1e1e2e" stroke="#a78bfa" stroke-width="2"/>
+  <text x="675" y="257" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">✨ Gemini 3.5 Flash + Antigravity</text>
+  <text x="675" y="274" text-anchor="middle" fill="#94a3b8" font-size="10">Managed Agents · Subagents · MCP</text>
+  <line x1="675" y1="286" x2="675" y2="304" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- Google Services -->
+  <rect x="550" y="306" width="250" height="52" rx="10" fill="#1e1e2e" stroke="#06b6d4" stroke-width="2"/>
+  <text x="675" y="329" text-anchor="middle" fill="#06b6d4" font-size="12" font-weight="bold">📧 Google Services</text>
+  <text x="675" y="346" text-anchor="middle" fill="#94a3b8" font-size="10">Gmail · Docs · Sheets · Search</text>
+
+  <!-- Convenience badge -->
+  <rect x="590" y="375" width="170" height="28" rx="14" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="1"/>
+  <text x="675" y="394" text-anchor="middle" fill="#3b82f6" font-size="10" font-weight="bold">⚡ ZERO SETUP · INSTANT</text>
+
+  <!-- Bottom insight -->
+  <rect x="80" y="430" width="740" height="50" rx="10" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1"/>
+  <text x="450" y="452" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">The substrate decides who holds your context, who sees your credentials, and who can change the terms later.</text>
+  <text x="450" y="470" text-anchor="middle" fill="#94a3b8" font-size="10">— The New Stack, May 2026</text>
+</svg>

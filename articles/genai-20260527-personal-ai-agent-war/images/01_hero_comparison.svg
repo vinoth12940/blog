@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="420" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">The Personal AI Agent War</text>
+  <text x="450" y="64" text-anchor="middle" fill="#64748b" font-size="12">Self-Hosted vs Cloud-Hosted · May 2026</text>
+
+  <!-- VS circle -->
+  <circle cx="450" cy="230" r="28" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2"/>
+  <text x="450" y="236" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="bold">VS</text>
+
+  <!-- Left: OpenClaw -->
+  <rect x="30" y="90" width="390" height="290" rx="14" fill="#1e1e2e" stroke="#fb923c" stroke-width="2"/>
+  <rect x="30" y="90" width="390" height="48" rx="14" fill="url(#orange)"/>
+  <rect x="30" y="114" width="390" height="24" fill="url(#orange)"/>
+  <text x="225" y="120" text-anchor="middle" fill="white" font-size="16" font-weight="bold">🦞 OpenClaw</text>
+
+  <text x="55" y="170" fill="#fbbf24" font-size="11" font-weight="bold">310K+ GITHUB STARS</text>
+  <text x="55" y="195" fill="#e2e8f0" font-size="12">Self-hosted on your hardware</text>
+  <text x="55" y="218" fill="#e2e8f0" font-size="12">Runs 24/7 on Mac mini / mini PC</text>
+  <text x="55" y="241" fill="#e2e8f0" font-size="12">30+ platform integrations</text>
+  <text x="55" y="264" fill="#e2e8f0" font-size="12">MCP + local LLM support</text>
+
+  <circle cx="60" cy="300" r="5" fill="#22c55e">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="75" y="305" fill="#22c55e" font-size="11" font-weight="bold">YOU hold the keys</text>
+  <text x="55" y="340" fill="#94a3b8" font-size="10">Your hardware · Your credentials · Your data</text>
+  <text x="55" y="360" fill="#64748b" font-size="10">MIT License · Community-driven</text>
+
+  <!-- Right: Gemini Spark -->
+  <rect x="480" y="90" width="390" height="290" rx="14" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="480" y="90" width="390" height="48" rx="14" fill="url(#blue)"/>
+  <rect x="480" y="114" width="390" height="24" fill="url(#blue)"/>
+  <text x="675" y="120" text-anchor="middle" fill="white" font-size="16" font-weight="bold">✨ Gemini Spark</text>
+
+  <text x="505" y="170" fill="#06b6d4" font-size="11" font-weight="bold">ANNOUNCED MAY 19, 2026</text>
+  <text x="505" y="195" fill="#e2e8f0" font-size="12">Cloud-hosted on Google infrastructure</text>
+  <text x="505" y="218" fill="#e2e8f0" font-size="12">Powered by Gemini 3.5 Flash</text>
+  <text x="505" y="241" fill="#e2e8f0" font-size="12">Built into Gmail, Docs, Sheets</text>
+  <text x="505" y="264" fill="#e2e8f0" font-size="12">Antigravity agent framework</text>
+
+  <circle cx="510" cy="300" r="5" fill="#3b82f6">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="525" y="305" fill="#3b82f6" font-size="11" font-weight="bold">Google holds the keys</text>
+  <text x="505" y="340" fill="#94a3b8" font-size="10">Zero setup · Instant integration</text>
+  <text x="505" y="360" fill="#64748b" font-size="10">AI Ultra subscription ($100-$200/mo)</text>
+</svg>
