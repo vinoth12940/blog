@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="500" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">MoE vs Dense Architecture — Why MoE Dominates in 2026</text>
+  <text x="450" y="62" text-anchor="middle" fill="#64748b" font-size="12">Same or better quality at a fraction of the compute cost</text>
+
+  <!-- DENSE MODEL (Left) -->
+  <text x="225" y="95" text-anchor="middle" fill="#3b82f6" font-size="14" font-weight="bold">DENSE MODEL (Traditional)</text>
+  <text x="225" y="112" text-anchor="middle" fill="#64748b" font-size="11">e.g., Gemma 4 31B, Mistral Medium 3.5</text>
+
+  <!-- Dense neurons grid -->
+  <g opacity="0.9">
+    <rect x="80" y="130" width="290" height="280" rx="12" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+    <text x="225" y="155" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">ALL PARAMETERS ACTIVE EVERY TOKEN</text>
+
+    <!-- Row 1 -->
+    <rect x="100" y="170" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="148" y="170" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="196" y="170" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="244" y="170" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="292" y="170" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <!-- Row 2 -->
+    <rect x="100" y="205" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="148" y="205" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="196" y="205" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="244" y="205" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="292" y="205" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <!-- Row 3 -->
+    <rect x="100" y="240" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="148" y="240" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="196" y="240" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="244" y="240" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="292" y="240" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <!-- Row 4 -->
+    <rect x="100" y="275" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="148" y="275" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="196" y="275" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="244" y="275" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="292" y="275" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <!-- Row 5 -->
+    <rect x="100" y="310" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="148" y="310" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="196" y="310" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="244" y="310" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="292" y="310" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <!-- Row 6 -->
+    <rect x="100" y="345" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="148" y="345" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="196" y="345" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="244" y="345" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+    <rect x="292" y="345" width="40" height="25" rx="4" fill="#3b82f6" opacity="0.8"/>
+  </g>
+  <text x="225" y="395" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="bold">⚠ 100% compute per token</text>
+  <text x="225" y="412" text-anchor="middle" fill="#94a3b8" font-size="10">All neurons fire → expensive inference</text>
+
+  <!-- VS divider -->
+  <text x="450" y="280" text-anchor="middle" fill="#fbbf24" font-size="24" font-weight="bold">VS</text>
+
+  <!-- MOE MODEL (Right) -->
+  <text x="675" y="95" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="bold">MoE — MIXTURE OF EXPERTS</text>
+  <text x="675" y="112" text-anchor="middle" fill="#64748b" font-size="11">e.g., DeepSeek V4, Qwen 3.6, MiMo</text>
+
+  <rect x="530" y="130" width="290" height="280" rx="12" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="675" y="155" text-anchor="middle" fill="#86efac" font-size="11" font-weight="bold">ROUTER SELECTS 2-4 EXPERTS PER TOKEN</text>
+
+  <!-- MoE experts - active ones highlighted, rest dimmed -->
+  <!-- Row 1: 2 active, 3 inactive -->
+  <rect x="550" y="170" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="598" y="170" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="646" y="170" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="694" y="170" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="742" y="170" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <!-- Row 2 -->
+  <rect x="550" y="205" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="598" y="205" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="646" y="205" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="694" y="205" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="742" y="205" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <!-- Row 3 -->
+  <rect x="550" y="240" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="598" y="240" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="646" y="240" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="694" y="240" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="742" y="240" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <!-- Row 4 -->
+  <rect x="550" y="275" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="598" y="275" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="646" y="275" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="694" y="275" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="742" y="275" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <!-- Row 5 -->
+  <rect x="550" y="310" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="598" y="310" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="646" y="310" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="694" y="310" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="742" y="310" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <!-- Row 6 -->
+  <rect x="550" y="345" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="598" y="345" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="646" y="345" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+  <rect x="694" y="345" width="40" height="25" rx="4" fill="#22c55e" opacity="0.9"/>
+  <rect x="742" y="345" width="40" height="25" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1" opacity="0.5"/>
+
+  <text x="675" y="395" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="bold">✓ ~3-10% compute per token</text>
+  <text x="675" y="412" text-anchor="middle" fill="#94a3b8" font-size="10">Only selected experts fire → cheap inference</text>
+
+  <!-- Bottom comparison -->
+  <rect x="150" y="435" width="600" height="50" rx="10" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2"/>
+  <text x="200" y="460" fill="#3b82f6" font-size="11" font-weight="bold">Dense 31B → 31B active</text>
+  <text x="450" y="460" fill="#fbbf24" font-size="14">→</text>
+  <text x="530" y="460" fill="#22c55e" font-size="11" font-weight="bold">MoE 1.6T → only 49B active</text>
+  <text x="450" y="477" text-anchor="middle" fill="#94a3b8" font-size="10">33x more parameters stored, same-order inference cost</text>
+</svg>

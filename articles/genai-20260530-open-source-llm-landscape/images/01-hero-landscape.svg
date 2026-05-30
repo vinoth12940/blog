@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="gap-bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="35%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold">The Open-Source LLM Landscape — May 2026</text>
+  <text x="450" y="65" text-anchor="middle" fill="#64748b" font-size="13">5 models, 3 architectures, 1 MIT license — the frontier is open</text>
+
+  <!-- Gap Timeline -->
+  <text x="60" y="100" fill="#94a3b8" font-size="12" font-weight="bold">OPEN vs CLOSED GAP</text>
+
+  <!-- Gap bars -->
+  <rect x="60" y="112" width="780" height="22" rx="6" fill="#1e1e2e"/>
+  <rect x="60" y="112" width="500" height="22" rx="6" fill="url(#gap-bar)" opacity="0.8"/>
+  <text x="80" y="128" fill="#f8fafc" font-size="11" font-weight="bold">2024: 18 months</text>
+  <text x="340" y="128" fill="#f8fafc" font-size="11" font-weight="bold">2025: 9 months</text>
+  <text x="540" y="128" fill="#f8fafc" font-size="11" font-weight="bold">2026: ~3 months</text>
+  <circle cx="830" cy="123" r="8" fill="#22c55e">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="850" y="127" fill="#22c55e" font-size="10">NOW</text>
+
+  <!-- Key Stat Cards Row -->
+  <rect x="40" y="155" width="200" height="100" rx="12" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <text x="140" y="185" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="bold">CHEAPEST FRONTIER</text>
+  <text x="140" y="218" text-anchor="middle" fill="#f8fafc" font-size="28" font-weight="bold">$0.14</text>
+  <text x="140" y="240" text-anchor="middle" fill="#94a3b8" font-size="11">DeepSeek V4 Flash / 1M tokens</text>
+
+  <rect x="260" y="155" width="200" height="100" rx="12" fill="#1e1e2e" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="360" y="185" text-anchor="middle" fill="#8b5cf6" font-size="11" font-weight="bold">LARGEST OPEN WEIGHT</text>
+  <text x="360" y="218" text-anchor="middle" fill="#f8fafc" font-size="28" font-weight="bold">1.6T</text>
+  <text x="360" y="240" text-anchor="middle" fill="#94a3b8" font-size="11">DeepSeek V4 Pro params (49B active)</text>
+
+  <rect x="480" y="155" width="200" height="100" rx="12" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="580" y="185" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="bold">BEST EFFICIENCY</text>
+  <text x="580" y="218" text-anchor="middle" fill="#f8fafc" font-size="28" font-weight="bold">3B</text>
+  <text x="580" y="240" text-anchor="middle" fill="#94a3b8" font-size="11">Qwen 3.6 active params (35B total)</text>
+
+  <rect x="700" y="155" width="170" height="100" rx="12" fill="#1e1e2e" stroke="#f59e0b" stroke-width="2"/>
+  <text x="785" y="185" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="bold">SWE-BENCH LEADER</text>
+  <text x="785" y="218" text-anchor="middle" fill="#f8fafc" font-size="28" font-weight="bold">80.6%</text>
+  <text x="785" y="240" text-anchor="middle" fill="#94a3b8" font-size="11">DeepSeek V4 Pro</text>
+
+  <!-- Model Cards Row -->
+  <text x="60" y="290" fill="#94a3b8" font-size="12" font-weight="bold">TOP 5 OPEN-WEIGHT MODELS — MAY 2026</text>
+
+  <rect x="40" y="305" width="155" height="95" rx="10" fill="#1e1e2e" stroke="#f472b6" stroke-width="2"/>
+  <text x="117" y="330" text-anchor="middle" fill="#f9a8d4" font-size="12" font-weight="bold">Kimi K2.6</text>
+  <text x="117" y="348" text-anchor="middle" fill="#94a3b8" font-size="10">Moonshot AI</text>
+  <text x="117" y="368" text-anchor="middle" fill="#e2e8f0" font-size="11">1T MoE · 32B active</text>
+  <text x="117" y="388" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">Intelligence #1</text>
+
+  <rect x="210" y="305" width="155" height="95" rx="10" fill="#1e1e2e" stroke="#06b6d4" stroke-width="2"/>
+  <text x="287" y="330" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="bold">MiMo V2.5 Pro</text>
+  <text x="287" y="348" text-anchor="middle" fill="#94a3b8" font-size="10">Xiaomi</text>
+  <text x="287" y="368" text-anchor="middle" fill="#e2e8f0" font-size="11">1.02T MoE · 42B active</text>
+  <text x="287" y="388" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">Terminal-Bench #1</text>
+
+  <rect x="380" y="305" width="155" height="95" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <text x="457" y="330" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="bold">DeepSeek V4 Pro</text>
+  <text x="457" y="348" text-anchor="middle" fill="#94a3b8" font-size="10">DeepSeek</text>
+  <text x="457" y="368" text-anchor="middle" fill="#e2e8f0" font-size="11">1.6T MoE · 49B active</text>
+  <text x="457" y="388" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">Coding #1 · MIT</text>
+
+  <rect x="550" y="305" width="155" height="95" rx="10" fill="#1e1e2e" stroke="#f59e0b" stroke-width="2"/>
+  <text x="627" y="330" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">GLM-5.1</text>
+  <text x="627" y="348" text-anchor="middle" fill="#94a3b8" font-size="10">Z.ai</text>
+  <text x="627" y="368" text-anchor="middle" fill="#e2e8f0" font-size="11">754B MoE · 40B active</text>
+  <text x="627" y="388" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">Huawei Ascend · MIT</text>
+
+  <rect x="720" y="305" width="155" height="95" rx="10" fill="#1e1e2e" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="797" y="330" text-anchor="middle" fill="#c4b5fd" font-size="12" font-weight="bold">Qwen 3.6-35B</text>
+  <text x="797" y="348" text-anchor="middle" fill="#94a3b8" font-size="10">Alibaba</text>
+  <text x="797" y="368" text-anchor="middle" fill="#e2e8f0" font-size="11">35B MoE · 3B active</text>
+  <text x="797" y="388" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="bold">Best bang/buck · Apache 2.0</text>
+</svg>

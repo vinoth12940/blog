@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 5 10 L 10 0 z" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrow-right" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="520" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">Which Open-Source LLM Should You Use?</text>
+  <text x="450" y="58" text-anchor="middle" fill="#64748b" font-size="12">A practical decision framework for developers and teams</text>
+
+  <!-- Decision Tree Start -->
+  <rect x="310" y="75" width="280" height="50" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2"/>
+  <text x="450" y="97" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="bold">What's your #1 priority?</text>
+  <text x="450" y="113" text-anchor="middle" fill="#94a3b8" font-size="10">Pick the path that matters most</text>
+
+  <!-- Branch arrows from start -->
+  <line x1="370" y1="125" x2="150" y2="155" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-right)"/>
+  <line x1="450" y1="125" x2="450" y2="155" stroke="#fbbf24" stroke-width="2"/>
+  <line x1="530" y1="125" x2="750" y2="155" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-right)"/>
+
+  <!-- PATH 1: Cost / Budget -->
+  <rect x="30" y="160" width="240" height="40" rx="10" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="150" y="185" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="bold">💰 Lowest Cost</text>
+
+  <line x1="150" y1="200" x2="150" y2="220" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow-down)"/>
+
+  <rect x="30" y="225" width="240" height="85" rx="10" fill="#1e1e2e" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="150" y="248" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="bold">DeepSeek V4 Flash</text>
+  <text x="150" y="268" text-anchor="middle" fill="#e2e8f0" font-size="11">$0.14/M input · $0.28/M output</text>
+  <text x="150" y="285" text-anchor="middle" fill="#94a3b8" font-size="10">284B MoE (13B active) · 1M context</text>
+  <text x="150" y="302" text-anchor="middle" fill="#64748b" font-size="10">MIT license · text-only</text>
+
+  <!-- PATH 2: Coding / SWE -->
+  <rect x="310" y="160" width="280" height="40" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+  <text x="450" y="185" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="bold">💻 Best Coding Performance</text>
+
+  <line x1="380" y1="200" x2="300" y2="225" stroke="#3b82f6" stroke-width="2"/>
+  <line x1="520" y1="200" x2="600" y2="225" stroke="#3b82f6" stroke-width="2"/>
+
+  <rect x="285" y="225" width="130" height="85" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="350" y="248" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="bold">DeepSeek V4 Pro</text>
+  <text x="350" y="268" text-anchor="middle" fill="#e2e8f0" font-size="10">80.6% SWE-bench</text>
+  <text x="350" y="283" text-anchor="middle" fill="#94a3b8" font-size="9">1.6T · MIT · $0.87/M out</text>
+  <text x="350" y="300" text-anchor="middle" fill="#64748b" font-size="9">Frontier-tier coding king</text>
+
+  <rect x="485" y="225" width="130" height="85" rx="10" fill="#1e1e2e" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="550" y="248" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="bold">MiMo V2.5 Pro</text>
+  <text x="550" y="268" text-anchor="middle" fill="#e2e8f0" font-size="10">78.9% SWE-bench</text>
+  <text x="550" y="283" text-anchor="middle" fill="#94a3b8" font-size="9">1.02T · 1M ctx</text>
+  <text x="550" y="300" text-anchor="middle" fill="#64748b" font-size="9">#1 Terminal-Bench 2.0</text>
+
+  <!-- PATH 3: Self-host / Privacy -->
+  <rect x="630" y="160" width="240" height="40" rx="10" fill="#1e1e2e" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="750" y="185" text-anchor="middle" fill="#8b5cf6" font-size="12" font-weight="bold">🏠 Self-Host / Privacy</text>
+
+  <line x1="690" y1="200" x2="650" y2="225" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="810" y1="200" x2="850" y2="225" stroke="#8b5cf6" stroke-width="2"/>
+
+  <rect x="630" y="225" width="130" height="85" rx="10" fill="#1e1e2e" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="695" y="248" text-anchor="middle" fill="#c4b5fd" font-size="12" font-weight="bold">Qwen 3.6-35B</text>
+  <text x="695" y="268" text-anchor="middle" fill="#e2e8f0" font-size="10">3B active params</text>
+  <text x="695" y="283" text-anchor="middle" fill="#94a3b8" font-size="9">Fits on single GPU</text>
+  <text x="695" y="300" text-anchor="middle" fill="#64748b" font-size="9">Apache 2.0 · best efficiency</text>
+
+  <rect x="770" y="225" width="110" height="85" rx="10" fill="#1e1e2e" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="825" y="248" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="bold">Gemma 4 31B</text>
+  <text x="825" y="268" text-anchor="middle" fill="#e2e8f0" font-size="10">Dense · 31B</text>
+  <text x="825" y="283" text-anchor="middle" fill="#94a3b8" font-size="9">Small footprint</text>
+  <text x="825" y="300" text-anchor="middle" fill="#64748b" font-size="9">Apache 2.0 · Google</text>
+
+  <!-- Bottom section: The Strategic Pivot -->
+  <text x="60" y="345" fill="#ef4444" font-size="13" font-weight="bold">⚠ THE STRATEGIC PIVOT — NOT EVERYTHING IS OPEN</text>
+
+  <rect x="40" y="358" width="400" height="140" rx="12" fill="#1e1e2e" stroke="#22c55e" stroke-width="2"/>
+  <text x="60" y="382" fill="#22c55e" font-size="12" font-weight="bold">✓ STAYED OPEN</text>
+  <text x="60" y="402" fill="#e2e8f0" font-size="11">• DeepSeek (V4 Pro — MIT)</text>
+  <text x="60" y="420" fill="#e2e8f0" font-size="11">• Qwen 3.6 (Apache 2.0)</text>
+  <text x="60" y="438" fill="#e2e8f0" font-size="11">• Xiaomi MiMo, Z.ai GLM, Mistral</text>
+  <text x="60" y="456" fill="#e2e8f0" font-size="11">• Google Gemma 4 (Apache 2.0)</text>
+  <text x="60" y="478" fill="#94a3b8" font-size="10">"Labs without distribution moats ship open"</text>
+
+  <rect x="460" y="358" width="400" height="140" rx="12" fill="#1e1e2e" stroke="#ef4444" stroke-width="2"/>
+  <text x="480" y="382" fill="#ef4444" font-size="12" font-weight="bold">✗ WENT CLOSED AT TOP TIER</text>
+  <text x="480" y="402" fill="#e2e8f0" font-size="11">• Alibaba — Qwen 3.7 Max (API-only)</text>
+  <text x="480" y="420" fill="#e2e8f0" font-size="11">• Meta — Muse Spark (first MSL release)</text>
+  <text x="480" y="438" fill="#94a3b8" font-size="10">"Explicit pivot away from Llama's open strategy"</text>
+  <text x="480" y="458" fill="#e2e8f0" font-size="11">• Meta Avocado — expected proprietary</text>
+  <text x="480" y="478" fill="#94a3b8" font-size="10">"Distribution moats (WhatsApp, IG) → hold back top tier"</text>
+</svg>
