@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <!-- Background -->
+  <rect width="880" height="520" rx="16" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="440" y="42" text-anchor="middle" fill="#f1f5f9" font-size="22" font-weight="700">Microsoft's MAI Model Family — Build 2026</text>
+  <text x="440" y="66" text-anchor="middle" fill="#64748b" font-size="13">7 in-house models spanning reasoning, coding, vision, voice, and transcription</text>
+  
+  <!-- Row 1: Flagship -->
+  <!-- MAI-Thinking-1 -->
+  <rect x="40" y="90" width="380" height="120" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="40" y="90" width="380" height="32" rx="12" fill="#1e3a5f"/>
+  <rect x="40" y="110" width="380" height="12" fill="#1e3a5f"/>
+  <text x="230" y="112" text-anchor="middle" fill="#60a5fa" font-size="15" font-weight="700">🧠 MAI-Thinking-1 (Reasoning)</text>
+  <text x="56" y="142" fill="#cbd5e1" font-size="12">35B active / ~1T total params · MoE · 256K ctx</text>
+  <text x="56" y="162" fill="#94a3b8" font-size="11.5">AIME 2025: 97% · SWE-Bench Pro: 53%</text>
+  <text x="56" y="180" fill="#94a3b8" font-size="11.5">Matches Opus 4.6 · Preferred over Sonnet 4.6</text>
+  <text x="56" y="200" fill="#22c55e" font-size="11" font-weight="600">Private Preview</text>
+  
+  <!-- MAI-Code-1-Flash -->
+  <rect x="460" y="90" width="380" height="120" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <rect x="460" y="90" width="380" height="32" rx="12" fill="#1a3a2a"/>
+  <rect x="460" y="110" width="380" height="12" fill="#1a3a2a"/>
+  <text x="650" y="112" text-anchor="middle" fill="#22c55e" font-size="15" font-weight="700">💻 MAI-Code-1-Flash (Coding)</text>
+  <text x="476" y="142" fill="#cbd5e1" font-size="12">5B params · Inference ultra-efficient</text>
+  <text x="476" y="162" fill="#94a3b8" font-size="11.5">SWE-Bench Pro: 51.2% vs Haiku 4.5: 35.2%</text>
+  <text x="476" y="180" fill="#94a3b8" font-size="11.5">+16 pts over Haiku · 60% fewer tokens</text>
+  <text x="476" y="200" fill="#60a5fa" font-size="11" font-weight="600">Available Now (VS Code + Copilot)</text>
+  
+  <!-- Row 2: Media models -->
+  <!-- MAI-Image-2.5 -->
+  <rect x="40" y="230" width="250" height="100" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="165" y="258" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="700">🎨 MAI-Image-2.5</text>
+  <text x="165" y="278" text-anchor="middle" fill="#94a3b8" font-size="11">Text-to-Image + Image Edit</text>
+  <text x="165" y="296" text-anchor="middle" fill="#94a3b8" font-size="11">#3 Arena AI Gen · #2 Image Edit</text>
+  <text x="165" y="318" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="600">Live in PowerPoint</text>
+  
+  <!-- MAI-Voice-2 -->
+  <rect x="315" y="230" width="250" height="100" rx="12" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="440" y="258" text-anchor="middle" fill="#fb923c" font-size="14" font-weight="700">🔊 MAI-Voice-2</text>
+  <text x="440" y="278" text-anchor="middle" fill="#94a3b8" font-size="11">Synthetic Voice Generation</text>
+  <text x="440" y="296" text-anchor="middle" fill="#94a3b8" font-size="11">15+ new languages · Flash variant</text>
+  <text x="440" y="318" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="600">Available on Foundry</text>
+  
+  <!-- MAI Transcribe 1.5 -->
+  <rect x="590" y="230" width="250" height="100" rx="12" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="715" y="258" text-anchor="middle" fill="#22d3ee" font-size="14" font-weight="700">📝 MAI Transcribe 1.5</text>
+  <text x="715" y="278" text-anchor="middle" fill="#94a3b8" font-size="11">Speech Recognition</text>
+  <text x="715" y="296" text-anchor="middle" fill="#94a3b8" font-size="11">SOTA across 43 languages</text>
+  <text x="715" y="318" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="600">Streaming coming soon</text>
+  
+  <!-- Row 3: Key announcements -->
+  <rect x="40" y="350" width="380" height="70" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="230" y="378" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="700">🤖 Microsoft Scout</text>
+  <text x="230" y="398" text-anchor="middle" fill="#94a3b8" font-size="11">Always-on personal agent · Built on OpenClaw + Work IQ</text>
+  <text x="230" y="412" text-anchor="middle" fill="#94a3b8" font-size="11">Proactive meeting prep, scheduling, routine tasks</text>
+  
+  <rect x="460" y="350" width="380" height="70" rx="12" fill="#1e293b" stroke="#f472b6" stroke-width="1.5"/>
+  <text x="650" y="378" text-anchor="middle" fill="#f472b6" font-size="14" font-weight="700">🖥️ Surface RTX Spark Dev Box</text>
+  <text x="650" y="398" text-anchor="middle" fill="#94a3b8" font-size="11">NVIDIA RTX Spark · 1 petaflop · 128GB unified</text>
+  <text x="650" y="412" text-anchor="middle" fill="#94a3b8" font-size="11">Runs 120B LLMs locally · 1M tokens context</text>
+  
+  <!-- Bottom tagline -->
+  <text x="440" y="465" text-anchor="middle" fill="#475569" font-size="12">"10x better cost efficiency than GPT-5.5" — Mustafa Suleyman, CEO Microsoft AI</text>
+  <text x="440" y="490" text-anchor="middle" fill="#334155" font-size="11">Zero distillation from third-party models · Enterprise-grade clean data only</text>
+  <text x="440" y="510" text-anchor="middle" fill="#334155" font-size="10">$13B invested in OpenAI · $5B in Anthropic · Now building its own frontier</text>
+</svg>

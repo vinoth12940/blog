@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <!-- Background -->
+  <rect width="880" height="440" rx="16" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="440" y="36" text-anchor="middle" fill="#f1f5f9" font-size="20" font-weight="700">MAI Models vs. The Competition — Key Benchmarks</text>
+  <text x="440" y="56" text-anchor="middle" fill="#64748b" font-size="12">Per official model cards and Microsoft's published results, June 2026</text>
+  
+  <!-- SWE-Bench Pro Comparison -->
+  <text x="60" y="86" fill="#94a3b8" font-size="13" font-weight="600">SWE-Bench Pro (%)</text>
+  
+  <!-- MAI-Thinking-1 -->
+  <rect x="60" y="96" width="530" height="28" rx="6" fill="#1e3a5f" opacity="0.7"/>
+  <text x="72" y="115" fill="#60a5fa" font-size="12" font-weight="600">MAI-Thinking-1</text>
+  <text x="595" y="115" fill="#60a5fa" font-size="12" font-weight="700">53%</text>
+  
+  <!-- MAI-Code-1-Flash -->
+  <rect x="60" y="130" width="512" height="28" rx="6" fill="#1a3a2a" opacity="0.7"/>
+  <text x="72" y="149" fill="#22c55e" font-size="12" font-weight="600">MAI-Code-1-Flash</text>
+  <text x="577" y="149" fill="#22c55e" font-size="12" font-weight="700">51.2%</text>
+  
+  <!-- Claude Opus 4.6 -->
+  <rect x="60" y="164" width="500" height="28" rx="6" fill="#1e293b" opacity="0.7"/>
+  <text x="72" y="183" fill="#94a3b8" font-size="12" font-weight="600">Claude Opus 4.6 (matched)</text>
+  <text x="565" y="183" fill="#94a3b8" font-size="12" font-weight="700">~53%</text>
+  
+  <!-- Claude Haiku 4.5 -->
+  <rect x="60" y="198" width="352" height="28" rx="6" fill="#1e293b" opacity="0.5"/>
+  <text x="72" y="217" fill="#64748b" font-size="12" font-weight="600">Claude Haiku 4.5</text>
+  <text x="417" y="217" fill="#64748b" font-size="12" font-weight="700">35.2%</text>
+  
+  <!-- AIME 2025 -->
+  <text x="60" y="258" fill="#94a3b8" font-size="13" font-weight="600">AIME 2025 (%)</text>
+  
+  <rect x="60" y="268" width="727" height="28" rx="6" fill="#1e3a5f" opacity="0.7"/>
+  <text x="72" y="287" fill="#60a5fa" font-size="12" font-weight="600">MAI-Thinking-1</text>
+  <text x="792" y="287" fill="#60a5fa" font-size="12" font-weight="700">97%</text>
+  
+  <!-- Cost Efficiency -->
+  <text x="460" y="86" fill="#94a3b8" font-size="13" font-weight="600" text-anchor="end"/>
+  
+  <!-- Right side: Key Stats Cards -->
+  <rect x="620" y="80" width="240" height="160" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="740" y="108" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="700">Key Advantages</text>
+  <line x1="640" y1="118" x2="840" y2="118" stroke="#334155" stroke-width="1"/>
+  <text x="644" y="140" fill="#cbd5e1" font-size="11.5">💰 10x cost efficiency vs GPT-5.5</text>
+  <text x="644" y="160" fill="#cbd5e1" font-size="11.5">🧹 Zero AI-generated training data</text>
+  <text x="644" y="180" fill="#cbd5e1" font-size="11.5">🔒 Enterprise-licensed data only</text>
+  <text x="644" y="200" fill="#cbd5e1" font-size="11.5">📐 256K context window</text>
+  <text x="644" y="220" fill="#cbd5e1" font-size="11.5">⚡ 60% fewer tokens (Code-Flash)</text>
+  
+  <!-- Bottom: Strategic context -->
+  <rect x="40" y="320" width="800" height="100" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="440" y="348" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="700">Why This Matters</text>
+  <line x1="60" y1="358" x2="820" y2="358" stroke="#334155" stroke-width="1"/>
+  
+  <text x="80" y="380" fill="#cbd5e1" font-size="11.5">• Microsoft invested $13B in OpenAI and $5B in Anthropic — now building competing in-house models</text>
+  <text x="80" y="398" fill="#cbd5e1" font-size="11.5">• MAI models run on Azure, Fireworks AI, Baseten, and OpenRouter — avoiding third-party model fees</text>
+  <text x="80" y="416" fill="#cbd5e1" font-size="11.5">• "Move from consuming a frontier model to fully participating at the frontier" — Satya Nadella</text>
+  
+  <text x="440" y="435" text-anchor="middle" fill="#475569" font-size="10">Source: Microsoft AI blog, CNBC, official model cards · June 2-3, 2026</text>
+</svg>
