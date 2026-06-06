@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Week AI Models Became Disposable: OpenAI Kills GPT-5.2, Anthropic Launches Opus 4.8</title>
+    <meta property="og:title" content="The Week AI Models Became Disposable: OpenAI Kills GPT-5.2, Anthropic Launches Opus 4.8">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-06">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20260606-disposable-models/images/01_hero_timeline.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>The week AI models became disposable</h1>
+    <div class="meta">June 6, 2026 · 6 min read · AI Industry / Developer Tools</div>
+
+    <p><em>OpenAI killed GPT-5.2 and GPT-5.3-Codex on June 2. Four months old. Anthropic launched Opus 4.8 the same week with prices 3x cheaper than before. The model lifecycle is now shorter than a Netflix subscription. Here's what happened and what it means for developers.</em></p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260606-disposable-models/images/01_hero_timeline.png" alt="Timeline of events: May 28 - June 2, 2026 showing Claude Opus 4.8 launch, Anthropic IPO filing, and OpenAI Codex sunset">
+        <p class="caption">Six days in late May/early June 2026 that reshaped how we think about model lifecycles</p>
+    </div>
+
+    <h2>What happened</h2>
+
+    <p>On May 28, Anthropic released Claude Opus 4.8. Same price as Opus 4.7 — $5 per million input tokens, $25 per million output tokens — but with a new Fast Mode that runs at 2.5x speed for $10/$50. That's three times cheaper than Fast Mode on the previous model. The coding benchmarks were strong: 69.2% on SWE-Bench Pro, beating GPT-5.5's 58.6% by over 10 points.</p>
+
+    <p>Four days later, on June 1, Anthropic confidentially filed its S-1 with the SEC. An IPO that could value the company north of $60 billion. The signal to the market — and to OpenAI — was unambiguous.</p>
+
+    <p>Then June 2 hit. OpenAI sunset GPT-5.2 and GPT-5.3-Codex from Codex when accessed through ChatGPT subscriptions. No gradual phase-out, no migration guide. For many developers, the models disappeared from their VS Code extensions and CLI tools overnight. GPT-5.3-Codex, which launched on February 5, was barely four months old. It was also, by many accounts, the better coding model.</p>
+
+    <blockquote>
+        <p>"GPT-5.3-Codex was a genuine programming tool, whereas 5.5 is completely useless. Today I tackled a typical task that would have taken about a minute in 5.3-Codex." — OpenAI community forum user, June 2, 2026</p>
+    </blockquote>
+
+    <h2>The shrinking model lifespan</h2>
+
+    <p>The pattern is clear if you look at OpenAI's deprecation history. Models are living shorter lives, not longer.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260606-disposable-models/images/03_model_lifespan.png" alt="Bar chart showing model lifespan shrinking from GPT-4 (17 months) to GPT-5.2 and GPT-5.3-Codex (4 months)">
+        <p class="caption">Time from launch to deprecation — the bars keep getting shorter</p>
+    </div>
+
+    <ul>
+        <li><strong>GPT-4</strong> (March 2023): lived ~17 months before deprecation</li>
+        <li><strong>GPT-4 Turbo</strong> (November 2023): ~9 months</li>
+        <li><strong>GPT-4o</strong> (May 2024): ~11 months (retired February 2026)</li>
+        <li><strong>GPT-5.2</strong> (early 2026): 4 months</li>
+        <li><strong>GPT-5.3-Codex</strong> (February 2026): 4 months</li>
+    </ul>
+
+    <p>Three deprecation waves are converging between early June and late July 2026, collectively retiring every Codex-lineage API model older than GPT-5.3-Codex. If your CI pipeline references any legacy model string in config files, those calls will begin failing within days. The official reason is "simplifying the compute fleet." The practical effect is that code built on these models breaks without warning.</p>
+
+    <h2>The pricing squeeze</h2>
+
+    <p>While OpenAI is sunsetting models, the pricing environment around them is compressing fast. Opus 4.8's Fast Mode at $10/$50 per million tokens is a direct shot at GPT-5.5's $5/$30. On the surface, GPT-5.5 is cheaper. But Opus 4.8 scores significantly higher on coding benchmarks, meaning you often need fewer tokens to get the right result. The effective cost per correct answer can be lower with Opus.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260606-disposable-models/images/02_pricing_comparison.png" alt="Bar chart comparing frontier model pricing: Claude Opus 4.8, GPT-5.5, GPT-5.5 Pro, DeepSeek V4">
+        <p class="caption">Frontier model pricing per million tokens (June 2026) — DeepSeek V4 at $0.14/$0.28 is off the chart</p>
+    </div>
+
+    <p>And then there's DeepSeek. Their V4 model API costs $0.14/$0.28 per million tokens after a permanent 75% price cut. That's roughly 100x cheaper than GPT-5.5 for output. API calls surged 297% after the cut. The benchmarks aren't at frontier level yet, but they're catching up fast.</p>
+
+    <blockquote class="warning">
+        <p>The margin compression is real. OpenAI reportedly faces losses approaching $14 billion, and Chinese labs are releasing open models that rival GPT-5.5 on coding and reasoning tasks. The compute savings from sunsetting models isn't just convenience — it's survival.</p>
+    </blockquote>
+
+    <h2>The developer trust problem</h2>
+
+    <p>Here's the part that doesn't show up in benchmark tables. When OpenAI sunsets a model in four months, it's not just an API version bump. It means:</p>
+
+    <ul>
+        <li><strong>Prompt engineering is wasted effort.</strong> Teams that spent weeks optimizing prompts for GPT-5.3-Codex's specific behavior wake up to find the model gone. The new model responds differently. The carefully tuned system prompt produces different results.</li>
+        <li><strong>CI/CD pipelines break.</strong> If your test suite or code review workflow was hardcoded to <code>gpt-5.3-codex</code>, it fails. Not degrades — fails. There's no graceful fallback.</li>
+        <li><strong>Vendor lock-in becomes vendor dependency.</strong> You chose OpenAI because of model quality. Now the specific model you relied on is gone, and the replacement (GPT-5.5) behaves differently enough that your product changes in ways you didn't choose.</li>
+        <li><strong>Community favorites get no special treatment.</strong> GPT-5.3-Codex was widely considered the better coding model. Community forum threads are full of developers saying 5.5 is a downgrade for their use case. OpenAI sunset it anyway.</li>
+    </ul>
+
+    <p>This isn't just about OpenAI. It's about what happens when the model release cadence outpaces the stability expectations of production software. Models aren't APIs. They're more like employees — each one has quirks, strengths, and a particular way of interpreting instructions. Swapping one for another isn't a version upgrade. It's a personnel change.</p>
+
+    <h2>What Anthropic is doing differently (for now)</h2>
+
+    <p>Anthropic's approach this week is the mirror image. Same price as before, better model. Fast Mode that's cheaper, not more expensive. And critically, the model naming is consistent — <code>claude-opus-4-8</code> replaces <code>claude-opus-4-7</code>, but older models in the API aren't being killed on a four-month timeline.</p>
+
+    <p>The S-1 filing adds another dimension. Anthropic is signaling to the market that it's here to stay, that it has the financial runway and product momentum to compete long-term. For developers choosing where to build, that matters more than any single benchmark.</p>
+
+    <p>But Anthropic is playing the same game. The cadence of releases — Opus 4.6, 4.7, 4.8 in rapid succession — means the lifecycle question applies to them too. The difference, for now, is one of degree. Four months is extreme. But even a 12-month lifecycle forces teams to rethink how they build on top of these models.</p>
+
+    <h2>What this means for your stack</h2>
+
+    <p>If you're building on frontier AI models — whether it's OpenAI, Anthropic, DeepSeek, or Google — this week is a wake-up call. Here's what I'd recommend:</p>
+
+    <ol>
+        <li><strong>Abstract your model layer.</strong> Don't hardcode model names in business logic. Use an abstraction layer (LiteLLM, OpenRouter, or your own router) that lets you swap models without rewriting code.</li>
+        <li><strong>Build evaluation suites, not just prompts.</strong> If you have automated tests that evaluate model output quality, you can swap models and measure the impact in hours, not weeks.</li>
+        <li><strong>Budget for model churn.</strong> Assume the model you're using today won't be available in six months. Build your product so it works with any competent model, not just one specific version.</li>
+        <li><strong>Watch the open-source gap.</strong> DeepSeek, Qwen, and Llama are closing the quality gap fast. A model that costs 100x less and scores 90% as well on your specific task might be the better business decision.</li>
+        <li><strong>Pin your dependencies, but plan for migration.</strong> Use the latest model, test against alternatives, and have a migration script ready. When the model disappears — not if — you'll be ready.</li>
+    </ol>
+
+    <hr>
+
+    <h2>The bottom line</h2>
+
+    <p>The week of May 28 – June 2, 2026 marked a shift. AI models are no longer products you adopt — they're services you rent, and the landlord can evict you with four months' notice. Anthropic's Opus 4.8 launch and IPO filing, combined with OpenAI's abrupt sunsetting of GPT-5.2 and GPT-5.3-Codex, crystalized a trend that's been building for a year.</p>
+
+    <p>The model lifecycle is now shorter than a car lease. If you're building production systems on top of frontier AI, your architecture needs to assume model impermanence. Not as an edge case, but as the default.</p>
+
+    <p>The models are getting better. They're also getting disposable. Both things are true at the same time.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">4 months</div>
+            <div class="label">GPT-5.2 lifespan before sunset</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">69.2%</div>
+            <div class="label">Opus 4.8 SWE-Bench Pro score</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">3x cheaper</div>
+            <div class="label">Opus 4.8 Fast Mode vs. previous gen</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">$0.14</div>
+            <div class="label">DeepSeek V4 per 1M input tokens</div>
+        </div>
+    </div>
+
+    <p style="color: #6b7280; font-size: 0.85rem; margin-top: 2rem;">Based on official release materials, verified pricing pages, and community reports as of June 6, 2026. SWE-Bench Pro scores from Anthropic's official launch benchmarks. Pricing verified against anthropic.com/claude/opus and openai.com/api/pricing. Model lifespan dates from OpenAI's model release notes.</p>
+
+</article>
+</body>
+</html>

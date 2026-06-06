@@ -1,0 +1,85 @@
+<svg width="100%" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="anthropic-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="openai-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="deepseek-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="480" rx="16" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9">Frontier model pricing: per million tokens (June 2026)</text>
+  <text x="450" y="62" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#64748b">Input tokens (left) · Output tokens (right) — lower is better</text>
+
+  <!-- Input tokens section -->
+  <text x="60" y="95" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#94a3b8">INPUT TOKENS ($/1M)</text>
+
+  <!-- Claude Opus 4.8 -->
+  <text x="60" y="125" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#e5e5e5">Claude Opus 4.8</text>
+  <rect x="220" y="112" width="120" height="20" rx="4" fill="url(#anthropic-bar)"/>
+  <text x="348" y="126" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#60a5fa">$5.00</text>
+
+  <!-- Claude Opus 4.8 Fast -->
+  <text x="60" y="157" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#94a3b8">Opus 4.8 Fast</text>
+  <rect x="220" y="144" width="240" height="20" rx="4" fill="url(#anthropic-bar)" opacity="0.6"/>
+  <text x="468" y="158" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#60a5fa">$10.00</text>
+
+  <!-- GPT-5.5 -->
+  <text x="60" y="189" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#e5e5e5">GPT-5.5</text>
+  <rect x="220" y="176" width="120" height="20" rx="4" fill="url(#openai-bar)"/>
+  <text x="348" y="190" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#fbbf24">$5.00</text>
+
+  <!-- GPT-5.5 Pro -->
+  <text x="60" y="221" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#94a3b8">GPT-5.5 Pro</text>
+  <rect x="220" y="208" width="720" height="20" rx="4" fill="url(#openai-bar)" opacity="0.6"/>
+  <text x="948" y="222" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#fbbf24">$30.00</text>
+
+  <!-- DeepSeek V4 -->
+  <text x="60" y="253" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#e5e5e5">DeepSeek V4</text>
+  <rect x="220" y="240" width="12" height="20" rx="4" fill="url(#deepseek-bar)"/>
+  <text x="240" y="254" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#4ade80">$0.14</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="275" x2="840" y2="275" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Output tokens section -->
+  <text x="60" y="300" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600" fill="#94a3b8">OUTPUT TOKENS ($/1M)</text>
+
+  <!-- Claude Opus 4.8 -->
+  <text x="60" y="330" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#e5e5e5">Claude Opus 4.8</text>
+  <rect x="220" y="317" width="100" height="20" rx="4" fill="url(#anthropic-bar)"/>
+  <text x="328" y="331" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#60a5fa">$25.00</text>
+
+  <!-- Opus 4.8 Fast -->
+  <text x="60" y="362" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#94a3b8">Opus 4.8 Fast</text>
+  <rect x="220" y="349" width="200" height="20" rx="4" fill="url(#anthropic-bar)" opacity="0.6"/>
+  <text x="428" y="363" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#60a5fa">$50.00</text>
+
+  <!-- GPT-5.5 -->
+  <text x="60" y="394" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#e5e5e5">GPT-5.5</text>
+  <rect x="220" y="381" width="120" height="20" rx="4" fill="url(#openai-bar)"/>
+  <text x="348" y="395" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#fbbf24">$30.00</text>
+
+  <!-- GPT-5.5 Pro -->
+  <text x="60" y="426" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#94a3b8">GPT-5.5 Pro</text>
+  <rect x="220" y="413" width="720" height="20" rx="4" fill="url(#openai-bar)" opacity="0.6"/>
+  <text x="948" y="427" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#fbbf24">$180.00</text>
+
+  <!-- DeepSeek V4 -->
+  <text x="60" y="458" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#e5e5e5">DeepSeek V4</text>
+  <rect x="220" y="445" width="8" height="20" rx="4" fill="url(#deepseek-bar)"/>
+  <text x="236" y="459" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#4ade80">$0.28</text>
+
+  <!-- Scale note -->
+  <text x="840" y="475" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="9" fill="#475569">Bar widths relative: 1px ≈ $0.25</text>
+</svg>
