@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthropic Split the AI Frontier in Two: Inside Claude Fable 5 and Mythos 5</title>
+    <meta property="og:title" content="Anthropic Split the AI Frontier in Two: Inside Claude Fable 5 and Mythos 5">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-10">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20260610-claude-fable-5-mythos/images/01_hierarchy.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>Anthropic Split the AI Frontier in Two: Inside Claude Fable 5 and Mythos 5</h1>
+    <div class="meta">June 10, 2026 · 8 min read · AI Models / Anthropic</div>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260610-claude-fable-5-mythos/images/01_hierarchy.png" alt="Claude model hierarchy showing the new Mythos tier above Opus, with Fable 5 for public use and Mythos 5 for vetted partners">
+        <p class="caption">Anthropic's new model hierarchy — Mythos class sits above Opus for the first time</p>
+    </div>
+
+    <p>On June 9, 2026, Anthropic did something no frontier AI lab has done before. They released their most powerful model to date — <em>and then split it in two.</em></p>
+
+    <p><strong>Claude Fable 5</strong> is available to everyone via API, claude.ai, AWS Bedrock, and Google Vertex. <strong>Claude Mythos 5</strong> is the same model, but restricted to vetted enterprise partners and biology researchers. The difference? Safety guardrails — Fable 5 blocks queries in high-risk areas like cybersecurity exploitation and biological harm, while Mythos 5 gets full, unrestricted access.</p>
+
+    <p>This is the story of the first "Mythos-class" model, a new tier that sits above Opus in Anthropic's hierarchy. And it arrives at a pointed moment: Anthropic confidentially filed for IPO on June 1, 2026 — eight days before this launch.</p>
+
+    <hr>
+
+    <h2>The Mythos Tier: A New Layer on Top</h2>
+
+    <p>Since Claude 3 launched in March 2024, Anthropic's model lineup has been three-tiered: Haiku (fast and cheap), Sonnet (balanced), and Opus (professional-grade). For two years, Opus was the ceiling. Leaks about a fourth "Mythos" tier started circulating in April 2026, and Anthropic confirmed the existence of a Mythos Preview available to select testers — but wouldn't commit to a public release.</p>
+
+    <p>Now we know why they held back. The model is powerful enough that Anthropic spent months building safety infrastructure before they were comfortable releasing it publicly. The result is a two-model strategy: one model, two configurations.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">80.3%</div>
+            <div class="label">SWE-Bench Pro score (Fable 5)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">1M</div>
+            <div class="label">Token context window</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">128K</div>
+            <div class="label">Max output tokens</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">$50/M</div>
+            <div class="label">Output token pricing</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>What the Benchmarks Actually Say</h2>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260610-claude-fable-5-mythos/images/02_benchmarks.png" alt="Bar chart comparing Claude Fable 5 at 80.3%, Claude Opus 4.8 at 69.2%, and GPT-5.5 at 58.6% on SWE-Bench Pro">
+        <p class="caption">SWE-Bench Pro agentic coding benchmark — Fable 5 leads by 11.1 percentage points over Opus 4.8</p>
+    </div>
+
+    <p>The headline number: <strong>Fable 5 scores 80.3% on SWE-Bench Pro</strong>, Anthropic's preferred agentic coding benchmark. That's 11.1 percentage points above Opus 4.8 (69.2%) and 21.7 points above GPT-5.5 (58.6%), per Anthropic's own testing.</p>
+
+    <blockquote>
+        <p><strong>Important caveat:</strong> These benchmarks come from Anthropic's own evaluation. As of publication, independent third-party verification of Fable 5's SWE-Bench Pro scores is not yet available. Treat these as self-reported until confirmed by external eval runners.</p>
+    </blockquote>
+
+    <p>On CursorBench — the coding agent benchmark maintained by the Cursor team — Fable 5 scores 66% (47.0/71.0), which Cursor CEO Michael Truell called "the state of the art model for coding" in Anthropic's announcement post.</p>
+
+    <p>Beyond coding, Anthropic reports a 10-point jump over Opus 4.8 on long-running analytical tasks, improved vision capabilities (including the ability to rebuild application interfaces from screenshots), and significant gains in knowledge work and memory across extended sessions.</p>
+
+    <hr>
+
+    <h2>The Stripe Story: 50 Million Lines in Days</h2>
+
+    <p>Perhaps the most striking claim in the announcement came from Stripe. During early testing, Stripe reported that Fable 5 <strong>"compressed months of engineering into days"</strong> while working across a 50-million-line codebase.</p>
+
+    <p>This is the kind of claim that sounds like marketing until you consider the source. Stripe has one of the most sophisticated engineering teams in the industry and a codebase that handles billions of dollars in transactions. If they're saying it publicly, it's worth paying attention to — though the specific tasks, conditions, and human oversight involved were not detailed.</p>
+
+    <p>What we do know is that Anthropic specifically highlights Fable 5's ability to "work autonomously for longer than any previous Claude models." This suggests meaningful improvements in sustained multi-step task execution — not just single-turn coding challenges, but the ability to plan, execute, debug, and iterate across hours or days of work.</p>
+
+    <hr>
+
+    <h2>The Safety Split: Same Model, Two Doors</h2>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260610-claude-fable-5-mythos/images/03_safety_split.png" alt="Diagram showing Claude Fable 5 available publicly with safety guardrails versus Claude Mythos 5 restricted to vetted partners with full capabilities">
+        <p class="caption">The two-model release strategy — identical base model, different safety configurations</p>
+    </div>
+
+    <p>Here's where the story gets genuinely unprecedented. Anthropic didn't just release one powerful model — they released the same model in two configurations:</p>
+
+    <ul>
+        <li><strong>Claude Fable 5</strong> — available to everyone, with guardrails that block responses in high-risk cybersecurity and biology domains</li>
+        <li><strong>Claude Mythos 5</strong> — available only to vetted Project Glasswing partners and selected biology researchers, with full unrestricted capabilities</li>
+    </ul>
+
+    <p>Per Anthropic's system card, Fable 5 achieves "near-perfect harmless response rate" on child safety evaluations. The Guardian reported that Anthropic "restricted access for months over cybersecurity concerns" before deciding on this split release approach.</p>
+
+    <p>The practical difference: if you're a security researcher trying to test Fable 5 on penetration testing scenarios, or a biologist working on pathogen research, Fable 5 will refuse. Mythos 5 won't — but you can't get access to Mythos 5 without going through Anthropic's vetting process.</p>
+
+    <blockquote class="warning">
+        <p><strong>Why this matters:</strong> This is the first time a major AI lab has explicitly acknowledged that they built something too dangerous for full public release — and created a parallel restricted version for trusted partners. It sets a precedent that other labs will likely follow as models become more capable.</p>
+    </blockquote>
+
+    <hr>
+
+    <h2>Pricing: Premium Power at Premium Cost</h2>
+
+    <p>Fable 5 isn't cheap. At <strong>$10 per million input tokens and $50 per million output tokens</strong>, it's roughly double Opus 4.8's pricing and double GPT-5.5's input cost. Both Fable 5 and Mythos 5 share the same pricing structure.</p>
+
+    <ul>
+        <li><strong>Input:</strong> $10 / million tokens</li>
+        <li><strong>Output:</strong> $50 / million tokens</li>
+        <li><strong>Prompt caching:</strong> 90% discount on cached inputs</li>
+        <li><strong>Context window:</strong> 1M tokens input, 128K tokens output</li>
+    </ul>
+
+    <p>For context: a typical coding agent session that reads a medium-sized repo and produces a multi-file PR might consume 200K input tokens and 10K output tokens. That's roughly $2 in input and $0.50 in output per session — manageable for professional use, expensive for casual experimentation.</p>
+
+    <p>The prompt caching discount is critical here. If you're running repeated queries against the same codebase (which most coding agents do), the effective input cost drops to $1/M after the first query. This makes sustained agentic workflows much more economical than the headline price suggests.</p>
+
+    <hr>
+
+    <h2>The IPO Context: Timing Is Everything</h2>
+
+    <p>On June 1, 2026 — eight days before the Fable 5 launch — the New York Times reported that <strong>Anthropic confidentially filed for an initial public offering</strong>. The filing joins what the NYT described as "a once-in-a-generation" wave of tech IPOs.</p>
+
+    <p>The timing is hard to ignore. Releasing a new flagship model that benchmarks ahead of both GPT-5.5 and your own previous top-tier, complete with enterprise partnerships (AWS Bedrock, Google Vertex, GitLab Duo) and a Stripe testimonial — that's the kind of launch that looks very good on an S-1 roadmap.</p>
+
+    <p>This isn't a criticism. Public companies need to ship products. But it does add context to the strategic decision to release the model now rather than waiting for full independent verification of benchmarks.</p>
+
+    <hr>
+
+    <h2>What This Means for Developers</h2>
+
+    <h3>When Fable 5 is worth the cost</h3>
+
+    <ul>
+        <li><strong>Large-scale refactors</strong> — The Stripe anecdote suggests real capability on massive codebases</li>
+        <li><strong>Long-running autonomous agents</strong> — Fable 5's sustained execution improvements matter for multi-hour coding tasks</li>
+        <li><strong>Vision-to-code workflows</strong> — Rebuilding interfaces from screenshots opens new UI prototyping paths</li>
+        <li><strong>Complex multi-file PRs</strong> — The 80.3% SWE-Bench Pro score (if verified) suggests genuine agentic coding ability</li>
+    </ul>
+
+    <h3>When to stick with Opus or Sonnet</h3>
+
+    <ul>
+        <li><strong>Bulk API processing</strong> — At 2x the cost, Fable 5 is overkill for classification, extraction, or summarization</li>
+        <li><strong>Real-time applications</strong> — The 1M context window is great for long documents but latency-sensitive apps should benchmark carefully</li>
+        <li><strong>Budget-constrained projects</strong> — Sonnet remains the best price/performance ratio for most tasks</li>
+        <li><strong>Security research</strong> — Fable 5's guardrails will block you; apply for Mythos 5 access instead</li>
+    </ul>
+
+    <h3>Getting started</h3>
+
+    <p>Fable 5 is available now via the Anthropic API (model name: <code>claude-fable-5</code>), claude.ai for Pro/Max subscribers, and through cloud partners:</p>
+
+    <pre><code># Quick test via Anthropic Python SDK
+import anthropic
+
+client = anthropic.Anthropic()
+response = client.messages.create(
+    model="claude-fable-5",
+    max_tokens=4096,
+    messages=[{"role": "user", "content": "Analyze this codebase..."}]
+)
+print(response.content)</code></pre>
+
+    <hr>
+
+    <h2>The Bigger Picture: Safety as a Product Strategy</h2>
+
+    <p>The Fable/Mythos split is the most interesting part of this launch, and it's not about benchmarks. It's about the precedent.</p>
+
+    <p>Until now, AI labs have handled model safety through post-training techniques — RLHF, constitutional AI, system prompts. Anthropic is going further: they're building <em>separate deployment configurations</em> of the same model, gated by identity verification and partner agreements.</p>
+
+    <p>This is a fundamentally different approach from OpenAI's model releases (where GPT-5.5 is available to everyone at the same capability level) or Google's (where Gemini models ship with built-in safety filters but no restricted-access tier). Anthropic is essentially saying: "This model is powerful enough that unrestricted public access is irresponsible, but the work still needs to happen — so we'll gate it."</p>
+
+    <p>Expect other labs to copy this pattern. As models get better at coding, security analysis, and scientific reasoning, the tension between capability and safety will only grow. The Fable/Mythos split is a prototype for how every frontier lab might handle their most powerful models going forward.</p>
+
+    <hr>
+
+    <h2>Key Takeaways</h2>
+
+    <ul>
+        <li><strong>Mythos is a new tier above Opus</strong> — the first expansion of Anthropic's model hierarchy since Claude 3</li>
+        <li><strong>Fable 5 benchmarks ahead of Opus 4.8 and GPT-5.5</strong> on Anthropic's own SWE-Bench Pro (80.3% vs 69.2% vs 58.6%) — independent verification pending</li>
+        <li><strong>The safety split is unprecedented</strong> — same model, two configurations, public vs vetted-partner access</li>
+        <li><strong>$10/$50 per million tokens</strong> — double Opus pricing, justified for complex agentic tasks, overkill for routine work</li>
+        <li><strong>Stripe's 50M-line codebase claim</strong> is the most compelling real-world signal, though details are thin</li>
+        <li><strong>Anthropic IPO filing</strong> (June 1) provides strategic context for the launch timing</li>
+        <li><strong>The Fable/Mythos pattern</strong> is likely a template for how all frontier labs will handle powerful models going forward</li>
+    </ul>
+
+    <hr>
+
+    <p><em>Based on official Anthropic announcements, published system cards, and reporting from TechCrunch, The Guardian, VentureBeat, and others at time of writing (June 10, 2026). Benchmark figures are from Anthropic's own evaluations unless otherwise noted.</em></p>
+
+</article>
+</body>
+</html>

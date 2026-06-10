@@ -1,0 +1,54 @@
+<svg width="900" height="460" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="900" height="460" rx="16" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9" text-anchor="middle">SWE-Bench Pro: Agentic Coding Benchmark</text>
+  <text x="450" y="60" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Pass rate % — higher is better · Per Anthropic's own benchmarks</text>
+
+  <!-- Y-axis grid lines -->
+  <line x1="100" y1="90" x2="850" y2="90" stroke="#1e293b" stroke-width="0.5"/>
+  <text x="90" y="94" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">100%</text>
+  
+  <line x1="100" y1="150" x2="850" y2="150" stroke="#1e293b" stroke-width="0.5"/>
+  <text x="90" y="154" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">80%</text>
+  
+  <line x1="100" y1="210" x2="850" y2="210" stroke="#1e293b" stroke-width="0.5"/>
+  <text x="90" y="214" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">60%</text>
+  
+  <line x1="100" y1="270" x2="850" y2="270" stroke="#1e293b" stroke-width="0.5"/>
+  <text x="90" y="274" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">40%</text>
+  
+  <line x1="100" y1="330" x2="850" y2="330" stroke="#1e293b" stroke-width="0.5"/>
+  <text x="90" y="334" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">20%</text>
+  
+  <line x1="100" y1="390" x2="850" y2="390" stroke="#334155" stroke-width="1"/>
+  <text x="90" y="394" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">0%</text>
+
+  <!-- Fable 5 bar: 80.3% -->
+  <!-- Height: 80.3% of 300px range (20-100%) = 80.3/100 * 300 = 240.9px -->
+  <!-- y = 390 - 240.9 = 149.1 -->
+  <rect x="200" y="149" width="140" height="241" rx="8" fill="#22c55e" opacity="0.85"/>
+  <text x="270" y="134" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="700" fill="#22c55e" text-anchor="middle">80.3%</text>
+  <text x="270" y="420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="600" fill="#f1f5f9" text-anchor="middle">Claude Fable 5</text>
+  <text x="270" y="438" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Mythos-class · Jun 9</text>
+
+  <!-- Opus 4.8 bar: 69.2% -->
+  <!-- Height: 69.2% of 300 = 207.6px, y = 390 - 207.6 = 182.4 -->
+  <rect x="420" y="182" width="140" height="208" rx="8" fill="#a78bfa" opacity="0.85"/>
+  <text x="490" y="168" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="700" fill="#a78bfa" text-anchor="middle">69.2%</text>
+  <text x="490" y="420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="600" fill="#f1f5f9" text-anchor="middle">Claude Opus 4.8</text>
+  <text x="490" y="438" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" fill="#64748b" text-anchor="middle">May 28, 2026</text>
+
+  <!-- GPT-5.5 bar: 58.6% -->
+  <!-- Height: 58.6% of 300 = 175.8px, y = 390 - 175.8 = 214.2 -->
+  <rect x="640" y="214" width="140" height="176" rx="8" fill="#3b82f6" opacity="0.85"/>
+  <text x="710" y="200" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="700" fill="#3b82f6" text-anchor="middle">58.6%</text>
+  <text x="710" y="420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="600" fill="#f1f5f9" text-anchor="middle">GPT-5.5</text>
+  <text x="710" y="438" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" fill="#64748b" text-anchor="middle">OpenAI · Apr 2026</text>
+
+  <!-- Delta annotation -->
+  <line x1="340" y1="134" x2="640" y2="200" stroke="#475569" stroke-width="1" stroke-dasharray="4 3"/>
+  <rect x="420" y="138" width="140" height="24" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.5"/>
+  <text x="490" y="155" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#22c55e" text-anchor="middle">+11.1pp vs Opus</text>
+</svg>
