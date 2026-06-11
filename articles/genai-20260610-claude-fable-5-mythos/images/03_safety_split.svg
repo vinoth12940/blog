@@ -25,14 +25,14 @@
   <rect x="100" y="180" width="300" height="40" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="1"/>
   <text x="250" y="204" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="700" fill="#22c55e" text-anchor="middle" dominant-baseline="central">Claude Fable 5</text>
   
-  <text x="110" y="245" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ Available to everyone</text>
+  <text x="110" y="245" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ Generally available</text>
   <text x="110" y="268" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ Claude API + claude.ai</text>
-  <text x="110" y="291" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ AWS Bedrock + Vertex AI</text>
-  <text x="110" y="314" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ GitLab Duo integration</text>
+  <text x="110" y="291" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ Bedrock + Vertex AI + Foundry</text>
+  <text x="110" y="314" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">✓ GitLab Duo Agent Platform</text>
   
   <line x1="100" y1="328" x2="400" y2="328" stroke="#334155" stroke-width="0.5"/>
-  <text x="110" y="350" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#fb923c">⛔ Blocks cybersecurity exploits</text>
-  <text x="110" y="372" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#fb923c">⛔ Blocks biology harm queries</text>
+  <text x="110" y="350" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#fb923c">⛔ Flags risky cyber/bio requests</text>
+  <text x="110" y="372" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#fb923c">⛔ Routes/refuses when triggered</text>
 
   <!-- RIGHT: Mythos 5 -->
   <rect x="480" y="165" width="340" height="220" rx="14" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
@@ -42,11 +42,11 @@
   
   <text x="510" y="245" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">🔒 Vetted partners only</text>
   <text x="510" y="268" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">🔒 Project Glasswing partners</text>
-  <text x="510" y="291" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">🔒 Selected biology researchers</text>
-  <text x="510" y="314" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">🔒 Enterprise with compliance</text>
+  <text x="510" y="291" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">🔒 Soon: select bio researchers</text>
+  <text x="510" y="314" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="13" fill="#94a3b8">🔒 Trusted access programs</text>
   
   <line x1="500" y1="328" x2="800" y2="328" stroke="#334155" stroke-width="0.5"/>
-  <text x="510" y="350" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#22c55e">✅ Full capability access</text>
+  <text x="510" y="350" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#22c55e">✅ Safeguards lifted by program</text>
   <text x="510" y="372" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" font-weight="600" fill="#22c55e">✅ Security &amp; life sciences work</text>
 
   <!-- Pricing label (shared) -->

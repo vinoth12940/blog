@@ -4,7 +4,7 @@
   
   <!-- Title -->
   <text x="450" y="40" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="600" fill="#f1f5f9" text-anchor="middle">SWE-Bench Pro: Agentic Coding Benchmark</text>
-  <text x="450" y="60" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Pass rate % — higher is better · Per Anthropic's own benchmarks</text>
+  <text x="450" y="60" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Pass rate % — higher is better · Fable public score; restricted Mythos 5 scored 80.3%</text>
 
   <!-- Y-axis grid lines -->
   <line x1="100" y1="90" x2="850" y2="90" stroke="#1e293b" stroke-width="0.5"/>
@@ -25,11 +25,11 @@
   <line x1="100" y1="390" x2="850" y2="390" stroke="#334155" stroke-width="1"/>
   <text x="90" y="394" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" fill="#475569" text-anchor="end">0%</text>
 
-  <!-- Fable 5 bar: 80.3% -->
-  <!-- Height: 80.3% of 300px range (20-100%) = 80.3/100 * 300 = 240.9px -->
-  <!-- y = 390 - 240.9 = 149.1 -->
-  <rect x="200" y="149" width="140" height="241" rx="8" fill="#22c55e" opacity="0.85"/>
-  <text x="270" y="134" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="700" fill="#22c55e" text-anchor="middle">80.3%</text>
+  <!-- Fable 5 bar: 80.0% -->
+  <!-- Height: 80.0% of 300px range = 240px -->
+  <!-- y = 390 - 240 = 150 -->
+  <rect x="200" y="150" width="140" height="240" rx="8" fill="#22c55e" opacity="0.85"/>
+  <text x="270" y="135" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="22" font-weight="700" fill="#22c55e" text-anchor="middle">80.0%</text>
   <text x="270" y="420" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="600" fill="#f1f5f9" text-anchor="middle">Claude Fable 5</text>
   <text x="270" y="438" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Mythos-class · Jun 9</text>
 
@@ -50,5 +50,5 @@
   <!-- Delta annotation -->
   <line x1="340" y1="134" x2="640" y2="200" stroke="#475569" stroke-width="1" stroke-dasharray="4 3"/>
   <rect x="420" y="138" width="140" height="24" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.5"/>
-  <text x="490" y="155" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#22c55e" text-anchor="middle">+11.1pp vs Opus</text>
+  <text x="490" y="155" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" font-size="11" font-weight="600" fill="#22c55e" text-anchor="middle">+10.8pp vs Opus</text>
 </svg>
