@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Run Gemma4-12B-Coder Locally: A 12B Coding Model That Fits in 4.5 GB</title>
+    <meta property="og:title" content="How to Run Gemma4-12B-Coder Locally: A 12B Coding Model That Fits in 4.5 GB">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-16T12:00:00Z">
+    <meta name="description" content="A practical guide to running yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF locally — a 12B model distilled from Composer 2.5 and Fable 5 execution-verified chain-of-thought. Pick the right quant, launch with llama.cpp or Ollama, enable thinking mode, and wire it into an agent.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+        .highlight { color: #60a5fa; font-weight: 600; }
+        .tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; padding: 0.1rem 0.5rem; border-radius: 4px; background: #1a1a2e; color: #c4b5fd; margin-right: 0.25rem; }
+    </style>
+</head>
+<body>
+<article>
+
+    <h1>How to Run Gemma4-12B-Coder Locally: A 12B Coding Model That Fits in 4.5 GB</h1>
+    <div class="meta">June 16, 2026 · 9 min read · Local AI / llama.cpp / Open-Source LLMs</div>
+
+    <p>Most people assume a useful coding model needs a 24 GB GPU and a fat electricity bill. Then something like <code>yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF</code> shows up — a 12-billion-parameter model distilled from real, execution-verified chain-of-thought, with a 256K context window, and a 2-bit quant that fits in <strong>4.5 GB</strong>. You can run the whole thing on a cheap laptop with integrated graphics, fully offline, no API key, no cloud.</p>
+
+    <p>This is a hands-on guide to actually running it: which quant to grab, how to launch it with llama.cpp or Ollama, how to turn on its thinking mode, and the few gotchas worth knowing before you point an agent at it.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">12B</div>
+            <div class="label">params, fine-tuned from Gemma 4</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">256K</div>
+            <div class="label">context window (re-patched)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">4.5 GB</div>
+            <div class="label">smallest quant — runs almost anywhere</div>
+        </div>
+    </div>
+
+    <h2>What this model actually is</h2>
+
+    <p>Under the verbose name is a focused fine-tune of <code>google/gemma-4-12B-it</code> on verifiable Python coding data. "Verifiable" is doing real work here — every training example is an algorithmic or function-level problem that ships with deterministic tests. The reasoning has to produce code that <em>actually passes</em>.</p>
+
+    <p>The interesting part is the training data. It's a distillation from two complementary teachers:</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260616-gemma4-coder-local/images/01_training_pipeline.png" alt="Training pipeline: Composer 2.5 and Fable 5 chain-of-thought sources flow through an execution gate into a Gemma 4 12B fine-tune">
+        <p class="caption">Two execution-gated chain-of-thought sources, distilled into Gemma 4 12B. Only traces whose code passed the task's tests enter training.</p>
+    </div>
+
+    <ul>
+        <li><strong>Composer 2.5 (main teacher).</strong> Genuine, model-authored reasoning traces. The teacher solved each problem, its code was run against the tests, and only the passing solutions were kept. This is the bulk of the signal.</li>
+        <li><strong>Fable 5 (auxiliary teacher).</strong> For the problems where Composer 2.5 got it wrong, Fable 5 was handed the same task to re-derive a fresh, self-consistent chain-of-thought and a correct solution — again gated on passing the tests. This recovers the hard cases the main teacher missed.</li>
+    </ul>
+
+    <p>The result reasons in the open — it walks through edge cases, complexity, and approach before emitting a clean, runnable solution. The recipe is the part worth stealing: real chain-of-thought for solid coverage, plus synthetic "second-attempt" chain-of-thought to patch the failures, both verified by execution before anything touched training.</p>
+
+    <blockquote>
+        <p>The whole point is that the reasoning you're learning from <em>leads to code that works</em>. That's a meaningfully stronger guarantee than "the model was trained on a lot of code."</p>
+    </blockquote>
+
+    <p>One footnote on the model's status: the author's <code>v2</code> update notes that Fable 5 access was pulled shortly after this release, and that v2 will lean more heavily on Composer 2.5 as a backbone (with GLM-5.2 under consideration as an additional teacher). So v1 — this model — is currently the one to grab.</p>
+
+    <h2>The 256K context fix</h2>
+
+    <p>When the model first shipped, it reported only a 131K context window. That turned out to be the well-known upstream Gemma 4 metadata bug — Google's initial <code>config.json</code> shipped <code>max_position_embeddings: 131072</code> instead of the real <code>262144</code>, and that value got baked into downstream finetunes and quants before it was fixed upstream.</p>
+
+    <p>The weights were always fine — it was purely a metadata field. All the GGUF quants have since been re-patched to the full 256K context (<code>gemma4.context_length = 262144</code>). If you grabbed an early copy, just re-download.</p>
+
+    <h2>Step 1 — pick a quant that fits your memory</h2>
+
+    <p>The model ships in four GGUF quants. The decision is almost entirely a function of how much VRAM (or, on Apple Silicon, unified memory) you can spare. Here's the cheat-sheet, assuming a q8_0 KV cache and ~1.5 GB of overhead:</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260616-gemma4-coder-local/images/02_will_it_fit.png" alt="Context-length cheat-sheet: recommended quant and context window for 8, 12, 16, 24, and 32 GB of VRAM">
+        <p class="caption">Which quant and how much context you get per memory tier. Q4_K_M is the sweet spot for most machines.</p>
+    </div>
+
+    <p>In practice:</p>
+
+    <ul>
+        <li><span class="tag">Q2_K · 4.5 GB</span> The tiniest. Runs almost anywhere, including 8 GB machines — though context is tight (~16K, and you may need to drop it further).</li>
+        <li><span class="tag">Q4_K_M · 6.87 GB</span> The sweet spot. Recommended for most people. On a 16 GB machine you get ~64K of context, which is plenty for serious coding sessions.</li>
+        <li><span class="tag">Q6_K · 9.11 GB</span> Near-lossless. Grab this if you have 16–24 GB and want maximum quality.</li>
+        <li><span class="tag">Q8_0 · 11.8 GB</span> Basically full quality. Needs 24 GB+ to be comfortable.</li>
+    </ul>
+
+    <blockquote>
+        <p>Low on room? Two levers: drop a quant size, or switch the KV cache to <code>q4_0</code>. The latter roughly <strong>doubles</strong> your usable context at a small quality cost.</p>
+    </blockquote>
+
+    <h2>Step 2 — launch it</h2>
+
+    <p>The same GGUF runs in every common local runtime. Pick whichever you already have installed.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260616-gemma4-coder-local/images/03_run_options.png" alt="Five ways to run the model: llama.cpp, Ollama, LM Studio, vLLM, llama-cpp-python">
+        <p class="caption">One GGUF, many runtimes. llama.cpp gives you the most control; the one-click apps get you chatting fastest.</p>
+    </div>
+
+    <h3>Option A — llama.cpp (recommended)</h3>
+
+    <p>llama.cpp gives you the most control and the best performance. <strong>Important:</strong> this is the <code>gemma4_unified</code> architecture, so you need a <em>recent</em> build of llama.cpp — older builds will refuse to load it. Install via Homebrew, WinGet, or build from source.</p>
+
+    <p>The easiest path is to let <code>llama-server</code> fetch the quant straight from Hugging Face using the <code>-hf</code> shorthand:</p>
+
+    <pre><code># Install (pick one):
+#   brew install llama.cpp        # macOS
+#   winget install llama.cpp      # Windows
+#   or build from source: https://github.com/ggml-org/llama.cpp
+
+# Start an OpenAI-compatible server with a web UI:
+llama-server \
+  -hf yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF:Q4_K_M \
+  --ctx-size 16384 \
+  --n-gpu-layers 99 \
+  -fa \
+  --cache-type-k q8_0 --cache-type-v q8_0 \
+  --temp 1.0 --top-p 0.95 --top-k 64 \
+  --host 0.0.0.0 --port 18080</code></pre>
+
+    <p>Open <code>http://localhost:18080</code> and you're chatting. Bump <code>--ctx-size</code> per the cheat-sheet above; add <code>--no-mmap</code> on Windows if you want the model pinned in RAM. Prefer offline inference in the terminal instead? Swap <code>llama-server</code> for <code>llama-cli</code> with the same flags.</p>
+
+    <h3>Option B — Ollama (one-liner)</h3>
+
+    <p>If you already run Ollama, it can pull GGUFs directly from Hugging Face. This is the fastest path to a working chat:</p>
+
+    <pre><code>ollama run hf.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF:Q4_K_M</code></pre>
+
+    <p>That downloads the Q4_K_M quant on first run and drops you into an interactive prompt. Ollama also exposes an OpenAI-compatible endpoint at <code>http://localhost:11434/v1</code> if you want to point other tools at it.</p>
+
+    <h3>Option C — LM Studio / Jan (GUI)</h3>
+
+    <p>Prefer a desktop app? Both LM Studio and Jan can import any GGUF. Search the model ID, pick your quant, click, and chat. No command line required — good for a first taste or for non-developers on your machine.</p>
+
+    <h3>Option D — llama-cpp-python (embed it)</h3>
+
+    <p>If you want the model inside a Python app, <code>llama-cpp-python</code> wraps the same engine:</p>
+
+    <pre><code># pip install llama-cpp-python
+
+from llama_cpp import Llama
+
+llm = Llama.from_pretrained(
+    repo_id="yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF",
+    filename="gemma4-coding-Q4_K_M.gguf",
+)
+
+response = llm.create_chat_completion(
+    messages=[{"role": "user", "content": "Write a Python function to detect a cycle in a linked list."}]
+)
+print(response["choices"][0]["message"]["content"])</code></pre>
+
+    <p>Note the filename pattern — the actual GGUF files in this repo are named <code>gemma4-coding-&lt;quant&gt;.gguf</code>, so match that when you specify <code>filename</code>.</p>
+
+    <h2>Step 3 — use thinking mode (it's how the model was trained)</h2>
+
+    <p>This is the part most people get wrong. The model <strong>thinks in Gemma's native thought channel before answering</strong> — that's exactly how it was trained, on those Composer 2.5 / Fable 5 reasoning traces. If your runtime defaults thinking off, you're throwing away the entire point of the fine-tune.</p>
+
+    <p>Keep <code>enable_thinking=true</code> (the default Gemma chat template handles it). The recommended sampling, straight from the model card:</p>
+
+    <ul>
+        <li><strong>General:</strong> <code>temp 1.0</code>, <code>top_p 0.95</code>, <code>top_k 64</code></li>
+        <li><strong>For deterministic coding:</strong> go greedy — <code>temp 0</code> — for more reproducible solutions</li>
+    </ul>
+
+    <p>What you'll see is the model lay out its reasoning first (edge cases, the approach, the complexity), then produce the solution. The thinking tokens are part of the output stream, so if you're parsing the response programmatically, account for the thought channel.</p>
+
+    <h2>Gotchas before you put it in production</h2>
+
+    <ul>
+        <li><strong>It is not safety-aligned.</strong> The training data is task-focused with no safety hedging, so this model refuses far less than base Gemma. That's a feature for a coding tool and a liability for a public-facing one. <strong>Add your own guardrails</strong> — input/output filters, an allowlist of tasks, rate limiting — before exposing it to end users.</li>
+        <li><strong>It's specialized for Python / algorithmic coding.</strong> Reasoning quality is strongest in that domain. For general knowledge, facts, and numbers, double-check the output — the model is English-centric and will happily produce confident-looking but wrong trivia.</li>
+        <li><strong>It needs a recent llama.cpp.</strong> The <code>gemma4_unified</code> architecture isn't recognized by older builds. If you get a cryptic load error on an install you haven't touched in months, update llama.cpp first.</li>
+        <li><strong>2-bit is fast, not free.</strong> Q2_K runs everywhere, but expect measurable quality degradation on harder algorithmic problems compared to Q4_K_M. If you have the memory, take the sweet spot.</li>
+    </ul>
+
+    <h2>Bonus — wire it into an AI agent</h2>
+
+    <p>Because the model serves an OpenAI-compatible API, anything that speaks that protocol can use it. The model card even lists first-class support for a few agent runtimes. If you run an agent like <a href="https://github.com/NousResearch/hermes-agent">Hermes</a>, pointing it at your local server is three commands:</p>
+
+    <pre><code># Start the server (Option A), then:
+hermes config set model.provider custom
+hermes config set model.base_url http://127.0.0.1:18080/v1
+hermes config set model.default yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF:Q4_K_M</code></pre>
+
+    <p>Restart, and the agent now routes through your local 12B coder. Pair it with the greedy (<code>temp 0</code>) setting for deterministic code generation, or keep <code>temp 1.0</code> for exploratory work where you want varied approaches.</p>
+
+    <h2>The takeaway</h2>
+
+    <p>The headline number — a 12B model that thinks, codes, and fits in 4.5 GB — is real, and it's available right now. But the more interesting story is <em>why</em> it's good: the training data is execution-gated. The reasoning traces were only kept when the code passed its tests. That's a much stronger signal than "trained on a big pile of GitHub," and it shows in how the model works through a problem before writing the answer.</p>
+
+    <p>If you have a machine with 8 GB or more of memory and you've never run a local coding model, this is a genuinely good first one to try. Grab Q4_K_M, run one <code>llama-server</code> command, leave thinking mode on, and you have a private, offline coding assistant in about two minutes.</p>
+
+    <hr>
+
+    <p><em>Model: yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF (v1). Base: google/gemma-4-12B-it. License: Gemma Terms of Use. Quant sizes and context estimates sourced from the model card; your mileage will vary with hardware, KV cache settings, and prompt length. Always re-check the model card for the latest quants and any v2 release.</em></p>
+
+</article>
+</body>
+</html>

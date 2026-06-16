@@ -1,0 +1,77 @@
+<svg width="100%" viewBox="0 0 1440 840" xmlns="http://www.w3.org/2000/svg">
+<rect width="1440" height="840" fill="#0a0a0a"/>
+<text x="720" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#e5e5e5">Will it fit on my machine?</text>
+<text x="720" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#9ca3af">context length you get per quant, by available VRAM / unified memory  (q8_0 KV cache, ~1.5 GB overhead)</text>
+<rect x="50" y="110" width="1340" height="100" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+<rect x="78" y="132" width="130" height="56" rx="28" fill="#0b1a2e" stroke="#60a5fa" stroke-width="1"/>
+<text x="143" y="160" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">8 GB</text>
+<rect x="248" y="125" width="290" height="70" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="1"/>
+<text x="266" y="148" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#34d399">Q2_K</text>
+<text x="266" y="172" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">4.5 GB  ·  ~16K  (tight)</text>
+<rect x="552" y="125" width="290" height="70" rx="10" fill="#0d1117" stroke="#2a2f37" stroke-width="1" stroke-dasharray="5,5"/>
+<text x="697" y="160" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="16" fill="#4b5563">Q4_K_M  —  won't fit</text>
+<rect x="856" y="125" width="290" height="70" rx="10" fill="#0d1117" stroke="#2a2f37" stroke-width="1" stroke-dasharray="5,5"/>
+<text x="1001" y="160" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="16" fill="#4b5563">Q6_K  —  won't fit</text>
+<rect x="1160" y="125" width="290" height="70" rx="10" fill="#0d1117" stroke="#2a2f37" stroke-width="1" stroke-dasharray="5,5"/>
+<text x="1305" y="160" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="16" fill="#4b5563">Q8_0  —  won't fit</text>
+<rect x="50" y="230" width="1340" height="100" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+<rect x="78" y="252" width="130" height="56" rx="28" fill="#0b1a2e" stroke="#60a5fa" stroke-width="1"/>
+<text x="143" y="280" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">12 GB</text>
+<rect x="248" y="245" width="290" height="70" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="1"/>
+<text x="266" y="268" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#34d399">Q2_K</text>
+<text x="266" y="292" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">4.5 GB  ·  ~48K</text>
+<rect x="552" y="245" width="290" height="70" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="1"/>
+<text x="570" y="268" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#60a5fa">Q4_K_M</text>
+<text x="570" y="292" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">6.87 GB  ·  ~30K ★ recommended</text>
+<rect x="856" y="245" width="290" height="70" rx="10" fill="#221a3a" stroke="#7F77DD" stroke-width="1"/>
+<text x="874" y="268" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">Q6_K</text>
+<text x="874" y="292" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">9.11 GB  ·  ~12K</text>
+<rect x="1160" y="245" width="290" height="70" rx="10" fill="#0d1117" stroke="#2a2f37" stroke-width="1" stroke-dasharray="5,5"/>
+<text x="1305" y="280" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="16" fill="#4b5563">Q8_0  —  won't fit</text>
+<rect x="50" y="350" width="1340" height="100" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+<rect x="78" y="372" width="130" height="56" rx="28" fill="#0b1a2e" stroke="#60a5fa" stroke-width="1"/>
+<text x="143" y="400" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">16 GB</text>
+<rect x="248" y="365" width="290" height="70" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="1"/>
+<text x="266" y="388" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#34d399">Q2_K</text>
+<text x="266" y="412" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">4.5 GB  ·  ~80K</text>
+<rect x="552" y="365" width="290" height="70" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="1"/>
+<text x="570" y="388" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#60a5fa">Q4_K_M</text>
+<text x="570" y="412" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">6.87 GB  ·  ~64K ★ recommended</text>
+<rect x="856" y="365" width="290" height="70" rx="10" fill="#221a3a" stroke="#7F77DD" stroke-width="1"/>
+<text x="874" y="388" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">Q6_K</text>
+<text x="874" y="412" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">9.11 GB  ·  ~44K</text>
+<rect x="1160" y="365" width="290" height="70" rx="10" fill="#1f2328" stroke="#888780" stroke-width="1"/>
+<text x="1178" y="388" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#94a3b8">Q8_0</text>
+<text x="1178" y="412" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">11.8 GB  ·  ~22K</text>
+<rect x="50" y="470" width="1340" height="100" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+<rect x="78" y="492" width="130" height="56" rx="28" fill="#0b1a2e" stroke="#60a5fa" stroke-width="1"/>
+<text x="143" y="520" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">24 GB</text>
+<rect x="248" y="485" width="290" height="70" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="1"/>
+<text x="266" y="508" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#34d399">Q2_K</text>
+<text x="266" y="532" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">4.5 GB  ·  ~200K</text>
+<rect x="552" y="485" width="290" height="70" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="1"/>
+<text x="570" y="508" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#60a5fa">Q4_K_M</text>
+<text x="570" y="532" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">6.87 GB  ·  ~128K ★ recommended</text>
+<rect x="856" y="485" width="290" height="70" rx="10" fill="#221a3a" stroke="#7F77DD" stroke-width="1"/>
+<text x="874" y="508" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">Q6_K</text>
+<text x="874" y="532" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">9.11 GB  ·  ~110K</text>
+<rect x="1160" y="485" width="290" height="70" rx="10" fill="#1f2328" stroke="#888780" stroke-width="1"/>
+<text x="1178" y="508" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#94a3b8">Q8_0</text>
+<text x="1178" y="532" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">11.8 GB  ·  ~88K</text>
+<rect x="50" y="590" width="1340" height="100" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+<rect x="78" y="612" width="130" height="56" rx="28" fill="#0b1a2e" stroke="#60a5fa" stroke-width="1"/>
+<text x="143" y="640" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">32 GB</text>
+<rect x="248" y="605" width="290" height="70" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="1"/>
+<text x="266" y="628" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#34d399">Q2_K</text>
+<text x="266" y="652" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">4.5 GB  ·  256K max</text>
+<rect x="552" y="605" width="290" height="70" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="1"/>
+<text x="570" y="628" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#60a5fa">Q4_K_M</text>
+<text x="570" y="652" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">6.87 GB  ·  256K ★ recommended</text>
+<rect x="856" y="605" width="290" height="70" rx="10" fill="#221a3a" stroke="#7F77DD" stroke-width="1"/>
+<text x="874" y="628" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">Q6_K</text>
+<text x="874" y="652" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">9.11 GB  ·  ~230K</text>
+<rect x="1160" y="605" width="290" height="70" rx="10" fill="#1f2328" stroke="#888780" stroke-width="1"/>
+<text x="1178" y="628" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#94a3b8">Q8_0</text>
+<text x="1178" y="652" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">11.8 GB  ·  ~190K</text>
+<text x="720" y="818" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#9ca3af">switch KV cache to q4_0 and your context roughly doubles  ·  Apple Silicon unified memory counts too</text>
+</svg>
