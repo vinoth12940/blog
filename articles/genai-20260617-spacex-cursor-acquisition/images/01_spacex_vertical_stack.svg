@@ -1,0 +1,52 @@
+<svg width="100%" viewBox="0 0 1440 880" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1440" height="880" fill="#0a0a0a"/>
+<text x="720" y="50" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#e5e5e5">SpaceX's Vertically Integrated Coding Stack</text>
+<text x="720" y="80" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#9ca3af">From GPU clusters to your editor — one company controls every layer</text>
+
+<!-- Layer 1: Developer (top) -->
+<rect x="420" y="120" width="600" height="85" rx="12" fill="#0b1a2e" stroke="#378ADD" stroke-width="1"/>
+<text x="720" y="150" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#60a5fa">Developer</text>
+<text x="720" y="180" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#B5D4F4">1M+ daily active users · $2-3B ARR</text>
+
+<line x1="720" y1="205" x2="720" y2="245" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+<!-- Layer 2: Cursor IDE -->
+<rect x="320" y="245" width="800" height="95" rx="12" fill="#221a3a" stroke="#7F77DD" stroke-width="1"/>
+<text x="720" y="277" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#a78bfa">Cursor IDE  (acquired $60B)</text>
+<text x="720" y="307" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#CECBF6">AI-native editor · Composer agent · model-agnostic (for now)</text>
+<text x="720" y="327" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="14" fill="#9ca3af">Hobby free · Pro $20 · Pro+ $60 · Ultra $200 · Teams $40/user</text>
+
+<line x1="720" y1="340" x2="720" y2="380" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+<!-- Layer 3: Grok Build CLI -->
+<rect x="320" y="380" width="800" height="85" rx="12" fill="#3a2a08" stroke="#BA7517" stroke-width="1"/>
+<text x="720" y="410" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#fbbf24">Grok Build 0.1  (CLI agent)</text>
+<text x="720" y="440" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#FAC775">Rust-based terminal-native coding agent · in Notion AI</text>
+
+<line x1="720" y1="465" x2="720" y2="505" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+<!-- Layer 4: Jointly Trained Model -->
+<rect x="220" y="505" width="1000" height="95" rx="12" fill="#0f2a22" stroke="#1d9e75" stroke-width="1"/>
+<text x="720" y="537" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#34d399">Jointly Trained Coding Model  (soon)</text>
+<text x="720" y="567" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#9FE1CB">SpaceX + Cursor co-developed · trained on Cursor usage telemetry</text>
+<text x="720" y="587" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="14" fill="#9ca3af">releasing on both Cursor and Grok Build platforms</text>
+
+<line x1="720" y1="600" x2="720" y2="640" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+<!-- Layer 5: Grok Model Layer -->
+<rect x="320" y="640" width="800" height="85" rx="12" fill="#221a3a" stroke="#7F77DD" stroke-width="1"/>
+<text x="720" y="670" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#a78bfa">Grok 4.3  (xAI model layer)</text>
+<text x="720" y="700" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#CECBF6">frontier LLM · embedded in Notion AI</text>
+
+<line x1="720" y1="725" x2="720" y2="765" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+<!-- Layer 6: Colossus Compute -->
+<rect x="320" y="765" width="800" height="85" rx="12" fill="#3a1a1a" stroke="#E24B4A" stroke-width="1"/>
+<text x="720" y="795" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#f87171">Colossus  (xAI supercomputer)</text>
+<text x="720" y="825" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#F09595">GPU cluster powering all training and inference</text>
+</svg>

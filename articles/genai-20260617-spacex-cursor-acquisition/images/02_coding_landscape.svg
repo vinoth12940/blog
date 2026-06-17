@@ -1,0 +1,115 @@
+<svg width="100%" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1440" height="860" fill="#0a0a0a"/>
+<text x="720" y="48" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#e5e5e5">AI Coding Landscape — Post-Acquisition</text>
+<text x="720" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#9ca3af">Who owns the full stack vs. who depends on someone else's model</text>
+
+<!-- Column headers -->
+<text x="210" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#f87171">SpaceX / xAI</text>
+<text x="210" y="144" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">Full vertical stack</text>
+
+<text x="580" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#60a5fa">Anthropic</text>
+<text x="580" y="144" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">Model + agent, no IDE</text>
+
+<text x="950" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#34d399">Microsoft</text>
+<text x="950" y="144" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">IDE + agent + cloud</text>
+
+<text x="1280" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#fbbf24">Cognition</text>
+<text x="1280" y="144" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">Independent agent</text>
+
+<!-- SpaceX column -->
+<rect x="50" y="170" width="320" height="65" rx="10" fill="#3a1a1a" stroke="#E24B4A" stroke-width="0.8"/>
+<text x="210" y="195" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#f87171">Colossus (compute)</text>
+<text x="210" y="218" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#F09595">xAI GPU cluster</text>
+
+<rect x="50" y="248" width="320" height="65" rx="10" fill="#221a3a" stroke="#7F77DD" stroke-width="0.8"/>
+<text x="210" y="273" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#a78bfa">Grok 4.3 (models)</text>
+<text x="210" y="296" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#CECBF6">frontier LLM</text>
+
+<rect x="50" y="326" width="320" height="65" rx="10" fill="#3a2a08" stroke="#BA7517" stroke-width="0.8"/>
+<text x="210" y="351" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#fbbf24">Grok Build 0.1 (CLI)</text>
+<text x="210" y="374" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#FAC775">terminal agent · Rust</text>
+
+<rect x="50" y="404" width="320" height="65" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="0.8"/>
+<text x="210" y="429" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#34d399">Cursor (IDE)</text>
+<text x="210" y="452" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9FE1CB">1M+ DAU · $2-3B ARR</text>
+
+<!-- SpaceX total control badge -->
+<rect x="90" y="495" width="240" height="48" rx="8" fill="#3a1a1a" stroke="#E24B4A" stroke-width="1.5"/>
+<text x="210" y="519" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#f87171">Full stack control</text>
+
+<!-- Anthropic column -->
+<rect x="420" y="170" width="320" height="65" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="0.8"/>
+<text x="580" y="195" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#60a5fa">Opus 4.8 / Sonnet 4.6</text>
+<text x="580" y="218" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#B5D4F4">best public coding models</text>
+
+<rect x="420" y="248" width="320" height="65" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="0.8"/>
+<text x="580" y="273" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#60a5fa">Claude Code (CLI)</text>
+<text x="580" y="296" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#B5D4F4">#1 pro usage Q1 2026</text>
+
+<rect x="420" y="326" width="320" height="65" rx="10" fill="#1a1a2e" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>
+<text x="580" y="351" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#6b7280">No IDE (dashed)</text>
+<text x="580" y="374" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#6b7280">integrates into any editor</text>
+
+<rect x="420" y="404" width="320" height="65" rx="10" fill="#1a1a2e" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>
+<text x="580" y="429" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#6b7280">No compute layer</text>
+<text x="580" y="452" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#6b7280">uses AWS / GCP</text>
+
+<!-- Anthropic badge -->
+<rect x="460" y="495" width="240" height="48" rx="8" fill="#0b1a2e" stroke="#378ADD" stroke-width="1.5"/>
+<text x="580" y="519" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#60a5fa">Independent · neutral</text>
+
+<!-- Microsoft column -->
+<rect x="790" y="170" width="320" height="65" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="0.8"/>
+<text x="950" y="195" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#34d399">Azure (compute)</text>
+<text x="950" y="218" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9FE1CB">global cloud</text>
+
+<rect x="790" y="248" width="320" height="65" rx="10" fill="#0b1a2e" stroke="#378ADD" stroke-width="0.8"/>
+<text x="950" y="273" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#60a5fa">MAI-Code-1 + GPT-5.x</text>
+<text x="950" y="296" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#B5D4F4">proprietary + OpenAI</text>
+
+<rect x="790" y="326" width="320" height="65" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="0.8"/>
+<text x="950" y="351" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#34d399">Copilot App (desktop)</text>
+<text x="950" y="374" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9FE1CB">agent-native · usage billing</text>
+
+<rect x="790" y="404" width="320" height="65" rx="10" fill="#0f2a22" stroke="#1d9e75" stroke-width="0.8"/>
+<text x="950" y="429" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#34d399">VS Code (IDE)</text>
+<text x="950" y="452" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#9FE1CB">most-used editor globally</text>
+
+<!-- Microsoft badge -->
+<rect x="830" y="495" width="240" height="48" rx="8" fill="#0f2a22" stroke="#1d9e75" stroke-width="1.5"/>
+<text x="950" y="519" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#34d399">Cloud-scale stack</text>
+
+<!-- Cognition column -->
+<rect x="1160" y="170" width="240" height="65" rx="10" fill="#221a3a" stroke="#7F77DD" stroke-width="0.8"/>
+<text x="1280" y="195" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#a78bfa">SWE-1.5 (model)</text>
+<text x="1280" y="218" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#CECBF6">proprietary</text>
+
+<rect x="1160" y="248" width="240" height="65" rx="10" fill="#3a2a08" stroke="#BA7517" stroke-width="0.8"/>
+<text x="1280" y="273" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#fbbf24">Devin Desktop</text>
+<text x="1280" y="296" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#FAC775">ex-Windsurf · $250M acq</text>
+
+<rect x="1160" y="326" width="240" height="65" rx="10" fill="#1a1a2e" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>
+<text x="1280" y="351" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#6b7280">No cloud compute</text>
+
+<rect x="1160" y="404" width="240" height="65" rx="10" fill="#1a1a2e" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>
+<text x="1280" y="429" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#6b7280">Narrow focus</text>
+<text x="1280" y="452" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="13" fill="#6b7280">SWE agent only</text>
+
+<!-- Cognition badge -->
+<rect x="1180" y="495" width="200" height="48" rx="8" fill="#3a2a08" stroke="#BA7517" stroke-width="1.5"/>
+<text x="1280" y="519" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#fbbf24">Boutique player</text>
+
+<!-- Key insight at bottom -->
+<rect x="80" y="580" width="1280" height="90" rx="12" fill="#0f1729" stroke="#3b82f6" stroke-width="1"/>
+<text x="720" y="610" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#93c5fd">Key insight</text>
+<text x="720" y="640" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#93c5fd">SpaceX now controls the IDE, the CLI agent, the model, and the compute.</text>
+<text x="720" y="662" text-anchor="middle" dominant-baseline="central" font-family="Inter, sans-serif" font-size="15" fill="#93c5fd">No other company has all four layers — but Claude Code is the most portable exit.</text>
+
+<!-- Timeline annotation -->
+<text x="720" y="710" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6b7280">Deal filed June 16, 2026 · Expected close Q3 2026 · $60B all-stock · 3.4% dilution at SpaceX IPO valuation</text>
+</svg>
