@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Headless Linux Desktop Trap: Why My AI Server Burned CPU on Nothing — and the $6 Fix</title>
+    <meta name="description" content="A headless Linux mini PC kept freezing and burning 75% CPU on its desktop. The culprit was software rendering — and the fix was a $6 HDMI EDID emulator. Full diagnosis, fix, and how it fits running an always-on AI agent controlled from a Mac.">
+    <meta property="og:title" content="The Headless Linux Desktop Trap: Why My AI Server Burned CPU on Nothing — and the $6 Fix">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-06-18">
+    <meta property="og:description" content="A headless Linux mini PC kept freezing and burning 75% CPU on its desktop. The culprit was software rendering — and the fix was a $6 HDMI EDID emulator.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/headless-linux-edid-fix/images/hero.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        .hero-img { width: 100%; border-radius: 12px; margin: 2rem 0; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>The Headless Linux Desktop Trap: Why My AI Server Burned CPU on Nothing — and the $6 Fix</h1>
+    <div class="meta">June 18, 2026 &middot; 9 min read &middot; Self-Hosting, Linux, Infrastructure</div>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/headless-linux-edid-fix/images/hero.png" alt="Headless Linux server with an HDMI EDID emulator plug">
+        <p class="caption">Same machine, two renderers. The only change was a $6 plug.</p>
+    </div>
+
+    <p>I run an always-on AI agent on a headless Linux mini PC in my closet. By every normal metric, the server looked healthy — load average under 1.5 on a 12-core chip, 98% idle, plenty of free RAM. But every few hours its desktop would freeze. The panel wouldn't render. VNC turned into a slideshow. And when I finally poked it, a single process was quietly incinerating a CPU core.</p>
+
+    <p>The culprit wasn't a memory leak, a runaway container, or a misbehaving cron job. It was the <strong>graphics stack</strong>. My server had no monitor — so it was rendering the entire desktop in software, on the CPU, forever.</p>
+
+    <p>The fix cost six dollars and took two minutes. Here's the full diagnosis, the fix, and why it matters for anyone running a headless Linux box that still needs a desktop.</p>
+
+    <hr>
+
+    <h2>The Setup: a 24/7 AI Agent With No Monitor</h2>
+
+    <p>First, some context on why a server without a screen even has a desktop.</p>
+
+    <p>The machine is a <strong>Minisforum UM760 Slim</strong> — an AMD Ryzen 5 7640HS mini PC with a Radeon 760M iGPU and 16 GB of RAM, running Linux Mint. On it lives <strong>Hermes Agent</strong>, an open-source AI assistant that runs 24/7 and talks to me through Telegram. It handles my daily market briefings, writes and publishes articles, manages GitHub repos, runs scripts, and browses the web.</p>
+
+    <p>That last part is the key. Hermes needs a <strong>real, full browser</strong> — actual Chromium with the DevTools Protocol — to do things like import articles to Medium, scrape pages that need JavaScript, and drive logins. And I need to be able to <strong>watch that browser remotely</strong> and step in when a CAPTCHA or login screen pops up. So the server runs a complete Cinnamon desktop session, exposed over VNC, reachable from my MacBook through Tailscale.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/headless-linux-edid-fix/images/setup-mac-control.png" alt="Architecture: MacBook controls headless Linux server over Tailscale, VNC stream returns, HDMI dummy plug on the server">
+        <p class="caption">No monitor is ever plugged in for real — but the server runs a full desktop so Hermes can drive a browser, and so I can watch it from the Mac.</p>
+    </div>
+
+    <p>So the desktop isn't decorative. It's load-bearing infrastructure. When it freezes, my AI agent goes partly blind.</p>
+
+    <hr>
+
+    <h2>The Symptom: a Desktop That Slowly Chokes</h2>
+
+    <p>The pattern was infuriatingly consistent. After a fresh login, everything was fine. Then, over the course of about fifteen minutes, <code>cinnamon</code> — the desktop shell — would creep higher and higher on CPU. Eventually it sat at <strong>40–75% of a core</strong>, sustained, doing nothing visible. The screensaver process alone was eating <strong>38% CPU</strong>. The panel would stop redrawing, windows would leave smears, and VNC became unusable.</p>
+
+    <p>This went on for weeks. I tried the usual suspects: killing runaway processes, disabling desktop effects, pruning extensions, restarting Cinnamon. Nothing stuck. The freeze always came back.</p>
+
+    <p>I did find one band-aid that helped a little:</p>
+
+    <pre><code>dconf write /org/cinnamon/muffin/compositing-manager false</code></pre>
+
+    <p>Disabling the compositor reduced the worst of the CPU churn, but it's a lousy trade — you lose transparency, animations, and proper window rendering, and it still wasn't smooth. It was treating the symptom, not the disease.</p>
+
+    <hr>
+
+    <h2>The Diagnosis: llvmpipe</h2>
+
+    <p>The real answer was hiding in plain sight. Two commands told the whole story.</p>
+
+    <p>First, the OpenGL renderer:</p>
+
+    <pre><code>glxinfo | grep "OpenGL renderer"
+# OpenGL renderer string: llvmpipe (LLVM 20.1.2, 256 bits)</code></pre>
+
+    <p><strong>llvmpipe.</strong> That's Mesa's software rasterizer. It renders OpenGL entirely on the CPU. A real AMD GPU should report <code>AMD Radeon Graphics</code> here, not llvmpipe.</p>
+
+    <p>Second, the Xorg log:</p>
+
+    <pre><code>grep -iE "dummy_drv|DRISWRAST|amdgpu" /var/log/Xorg.0.log
+# (II) Loading /usr/lib/xorg/modules/drivers/dummy_drv.so
+# (II) GLX: Initialized DRISWRAST GL provider for screen 0</code></pre>
+
+    <p>There it is. Xorg was loading the <strong><code>dummy</code> driver</strong> — a virtual framebuffer — and initializing <strong>DRISWRAST</strong>, the software path. The Radeon iGPU, sitting right there on the silicon, was doing nothing.</p>
+
+    <p>Why? Because some time ago, to give the headless box a stable display to render into, a config file had been dropped in at <code>/etc/X11/xorg.conf.d/10-headless.conf</code> forcing Xorg onto the <code>dummy</code> driver. It exposed a fake 1920×1080 monitor so Cinnamon had something to draw on. It worked — the desktop ran — but <code>dummy</code> is a pure software framebuffer with <strong>no GPU acceleration</strong>. So every pixel the compositor blended, every frame the screensaver animated, was rasterized by the CPU.</p>
+
+    <p>The desktop wasn't misbehaving. It was doing exactly what it was told — just in the most expensive way possible.</p>
+
+    <blockquote>
+        <p><strong>The core problem:</strong> a modern compositing desktop (Cinnamon, GNOME, KDE) redraws constantly — window shadows, blur, animations, the clock ticking. On the GPU that's free. On llvmpipe it's a tight CPU loop that never stops. "Headless" doesn't make the rendering go away; it just moves it from the GPU to the CPU.</p>
+    </blockquote>
+
+    <hr>
+
+    <h2>Why Headless ≠ Free</h2>
+
+    <p>This is the part that surprised me, and it's worth understanding if you run any headless Linux machine with a GUI.</p>
+
+    <p>An Xorg display server wants a <strong>real display connector with valid EDID</strong> before it will bring up the hardware GPU driver. EDID is the chunk of data a monitor advertises over its cable — its supported resolutions, timings, manufacturer. When the GPU driver (here, <code>amdgpu</code>) sees a connected display with valid EDID, it initializes a real display pipeline and hands GLX a hardware-accelerated context (in AMD's case, the <code>radeonsi</code> Gallium3D driver).</p>
+
+    <p>With no monitor plugged in, the connectors report <code>disconnected</code>, and depending on the driver and firmware, amdgpu may never light up a screen at all. The classic workaround is exactly what was on my box: install the <code>dummy</code> Xorg driver so there's always a fake display. It solves the "no display" problem but throws away hardware acceleration entirely.</p>
+
+    <p>You can confirm the disconnect yourself:</p>
+
+    <pre><code>for c in /sys/class/drm/card*-*/status; do
+  echo "$c: $(cat $c)"
+done
+# /sys/class/drm/card1-HDMI-A-1/status: disconnected
+# /sys/class/drm/card1-DP-1/status: disconnected
+# ...all disconnected</code></pre>
+
+    <p>Every port <code>disconnected</code> is the GPU with nothing to render into. That's the trap.</p>
+
+    <hr>
+
+    <h2>The Fix: a $6 HDMI EDID Emulator</h2>
+
+    <p>The clean solution is a tiny piece of hardware called an <strong>EDID emulator</strong> — often sold as an "HDMI dummy plug" or "headless display emulator." It's a pass-through dongle the size of a USB stick that you plug into an HDMI port. It advertises a valid monitor EDID to the GPU, complete with real resolution timings, so the GPU driver initializes a proper hardware-accelerated display pipeline. There's no actual screen, but the GPU doesn't know or care — it just needs someone to answer "yes, I'm a 1080p display" on the other end of the cable.</p>
+
+    <p>They cost about <strong>$6</strong> on Amazon. There are DisplayPort and HDMI variants; some even let you flash a custom EDID for a specific resolution and refresh rate.</p>
+
+    <p>Here's the full fix on my box. First, disable the dummy-driver config so Xorg is free to pick up the real GPU:</p>
+
+    <pre><code>sudo mv /etc/X11/xorg.conf.d/10-headless.conf \
+        /etc/X11/xorg.conf.d/10-headless.conf.disabled</code></pre>
+
+    <p>Then restart the display manager so Xorg re-probes the hardware:</p>
+
+    <pre><code>sudo systemctl restart lightdm</code></pre>
+
+    <p>That drops you to the login screen (it restarts the whole graphical session), so do it when you're ready to log back in over VNC. After I logged back in, the Xorg log told a very different story:</p>
+
+    <pre><code>grep -iE "amdgpu|DRISWRAST|dummy" /var/log/Xorg.0.log
+# (II) AMDGPU(0): ... Modeline "1920x1080" ...
+# (--) AMDGPU(0): HDMI max TMDS frequency 450000KHz
+# (no DRISWRAST, no dummy_drv — gone)</code></pre>
+
+    <p><strong>AMDGPU</strong> was now driving the display, reading real EDID from the emulator. And the connector status confirmed it:</p>
+
+    <pre><code>/sys/class/drm/card1-HDMI-A-1/status: connected</code></pre>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/headless-linux-edid-fix/images/before-after.png" alt="Before vs after: dummy driver with llvmpipe software rendering vs amdgpu with radeonsi hardware rendering, CPU dropping from 75% to 3%">
+        <p class="caption">Same hardware, two renderers. The only difference is whether the GPU has a display context to render into.</p>
+    </div>
+
+    <hr>
+
+    <h2>The Result: 98.5% Idle</h2>
+
+    <p>The change was immediate and dramatic. The desktop process that had been slowly choking to 40–75% CPU now sat flat at single digits, and stayed there:</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number" style="color:#f87171">40–75%</div>
+            <div class="label">Cinnamon CPU before (software)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#34d399">~3%</div>
+            <div class="label">Cinnamon CPU after (hardware)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#f87171">38%</div>
+            <div class="label">Screensaver CPU before</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" style="color:#34d399">0.8%</div>
+            <div class="label">Screensaver CPU after</div>
+        </div>
+    </div>
+
+    <p>Overall, the entire server settled to <strong>98.5% idle</strong> with a load average around 1.0 on twelve cores. Xorg itself dropped to about 4.7%. The recurring freezes stopped entirely. The panel renders. VNC is responsive. The screensaver — the thing that was burning more CPU than most of my actual services — became a rounding error.</p>
+
+    <p>All of that, for the price of a coffee.</p>
+
+    <hr>
+
+    <h2>The Bigger Picture: Controlling It All From the Mac</h2>
+
+    <p>Why does this matter beyond one desktop? Because the whole point of the setup is that <strong>the server is a remote control surface I operate from my MacBook</strong>, and a frozen desktop breaks that loop.</p>
+
+    <p>Here's how the pieces fit together:</p>
+
+    <ul>
+        <li><strong>Tailscale</strong> ties my MacBook, the server, and my phone into one encrypted WireGuard mesh. From the Mac, the server is just another LAN address.</li>
+        <li><strong>Hermes Agent</strong> runs 24/7 on the server, living in Telegram. I message it; it acts — running shell commands, browsing, writing, publishing.</li>
+        <li><strong>Chromium + Playwright</strong> on the server does the real-browser work Hermes can't do headlessly — importing articles to Medium, handling logins, scraping JS-heavy pages.</li>
+        <li><strong>VNC over Tailscale</strong> lets me watch that browser live and intervene on CAPTCHAs or expired sessions.</li>
+    </ul>
+
+    <p>When the desktop was choking on llvmpipe, that last link degraded first. VNC got sluggish, the browser automation got flaky, and I'd lose the ability to step in when something needed a human. The EDID emulator didn't just fix a CPU number — it made the entire remote-control setup reliable enough to actually depend on.</p>
+
+    <p>My MacBook stays my daily driver and the heavy LLM inference host. The server stays the tireless, always-on operator. The $6 plug is what keeps the bridge between them smooth.</p>
+
+    <hr>
+
+    <h2>Lessons for Self-Hosters</h2>
+
+    <ul>
+        <li><strong>Headless doesn't mean "no rendering."</strong> If your box runs any GUI — for VNC, xrdp, browser automation, a media center, even just a screensaver — something is compositing frames. The question is whether that happens on the GPU or the CPU.</li>
+        <li><strong>Check your renderer first.</strong> <code>glxinfo | grep "OpenGL renderer"</code> takes one second. If it says <code>llvmpipe</code>, you're software-rendering, and that's almost always the cause of a mysteriously hot, laggy headless desktop.</li>
+        <li><strong>The <code>dummy</code> driver is a trap.</strong> It's the most common headless workaround, and it works — by silently throwing away all hardware acceleration. It's fine for a pure console box. It's a slow poison for anything with a desktop.</li>
+        <li><strong>An EDID emulator is the clean answer.</strong> It's cheaper than a real monitor, draws no power to speak of, never needs a cable run, and makes the GPU do its job. Keep one in your parts drawer.</li>
+        <li><strong>This is broader than AI agents.</strong> Anyone running Home Assistant in a VM with a desktop, a headless Linux gaming/streaming box (Sunshine/Moonlight), a CI runner that screenshots a browser, or a remote workstation over VNC hits the exact same wall.</li>
+    </ul>
+
+    <hr>
+
+    <h2>TL;DR</h2>
+
+    <ul>
+        <li>My headless Linux server's desktop kept freezing and burning up to 75% of a CPU core.</li>
+        <li>Root cause: no monitor meant Xorg fell back to the <code>dummy</code> driver + <code>llvmpipe</code> software rendering — the entire desktop was drawn on the CPU.</li>
+        <li>Fix: a $6 HDMI EDID emulator (dummy plug) so the GPU sees a "connected" display, plus disabling the old dummy-driver config and restarting <code>lightdm</code>.</li>
+        <li>Result: Cinnamon dropped from 40–75% CPU to ~3%, the server is 98.5% idle, and the VNC control loop from my Mac is reliable again.</li>
+        <li>Check your own headless box: <code>glxinfo | grep "OpenGL renderer"</code>. If it says <code>llvmpipe</code>, you're in the same trap.</li>
+    </ul>
+
+    <p>One tiny plug. One config file. One restart. And the server that runs my AI agent finally stopped fighting itself.</p>
+
+</article>
+</body>
+</html>

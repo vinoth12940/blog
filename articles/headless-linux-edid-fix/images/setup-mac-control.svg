@@ -1,0 +1,92 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="macG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cbd5e1"/><stop offset="1" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="srvG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e293b"/><stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="760" fill="#0a0f1a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-family="'Inter',sans-serif" font-size="26" fill="#f1f5f9" font-weight="700">Why a Headless Server Even Has a Desktop</text>
+  <text x="720" y="88" text-anchor="middle" font-family="'Inter',sans-serif" font-size="16" fill="#64748b">The desktop exists so Hermes can drive a real browser — and so I can watch it from the Mac</text>
+
+  <!-- MACBOOK (left) -->
+  <g transform="translate(70,210)">
+    <!-- screen -->
+    <rect x="10" y="0" width="280" height="180" rx="12" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+    <rect x="24" y="16" width="252" height="140" rx="4" fill="#0f172a"/>
+    <!-- dock dots -->
+    <circle cx="60" cy="172" r="0"/>
+    <rect x="40" y="130" width="220" height="20" rx="10" fill="#0b1220" opacity="0.8"/>
+    <circle cx="70" cy="140" r="5" fill="#22d3ee" opacity="0.7"/>
+    <circle cx="92" cy="140" r="5" fill="#34d399" opacity="0.7"/>
+    <circle cx="114" cy="140" r="5" fill="#a78bfa" opacity="0.7"/>
+    <!-- base -->
+    <rect x="0" y="180" width="300" height="14" rx="7" fill="url(#macG)"/>
+    <rect x="120" y="180" width="60" height="6" rx="3" fill="#94a3b8"/>
+    <text x="150" y="232" text-anchor="middle" font-family="'Inter',sans-serif" font-size="18" fill="#f1f5f9" font-weight="600">MacBook Pro</text>
+    <text x="150" y="256" text-anchor="middle" font-family="'Inter',sans-serif" font-size="14" fill="#64748b">daily driver · LLM host</text>
+  </g>
+
+  <!-- TAILSCALE cloud (center) -->
+  <g transform="translate(720,300)">
+    <ellipse cx="0" cy="0" rx="150" ry="78" fill="#0f1729" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4 6"/>
+    <text x="0" y="-6" text-anchor="middle" font-family="'Inter',sans-serif" font-size="20" fill="#22d3ee" font-weight="700">Tailscale</text>
+    <text x="0" y="20" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" fill="#94a3b8">encrypted WireGuard mesh</text>
+    <!-- lock -->
+    <text x="0" y="48" text-anchor="middle" font-family="'Inter',sans-serif" font-size="22" fill="#22d3ee">🔒</text>
+  </g>
+
+  <!-- mac -> tailscale -->
+  <path d="M 370 300 L 565 300" stroke="#22d3ee" stroke-width="2.5" fill="none" marker-end="url(#aC)"/>
+  <text x="467" y="288" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" fill="#22d3ee">control plane</text>
+
+  <!-- tailscale -> server -->
+  <path d="M 875 300 L 1070 300" stroke="#22d3ee" stroke-width="2.5" fill="none" marker-end="url(#aC)"/>
+  <text x="972" y="288" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" fill="#22d3ee">100.x.x.x · tailnet</text>
+
+  <!-- SERVER (right) -->
+  <g transform="translate(1070,210)">
+    <rect x="0" y="0" width="300" height="180" rx="14" fill="url(#srvG)" stroke="#334155" stroke-width="2"/>
+    <!-- vent -->
+    <line x1="20" y1="26" x2="120" y2="26" stroke="#475569" stroke-width="2"/>
+    <line x1="20" y1="36" x2="120" y2="36" stroke="#475569" stroke-width="2"/>
+    <circle cx="266" cy="30" r="5" fill="#34d399"/>
+    <text x="150" y="70" text-anchor="middle" font-family="'Inter',sans-serif" font-size="18" fill="#f1f5f9" font-weight="600">UM760 Server</text>
+    <text x="150" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" fill="#64748b">Linux Mint · 24/7 · headless</text>
+    <!-- internal components -->
+    <rect x="20" y="108" width="125" height="30" rx="6" fill="#0d1f17" stroke="#14532d"/>
+    <text x="82" y="128" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" fill="#6ee7b7">Hermes Agent</text>
+    <rect x="155" y="108" width="125" height="30" rx="6" fill="#1b1433" stroke="#3730a3"/>
+    <text x="217" y="128" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" fill="#c4b5fd">Chromium</text>
+    <rect x="20" y="144" width="260" height="26" rx="6" fill="#0f1a2e" stroke="#1e3a5f"/>
+    <text x="150" y="162" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" fill="#93c5fd">Cinnamon desktop + x11vnc</text>
+    <!-- HDMI port + dummy plug on left edge -->
+    <rect x="-22" y="120" width="22" height="16" rx="2" fill="#0a0a0a" stroke="#475569"/>
+    <rect x="-30" y="119" width="12" height="18" rx="2" fill="#22d3ee"/>
+    <text x="40" y="196" text-anchor="middle" font-family="'Inter',sans-serif" font-size="11" fill="#22d3ee">⬅ dummy plug</text>
+    <text x="150" y="232" text-anchor="middle" font-family="'Inter',sans-serif" font-size="18" fill="#f1f5f9" font-weight="600">Headless Linux Server</text>
+    <text x="150" y="256" text-anchor="middle" font-family="'Inter',sans-serif" font-size="14" fill="#64748b">Hermes · browser automation · VNC</text>
+  </g>
+
+  <!-- VNC return stream (curved, purple) -->
+  <path d="M 1070 380 Q 720 470 370 380" stroke="#a78bfa" stroke-width="2.5" fill="none" stroke-dasharray="7 7" marker-end="url(#aP)"/>
+  <rect x="620" y="430" width="200" height="30" rx="15" fill="#0f1729" stroke="#1f2937"/>
+  <text x="720" y="450" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" fill="#a78bfa">vnc:// :5900  visual stream</text>
+
+  <!-- bottom caption band -->
+  <g transform="translate(140,620)">
+    <rect x="0" y="0" width="1160" height="92" rx="12" fill="#0f1729" stroke="#1f2937"/>
+    <text x="580" y="34" text-anchor="middle" font-family="'Inter',sans-serif" font-size="16" fill="#cbd5e1">No monitor is ever plugged in for real. But the server still runs a full desktop session —</text>
+    <text x="580" y="60" text-anchor="middle" font-family="'Inter',sans-serif" font-size="16" fill="#cbd5e1">because <tspan fill="#6ee7b7" font-weight="600">Hermes needs a real browser</tspan> to publish articles, and <tspan fill="#c4b5fd" font-weight="600">I need VNC</tspan> to watch and intervene.</text>
+  </g>
+</svg>
