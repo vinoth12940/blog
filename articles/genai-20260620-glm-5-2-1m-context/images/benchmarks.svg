@@ -1,0 +1,82 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg3)"/>
+
+  <text x="60" y="58" font-size="30" font-weight="700" fill="#f1f5f9">Closing the gap to the closed frontier</text>
+  <text x="60" y="86" font-size="16" fill="#94a3b8">Official Z.ai coding-benchmark scores — GLM-5.2 is the strongest open-source model, within reach of Claude Opus 4.8.</text>
+  <rect x="60" y="102" width="64" height="4" rx="2" fill="#34d399"/>
+
+  <!-- ===== PANEL A: Terminal-Bench 2.1 ===== -->
+  <text x="60" y="146" font-size="18" font-weight="600" fill="#e2e8f0">Terminal-Bench 2.1 — real-world terminal tasks</text>
+  <!-- scale: 0 at x=250, 100 at x=950  =>  7 px/point -->
+  <line x1="250" y1="340" x2="950" y2="340" stroke="#334155" stroke-width="1.5"/>
+  <g font-size="11" fill="#64748b" text-anchor="middle">
+    <line x1="250" y1="340" x2="250" y2="346" stroke="#334155"/><text x="250" y="362">0</text>
+    <line x1="600" y1="340" x2="600" y2="346" stroke="#334155"/><text x="600" y="362">50</text>
+    <line x1="950" y1="340" x2="950" y2="346" stroke="#334155"/><text x="950" y="362">100</text>
+  </g>
+
+  <!-- GLM-5.1: 62.0 -> 250+62*7=684 -->
+  <g>
+    <text x="240" y="190" font-size="14" fill="#cbd5e1" text-anchor="end">GLM-5.1</text>
+    <rect x="250" y="174" width="434" height="36" rx="5" fill="#475569"/>
+    <text x="694" y="197" font-size="15" font-weight="700" fill="#cbd5e1">62.0</text>
+  </g>
+  <!-- Gemini 3.1 Pro: ~75 -> 250+75*7=775 -->
+  <g>
+    <text x="240" y="244" font-size="14" fill="#94a3b8" text-anchor="end">Gemini 3.1 Pro</text>
+    <rect x="250" y="228" width="525" height="36" rx="5" fill="#1e293b" stroke="#334155"/>
+    <text x="785" y="251" font-size="15" fill="#94a3b8">~75*</text>
+  </g>
+  <!-- GLM-5.2: 81.0 -> 250+81*7=817 -->
+  <g>
+    <text x="240" y="298" font-size="14" fill="#f1f5f9" font-weight="600" text-anchor="end">GLM-5.2</text>
+    <rect x="250" y="282" width="567" height="36" rx="5" fill="#22d3ee"/>
+    <text x="827" y="305" font-size="16" font-weight="700" fill="#22d3ee">81.0</text>
+  </g>
+
+  <!-- gap annotation -->
+  <text x="970" y="305" font-size="12" fill="#64748b">within 4 pts of Opus 4.8</text>
+
+  <!-- Claude Opus 4.8: 85.0 -> 250+85*7=845 (reference line, top) -->
+  <g>
+    <text x="240" y="394" font-size="14" fill="#cbd5e1" text-anchor="end">Claude Opus 4.8</text>
+    <rect x="250" y="378" width="595" height="36" rx="5" fill="#a78bfa"/>
+    <text x="855" y="401" font-size="16" font-weight="700" fill="#a78bfa">85.0</text>
+  </g>
+
+  <text x="250" y="446" font-size="12" fill="#64748b">* Gemini 3.1 Pro exact score not disclosed; position reflects Z.ai's claim that GLM-5.2 stays ahead of it.</text>
+
+  <!-- divider -->
+  <line x1="60" y1="476" x2="1140" y2="476" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- ===== PANEL B: SWE-bench Pro ===== -->
+  <text x="60" y="512" font-size="18" font-weight="600" fill="#e2e8f0">SWE-bench Pro — resolving real software issues</text>
+  <!-- scale: 0 at x=250, 100 at x=700 => 4.5 px/point -->
+  <line x1="250" y1="632" x2="700" y2="632" stroke="#334155" stroke-width="1.5"/>
+  <g font-size="11" fill="#64748b" text-anchor="middle">
+    <line x1="250" y1="632" x2="250" y2="638" stroke="#334155"/><text x="250" y="654">0</text>
+    <line x1="475" y1="632" x2="475" y2="638" stroke="#334155"/><text x="475" y="654">50</text>
+    <line x1="700" y1="632" x2="700" y2="638" stroke="#334155"/><text x="700" y="654">100</text>
+  </g>
+
+  <!-- GLM-5.1: 58.4 -> 250+58.4*4.5=512.8 -->
+  <g>
+    <text x="240" y="556" font-size="14" fill="#cbd5e1" text-anchor="end">GLM-5.1</text>
+    <rect x="250" y="540" width="262.8" height="36" rx="5" fill="#475569"/>
+    <text x="522" y="563" font-size="15" font-weight="700" fill="#cbd5e1">58.4</text>
+  </g>
+  <!-- GLM-5.2: 62.1 -> 250+62.1*4.5=529.5 -->
+  <g>
+    <text x="240" y="600" font-size="14" fill="#f1f5f9" font-weight="600" text-anchor="end">GLM-5.2</text>
+    <rect x="250" y="584" width="279.5" height="36" rx="5" fill="#22d3ee"/>
+    <text x="539" y="607" font-size="16" font-weight="700" fill="#22d3ee">62.1</text>
+  </g>
+
+  <text x="60" y="670" font-size="12" fill="#475569">Source: Z.ai release notes · github.com/zai-org/GLM-5 · vendor-reported scores</text>
+</svg>

@@ -1,0 +1,91 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bg)"/>
+
+  <!-- Title block -->
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#f1f5f9">GLM-5.2</text>
+  <text x="60" y="100" font-size="18" fill="#94a3b8">Z.ai / Zhipu · 744B-parameter open-weight MoE · released June 13, 2026</text>
+
+  <!-- Accent rule -->
+  <rect x="60" y="118" width="64" height="4" rx="2" fill="#22d3ee"/>
+
+  <!-- Spec cards row -->
+  <g>
+    <!-- Card 1: Params -->
+    <rect x="60" y="150" width="250" height="110" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="84" y="184" font-size="13" fill="#64748b" letter-spacing="1">PARAMETERS</text>
+    <text x="84" y="222" font-size="30" font-weight="700" fill="#f1f5f9">744B</text>
+    <text x="84" y="244" font-size="13" fill="#94a3b8">40B active · MoE</text>
+
+    <!-- Card 2: Context -->
+    <rect x="330" y="150" width="250" height="110" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="354" y="184" font-size="13" fill="#64748b" letter-spacing="1">CONTEXT WINDOW</text>
+    <text x="354" y="222" font-size="30" font-weight="700" fill="#22d3ee">1,000,000</text>
+    <text x="354" y="244" font-size="13" fill="#94a3b8">tokens · 131K output</text>
+
+    <!-- Card 3: License -->
+    <rect x="600" y="150" width="250" height="110" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="624" y="184" font-size="13" fill="#64748b" letter-spacing="1">LICENSE</text>
+    <text x="624" y="222" font-size="30" font-weight="700" fill="#34d399">MIT</text>
+    <text x="624" y="244" font-size="13" fill="#94a3b8">open weights · self-host</text>
+
+    <!-- Card 4: Coding -->
+    <rect x="870" y="150" width="270" height="110" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="894" y="184" font-size="13" fill="#64748b" letter-spacing="1">SPECIALTY</text>
+    <text x="894" y="222" font-size="26" font-weight="700" fill="#a78bfa">Coding-first</text>
+    <text x="894" y="244" font-size="13" fill="#94a3b8">strongest open-source model</text>
+  </g>
+
+  <!-- Lineage timeline -->
+  <text x="60" y="320" font-size="20" font-weight="600" fill="#f1f5f9">The GLM-5 lineage</text>
+
+  <!-- timeline rail -->
+  <line x1="120" y1="430" x2="1080" y2="430" stroke="#334155" stroke-width="2"/>
+
+  <!-- Node: GLM-4.5 -->
+  <g>
+    <circle cx="180" cy="430" r="9" fill="#475569"/>
+    <text x="180" y="470" font-size="16" font-weight="600" fill="#cbd5e1" text-anchor="middle">GLM-4.5</text>
+    <text x="180" y="492" font-size="12" fill="#64748b" text-anchor="middle">355B · 32B active</text>
+    <text x="180" y="510" font-size="12" fill="#64748b" text-anchor="middle">23T tokens</text>
+  </g>
+
+  <!-- Node: GLM-5 -->
+  <g>
+    <circle cx="460" cy="430" r="9" fill="#60a5fa"/>
+    <text x="460" y="470" font-size="16" font-weight="600" fill="#cbd5e1" text-anchor="middle">GLM-5</text>
+    <text x="460" y="492" font-size="12" fill="#64748b" text-anchor="middle">744B · 40B active</text>
+    <text x="460" y="510" font-size="12" fill="#64748b" text-anchor="middle">28.5T tokens · Feb 2026</text>
+  </g>
+
+  <!-- Node: GLM-5.1 -->
+  <g>
+    <circle cx="740" cy="430" r="9" fill="#a78bfa"/>
+    <text x="740" y="470" font-size="16" font-weight="600" fill="#cbd5e1" text-anchor="middle">GLM-5.1</text>
+    <text x="740" y="492" font-size="12" fill="#64748b" text-anchor="middle">200K context</text>
+    <text x="740" y="510" font-size="12" fill="#64748b" text-anchor="middle">agentic engineering</text>
+  </g>
+
+  <!-- Node: GLM-5.2 (highlight) -->
+  <g>
+    <circle cx="1020" cy="430" r="13" fill="#22d3ee"/>
+    <circle cx="1020" cy="430" r="20" fill="none" stroke="#22d3ee" stroke-opacity="0.35" stroke-width="2"/>
+    <text x="1020" y="385" font-size="13" fill="#22d3ee" font-weight="600" text-anchor="middle">Jun 13, 2026</text>
+    <text x="1020" y="470" font-size="16" font-weight="700" fill="#f1f5f9" text-anchor="middle">GLM-5.2</text>
+    <text x="1020" y="492" font-size="12" fill="#94a3b8" text-anchor="middle">1M context · MIT</text>
+    <text x="1020" y="510" font-size="12" fill="#94a3b8" text-anchor="middle">coding-first</text>
+  </g>
+
+  <!-- Bottom takeaway bar -->
+  <rect x="60" y="570" width="1080" height="96" rx="14" fill="#1e293b" stroke="#22d3ee" stroke-opacity="0.4"/>
+  <text x="88" y="606" font-size="15" font-weight="600" fill="#22d3ee">▸ The headline</text>
+  <text x="88" y="638" font-size="17" fill="#e2e8f0">Same 40B-active footprint as 5.1 — but a 5× larger context, sharper coding, and genuinely open MIT weights.</text>
+
+  <text x="60" y="700" font-size="12" fill="#475569">Source: z.ai/blog · github.com/zai-org/GLM-5</text>
+</svg>

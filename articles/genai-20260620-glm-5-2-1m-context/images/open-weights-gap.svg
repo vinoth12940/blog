@@ -1,0 +1,63 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" fill="url(#bg5)"/>
+
+  <text x="60" y="58" font-size="30" font-weight="700" fill="#f1f5f9">The same day, two futures for frontier AI</text>
+  <text x="60" y="86" font-size="16" fill="#94a3b8">On June 13, 2026 a top closed model went export-dark while an open one shipped its weights. The split is now structural.</text>
+  <rect x="60" y="102" width="64" height="4" rx="2" fill="#a78bfa"/>
+
+  <!-- LEFT column: Closed frontier -->
+  <g>
+    <rect x="60" y="140" width="520" height="470" rx="14" fill="#1e293b" stroke="#f87171" stroke-opacity="0.4"/>
+    <text x="86" y="178" font-size="13" fill="#64748b" letter-spacing="1">CLOSED FRONTIER</text>
+    <text x="86" y="212" font-size="24" font-weight="700" fill="#f1f5f9">Access is a permission</text>
+
+    <rect x="86" y="236" width="468" height="60" rx="9" fill="#0f172a" stroke="#f87171" stroke-opacity="0.5"/>
+    <text x="106" y="262" font-size="13" fill="#f87171" font-weight="600">▸ June 13: Claude Fable 5 export-banned</text>
+    <text x="106" y="284" font-size="12" fill="#94a3b8">went offline globally under US export controls</text>
+
+    <g font-size="14" fill="#cbd5e1">
+      <text x="86" y="332">• API-only — no weights, ever</text>
+      <text x="86" y="360">• Revocable; provider can pull access</text>
+      <text x="86" y="388">• Usage caps, rate limits, geo-blocks</text>
+      <text x="86" y="416">• Pricing set unilaterally; no cost floor</text>
+      <text x="86" y="444">• You cannot audit or fine-tune the core</text>
+      <text x="86" y="472">• Sovereignty depends on one vendor</text>
+    </g>
+
+    <text x="86" y="530" font-size="13" fill="#64748b">RISK MODEL</text>
+    <rect x="86" y="544" width="468" height="44" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="106" y="571" font-size="14" fill="#f87171">Your roadmap is one policy decision from a blackout.</text>
+  </g>
+
+  <!-- RIGHT column: Open weights -->
+  <g>
+    <rect x="620" y="140" width="520" height="470" rx="14" fill="#1e293b" stroke="#34d399" stroke-opacity="0.4"/>
+    <text x="646" y="178" font-size="13" fill="#64748b" letter-spacing="1">OPEN WEIGHTS</text>
+    <text x="646" y="212" font-size="24" font-weight="700" fill="#f1f5f9">Access is a download</text>
+
+    <rect x="646" y="236" width="468" height="60" rx="9" fill="#0f172a" stroke="#34d399" stroke-opacity="0.5"/>
+    <text x="666" y="262" font-size="13" fill="#34d399" font-weight="600">▸ June 13: GLM-5.2 ships, MIT weights</text>
+    <text x="666" y="284" font-size="12" fill="#94a3b8">744B params · 1M context · self-hostable</text>
+
+    <g font-size="14" fill="#cbd5e1">
+      <text x="646" y="332">• Weights on Hugging Face — yours to keep</text>
+      <text x="646" y="360">• Cannot be revoked once downloaded</text>
+      <text x="646" y="388">• No caps; your GPUs = your limits</text>
+      <text x="646" y="416">• Cost floors to electricity + depreciation</text>
+      <text x="646" y="444">• Full audit + fine-tune freedom</text>
+      <text x="646" y="472">• Air-gapped / sovereign deployment</text>
+    </g>
+
+    <text x="646" y="530" font-size="13" fill="#64748b">RISK MODEL</text>
+    <rect x="646" y="544" width="468" height="44" rx="8" fill="#0f172a" stroke="#334155"/>
+    <text x="666" y="571" font-size="14" fill="#34d399">Your roadmap survives policy shocks — you own the model.</text>
+  </g>
+
+  <text x="60" y="648" font-size="12" fill="#475569">The practical move: a multi-model strategy that keeps an open-weight baseline as the fallback for any closed dependency.</text>
+</svg>

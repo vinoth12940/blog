@@ -1,0 +1,99 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+    <marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#475569" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="url(#bg2)"/>
+
+  <text x="60" y="60" font-size="30" font-weight="700" fill="#f1f5f9">Inside the MoE: how 40B active scales to 744B</text>
+  <text x="60" y="88" font-size="16" fill="#94a3b8">Two architectural tricks make the 1M context affordable: IndexShare + an improved MTP layer.</text>
+  <rect x="60" y="104" width="64" height="4" rx="2" fill="#a78bfa"/>
+
+  <!-- LEFT: Expert routing -->
+  <g>
+    <rect x="60" y="140" width="510" height="470" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="86" y="178" font-size="18" font-weight="600" fill="#a78bfa">Sparse Mixture-of-Experts</text>
+    <text x="86" y="202" font-size="13" fill="#64748b">744B total parameters · only ~40B active per token</text>
+
+    <!-- Router -->
+    <rect x="230" y="232" width="170" height="46" rx="8" fill="#0f172a" stroke="#475569"/>
+    <text x="315" y="260" font-size="14" fill="#e2e8f0" text-anchor="middle">Router (gating)</text>
+    <line x1="315" y1="278" x2="315" y2="306" stroke="#475569" stroke-width="1.5" marker-end="url(#ar2)"/>
+
+    <!-- Expert grid -->
+    <g font-size="12" fill="#cbd5e1" text-anchor="middle">
+      <rect x="96"  y="312" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#a78bfa" stroke-opacity="0.6"/><text x="142" y="340">Expert 1</text>
+      <rect x="200" y="312" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#334155"/><text x="246" y="340">Expert 2</text>
+      <rect x="304" y="312" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#a78bfa" stroke-opacity="0.6"/><text x="350" y="340">Expert 3</text>
+      <rect x="408" y="312" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#334155"/><text x="454" y="340">Expert 4</text>
+
+      <rect x="96"  y="372" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#334155"/><text x="142" y="400">Expert 5</text>
+      <rect x="200" y="372" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#334155"/><text x="246" y="400">Expert 6</text>
+      <rect x="304" y="372" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#334155"/><text x="350" y="400">Expert 7</text>
+      <rect x="408" y="372" width="92" height="48" rx="7" fill="#1e1e2e" stroke="#334155"/><text x="454" y="400">Expert N</text>
+    </g>
+    <text x="315" y="452" font-size="12" fill="#64748b" text-anchor="middle">… hundreds of experts, only a few fire per token</text>
+
+    <!-- Active callout -->
+    <rect x="96" y="480" width="438" height="110" rx="10" fill="#0f172a" stroke="#334155"/>
+    <text x="120" y="510" font-size="13" fill="#64748b">PER-TOKEN COST</text>
+    <text x="120" y="544" font-size="20" font-weight="700" fill="#34d399">≈ 40B active of 744B total</text>
+    <text x="120" y="572" font-size="13" fill="#94a3b8">Frontier-class intelligence at a fraction of the FLOPs</text>
+  </g>
+
+  <!-- RIGHT: IndexShare -->
+  <g>
+    <rect x="600" y="140" width="540" height="225" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="626" y="178" font-size="18" font-weight="600" fill="#22d3ee">IndexShare (new)</text>
+    <text x="626" y="202" font-size="13" fill="#64748b">Reuse one indexer across every 4 sparse-attention layers</text>
+
+    <!-- layer stack visual -->
+    <g>
+      <rect x="630" y="228" width="160" height="26" rx="5" fill="#0f172a" stroke="#22d3ee"/>
+      <text x="710" y="245" font-size="12" fill="#e2e8f0" text-anchor="middle">shared indexer</text>
+      <rect x="630" y="258" width="160" height="20" rx="4" fill="#1e1e2e" stroke="#334155"/>
+      <rect x="630" y="280" width="160" height="20" rx="4" fill="#1e1e2e" stroke="#334155"/>
+      <rect x="630" y="302" width="160" height="20" rx="4" fill="#1e1e2e" stroke="#334155"/>
+      <text x="810" y="275" font-size="12" fill="#64748b">layers 1–4 share</text>
+      <text x="810" y="293" font-size="12" fill="#64748b">one index → less</text>
+      <text x="810" y="311" font-size="12" fill="#64748b">recompute</text>
+    </g>
+
+    <rect x="940" y="236" width="180" height="96" rx="10" fill="#0f172a" stroke="#334155"/>
+    <text x="962" y="266" font-size="12" fill="#64748b">FLOPs @ 1M ctx</text>
+    <text x="962" y="302" font-size="30" font-weight="700" fill="#34d399">2.9× ↓</text>
+    <text x="962" y="322" font-size="12" fill="#94a3b8">per-token reduction</text>
+  </g>
+
+  <!-- RIGHT lower: MTP -->
+  <g>
+    <rect x="600" y="385" width="540" height="225" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="626" y="423" font-size="18" font-weight="600" fill="#fbbf24">Improved MTP layer</text>
+    <text x="626" y="447" font-size="13" fill="#64748b">Multi-token-prediction drives speculative decoding</text>
+
+    <!-- token prediction flow -->
+    <g font-size="12" fill="#cbd5e1" text-anchor="middle">
+      <rect x="630" y="478" width="60" height="40" rx="6" fill="#1e1e2e" stroke="#475569"/><text x="660" y="502">t</text>
+      <line x1="692" y1="498" x2="722" y2="498" stroke="#475569" stroke-width="1.5" marker-end="url(#ar2)"/>
+      <rect x="726" y="478" width="60" height="40" rx="6" fill="#1e1e2e" stroke="#fbbf24" stroke-opacity="0.7"/><text x="756" y="502">t+1</text>
+      <line x1="788" y1="498" x2="818" y2="498" stroke="#475569" stroke-width="1.5" marker-end="url(#ar2)"/>
+      <rect x="822" y="478" width="60" height="40" rx="6" fill="#1e1e2e" stroke="#fbbf24" stroke-opacity="0.7"/><text x="852" y="502">t+2</text>
+      <line x1="884" y1="498" x2="914" y2="498" stroke="#475569" stroke-width="1.5" marker-end="url(#ar2)"/>
+      <rect x="918" y="478" width="60" height="40" rx="6" fill="#1e1e2e" stroke="#fbbf24" stroke-opacity="0.7"/><text x="948" y="502">t+3</text>
+      <text x="980" y="502" font-size="12" fill="#64748b" text-anchor="start">draft →</text>
+    </g>
+
+    <rect x="630" y="540" width="480" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+    <text x="652" y="572" font-size="16" fill="#e2e8f0">Speculative-decode acceptance length up <tspan font-weight="700" fill="#fbbf24">+20%</tspan></text>
+  </g>
+
+  <!-- footer note -->
+  <text x="60" y="660" font-size="13" fill="#94a3b8">▸ Net effect: a 744B model whose per-token and long-context cost sit closer to a dense 40B model.</text>
+  <text x="60" y="730" font-size="12" fill="#475569">Source: GLM-5.2 release notes · github.com/zai-org/GLM-5 · IndexShare &amp; MTP details per Z.ai</text>
+</svg>

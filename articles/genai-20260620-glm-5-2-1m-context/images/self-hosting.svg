@@ -1,0 +1,87 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0b1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg4)"/>
+
+  <text x="60" y="58" font-size="30" font-weight="700" fill="#f1f5f9">Self-hosting GLM-5.2: the deployment reality</text>
+  <text x="60" y="86" font-size="16" fill="#94a3b8">MIT weights mean you can run it yourself — but "744B" is not a laptop workload. Here is the honest math.</text>
+  <rect x="60" y="102" width="64" height="4" rx="2" fill="#fbbf24"/>
+
+  <!-- LEFT: the memory budget -->
+  <g>
+    <rect x="60" y="140" width="520" height="300" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="86" y="178" font-size="18" font-weight="600" fill="#fbbf24">The memory budget</text>
+
+    <!-- Weights block -->
+    <text x="86" y="214" font-size="13" fill="#64748b">FP8 WEIGHTS</text>
+    <rect x="86" y="226" width="450" height="34" rx="6" fill="#0f172a" stroke="#334155"/>
+    <text x="100" y="248" font-size="15" fill="#e2e8f0">~744 GB</text>
+    <text x="530" y="248" font-size="12" fill="#64748b" text-anchor="end">unavoidable</text>
+
+    <!-- KV cache block -->
+    <text x="86" y="290" font-size="13" fill="#64748b">KV CACHE @ 1M CONTEXT</text>
+    <rect x="86" y="302" width="290" height="34" rx="6" fill="#0f172a" stroke="#334155"/>
+    <text x="100" y="324" font-size="15" fill="#e2e8f0">large — grows with batch</text>
+    <text x="530" y="324" font-size="12" fill="#f87171" text-anchor="end">the real constraint</text>
+
+    <!-- runtime block -->
+    <text x="86" y="366" font-size="13" fill="#64748b">RUNTIME + ACTIVATIONS</text>
+    <rect x="86" y="378" width="220" height="34" rx="6" fill="#0f172a" stroke="#334155"/>
+    <text x="100" y="400" font-size="15" fill="#e2e8f0">overhead on top</text>
+
+    <text x="86" y="424" font-size="12" fill="#94a3b8">▸ You need comfortably more than 744 GB of combined VRAM/HBM.</text>
+  </g>
+
+  <!-- RIGHT: GPU tiers -->
+  <g>
+    <rect x="610" y="140" width="530" height="300" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="636" y="178" font-size="18" font-weight="600" fill="#34d399">GPU tiers that clear the bar</text>
+
+    <g font-size="13" fill="#cbd5e1">
+      <!-- tier 1 -->
+      <rect x="636" y="200" width="478" height="56" rx="9" fill="#0f172a" stroke="#f87171" stroke-opacity="0.5"/>
+      <text x="656" y="226" font-weight="600" fill="#f87171">8× H100 80GB</text>
+      <text x="656" y="246" font-size="12" fill="#94a3b8">640 GB total — too tight for weights + 1M KV cache</text>
+
+      <!-- tier 2 -->
+      <rect x="636" y="268" width="478" height="56" rx="9" fill="#0f172a" stroke="#fbbf24" stroke-opacity="0.6"/>
+      <text x="656" y="294" font-weight="600" fill="#fbbf24">8× H200 141GB</text>
+      <text x="656" y="314" font-size="12" fill="#94a3b8">1,128 GB — comfortable headroom for long context</text>
+
+      <!-- tier 3 -->
+      <rect x="636" y="336" width="478" height="56" rx="9" fill="#0f172a" stroke="#34d399" stroke-opacity="0.6"/>
+      <text x="656" y="362" font-weight="600" fill="#34d399">10× H100 / 5× B200</text>
+      <text x="656" y="382" font-size="12" fill="#94a3b8">800 GB+ — full 1M context, multi-batch</text>
+    </g>
+    <text x="636" y="418" font-size="12" fill="#94a3b8">▸ Run via vLLM or SGLang; quantized (FP8/INT4) cuts the floor.</text>
+  </g>
+
+  <!-- BOTTOM: API vs self-host decision -->
+  <g>
+    <rect x="60" y="468" width="1080" height="232" rx="14" fill="#1e293b" stroke="#334155"/>
+    <text x="86" y="506" font-size="18" font-weight="600" fill="#a78bfa">When does self-hosting beat the API?</text>
+
+    <!-- two columns -->
+    <g>
+      <rect x="86" y="524" width="500" height="150" rx="10" fill="#0f172a" stroke="#334155"/>
+      <text x="106" y="554" font-size="15" font-weight="600" fill="#34d399">Use the Z.ai API</text>
+      <text x="106" y="584" font-size="13" fill="#cbd5e1">→ sporadic or bursty workloads</text>
+      <text x="106" y="608" font-size="13" fill="#cbd5e1">→ want the full 1M context without capex</text>
+      <text x="106" y="632" font-size="13" fill="#cbd5e1">→ team is small, no GPU ops staff</text>
+      <text x="106" y="656" font-size="13" fill="#cbd5e1">→ data residency is acceptable</text>
+
+      <rect x="606" y="524" width="510" height="150" rx="10" fill="#0f172a" stroke="#334155"/>
+      <text x="626" y="554" font-size="15" font-weight="600" fill="#fbbf24">Self-host the weights</text>
+      <text x="626" y="584" font-size="13" fill="#cbd5e1">→ sustained, predictable token volume</text>
+      <text x="626" y="608" font-size="13" fill="#cbd5e1">→ air-gapped / strict data sovereignty</text>
+      <text x="626" y="632" font-size="13" fill="#cbd5e1">→ you already run a GPU cluster</text>
+      <text x="626" y="656" font-size="13" fill="#cbd5e1">→ you want to fine-tune freely</text>
+    </g>
+  </g>
+
+  <text x="60" y="738" font-size="12" fill="#475569">Source: community self-hosting guides (LushBinary, Spheron) · VRAM figures are planning estimates, verify before buying.</text>
+</svg>
