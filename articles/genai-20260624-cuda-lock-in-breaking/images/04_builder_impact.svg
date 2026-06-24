@@ -1,0 +1,71 @@
+<svg width="1440" height="640" viewBox="0 0 1440 640" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="640" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="50" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="36" font-weight="700">What Changes for Builders</text>
+  <text x="720" y="82" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="20">The CUDA tax is about to get negotiable</text>
+
+  <!-- BEFORE column -->
+  <rect x="60" y="120" width="620" height="470" rx="16" fill="#1e1e2e" stroke="#475569" stroke-width="1.5"/>
+  <rect x="60" y="120" width="620" height="50" rx="16" fill="#334155"/>
+  <rect x="60" y="150" width="620" height="20" fill="#334155"/>
+  <text x="370" y="153" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="22" font-weight="700">BEFORE — 2023 to mid-2026</text>
+
+  <circle cx="100" cy="210" r="6" fill="#f87171"/>
+  <text x="125" y="216" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">NVIDIA is the only viable training and inference path</text>
+
+  <circle cx="100" cy="255" r="6" fill="#f87171"/>
+  <text x="125" y="261" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">GPT-4-class inference: $30/MTok (2023)</text>
+
+  <circle cx="100" cy="300" r="6" fill="#f87171"/>
+  <text x="125" y="306" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Every framework, library, and benchmark assumes CUDA</text>
+
+  <circle cx="100" cy="345" r="6" fill="#f87171"/>
+  <text x="125" y="351" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Switching to AMD/Intel costs months of porting effort</text>
+
+  <circle cx="100" cy="390" r="6" fill="#f87171"/>
+  <text x="125" y="396" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">NVIDIA captures ~80–90% of AI accelerator revenue</text>
+
+  <circle cx="100" cy="435" r="6" fill="#f87171"/>
+  <text x="125" y="441" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">$2.59T spent on AI in 2026 — under 1/3 show ROI</text>
+
+  <circle cx="100" cy="480" r="6" fill="#f87171"/>
+  <text x="125" y="486" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">GPU supply bottlenecks = constant capacity crunch</text>
+
+  <circle cx="100" cy="525" r="6" fill="#f87171"/>
+  <text x="125" y="531" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Export controls + geopolitics threaten access</text>
+
+  <!-- AFTER column -->
+  <rect x="760" y="120" width="620" height="470" rx="16" fill="#0d1f17" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="760" y="120" width="620" height="50" rx="16" fill="#0f3325"/>
+  <rect x="760" y="150" width="620" height="20" fill="#0f3325"/>
+  <text x="1070" y="153" text-anchor="middle" fill="#34d399" font-family="-apple-system, sans-serif" font-size="22" font-weight="700">AFTER — late 2026 and beyond</text>
+
+  <circle cx="800" cy="210" r="6" fill="#34d399"/>
+  <text x="825" y="216" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">4–5 viable accelerator vendors competing on price</text>
+
+  <circle cx="800" cy="255" r="6" fill="#34d399"/>
+  <text x="825" y="261" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">GPT-4-class inference: under $1/MTok (10x/yr drop)</text>
+
+  <circle cx="800" cy="300" r="6" fill="#34d399"/>
+  <text x="825" y="306" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Mojo/MAX abstracts hardware — write once, run anywhere</text>
+
+  <circle cx="800" cy="345" r="6" fill="#34d399"/>
+  <text x="825" y="351" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Porting effort: weeks, not months</text>
+
+  <circle cx="800" cy="390" r="6" fill="#34d399"/>
+  <text x="825" y="396" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">NVIDIA share dropping toward 75% (absolute rev still up)</text>
+
+  <circle cx="800" cy="435" r="6" fill="#34d399"/>
+  <text x="825" y="441" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Model triage becomes essential: route cheap models</text>
+  <text x="825" y="463" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">for easy tasks, reserve frontier only when needed</text>
+
+  <circle cx="800" cy="498" r="6" fill="#34d399"/>
+  <text x="825" y="504" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Multiple supply chains = geopolitical resilience</text>
+
+  <circle cx="800" cy="543" r="6" fill="#34d399"/>
+  <text x="825" y="549" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="18">Open-weight models on open hardware = full sovereignty</text>
+
+  <!-- Arrow between -->
+  <text x="720" y="340" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="40">→</text>
+</svg>

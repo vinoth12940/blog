@@ -1,0 +1,72 @@
+<svg width="1440" height="660" viewBox="0 0 1440 660" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="660" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="50" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="36" font-weight="700">The Silicon Independence Race</text>
+  <text x="720" y="82" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="20">Every major AI lab is now building custom silicon — full vertical integration</text>
+
+  <!-- Column headers -->
+  <text x="200" y="130" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="2">PLAYER</text>
+  <text x="450" y="130" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="2">SILICON</text>
+  <text x="720" y="130" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="2">SOFTWARE STACK</text>
+  <text x="1010" y="130" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="2">MODEL LAYER</text>
+  <text x="1280" y="130" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="2">STRATEGY</text>
+
+  <!-- Horizontal line -->
+  <line x1="60" y1="145" x2="1380" y2="145" stroke="#334155" stroke-width="1"/>
+
+  <!-- Row 1: NVIDIA -->
+  <rect x="60" y="155" width="1320" height="70" rx="10" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text x="200" y="195" text-anchor="middle" fill="#f87171" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">NVIDIA</text>
+  <text x="450" y="188" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">H100 / H200 /</text>
+  <text x="450" y="210" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Blackwell</text>
+  <text x="720" y="195" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">CUDA + cuDNN + TensorRT</text>
+  <text x="1010" y="195" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Nemotron 3 Ultra (open)</text>
+  <text x="1280" y="188" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Incumbent moat</text>
+  <text x="1280" y="210" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">+ CPU push ($200B)</text>
+
+  <!-- Row 2: OpenAI -->
+  <rect x="60" y="235" width="1320" height="70" rx="10" fill="#1e293b" stroke="#22d3ee" stroke-width="1"/>
+  <text x="200" y="275" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">OpenAI</text>
+  <text x="450" y="268" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Jalapeño</text>
+  <text x="450" y="290" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="15">(with Broadcom)</text>
+  <text x="720" y="275" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Triton + custom kernels</text>
+  <text x="1010" y="275" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">GPT-5.x + Codex</text>
+  <text x="1280" y="268" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Full-stack flywheel</text>
+  <text x="1280" y="290" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">GW-scale late 2026</text>
+
+  <!-- Row 3: Google -->
+  <rect x="60" y="315" width="1320" height="70" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="1"/>
+  <text x="200" y="355" text-anchor="middle" fill="#34d399" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">Google</text>
+  <text x="450" y="348" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">TPU v6</text>
+  <text x="450" y="370" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="15">(6th gen)</text>
+  <text x="720" y="355" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">XLA + JAX (internal first)</text>
+  <text x="1010" y="355" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Gemini 3.5 Flash</text>
+  <text x="1280" y="348" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Most mature alt</text>
+  <text x="1280" y="370" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">10+ years ahead</text>
+
+  <!-- Row 4: Amazon -->
+  <rect x="60" y="395" width="1320" height="70" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="200" y="435" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">Amazon</text>
+  <text x="450" y="428" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Trainium2 / 4</text>
+  <text x="450" y="450" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="15">(Annapurna Labs)</text>
+  <text x="720" y="435" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Neuron SDK</text>
+  <text x="1010" y="435" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Nova (in-house models)</text>
+  <text x="1280" y="428" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Selling externally</text>
+  <text x="1280" y="450" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">$50B run rate</text>
+
+  <!-- Row 5: Qualcomm -->
+  <rect x="60" y="475" width="1320" height="70" rx="10" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text x="200" y="515" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">Qualcomm</text>
+  <text x="450" y="508" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">AI 100 / custom</text>
+  <text x="450" y="530" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="15">(data center push)</text>
+  <text x="720" y="515" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">Mojo + MAX (via Modular)</text>
+  <text x="1010" y="515" text-anchor="middle" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="17">No frontier model (yet)</text>
+  <text x="1280" y="508" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Software portability</text>
+  <text x="1280" y="530" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">is the wedge</text>
+
+  <!-- Bottom insight -->
+  <rect x="60" y="565" width="1320" height="65" rx="12" fill="#0d1117" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="595" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="18" font-style="italic">The new competitive frontier: not whose chip is fastest, but who owns the entire stack from model to silicon.</text>
+  <text x="720" y="618" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="15">NVIDIA owns layers 1–4 today. Every competitor above is racing to own all five.</text>
+</svg>

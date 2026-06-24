@@ -1,0 +1,53 @@
+<svg width="1440" height="720" viewBox="0 0 1440 720" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="720" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="50" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="36" font-weight="700">The CUDA Lock-in Stack</text>
+  <text x="720" y="82" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="20">NVIDIA's moat was never just the silicon — it was five layers deep</text>
+
+  <!-- Layer 1: Silicon -->
+  <rect x="200" y="120" width="640" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="240" y="158" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="22" font-weight="600">Layer 1 · Silicon</text>
+  <text x="240" y="184" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="17">H100 / H200 / Blackwell — best perf-per-watt at scale</text>
+
+  <!-- Attacker annotation right -->
+  <rect x="880" y="135" width="300" height="50" rx="10" fill="#1a1a2e" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="1030" y="166" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16">→ Jalapeño, Trainium, TPU</text>
+
+  <!-- Layer 2: CUDA API -->
+  <rect x="200" y="215" width="640" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="240" y="253" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="22" font-weight="600">Layer 2 · CUDA runtime + API</text>
+  <text x="240" y="279" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="17">Proprietary programming model · 17 years of investment</text>
+
+  <rect x="880" y="230" width="300" height="50" rx="10" fill="#1a1a2e" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="1030" y="261" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="16">→ Mojo, Triton, OpenXLA</text>
+
+  <!-- Layer 3: Libraries -->
+  <rect x="200" y="310" width="640" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="240" y="348" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="22" font-weight="600">Layer 3 · Optimized libraries</text>
+  <text x="240" y="374" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="17">cuDNN, NCCL, cuBLAS, TensorRT — the real lock-in</text>
+
+  <rect x="880" y="325" width="300" height="50" rx="10" fill="#1a1a2e" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="1030" y="356" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="16">→ MAX compiler targets</text>
+
+  <!-- Layer 4: Frameworks -->
+  <rect x="200" y="405" width="640" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="240" y="443" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="22" font-weight="600">Layer 4 · Deep learning frameworks</text>
+  <text x="240" y="469" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="17">PyTorch, TensorFlow — built and benchmarked on CUDA first</text>
+
+  <rect x="880" y="420" width="300" height="50" rx="10" fill="#1a1a2e" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="1030" y="451" text-anchor="middle" fill="#34d399" font-family="-apple-system, sans-serif" font-size="16">→ Portable runtimes make this moot</text>
+
+  <!-- Layer 5: Developer ecosystem -->
+  <rect x="200" y="500" width="640" height="80" rx="12" fill="#1e293b" stroke="#f87171" stroke-width="1.5"/>
+  <text x="240" y="538" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="22" font-weight="600">Layer 5 · Developer ecosystem</text>
+  <text x="240" y="564" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="17">4M+ devs, Stack Overflow muscle memory, academic papers</text>
+
+  <rect x="880" y="515" width="300" height="50" rx="10" fill="#1a1a2e" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="1030" y="546" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="16">→ Hardest layer to crack</text>
+
+  <!-- Bottom insight -->
+  <rect x="200" y="610" width="1040" height="70" rx="12" fill="#0d1117" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="640" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="18" font-style="italic">A new chip needs to be dramatically faster or cheaper to justify months of porting effort.</text>
+  <text x="720" y="664" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">A compiler that abstracts the difference away changes the math entirely.</text>
+</svg>
