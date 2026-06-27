@@ -1,0 +1,63 @@
+<svg width="1440" height="780" viewBox="0 0 1440 780" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-sol" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-terra" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-luna" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1440" height="780" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="55" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="38" font-weight="700">GPT-5.6: The Celestial Tier System</text>
+  <text x="720" y="88" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="18">One generation. Three capability tiers. Independent cadences.</text>
+
+  <!-- Generation indicator -->
+  <rect x="580" y="115" width="280" height="44" rx="22" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="142" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Generation 5.6 → Shared</text>
+
+  <!-- ============ SOL ============ -->
+  <circle cx="280" cy="380" r="190" fill="url(#glow-sol)"/>
+  <circle cx="280" cy="380" r="95" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="280" y="368" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="36" font-weight="800">Sol</text>
+  <text x="280" y="398" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="14" opacity="0.7">☀ Flagship</text>
+  <text x="280" y="510" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="20" font-weight="600">Maximum intelligence</text>
+  <text x="280" y="540" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">max + ultra reasoning</text>
+  <text x="280" y="566" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Subagent orchestration</text>
+  <rect x="150" y="600" width="260" height="48" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="1" opacity="0.6"/>
+  <text x="280" y="630" text-anchor="middle" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="18" font-weight="600">$5 / $30 per 1M tokens</text>
+
+  <!-- ============ TERRA ============ -->
+  <circle cx="720" cy="380" r="190" fill="url(#glow-terra)"/>
+  <circle cx="720" cy="380" r="95" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+  <text x="720" y="368" text-anchor="middle" fill="#34d399" font-family="-apple-system, sans-serif" font-size="34" font-weight="800">Terra</text>
+  <text x="720" y="398" text-anchor="middle" fill="#34d399" font-family="-apple-system, sans-serif" font-size="14" opacity="0.7">🌍 Balanced</text>
+  <text x="720" y="510" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="20" font-weight="600">Everyday workhorse</text>
+  <text x="720" y="540" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Quality / speed / cost</text>
+  <text x="720" y="566" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Production default</text>
+  <rect x="590" y="600" width="260" height="48" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="1" opacity="0.6"/>
+  <text x="720" y="630" text-anchor="middle" fill="#34d399" font-family="-apple-system, sans-serif" font-size="18" font-weight="600">$2.50 / $15 per 1M tokens</text>
+
+  <!-- ============ LUNA ============ -->
+  <circle cx="1160" cy="380" r="190" fill="url(#glow-luna)"/>
+  <circle cx="1160" cy="380" r="95" fill="#1e293b" stroke="#60a5fa" stroke-width="2.5"/>
+  <text x="1160" y="368" text-anchor="middle" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="36" font-weight="800">Luna</text>
+  <text x="1160" y="398" text-anchor="middle" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="14" opacity="0.7">🌙 Fast &amp; affordable</text>
+  <text x="1160" y="510" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="20" font-weight="600">High-volume, low-latency</text>
+  <text x="1160" y="540" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Classification, routing, extraction</text>
+  <text x="1160" y="566" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">Edge-tier economics</text>
+  <rect x="1030" y="600" width="260" height="48" rx="10" fill="#1e293b" stroke="#60a5fa" stroke-width="1" opacity="0.6"/>
+  <text x="1160" y="630" text-anchor="middle" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="18" font-weight="600">$1 / $6 per 1M tokens</text>
+
+  <!-- Footer note -->
+  <text x="720" y="710" text-anchor="middle" fill="#475569" font-family="-apple-system, sans-serif" font-size="14">Each tier advances on its own cadence — the number marks the generation, the name marks the capability band.</text>
+  <text x="720" y="735" text-anchor="middle" fill="#475569" font-family="-apple-system, sans-serif" font-size="14">Limited preview June 26, 2026 · GA in coming weeks</text>
+</svg>

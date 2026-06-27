@@ -1,0 +1,73 @@
+<svg width="1440" height="720" viewBox="0 0 1440 720" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="720" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="55" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="36" font-weight="700">GPT-5.6 Pricing vs GPT-5.5</text>
+  <text x="720" y="88" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="18">Per 1M tokens · Input / Output</text>
+
+  <!-- GPT-5.5 reference bar -->
+  <text x="120" y="135" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">Previous generation:</text>
+
+  <rect x="120" y="150" width="1200" height="50" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="140" y="180" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16">GPT-5.5</text>
+  <rect x="350" y="160" width="180" height="30" rx="6" fill="#334155"/>
+  <text x="440" y="180" text-anchor="middle" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="14">$8 input</text>
+  <rect x="560" y="160" width="675" height="30" rx="6" fill="#334155"/>
+  <text x="897" y="180" text-anchor="middle" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="14">$48 output</text>
+  <text x="1260" y="180" fill="#64748b" font-family="-apple-system, sans-serif" font-size="14">Single tier</text>
+
+  <text x="120" y="235" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="20" font-weight="600">GPT-5.6 — three tiers, same generation:</text>
+
+  <!-- SOL -->
+  <rect x="120" y="260" width="1200" height="70" rx="10" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="145" y="285" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">Sol</text>
+  <text x="145" y="310" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Flagship</text>
+  <!-- Input bar (scaled: $5 → 112px) -->
+  <rect x="350" y="275" width="112" height="22" rx="5" fill="#fbbf24" opacity="0.6"/>
+  <text x="475" y="291" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">$5 input</text>
+  <!-- Output bar ($30 → 675px scaled to 420px) -->
+  <rect x="350" y="303" width="420" height="22" rx="5" fill="#fbbf24" opacity="0.4"/>
+  <text x="790" y="319" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">$30 output</text>
+  <text x="1260" y="300" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">−37.5% input</text>
+  <text x="1260" y="318" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">−37.5% output</text>
+
+  <!-- TERRA -->
+  <rect x="120" y="360" width="1200" height="70" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+  <text x="145" y="385" fill="#34d399" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">Terra</text>
+  <text x="145" y="410" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Balanced</text>
+  <!-- Input bar ($2.50 → 56px) -->
+  <rect x="350" y="375" width="56" height="22" rx="5" fill="#34d399" opacity="0.6"/>
+  <text x="419" y="391" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">$2.50 input</text>
+  <!-- Output bar ($15 → 210px) -->
+  <rect x="350" y="403" width="210" height="22" rx="5" fill="#34d399" opacity="0.4"/>
+  <text x="573" y="419" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">$15 output</text>
+  <text x="1260" y="400" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">−68.8% input</text>
+  <text x="1260" y="418" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">−68.8% output</text>
+
+  <!-- LUNA -->
+  <rect x="120" y="460" width="1200" height="70" rx="10" fill="#1e293b" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="145" y="485" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">Luna</text>
+  <text x="145" y="510" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Fast</text>
+  <!-- Input bar ($1 → 22px) -->
+  <rect x="350" y="475" width="22" height="22" rx="5" fill="#60a5fa" opacity="0.6"/>
+  <text x="385" y="491" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">$1 input</text>
+  <!-- Output bar ($6 → 84px) -->
+  <rect x="350" y="503" width="84" height="22" rx="5" fill="#60a5fa" opacity="0.4"/>
+  <text x="447" y="519" fill="#60a5fa" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">$6 output</text>
+  <text x="1260" y="500" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">−87.5% input</text>
+  <text x="1260" y="518" fill="#34d399" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">−87.5% output</text>
+
+  <!-- Divider -->
+  <line x1="120" y1="565" x2="1320" y2="565" stroke="#334155" stroke-width="1"/>
+
+  <!-- Caching section -->
+  <text x="120" y="600" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="20" font-weight="600">Prompt caching economics:</text>
+
+  <rect x="120" y="620" width="560" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="140" y="648" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">Cache writes</text>
+  <text x="140" y="672" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">1.25× uncached input rate (premium for explicit breakpoints)</text>
+
+  <rect x="720" y="620" width="600" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="740" y="648" fill="#34d399" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">Cache reads</text>
+  <text x="740" y="672" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">90% discount off input rate · 30-min minimum cache life</text>
+</svg>
