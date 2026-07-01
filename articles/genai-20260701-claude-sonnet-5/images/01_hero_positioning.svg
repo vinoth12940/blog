@@ -1,0 +1,87 @@
+<svg width="1440" height="820" viewBox="0 0 1440 820" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-sonnet5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow-s5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-opus" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-fable" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1440" height="820" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="50" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="36" font-weight="700">Claude Sonnet 5: Near-Opus Intelligence at Sonnet Pricing</text>
+  <text x="720" y="80" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="17">Released June 30, 2026 — the most agentic Sonnet yet</text>
+
+  <!-- ============ POSITIONING MAP ============ -->
+  <!-- Y-axis label -->
+  <text x="60" y="400" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" transform="rotate(-90, 60, 400)">Capability</text>
+  <!-- X-axis label -->
+  <text x="760" y="770" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">Cost per Million Tokens →</text>
+
+  <!-- Grid lines -->
+  <line x1="140" y1="740" x2="1340" y2="740" stroke="#334155" stroke-width="1.5"/>
+  <line x1="140" y1="140" x2="140" y2="740" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- quadrant labels -->
+  <text x="380" y="170" fill="#475569" font-family="-apple-system, sans-serif" font-size="13">High capability, low cost</text>
+  <text x="1100" y="170" fill="#475569" font-family="-apple-system, sans-serif" font-size="13">High capability, high cost</text>
+  <text x="380" y="715" fill="#475569" font-family="-apple-system, sans-serif" font-size="13">Low capability, low cost</text>
+
+  <!-- ============ FABLE 5 (top right, expensive) ============ -->
+  <circle cx="1160" cy="200" r="160" fill="url(#glow-fable)"/>
+  <circle cx="1160" cy="200" r="65" fill="#1e1e2e" stroke="#f87171" stroke-width="2"/>
+  <text x="1160" y="195" text-anchor="middle" fill="#f87171" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">Fable 5</text>
+  <text x="1160" y="215" text-anchor="middle" fill="#f87171" font-family="-apple-system, sans-serif" font-size="12" opacity="0.8">$10 / $50</text>
+  <text x="1160" y="290" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">Frontier ceiling</text>
+  <text x="1160" y="310" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">Hardest long-horizon work</text>
+
+  <!-- ============ OPUS 4.8 (upper right) ============ -->
+  <circle cx="940" cy="260" r="140" fill="url(#glow-opus)"/>
+  <circle cx="940" cy="260" r="65" fill="#1e1e2e" stroke="#a78bfa" stroke-width="2"/>
+  <text x="940" y="255" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">Opus 4.8</text>
+  <text x="940" y="275" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="12" opacity="0.8">$5 / $25</text>
+  <text x="940" y="340" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">Complex reasoning</text>
+  <text x="940" y="360" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">Accuracy-critical, cyber</text>
+
+  <!-- ============ SONNET 5 (the star - upper left of center) ============ -->
+  <circle cx="480" cy="280" r="200" fill="url(#glow-s5)"/>
+  <circle cx="480" cy="280" r="95" fill="#1e1e2e" stroke="#22d3ee" stroke-width="3"/>
+  <text x="480" y="272" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="22" font-weight="800">Sonnet 5</text>
+  <text x="480" y="295" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">NEW · Jun 30</text>
+  <text x="480" y="315" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="13" opacity="0.8">$2/$10 intro · $3/$15</text>
+  <text x="480" y="390" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">Most agentic Sonnet yet</text>
+  <text x="480" y="413" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">1M context · 128k output · adaptive thinking</text>
+  <text x="480" y="435" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">Coding, agents, tool use, long-context work</text>
+
+  <!-- ============ SONNET 4.6 (below Sonnet 5) ============ -->
+  <circle cx="480" cy="510" r="60" fill="#1e1e2e" stroke="#475569" stroke-width="2" opacity="0.7"/>
+  <text x="480" y="505" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">Sonnet 4.6</text>
+  <text x="480" y="525" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11">$3 / $15</text>
+  <text x="480" y="575" text-anchor="middle" fill="#475569" font-family="-apple-system, sans-serif" font-size="12">Previous workhorse — now superseded</text>
+
+  <!-- ============ HAIKU 4.5 (lower left, cheap) ============ -->
+  <circle cx="280" cy="560" r="55" fill="#1e1e2e" stroke="#4ade80" stroke-width="2"/>
+  <text x="280" y="555" text-anchor="middle" fill="#4ade80" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Haiku 4.5</text>
+  <text x="280" y="575" text-anchor="middle" fill="#4ade80" font-family="-apple-system, sans-serif" font-size="11">$1 / $5</text>
+  <text x="280" y="620" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">High-volume, low-latency</text>
+
+  <!-- Arrow from Sonnet 4.6 to Sonnet 5 -->
+  <path d="M 480 450 L 480 380" stroke="#22d3ee" stroke-width="2" fill="none" marker-end="url(#arrow-s5)" stroke-dasharray="6,4"/>
+  <defs>
+    <marker id="arrow-s5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#22d3ee"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,94 @@
+<svg width="1440" height="820" viewBox="0 0 1440 820" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-rd" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="820" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="48" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="34" font-weight="700">Which Claude Model Should You Use?</text>
+  <text x="720" y="78" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16">A practical routing decision tree for the post-Sonnet-5 lineup</text>
+
+  <!-- ROOT NODE -->
+  <rect x="510" y="110" width="420" height="56" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1.5"/>
+  <text x="720" y="145" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">What's the task?</text>
+
+  <!-- Arrow to first decision -->
+  <line x1="720" y1="166" x2="720" y2="195" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-rd)"/>
+
+  <!-- DECISION 1: Accuracy-critical? -->
+  <rect x="500" y="195" width="440" height="60" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="720" y="222" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">Is maximum accuracy critical?</text>
+  <text x="720" y="243" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">(complex reasoning, cyber, hard frontier problems)</text>
+
+  <!-- YES branch → Opus 4.8 -->
+  <line x1="500" y1="225" x2="280" y2="225" stroke="#a78bfa" stroke-width="2"/>
+  <line x1="280" y1="225" x2="280" y2="330" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <text x="390" y="218" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">YES</text>
+
+  <rect x="100" y="330" width="360" height="100" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="2"/>
+  <text x="280" y="360" text-anchor="middle" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">→ Opus 4.8</text>
+  <text x="280" y="385" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">$5 / $25 per 1M tokens</text>
+  <text x="280" y="407" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Highest accuracy, cyber work,</text>
+  <text x="280" y="424" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">reduced guardrails</text>
+
+  <!-- NO branch → next decision -->
+  <line x1="720" y1="255" x2="720" y2="300" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-rd)"/>
+  <text x="740" y="280" fill="#64748b" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">NO</text>
+
+  <!-- DECISION 2: High volume / latency? -->
+  <rect x="500" y="300" width="440" height="60" rx="12" fill="#1e1e2e" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="720" y="327" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">High volume or latency-sensitive?</text>
+  <text x="720" y="348" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">(classification, routing, extraction, simple Q&amp;A)</text>
+
+  <!-- YES branch → Haiku -->
+  <line x1="940" y1="330" x2="1160" y2="330" stroke="#4ade80" stroke-width="2"/>
+  <line x1="1160" y1="330" x2="1160" y2="330" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="1050" y="323" text-anchor="middle" fill="#4ade80" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">YES</text>
+
+  <rect x="980" y="330" width="360" height="100" rx="12" fill="#1e1e2e" stroke="#4ade80" stroke-width="2"/>
+  <text x="1160" y="360" text-anchor="middle" fill="#4ade80" font-family="-apple-system, sans-serif" font-size="20" font-weight="700">→ Haiku 4.5</text>
+  <text x="1160" y="385" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">$1 / $5 per 1M tokens</text>
+  <text x="1160" y="407" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Fastest, cheapest tier.</text>
+  <text x="1160" y="424" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Bulk calls, edge routing</text>
+
+  <!-- NO branch → Sonnet 5 (the default winner) -->
+  <line x1="720" y1="360" x2="720" y2="480" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
+  <text x="740" y="400" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">NO</text>
+
+  <!-- SONNET 5 (THE STAR) -->
+  <rect x="430" y="480" width="580" height="160" rx="16" fill="#22d3ee" fill-opacity="0.08" stroke="#22d3ee" stroke-width="3"/>
+  <text x="720" y="515" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="24" font-weight="800">→ Sonnet 5 (Default)</text>
+  <text x="720" y="545" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="16" font-weight="600">$2/$10 intro · $3/$15 standard per 1M tokens</text>
+  <text x="720" y="572" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">1M context · 128k output · adaptive thinking always on</text>
+
+  <text x="720" y="600" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="14">Best for: Agentic coding · Tool use · Long-context analysis</text>
+  <text x="720" y="622" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="14">Claude Code · Research · Business automation · Professional work</text>
+
+  <!-- Bottom callouts -->
+  <rect x="80" y="680" width="380" height="80" rx="10" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="270" y="708" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">Migrating from 4.6?</text>
+  <text x="270" y="732" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">Drop-in replacement — just</text>
+  <text x="270" y="750" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="13">change model ID + recheck token budgets</text>
+
+  <rect x="530" y="680" width="380" height="80" rx="10" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="708" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">Budget-sensitive migration?</text>
+  <text x="720" y="732" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">Intro pricing ($2/$10) runs through</text>
+  <text x="720" y="750" text-anchor="middle" fill="#4ade80" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Aug 31, 2026 — plan for Sep 1 step-up</text>
+
+  <rect x="980" y="680" width="380" height="80" rx="10" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="1170" y="708" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="15" font-weight="600">Using Claude Code?</text>
+  <text x="1170" y="732" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">Sonnet 5 is live now.</text>
+  <text x="1170" y="750" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Adaptive thinking defaults to high effort</text>
+</svg>

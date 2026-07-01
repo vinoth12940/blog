@@ -1,0 +1,89 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="760" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="48" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="34" font-weight="700">Benchmark Gains: Sonnet 5 vs Sonnet 4.6</text>
+  <text x="720" y="78" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="16">The biggest jumps are in terminal work, reasoning with tools, and agentic coding</text>
+
+  <!-- Benchmark bars: each row has Sonnet 4.6 (gray) and Sonnet 5 (cyan) -->
+
+  <!-- ROW 1: Terminal-Bench 2.1 -->
+  <text x="40" y="155" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">Terminal-Bench 2.1</text>
+  <text x="40" y="175" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Shell &amp; command-line work</text>
+  <!-- 4.6 bar: 67.0% -->
+  <rect x="320" y="130" width="536" height="28" rx="4" fill="#475569"/>
+  <text x="870" y="149" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">67.0%</text>
+  <!-- 5 bar: 80.4% -->
+  <rect x="320" y="160" width="643" height="32" rx="4" fill="#22d3ee"/>
+  <text x="980" y="182" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">80.4%</text>
+  <!-- delta -->
+  <rect x="1200" y="135" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="156" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+13.4</text>
+
+  <!-- ROW 2: HLE with tools -->
+  <text x="40" y="235" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">HLE (with tools)</text>
+  <text x="40" y="255" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Frontier knowledge + search</text>
+  <rect x="320" y="210" width="374" height="28" rx="4" fill="#475569"/>
+  <text x="708" y="229" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">46.8%</text>
+  <rect x="320" y="240" width="459" height="32" rx="4" fill="#22d3ee"/>
+  <text x="795" y="262" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">57.4%</text>
+  <rect x="1200" y="215" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="236" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+10.6</text>
+
+  <!-- ROW 3: HLE no tools -->
+  <text x="40" y="315" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">HLE (no tools)</text>
+  <text x="40" y="335" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Pure knowledge reasoning</text>
+  <rect x="320" y="290" width="277" height="28" rx="4" fill="#475569"/>
+  <text x="611" y="309" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">34.6%</text>
+  <rect x="320" y="320" width="346" height="32" rx="4" fill="#22d3ee"/>
+  <text x="680" y="342" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">43.2%</text>
+  <rect x="1200" y="295" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="316" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+8.6</text>
+
+  <!-- ROW 4: SWE-bench Pro -->
+  <text x="40" y="395" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">SWE-bench Pro</text>
+  <text x="40" y="415" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Hard agentic coding tasks</text>
+  <rect x="320" y="370" width="465" height="28" rx="4" fill="#475569"/>
+  <text x="799" y="389" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">58.1%</text>
+  <rect x="320" y="400" width="506" height="32" rx="4" fill="#22d3ee"/>
+  <text x="840" y="422" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">63.2%</text>
+  <rect x="1200" y="375" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="396" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+5.1</text>
+
+  <!-- ROW 5: OSWorld-Verified -->
+  <text x="40" y="475" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">OSWorld-Verified</text>
+  <text x="40" y="495" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">GUI computer-control tasks</text>
+  <rect x="320" y="450" width="628" height="28" rx="4" fill="#475569"/>
+  <text x="962" y="469" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">78.5%</text>
+  <rect x="320" y="480" width="650" height="32" rx="4" fill="#22d3ee"/>
+  <text x="984" y="502" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">81.2%</text>
+  <rect x="1200" y="455" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="476" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+2.7</text>
+
+  <!-- ROW 6: GDPval-AA v2 -->
+  <text x="40" y="555" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">GDPval-AA v2</text>
+  <text x="40" y="575" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Professional knowledge work (Elo)</text>
+  <rect x="320" y="530" width="450" height="28" rx="4" fill="#475569"/>
+  <text x="784" y="549" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">1381</text>
+  <rect x="320" y="560" width="526" height="32" rx="4" fill="#22d3ee"/>
+  <text x="860" y="582" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">1618</text>
+  <rect x="1200" y="535" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="556" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+237</text>
+
+  <!-- ROW 7: FrontierCode v1 -->
+  <text x="40" y="635" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="17" font-weight="600">FrontierCode v1</text>
+  <text x="40" y="655" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13">Real OSS pull-request coding</text>
+  <rect x="320" y="610" width="121" height="28" rx="4" fill="#475569"/>
+  <text x="455" y="629" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">15.1%</text>
+  <rect x="320" y="640" width="310" height="32" rx="4" fill="#22d3ee"/>
+  <text x="644" y="662" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="17" font-weight="700">38.8%</text>
+  <rect x="1200" y="615" width="100" height="32" rx="8" fill="#22d3ee" fill-opacity="0.15" stroke="#22d3ee" stroke-width="1"/>
+  <text x="1250" y="636" text-anchor="middle" fill="#22d3ee" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">+23.7</text>
+
+  <!-- Legend -->
+  <rect x="320" y="700" width="24" height="14" rx="3" fill="#475569"/>
+  <text x="354" y="712" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">Sonnet 4.6</text>
+  <rect x="470" y="700" width="24" height="14" rx="3" fill="#22d3ee"/>
+  <text x="504" y="712" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">Sonnet 5</text>
+  <text x="1380" y="712" text-anchor="end" fill="#475569" font-family="-apple-system, sans-serif" font-size="13">Source: Anthropic Sonnet 5 System Card · CursorBench · Cognition FrontierCode</text>
+</svg>
