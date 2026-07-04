@@ -1,0 +1,63 @@
+<svg width="100%" viewBox="0 0 1440 680" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a">
+  <defs>
+    <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#f09595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, system-ui, sans-serif; fill: #e8e6de; }
+    .title { font-size: 26px; font-weight: 600; fill: #ffffff; }
+    .subtitle { font-size: 16px; fill: #94a3b8; }
+    .label { font-size: 17px; font-weight: 500; fill: #f1f5f9; }
+    .sub { font-size: 14px; fill: #94a3b8; }
+    .cve { font-size: 13px; font-weight: 600; fill: #fca5a5; font-family: 'SF Mono', monospace; }
+    .impact { font-size: 14px; font-weight: 600; fill: #fbbf24; }
+    .rect-layer { fill: #1e1e2e; stroke: #475569; stroke-width: 1.5; rx: 12; }
+    .rect-vuln { fill: #1e1e2e; stroke: #ef4444; stroke-width: 1.5; rx: 12; }
+    .rect-outcome { fill: #1e1e2e; stroke: #f59e0b; stroke-width: 1.5; rx: 12; }
+    .arrow-right { stroke: #64748b; stroke-width: 2; fill: none; }
+    .arrow-danger { stroke: #ef4444; stroke-width: 2; fill: none; }
+    .layer-label { font-size: 12px; font-weight: 700; fill: #64748b; text-transform: uppercase; letter-spacing: 1.5px; }
+  </style>
+
+  <rect width="1440" height="680" fill="#0f172a"/>
+
+  <text x="720" y="50" text-anchor="middle" class="title">LangChain Ecosystem: The Attack Surface Stack</text>
+  <text x="720" y="80" text-anchor="middle" class="subtitle">7,000 self-hosted servers exposed — Yarden Porat (Check Point Research) disclosed Nov 2025</text>
+
+  <!-- Layer 1: HTTP API -->
+  <text x="100" y="130" class="layer-label">LAYER 1 — HTTP API SURFACE</text>
+  <rect x="100" y="145" width="1240" height="60" class="rect-layer"/>
+  <text x="720" y="180" text-anchor="middle" class="label">Langflow / LangGraph Studio — unauthenticated HTTP endpoints exposed on public internet</text>
+
+  <line x1="720" y1="210" x2="720" y2="235" class="arrow-danger" marker-end="url(#arrow4)"/>
+
+  <!-- Layer 2: Checkpointer -->
+  <text x="100" y="260" class="layer-label">LAYER 2 — STATE PERSISTENCE (CHECKPOINTER)</text>
+  <rect x="100" y="275" width="600" height="80" class="rect-vuln"/>
+  <text x="400" y="305" text-anchor="middle" class="label">SQLite Checkpointer</text>
+  <text x="400" y="328" text-anchor="middle" class="cve">CVE-2025-67644</text>
+  <text x="400" y="345" text-anchor="middle" class="sub">SQL injection in state persistence layer</text>
+
+  <rect x="740" y="275" width="600" height="80" class="rect-vuln"/>
+  <text x="1040" y="305" text-anchor="middle" class="label">msgpack Deserialization</text>
+  <text x="1040" y="328" text-anchor="middle" class="cve">CVE-2026-28277</text>
+  <text x="1040" y="345" text-anchor="middle" class="sub">Unsafe deserialization → RCE</text>
+
+  <line x1="400" y1="360" x2="400" y2="395" class="arrow-danger" marker-end="url(#arrow4)"/>
+  <line x1="1040" y1="360" x2="1040" y2="395" class="arrow-danger" marker-end="url(#arrow4)"/>
+
+  <!-- Layer 3: Redis -->
+  <text x="100" y="420" class="layer-label">LAYER 3 — ALTERNATIVE BACKEND (SAME BUG CLASS)</text>
+  <rect x="100" y="435" width="1240" height="60" class="rect-vuln"/>
+  <text x="720" y="470" text-anchor="middle" class="label">Redis Checkpointer — CVE-2026-27022 — identical injection class spread across backends</text>
+
+  <line x1="720" y1="500" x2="720" y2="525" class="arrow-danger" marker-end="url(#arrow4)"/>
+
+  <!-- Outcome -->
+  <rect x="100" y="530" width="1240" height="80" class="rect-outcome"/>
+  <text x="720" y="560" text-anchor="middle" class="label">Full remote code execution on self-hosted agent servers</text>
+  <text x="720" y="588" text-anchor="middle" class="impact">~7,000 Langflow servers found exposed and compromised</text>
+
+  <text x="720" y="640" text-anchor="middle" class="subtitle">All three CVEs now patched. Source: Cloud Security Alliance + Check Point Research, June 2026</text>
+</svg>

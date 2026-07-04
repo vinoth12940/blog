@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Prompts Became Shells: The 2026 AI Agent RCE Crisis</title>
+<meta property="og:title" content="When Prompts Became Shells: The 2026 AI Agent RCE Crisis">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-04">
+<meta name="description" content="Five CVEs across Semantic Kernel, AutoGen Studio, and LangChain turned prompt injection into remote code execution. Here's what happened, why it matters, and how to defend your agents.">
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    line-height: 1.7;
+    color: #1a1a18;
+    background: #ffffff;
+  }
+  h1 { font-size: 2.2em; line-height: 1.3; margin-bottom: 10px; }
+  h2 { font-size: 1.5em; margin-top: 2.5em; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+  h3 { font-size: 1.2em; margin-top: 2em; color: #334155; }
+  .meta { color: #64748b; font-size: 0.9em; margin-bottom: 30px; }
+  .lead { font-size: 1.15em; color: #334155; font-weight: 400; margin-bottom: 30px; }
+  img { width: 100%; border-radius: 12px; margin: 25px 0; border: 1px solid #e2e8f0; }
+  .caption { text-align: center; font-size: 0.85em; color: #64748b; margin-top: -15px; margin-bottom: 25px; }
+  pre {
+    background: #0f172a; color: #e2e8f0; padding: 20px;
+    border-radius: 10px; overflow-x: auto; font-size: 0.88em; line-height: 1.5;
+  }
+  code { font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace; }
+  p > code, li > code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 0.9em; color: #c0392b;
+  }
+  blockquote {
+    border-left: 4px solid #3b82f6; padding: 15px 20px;
+    background: #f0f9ff; margin: 20px 0; border-radius: 0 8px 8px 0;
+  }
+  blockquote.warning {
+    border-left-color: #f59e0b; background: #fffbeb;
+  }
+  hr { border: none; border-top: 1px solid #e2e8f0; margin: 3em 0; }
+  ul, ol { padding-left: 1.5em; }
+  li { margin-bottom: 8px; }
+  .tag {
+    display: inline-block; background: #e0e7ff; color: #4338ca;
+    padding: 2px 10px; border-radius: 20px; font-size: 0.8em; margin-right: 5px;
+  }
+</style>
+</head>
+<body>
+
+<h1>When Prompts Became Shells: The 2026 AI Agent RCE Crisis</h1>
+<div class="meta">
+  July 4, 2026 · 12 min read<br>
+  <span class="tag">AI Security</span><span class="tag">LLM Agents</span><span class="tag">Vulnerability Analysis</span><span class="tag">DevSecOps</span>
+</div>
+
+<p class="lead">
+In the span of eight weeks in 2026, security researchers disclosed five critical CVEs across three of the most popular AI agent frameworks — Semantic Kernel, AutoGen Studio, and the LangChain ecosystem. Each one followed the same lethal pattern: a carefully crafted prompt or payload traveled through the model's tool-calling interface and landed as arbitrary code execution on the host machine. <strong>No browser exploit. No memory corruption. No malicious attachment. Just natural language.</strong>
+</p>
+
+<p>
+AI agents have fundamentally changed the threat model. When you give a language model the ability to read files, search databases, run scripts, and call APIs, a vulnerability in the "AI layer" stops being a content moderation problem and becomes an execution risk. The model itself isn't broken — it's doing exactly what it was designed to do: parsing language into structured tool calls. The vulnerability lives in how the framework trusts that output.
+</p>
+
+<p>
+Microsoft's Defender Security Research Team, who discovered and disclosed most of these issues, put it bluntly:
+</p>
+
+<blockquote>
+"When models are connected to system tools, prompt injection risks extend beyond typical chatbot misuse. It becomes a direct path to concrete execution primitives like data exfiltration, arbitrary file writes, and RCE."
+</blockquote>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20260704-ai-agent-rce-crisis/images/01-hero-overview.png" alt="Overview diagram showing the three framework exploit chains and their impact">
+<div class="caption">Five CVEs, three frameworks, one pattern: untrusted model output mapped directly to dangerous system operations.</div>
+
+<hr>
+
+<h2>Why Agent Frameworks Are the New Attack Surface</h2>
+
+<p>
+Frameworks like Semantic Kernel, LangChain, CrewAI, and AutoGen have become the de facto operating system for AI agents. They abstract away the complexity of model orchestration, plugin management, and workflow chaining. With <strong>27,000+ stars on GitHub</strong>, Semantic Kernel alone powers enterprise deployments across Microsoft's ecosystem.
+</p>
+
+<p>
+But this convenience carries a hidden cost. Because these frameworks act as a ubiquitous foundational layer, a single vulnerability in how they map AI model outputs to system tools carries <strong>systemic risk</strong> — every agent built on the framework inherits the flaw.
+</p>
+
+<p>
+The core issue is a category error that the industry is still calibrating to:
+</p>
+
+<ul>
+  <li><strong>Traditional apps:</strong> untrusted input reaches SQL queries or filesystem APIs. We solved this with parameterized queries and input validation.</li>
+  <li><strong>AI agents:</strong> untrusted natural language reaches tool-calling schemas, which then reach SQL queries, filesystem APIs, and shell commands. The indirection through the LLM makes it feel like the model is "handling" the input — but it isn't. It's just parsing it.</li>
+</ul>
+
+<p>
+The model doesn't validate. It translates. And whatever it translates into gets executed.
+</p>
+
+<hr>
+
+<h2>CVE-2026-26030: Prompt Injection to <code>eval()</code> in Semantic Kernel</h2>
+
+<p>
+The first vulnerability in this series is the cleanest illustration of the pattern. Microsoft's researchers built a demo "hotel finder" agent using Semantic Kernel's In-Memory Vector Store. When a user searches for hotels, the framework builds a Python lambda to filter results:
+</p>
+
+<pre><code># User asks: "Find hotels in Paris"
+# Framework builds:
+new_filter = "lambda x: x.city == 'Paris'"
+# Then executes:
+eval(new_filter)
+</code></pre>
+
+<p>
+The problem: <code>kwargs[param.name]</code> — the city parameter that the AI model controls — is <strong>not sanitized</strong>. It acts as a classic injection sink. By closing the quote and appending Python logic, an attacker can turn a simple data lookup into an executable payload.
+</p>
+
+<h3>The Attack</h3>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20260704-ai-agent-rce-crisis/images/02-semantic-kernel-rce-chain.png" alt="Step-by-step diagram of the Semantic Kernel RCE exploit chain">
+<div class="caption">The full exploit chain: prompt injection → model formats into lambda → AST blocklist bypassed → eval() executes on host.</div>
+
+<p>
+The framework developers anticipated this risk and implemented a validator that parses the filter string into an Abstract Syntax Tree (AST) before execution. The validation blocked known dangerous names (<code>eval</code>, <code>exec</code>, <code>open</code>, <code>__import__</code>) and ran code in a restricted environment with <code>{"__builtins__": {}}</code>.
+</p>
+
+<p>
+It was solid in theory. It failed in practice.
+</p>
+
+<p>
+The researchers' exploit payload used Python's class hierarchy traversal to reach <code>BuiltinImporter</code> and dynamically load the <code>os</code> module:
+</p>
+
+<pre><code># Simplified exploit path:
+tuple().__class__.__base__.__subclasses__()
+# → finds BuiltinImporter
+# → calls load_module("os")
+# → calls os.system("calc.exe")
+</code></pre>
+
+<p>
+Four reasons the blocklist failed:
+</p>
+
+<ol>
+  <li><strong>Missing dangerous names:</strong> <code>__name__</code>, <code>load_module</code>, <code>system</code>, and <code>BuiltinImporter</code> weren't in the blocklist.</li>
+  <li><strong>Structural check passes:</strong> The payload is wrapped inside a valid lambda expression, so <code>isinstance(tree.body, ast.Lambda)</code> passes — it's a lambda that just happens to contain malicious code in its body.</li>
+  <li><strong><code>__builtins__</code> emptying is irrelevant:</strong> The payload starts with <code>tuple()</code>, which exists regardless of the builtins environment. It never uses built-ins directly.</li>
+  <li><strong>No <code>ast.Subscript</code> checking:</strong> The filter only checked <code>ast.Name</code> and <code>ast.Attribute</code> nodes. Bracket notation (<code>obj['__class__']</code>) creates an <code>ast.Subscript</code> node that the validation completely ignored.</li>
+</ol>
+
+<blockquote class="warning">
+<strong>Key lesson:</strong> Blocklists in dynamic languages like Python are inherently fragile. The language's flexibility allows restricted operations to be reintroduced through alternate syntax, libraries, or runtime evaluation. Use <strong>allowlists</strong>, not blocklists.
+</blockquote>
+
+<p>
+A single prompt was enough to launch <code>calc.exe</code> on the device running the AI agent. Microsoft patched this with four layers of protection: an AST node-type allowlist, a function call allowlist, a dangerous attributes blocklist, and name node restriction. Upgrade to <code>semantic-kernel ≥ 1.39.4</code> (Python) to fix it.
+</p>
+
+<hr>
+
+<h2>CVE-2026-25592: Sandbox Escape Through a Misplaced Attribute</h2>
+
+<p>
+The second Semantic Kernel vulnerability is arguably more alarming because it defeated a <strong>container boundary</strong>. Semantic Kernel's <code>SessionsPythonPlugin</code> lets agents execute Python code inside Azure Container Apps dynamic sessions — isolated cloud sandboxes with their own filesystem. The security model relies entirely on this boundary.
+</p>
+
+<p>
+But in the .NET SDK, a helper function called <code>DownloadFileAsync</code> was accidentally marked with a <code>[KernelFunction]</code> attribute. This attribute officially advertised the function to the AI model as a callable tool, complete with its parameter schema. The <code>localFilePath</code> parameter — which dictates exactly where <code>File.WriteAllBytes()</code> saves data on the host device — was now <strong>entirely AI-controlled</strong>.
+</p>
+
+<p>
+With no path validation, directory restriction, or sanitization, an attacker could chain two tools to escape the sandbox:
+</p>
+
+<ul>
+  <li><strong>Step 1:</strong> Use <code>ExecuteCode</code> to generate a malicious script inside the isolated container.</li>
+  <li><strong>Step 2:</strong> Use <code>DownloadFileAsync</code> to write that file to <code>C:\Windows\Start Menu\Programs\Startup</code> on the host.</li>
+  <li><strong>Step 3:</strong> On the next user sign-in, the script runs, granting full host compromise.</li>
+</ul>
+
+<p>
+A similar vulnerability existed in reverse for <code>upload_file()</code> — it accepted any local file path without validation, allowing prompt injections to exfiltrate sensitive host files (SSH keys, credentials) directly into the sandbox where the attacker could retrieve them.
+</p>
+
+<p>
+The fix was elegant: remove the <code>[KernelFunction]</code> attribute. One change breaks the entire attack chain — the AI can no longer invoke the function, and prompt injection can no longer reach it. Upgrade to <code>Semantic Kernel .NET ≥ 1.71.0</code>.
+</p>
+
+<hr>
+
+<h2>AutoJack: When Localhost Stops Being a Trust Boundary</h2>
+
+<p>
+If the Semantic Kernel vulnerabilities showed how prompt injection reaches code execution, AutoJack showed how a <strong>single webpage</strong> can RCE an agent's host machine — no prompt injection in the traditional sense required.
+</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20260704-ai-agent-rce-crisis/images/03-autojack-attack-chain.png" alt="AutoJack attack chain diagram showing how a malicious webpage exploits localhost trust">
+<div class="caption">AutoJack: a malicious webpage uses the agent's own browsing tool to defeat localhost protections and spawn arbitrary processes.</div>
+
+<p>
+AutoGen Studio is a UI on top of AutoGen, Microsoft Research's multi-agent framework. It lets developers compose agents, attach MCP servers, and run experiments. The exploit chain combines three independent weaknesses:
+</p>
+
+<ol>
+  <li><strong>Origin allowlist defeated by the agent itself (CWE-1385):</strong> The MCP WebSocket only accepts connections from <code>127.0.0.1</code> or <code>localhost</code>. This blocks a browser pointed at evil.com. But an AutoGen agent equipped with web-browsing tools (like <code>MultimodalWebSurfer</code>) is a process on the workstation. Anything it loads inherits the localhost identity. The "origin" of JavaScript executed by its headless browser satisfies the allowlist.</li>
+  <li><strong>Auth middleware opts MCP out (CWE-306):</strong> The authentication middleware in AutoGen Studio explicitly skipped <code>/api/mcp/*</code> paths, assuming they'd do their own checks. They didn't. The MCP WebSocket accepted connections without any authentication regardless of the auth mode configured.</li>
+  <li><strong><code>server_params</code> from URL = the command line (CWE-78):</strong> The endpoint accepted a <code>server_params</code> query parameter, base64-decoded a JSON blob into <code>StdioServerParams</code>, and handed <code>command + args</code> directly to <code>stdio_client()</code>. There was no allowlist — <code>calc.exe</code>, <code>powershell.exe -enc</code>, or <code>bash -c '...'</code> were all accepted as "MCP servers."</li>
+</ol>
+
+<p>
+The end-to-end attack:
+</p>
+
+<ul>
+  <li>An attacker plants a malicious page on the open internet (or injects it into a legitimate site the agent is asked to summarize).</li>
+  <li>The agent's browsing tool navigates the headless browser to the page.</li>
+  <li>The page's JavaScript opens <code>ws://localhost:8081/api/mcp/ws/&lt;id&gt;?server_params=&lt;base64&gt;</code>.</li>
+  <li>Because the browser is on the same machine, the Origin is acceptable. Because the auth middleware short-circuits <code>/api/mcp/*</code>, no token is required.</li>
+  <li>AutoGen Studio decodes the payload and runs arbitrary code under the developer's account.</li>
+</ul>
+
+<pre><code>// The minimal payload:
+{
+  "type": "StdioServerParams",
+  "command": "calc.exe",
+  "args": [],
+  "env": { "pwned": "true" }
+}
+// Base64-encoded into a query string, that's all it takes.
+</code></pre>
+
+<p>
+Microsoft fixed this before it ever shipped in a PyPI release (the MCP WebSocket surface was only in the development branch). The fix: server-side parameter binding (the WebSocket handler no longer reads <code>server_params</code> from the URL), a tighter auth skip list, and version 0.7.2+ on main.
+</p>
+
+<blockquote class="warning">
+<strong>The deeper lesson:</strong> When an agent can browse external content AND reach privileged local services, localhost is no longer a trust boundary. This pattern will recur across the ecosystem as more frameworks add MCP support.
+</blockquote>
+
+<hr>
+
+<h2>The LangChain Ecosystem: 7,000 Servers at Scale</h2>
+
+<p>
+While Microsoft's research focused on their own frameworks, the LangChain ecosystem was hit with the same class of vulnerabilities at a much larger scale. Security researcher <strong>Yarden Porat</strong> from Check Point Research disclosed three chained CVEs in LangGraph and Langflow that affected thousands of self-hosted deployments.
+</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20260704-ai-agent-rce-crisis/images/04-langchain-attack-surface.png" alt="LangChain ecosystem attack surface diagram showing the three layered vulnerabilities">
+<div class="caption">Three CVEs chained across the LangGraph/Langflow stack: HTTP API exposure → state persistence vulnerabilities → RCE.</div>
+
+<p>
+The attack path:
+</p>
+
+<ul>
+  <li><strong>CVE-2025-67644:</strong> SQL injection in the SQLite checkpointer — the state persistence layer that saves agent conversation context.</li>
+  <li><strong>CVE-2026-28277:</strong> Unsafe msgpack deserialization flaw that chains directly into remote code execution.</li>
+  <li><strong>CVE-2026-27022:</strong> The same injection class propagated to the Redis checkpointer backend, meaning the vulnerability wasn't limited to one storage engine.</li>
+</ul>
+
+<p>
+The impact: <strong>approximately 7,000 self-hosted Langflow servers were found exposed to the public internet</strong> and compromised. This is the real-world consequence of deploying agent frameworks with default configurations, no authentication, and internet-facing endpoints.
+</p>
+
+<p>
+All three CVEs have been patched, but the incident underscores a critical reality: the same convenience that makes these frameworks great for prototyping makes them dangerous in production. Default configurations optimized for developer experience are rarely hardened for deployment.
+</p>
+
+<hr>
+
+<h2>The Common Pattern: Your LLM Is Not a Security Boundary</h2>
+
+<p>
+Step back from the individual CVEs and look at what connects them. Every single vulnerability in this research follows the same structural pattern:
+</p>
+
+<ol>
+  <li>An AI model is given access to tools that perform privileged operations (file I/O, code execution, process spawning, database queries).</li>
+  <li>Untrusted input reaches the model — through chat, through RAG documents, through web pages the agent browses, through indirect prompt injection.</li>
+  <li>The model parses that input and formats it into tool-call parameters, exactly as designed.</li>
+  <li>The framework executes those parameters without treating them as attacker-controlled.</li>
+</ol>
+
+<p>
+The model is not the vulnerability. The model is not the security boundary. The model is a <strong>parser</strong> — it translates natural language into structured data. Security must be enforced at the point where that structured data reaches a dangerous sink.
+</p>
+
+<p>
+This is the same lesson the web security community learned twenty years ago with SQL injection: <em>don't concatenate untrusted input into executable strings</em>. The AI agent version is: <em>don't pass model-controlled parameters into dangerous operations without validation</em>.
+</p>
+
+<hr>
+
+<h2>Defending Your Agents: A Practical Playbook</h2>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20260704-ai-agent-rce-crisis/images/05-defense-playbook.png" alt="Defense-in-depth playbook with seven rules for securing AI agents">
+<div class="caption">Seven rules for securing AI agents, derived from the 2026 exploit research.</div>
+
+<h3>The Seven Rules</h3>
+
+<ul>
+  <li><strong>1. Treat every model-controlled tool parameter as attacker input.</strong> Any <code>kwarg</code> the LLM can influence is untrusted. Validate, sanitize, and use allowlists. This is the single most important rule.</li>
+  <li><strong>2. Use AST allowlists, not blocklists, for dynamic code execution.</strong> If you must use <code>eval()</code> or similar, define what's allowed and reject everything else. Python's flexibility makes blocklists trivially bypassable through alternate syntax and runtime introspection.</li>
+  <li><strong>3. Authenticate every localhost control plane.</strong> MCP WebSockets, debug endpoints, dev servers — all require authentication. Loopback is not a trust boundary when agents browse the web from the same machine.</li>
+  <li><strong>4. Allowlist which executables MCP servers can spawn.</strong> Never accept arbitrary <code>command + args</code> from a query parameter or model output. Define a fixed set of permitted binaries.</li>
+  <li><strong>5. Don't mark internal helpers as callable tools.</strong> If the model doesn't need to invoke a function, don't give it a <code>[KernelFunction]</code> or equivalent attribute. Hide file-write and file-read helpers from the model's tool schema.</li>
+  <li><strong>6. Isolate agent identity from developer identity.</strong> Run agents under a different OS user, container, or VM. If the agent is compromised, the blast radius should not include your SSH keys, cloud credentials, or daily-driver environment.</li>
+  <li><strong>7. Correlate signals across two layers.</strong> Monitor at the AI model level (prompt shields, content safety filters) AND the host level (EDR, process monitoring, network filtering). If the model guardrail fails, endpoint defense must catch anomalous behavior — like an agent process suddenly spawning command lines or dropping scripts into Startup folders.</li>
+</ul>
+
+<h3>Advanced Hunting: Detecting Past Exploitation</h3>
+
+<p>
+If you ran a vulnerable agent before patching, you need to check whether it was already exploited. Microsoft provided KQL queries for Microsoft Defender that look for the behavioral signatures:
+</p>
+
+<pre><code>// Hunt for suspicious child processes from agent hosts
+DeviceProcessEvents
+| where Timestamp > ago(30d)
+| where InitiatingProcessCommandLine matches regex @"(?i)semantic[\s_\-]?kernel"
+    or InitiatingProcessFolderPath matches regex @"(?i)semantic[\s_\-]?kernel"
+| where FileName in~ (
+    "cmd.exe", "powershell.exe", "pwsh.exe", "bash.exe",
+    "certutil.exe", "mshta.exe", "rundll32.exe", "curl.exe",
+    "whoami.exe", "net.exe", "wscript.exe", "bitsadmin.exe"
+)
+| project Timestamp, DeviceName, FileName, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine
+| sort by Timestamp desc
+</code></pre>
+
+<p>
+If you find suspicious activity during the vulnerable window, treat it as a potential host compromise: review the host, rotate credentials and tokens accessible to the agent, and investigate lateral movement.
+</p>
+
+<hr>
+
+<h2>The Bigger Picture: Agent Frameworks Need an AppSec Movement</h2>
+
+<p>
+What happened in May–June 2026 is not a coincidence. It's the inevitable result of a shift in how we build software:
+</p>
+
+<ul>
+  <li>AI agent frameworks became the <strong>new web frameworks</strong> — rapidly adopted, poorly understood, deployed with defaults.</li>
+  <li>Developers who would never concatenate user input into SQL are now passing model output into <code>eval()</code>, <code>File.WriteAllBytes()</code>, and <code>stdio_client()</code>.</li>
+  <li>The indirection through the LLM creates a false sense of security — it feels like the model is "reasoning" about the input, but it's just parsing it.</li>
+</ul>
+
+<p>
+Microsoft's research series is ongoing. They've explicitly stated that upcoming blogs will cover <em>"structurally similar execution vulnerabilities found in other widely used third-party agent frameworks."</em> If your framework wasn't in this batch, it may well be in the next.
+</p>
+
+<p>
+The good news: all five CVEs discussed here are patched. The patterns are now documented. The fix patterns (allowlists over blocklists, hide helpers from the model, authenticate localhost, isolate agent identity) are generalizable.
+</p>
+
+<p>
+The bad news: thousands of agent deployments are running unpatched versions right now, with internet-facing endpoints and default configurations. If you're running Semantic Kernel, AutoGen Studio, LangGraph, or Langflow in production, <strong>audit your versions today</strong>.
+</p>
+
+<blockquote>
+<strong>Your LLM is not a security boundary.</strong> The tools you expose define your attacker's reach. Any tool parameter the model can influence must be treated as attacker-controlled input. This is not a recommendation. It is the new threat model.
+</blockquote>
+
+<hr>
+
+<h2>References</h2>
+
+<ul>
+  <li><a href="https://www.microsoft.com/en-us/security/blog/2026/05/07/prompts-become-shells-rce-vulnerabilities-ai-agent-frameworks/">Microsoft Security Blog — "When prompts become shells: RCE vulnerabilities in AI agent frameworks"</a> (May 7, 2026)</li>
+  <li><a href="https://www.microsoft.com/en-us/security/blog/2026/06/18/autojack-single-page-rce-host-running-ai-agent/">Microsoft Security Blog — "AutoJack: How a single page can RCE the host running your AI agent"</a> (June 18, 2026)</li>
+  <li><a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-langgraph-rce-chain-20260614-csa-styled/">Cloud Security Alliance — "LangGraph RCE Chain: Checkpointer Flaw Enables Server Takeover"</a> (June 14, 2026)</li>
+  <li><a href="https://saassentinel.com/2026/06/20/7000-langflow-servers-hit-langgraph-and-langchain-carry-the-same-risk/">SaaSSentinel — "7,000 Langflow Servers Hit: LangGraph and LangChain Carry the Same Risk"</a> (June 20, 2026)</li>
+  <li><a href="https://github.com/amiteliahu/AIAgentCTF/tree/main/CVE-2026-26030">Interactive CTF Challenge for CVE-2026-26030</a> (educational)</li>
+  <li><a href="https://attack.mitre.org/techniques/aml/">MITRE ATLAS Framework — Adversarial Threats Against AI Systems</a></li>
+</ul>
+
+<p><em>Disclosure: All vulnerabilities discussed were responsibly disclosed, patched by maintainers, and the exploit details published after fixes were available. The CTF challenge linked above is for educational purposes and should only be run in isolated environments.</em></p>
+
+</body>
+</html>
