@@ -1,0 +1,96 @@
+<svg width="1440" height="800" viewBox="0 0 1440 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1e2e"/>
+    </linearGradient>
+    <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="800" fill="url(#bgGrad3)"/>
+
+  <text x="720" y="55" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="32" font-weight="700">The Cost Compounding Flywheel</text>
+  <text x="720" y="90" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="18">Five advantages stack — each one multiplies the savings of the last</text>
+
+  <!-- 5 stages in a flow -->
+  <!-- Stage 1: Training -->
+  <rect x="60" y="170" width="240" height="200" rx="16" fill="#1e293b" stroke="#1D9E75" stroke-width="1.5"/>
+  <rect x="60" y="170" width="240" height="50" rx="16" fill="#1D9E75" opacity="0.15"/>
+  <text x="180" y="200" text-anchor="middle" fill="#5DCAA5" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">1 · Cheap Training</text>
+  <text x="180" y="265" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">$5.6M</text>
+  <text x="180" y="295" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">DeepSeek V3 training</text>
+  <text x="180" y="320" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">2,000 H800 GPUs</text>
+  <text x="180" y="345" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">2.788M GPU-hours</text>
+
+  <!-- Arrow 1 -->
+  <line x1="300" y1="270" x2="340" y2="270" stroke="#1D9E75" stroke-width="2" marker-end="url(#arrow3)"/>
+
+  <!-- Stage 2: MoE Architecture -->
+  <rect x="340" y="170" width="240" height="200" rx="16" fill="#1e293b" stroke="#534AB7" stroke-width="1.5"/>
+  <rect x="340" y="170" width="240" height="50" rx="16" fill="#534AB7" opacity="0.15"/>
+  <text x="460" y="200" text-anchor="middle" fill="#AFA9EC" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">2 · Sparse Inference</text>
+  <text x="460" y="265" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">80%+</text>
+  <text x="460" y="295" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">compute reduction</text>
+  <text x="460" y="320" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">671B total → 37B active</text>
+  <text x="460" y="345" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">MoE routing per token</text>
+
+  <!-- Arrow 2 -->
+  <line x1="580" y1="270" x2="620" y2="270" stroke="#534AB7" stroke-width="2" marker-end="url(#arrow3)"/>
+
+  <!-- Stage 3: Context Caching -->
+  <rect x="620" y="170" width="240" height="200" rx="16" fill="#1e293b" stroke="#BA7517" stroke-width="1.5"/>
+  <rect x="620" y="170" width="240" height="50" rx="16" fill="#BA7517" opacity="0.15"/>
+  <text x="740" y="200" text-anchor="middle" fill="#FAC775" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">3 · Prefix Caching</text>
+  <text x="740" y="265" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">90% off</text>
+  <text x="740" y="295" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">on cached prompts</text>
+  <text x="740" y="320" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">RAG + agents = near-free</text>
+  <text x="740" y="345" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">$0.028 input (cached)</text>
+
+  <!-- Arrow 3 -->
+  <line x1="860" y1="270" x2="900" y2="270" stroke="#BA7517" stroke-width="2" marker-end="url(#arrow3)"/>
+
+  <!-- Stage 4: Aggressive Pricing -->
+  <rect x="900" y="170" width="240" height="200" rx="16" fill="#1e293b" stroke="#378ADD" stroke-width="1.5"/>
+  <rect x="900" y="170" width="240" height="50" rx="16" fill="#378ADD" opacity="0.15"/>
+  <text x="1020" y="200" text-anchor="middle" fill="#85B7EB" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">4 · Market Share Play</text>
+  <text x="1020" y="265" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">10× limits</text>
+  <text x="1020" y="295" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">vs OpenAI rate caps</text>
+  <text x="1020" y="320" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">Subsidize API access</text>
+  <text x="1020" y="345" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">Monetize via ecosystem</text>
+
+  <!-- Arrow 4 -->
+  <line x1="1140" y1="270" x2="1180" y2="270" stroke="#378ADD" stroke-width="2" marker-end="url(#arrow3)"/>
+
+  <!-- Stage 5: Open Weights Self-Host -->
+  <rect x="1180" y="170" width="200" height="200" rx="16" fill="#1e293b" stroke="#639922" stroke-width="1.5"/>
+  <rect x="1180" y="170" width="200" height="50" rx="16" fill="#639922" opacity="0.15"/>
+  <text x="1280" y="200" text-anchor="middle" fill="#97C459" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">5 · Self-Host</text>
+  <text x="1280" y="265" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">$0 API</text>
+  <text x="1280" y="295" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">open weights</text>
+  <text x="1280" y="320" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">RTX 4090 @ 4-bit</text>
+  <text x="1280" y="345" text-anchor="middle" fill="#64748b" font-family="monospace" font-size="12">&lt;$0.01/M in power</text>
+
+  <!-- Result box -->
+  <rect x="240" y="470" width="960" height="200" rx="20" fill="#0f172a" stroke="#1D9E75" stroke-width="2"/>
+  <text x="720" y="515" text-anchor="middle" fill="#5DCAA5" font-family="-apple-system, sans-serif" font-size="22" font-weight="700">Compounded Result</text>
+
+  <text x="320" y="575" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="48" font-weight="800">36×</text>
+  <text x="320" y="610" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">cheaper than Claude</text>
+
+  <text x="720" y="575" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="48" font-weight="800">$3,500</text>
+  <text x="720" y="610" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">saved per month at 10M tokens</text>
+
+  <text x="1120" y="575" text-anchor="middle" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="48" font-weight="800">90-95%</text>
+  <text x="1120" y="610" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="15">total cost reduction</text>
+
+  <!-- Connecting arrows to result -->
+  <line x1="180" y1="375" x2="320" y2="465" stroke="#1D9E75" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow3)"/>
+  <line x1="460" y1="375" x2="500" y2="465" stroke="#534AB7" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow3)"/>
+  <line x1="740" y1="375" x2="720" y2="465" stroke="#BA7517" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow3)"/>
+  <line x1="1020" y1="375" x2="940" y2="465" stroke="#378ADD" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow3)"/>
+  <line x1="1280" y1="375" x2="1120" y2="465" stroke="#639922" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow3)"/>
+
+  <!-- Bottom note -->
+  <text x="720" y="735" text-anchor="middle" fill="#64748b" font-family="-apple-system, sans-serif" font-size="14">Source: DeepSeek V3 technical report, official API pricing pages, CNBC reporting (July 2026)</text>
+</svg>
