@@ -1,0 +1,66 @@
+<svg width="100%" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text class="th" x="340" y="36" text-anchor="middle" style="font-size:18px; font-weight:600; fill:#f1f5f9;">VRAM Requirements at Q4 Quantization</text>
+  <text class="ts" x="340" y="58" text-anchor="middle" style="fill:#94a3b8;">Lower = easier to deploy · full precision needs 2–4× more</text>
+
+  <!-- Chart area background -->
+  <rect x="180" y="80" width="440" height="340" rx="8" style="fill:#1e293b; stroke:#334155; stroke-width:0.5;"/>
+
+  <!-- Axis labels (VRAM in GB) -->
+  <text class="ts" x="170" y="424" text-anchor="end" style="fill:#64748b;">0</text>
+  <text class="ts" x="170" y="350" text-anchor="end" style="fill:#64748b;">40</text>
+  <text class="ts" x="170" y="280" text-anchor="end" style="fill:#64748b;">80</text>
+  <text class="ts" x="170" y="210" text-anchor="end" style="fill:#64748b;">120</text>
+  <text class="ts" x="170" y="140" text-anchor="end" style="fill:#64748b;">160</text>
+
+  <!-- Gridlines -->
+  <line x1="180" y1="420" x2="620" y2="420" style="stroke:#334155; stroke-width:0.5;"/>
+  <line x1="180" y1="350" x2="620" y2="350" style="stroke:#334155; stroke-width:0.5; stroke-dasharray:4 4;"/>
+  <line x1="180" y1="280" x2="620" y2="280" style="stroke:#334155; stroke-width:0.5; stroke-dasharray:4 4;"/>
+  <line x1="180" y1="210" x2="620" y2="210" style="stroke:#334155; stroke-width:0.5; stroke-dasharray:4 4;"/>
+  <line x1="180" y1="140" x2="620" y2="140" style="stroke:#334155; stroke-width:0.5; stroke-dasharray:4 4;"/>
+
+  <!-- Y-axis label -->
+  <text class="ts" x="140" y="250" text-anchor="middle" transform="rotate(-90 140 250)" style="fill:#64748b;">VRAM (GB, Q4)</text>
+
+  <!-- Bars (each 48px wide, base at y=420) -->
+  <!-- Scale: 1 GB = 3.5px height. Bar starts at y=420 going up -->
+
+  <!-- Phi-4 14B: 8 GB → 28px -->
+  <rect x="200" y="392" width="48" height="28" rx="4" style="fill:#EF9F27;"/>
+  <text class="th" x="224" y="385" text-anchor="middle" style="font-size:12px; fill:#EF9F27;">8 GB</text>
+  <text class="ts" x="224" y="436" text-anchor="middle" style="fill:#94a3b8;">Phi-4 14B</text>
+
+  <!-- Gemma 3 27B: 16 GB → 56px -->
+  <rect x="260" y="364" width="48" height="56" rx="4" style="fill:#EF9F27; opacity:0.8;"/>
+  <text class="th" x="284" y="357" text-anchor="middle" style="font-size:12px; fill:#EF9F27;">16 GB</text>
+  <text class="ts" x="284" y="436" text-anchor="middle" style="fill:#94a3b8;">Gemma 3 27B</text>
+
+  <!-- Llama 4 Scout: 55 GB → 192px -->
+  <rect x="320" y="228" width="48" height="192" rx="4" style="fill:#5DCAA5;"/>
+  <text class="th" x="344" y="221" text-anchor="middle" style="font-size:12px; fill:#5DCAA5;">55 GB</text>
+  <text class="ts" x="344" y="436" text-anchor="middle" style="fill:#94a3b8;">Llama 4 Scout</text>
+
+  <!-- Qwen 3 235B: 132 GB → 462px (capped visually, use 410px) -->
+  <rect x="380" y="60" width="48" height="360" rx="4" style="fill:#7F77DD;"/>
+  <text class="th" x="404" y="53" text-anchor="middle" style="font-size:12px; fill:#AFA9EC;">132 GB</text>
+  <text class="ts" x="404" y="436" text-anchor="middle" style="fill:#94a3b8;">Qwen 3 235B</text>
+
+  <!-- DeepSeek R1/V3: 136 GB -->
+  <rect x="440" y="60" width="48" height="360" rx="4" style="fill:#7F77DD; opacity:0.9;"/>
+  <text class="th" x="464" y="53" text-anchor="middle" style="font-size:12px; fill:#AFA9EC;">136 GB</text>
+  <text class="ts" x="464" y="436" text-anchor="middle" style="fill:#94a3b8;">DS R1 / V3</text>
+
+  <!-- Mistral Large 3: 140 GB -->
+  <rect x="500" y="60" width="48" height="360" rx="4" style="fill:#7F77DD; opacity:0.8;"/>
+  <text class="th" x="524" y="53" text-anchor="middle" style="font-size:12px; fill:#AFA9EC;">140 GB</text>
+  <text class="ts" x="524" y="436" text-anchor="middle" style="fill:#94a3b8;">Mistral L3</text>
+
+  <!-- Hardware tier annotations -->
+  <text class="ts" x="244" y="110" text-anchor="middle" style="fill:#EF9F27;">Single GPU</text>
+  <text class="ts" x="344" y="155" text-anchor="middle" style="fill:#5DCAA5;">Dual GPU</text>
+  <text class="ts" x="464" y="110" text-anchor="middle" style="fill:#AFA9EC;">Multi-GPU / Server</text>
+
+  <!-- X-axis label -->
+  <text class="ts" x="400" y="455" text-anchor="middle" style="fill:#64748b;">Model (sorted by VRAM requirement)</text>
+</svg>
