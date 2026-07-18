@@ -1,0 +1,93 @@
+<svg width="1440" height="810" viewBox="0 0 1440 810" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1e2e"/>
+    </linearGradient>
+    <linearGradient id="kimi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="other" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="closed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#991616"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1440" height="810" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="720" y="60" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="700" text-anchor="middle">Kimi K3: 2.8T Parameters — The Scale Landscape</text>
+  <text x="720" y="92" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="400" text-anchor="middle">Open-weight models (blue) vs closed frontier (red) · July 2026</text>
+
+  <!-- Axis -->
+  <line x1="280" y1="720" x2="280" y2="140" stroke="#334155" stroke-width="2"/>
+  <line x1="280" y1="720" x2="1360" y2="720" stroke="#334155" stroke-width="2"/>
+
+  <!-- Y-axis labels -->
+  <text x="250" y="145" fill="#64748b" font-family="monospace" font-size="13" text-anchor="end">3.0T</text>
+  <text x="250" y="300" fill="#64748b" font-family="monospace" font-size="13" text-anchor="end">2.0T</text>
+  <text x="250" y="455" fill="#64748b" font-family="monospace" font-size="13" text-anchor="end">1.0T</text>
+  <text x="250" y="610" fill="#64748b" font-family="monospace" font-size="13" text-anchor="end">0.5T</text>
+  <text x="250" y="725" fill="#64748b" font-family="monospace" font-size="13" text-anchor="end">0</text>
+
+  <!-- Grid lines -->
+  <line x1="280" y1="140" x2="1360" y2="140" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="280" y1="300" x2="1360" y2="300" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="280" y1="455" x2="1360" y2="455" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="280" y1="610" x2="1360" y2="610" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Kimi K3 — 2.8T (highlight) -->
+  <!-- 2.8T maps to: 720 - (2.8/3.0)*(720-140) = 720 - 540.8 = 179.2 -->
+  <rect x="350" y="179" width="130" height="541" rx="6" fill="url(#kimi)"/>
+  <text x="415" y="165" fill="#818cf8" font-family="-apple-system, sans-serif" font-size="22" font-weight="700" text-anchor="middle">2.8T</text>
+  <text x="415" y="745" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Kimi K3</text>
+  <text x="415" y="765" fill="#818cf8" font-family="-apple-system, sans-serif" font-size="12" text-anchor="middle">Moonshot · Open</text>
+
+  <!-- DeepSeek V4-Pro — 1.6T -->
+  <!-- 1.6T: 720 - (1.6/3.0)*580 = 720 - 309.3 = 410.7 -->
+  <rect x="520" y="411" width="130" height="309" rx="6" fill="url(#other)"/>
+  <text x="585" y="397" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="20" font-weight="700" text-anchor="middle">1.6T</text>
+  <text x="585" y="745" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" text-anchor="middle">DeepSeek V4</text>
+  <text x="585" y="765" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12" text-anchor="middle">Open</text>
+
+  <!-- GLM-5.2 — ~744B -->
+  <!-- 0.744T: 720 - (0.744/3.0)*580 = 720 - 143.8 = 576.2 -->
+  <rect x="690" y="576" width="130" height="144" rx="6" fill="url(#other)"/>
+  <text x="755" y="562" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="20" font-weight="700" text-anchor="middle">744B</text>
+  <text x="755" y="745" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" text-anchor="middle">GLM-5.2</text>
+  <text x="755" y="765" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12" text-anchor="middle">Z.ai · Open</text>
+
+  <!-- Qwen 3 235B MoE -->
+  <!-- 0.235T: 720 - (0.235/3.0)*580 = 720 - 45.4 = 674.6 -->
+  <rect x="860" y="675" width="130" height="45" rx="6" fill="url(#other)"/>
+  <text x="925" y="661" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="20" font-weight="700" text-anchor="middle">235B</text>
+  <text x="925" y="745" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Qwen 3</text>
+  <text x="925" y="765" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12" text-anchor="middle">Alibaba · Open</text>
+
+  <!-- GPT-5.5 (closed, est) -->
+  <!-- ~1.8T est: 720 - (1.8/3.0)*580 = 720 - 348 = 372 -->
+  <rect x="1030" y="372" width="130" height="348" rx="6" fill="url(#closed)" opacity="0.8"/>
+  <text x="1095" y="358" fill="#f87171" font-family="-apple-system, sans-serif" font-size="20" font-weight="700" text-anchor="middle">~1.8T*</text>
+  <text x="1095" y="745" fill="#fca5a5" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" text-anchor="middle">GPT-5.5</text>
+  <text x="1095" y="765" fill="#ef4444" font-family="-apple-system, sans-serif" font-size="12" text-anchor="middle">OpenAI · Closed</text>
+
+  <!-- Claude Opus 4.8 (closed, est) -->
+  <!-- ~1.5T est: 720 - (1.5/3.0)*580 = 720 - 290 = 430 -->
+  <rect x="1200" y="430" width="130" height="290" rx="6" fill="url(#closed)" opacity="0.8"/>
+  <text x="1265" y="416" fill="#f87171" font-family="-apple-system, sans-serif" font-size="20" font-weight="700" text-anchor="middle">~1.5T*</text>
+  <text x="1265" y="745" fill="#fca5a5" font-family="-apple-system, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Opus 4.8</text>
+  <text x="1265" y="765" fill="#ef4444" font-family="-apple-system, sans-serif" font-size="12" text-anchor="middle">Anthropic · Closed</text>
+
+  <!-- Annotation arrow for K3 -->
+  <path d="M 415 130 Q 500 100 600 110" fill="none" stroke="#818cf8" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="700" y="115" fill="#a5b4fc" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">← World's largest open-weight model</text>
+
+  <!-- Footnote -->
+  <text x="720" y="797" fill="#475569" font-family="-apple-system, sans-serif" font-size="11" text-anchor="middle">* Closed-model parameter counts are industry estimates · Sources: Moonshot AI, Reuters, official model docs · July 2026</text>
+</svg>

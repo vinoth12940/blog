@@ -1,0 +1,111 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1e2e"/>
+    </linearGradient>
+    <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="760" fill="url(#bg3)"/>
+
+  <!-- Title -->
+  <text x="720" y="50" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="32" font-weight="700" text-anchor="middle">The K3 Agent Ecosystem</text>
+  <text x="720" y="80" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="16" text-anchor="middle">How Kimi K3 fits into coding-agent and knowledge-work pipelines</text>
+
+  <!-- Central K3 node -->
+  <rect x="560" y="310" width="320" height="100" rx="20" fill="#4f46e5" stroke="#818cf8" stroke-width="2"/>
+  <text x="720" y="352" fill="#fff" font-family="-apple-system, sans-serif" font-size="28" font-weight="700" text-anchor="middle">Kimi K3</text>
+  <text x="720" y="385" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="15" text-anchor="middle">2.8T params · 1M context · Multimodal</text>
+
+  <!-- TOP: Input sources -->
+  <rect x="80" y="130" width="220" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="190" y="165" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Code Repositories</text>
+  <text x="190" y="190" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Full monorepo context</text>
+
+  <rect x="340" y="130" width="220" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="450" y="165" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Documents &amp; PDFs</text>
+  <text x="450" y="190" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Native multimodal input</text>
+
+  <rect x="600" y="130" width="220" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="710" y="165" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Visual &amp; UI Assets</text>
+  <text x="710" y="190" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Screenshots, diagrams</text>
+
+  <rect x="860" y="130" width="220" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="970" y="165" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Web Research</text>
+  <text x="970" y="190" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Web search tool built-in</text>
+
+  <rect x="1120" y="130" width="240" height="80" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="1240" y="165" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">API Integrations</text>
+  <text x="1240" y="190" fill="#64748b" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">MCP servers, tools</text>
+
+  <!-- Arrows from inputs to K3 -->
+  <path d="M 190 210 Q 190 260 560 340" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 450 210 Q 450 260 620 320" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 710 210 L 720 310" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 970 210 Q 970 260 820 320" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 1240 210 Q 1240 260 880 340" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+  <!-- BOTTOM: Output surfaces -->
+  <!-- Kimi Chat -->
+  <rect x="80" y="490" width="200" height="90" rx="12" fill="#0f766e" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="180" y="525" fill="#ccfbf1" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Kimi Chat</text>
+  <text x="180" y="550" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Consumer workspace</text>
+
+  <!-- Kimi Code -->
+  <rect x="320" y="490" width="200" height="90" rx="12" fill="#0f766e" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="420" y="525" fill="#ccfbf1" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Kimi Code</text>
+  <text x="420" y="550" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">CLI / IDE agent</text>
+
+  <!-- Claude Code compat -->
+  <rect x="560" y="490" width="200" height="90" rx="12" fill="#0f766e" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="660" y="525" fill="#ccfbf1" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Claude Code</text>
+  <text x="660" y="550" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">OpenAI-compat API</text>
+
+  <!-- Kimi Work -->
+  <rect x="800" y="490" width="200" height="90" rx="12" fill="#0f766e" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="900" y="525" fill="#ccfbf1" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Kimi Work</text>
+  <text x="900" y="550" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Slides, Docs, Sheets</text>
+
+  <!-- API / Self-host -->
+  <rect x="1040" y="490" width="200" height="90" rx="12" fill="#0f766e" stroke="#2dd4bf" stroke-width="1.5"/>
+  <text x="1140" y="525" fill="#ccfbf1" font-family="-apple-system, sans-serif" font-size="16" font-weight="600" text-anchor="middle">API Platform</text>
+  <text x="1140" y="550" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">Self-host / integrate</text>
+
+  <!-- Arrows from K3 to outputs -->
+  <path d="M 580 410 Q 400 450 200 490" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 640 410 Q 520 450 420 490" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 720 410 L 660 490" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 800 410 Q 860 450 900 490" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+  <path d="M 860 410 Q 1000 450 1140 490" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+  <!-- Capability badges -->
+  <rect x="80" y="620" width="1280" height="100" rx="12" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1"/>
+  <text x="720" y="648" fill="#818cf8" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" text-anchor="middle">FLAGSHIP CAPABILITIES</text>
+
+  <rect x="120" y="665" width="150" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="195" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Swarm (parallel agents)</text>
+
+  <rect x="300" y="665" width="120" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="360" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Goal mode</text>
+
+  <rect x="450" y="665" width="130" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="515" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">3D game building</text>
+
+  <rect x="610" y="665" width="140" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="680" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Deep research</text>
+
+  <rect x="780" y="665" width="160" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="860" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Consulting-grade slides</text>
+
+  <rect x="970" y="665" width="130" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="1035" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Context caching</text>
+
+  <rect x="1130" y="665" width="150" height="36" rx="18" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+  <text x="1205" y="688" fill="#c7d2fe" font-family="-apple-system, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Thinking effort levels</text>
+
+  <!-- Footer -->
+  <text x="720" y="745" fill="#475569" font-family="-apple-system, sans-serif" font-size="11" text-anchor="middle">Sources: Moonshot AI, Kimi API Platform, kimi.com product pages · July 2026</text>
+</svg>
