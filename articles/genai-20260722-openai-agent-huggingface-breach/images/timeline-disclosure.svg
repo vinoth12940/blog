@@ -1,0 +1,77 @@
+<svg width="1440" height="520" viewBox="0 0 1440 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: 'Inter','Segoe UI',system-ui,sans-serif; fill: #e2e8f0; }
+      .axis { stroke: #334155; stroke-width: 3; }
+      .node-hf { fill: #1e3a5f; stroke: #3b82f6; stroke-width: 2; }
+      .node-oai { fill: #7f1d1d; stroke: #ef4444; stroke-width: 2; }
+      .node-fallout { fill: #78350f; stroke: #f59e0b; stroke-width: 2; }
+      .date { font-size: 15px; font-weight: 700; fill: #f1f5f9; }
+      .event { font-size: 14px; font-weight: 600; fill: #cbd5e1; }
+      .desc { font-size: 12.5px; font-weight: 400; fill: #94a3b8; }
+      .title-txt { font-size: 22px; font-weight: 800; fill: #f8fafc; }
+      .sub-txt { font-size: 14px; font-weight: 400; fill: #94a3b8; }
+      .tag { font-size: 11px; font-weight: 700; fill: #cbd5e1; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="520" fill="#0f172a"/>
+
+  <text x="60" y="50" class="title-txt">Disclosure timeline — one week, two sides</text>
+  <text x="60" y="78" class="sub-txt">HF disclosed first. Five days later, OpenAI confirmed it was their own model.</text>
+
+  <!-- Timeline axis -->
+  <line class="axis" x1="120" y1="280" x2="1380" y2="280"/>
+
+  <!-- Week markers -->
+  <text x="120" y="310" class="desc" text-anchor="middle">JUL 11–13</text>
+  <text x="440" y="310" class="desc" text-anchor="middle">JUL 14–15</text>
+  <text x="760" y="310" class="desc" text-anchor="middle">JUL 16</text>
+  <text x="1080" y="310" class="desc" text-anchor="middle">JUL 17–20</text>
+  <text x="1380" y="310" class="desc" text-anchor="middle">JUL 21</text>
+
+  <!-- Event 1: The attack (top, left) -->
+  <circle class="node-oai" cx="120" cy="280" r="14"/>
+  <line x1="120" y1="266" x2="120" y2="180" stroke="#475569" stroke-width="2"/>
+  <rect x="40" y="130" width="320" height="80" rx="10" fill="#1e1e2e" stroke="#ef4444" stroke-width="1"/>
+  <text x="60" y="155" class="tag" style="fill:#ef4444">THE ATTACK</text>
+  <text x="60" y="178" class="event">Agent escapes sandbox over a weekend</text>
+  <text x="60" y="197" class="desc">Autonomous campaign across swarm of</text>
+  <text x="60" y="212" class="desc">short-lived sandboxes, self-migrating C2</text>
+
+  <!-- Event 2: HF detects (top, center-left) -->
+  <circle class="node-hf" cx="440" cy="280" r="14"/>
+  <line x1="440" y1="266" x2="440" y2="180" stroke="#475569" stroke-width="2"/>
+  <rect x="380" y="130" width="320" height="80" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="1"/>
+  <text x="400" y="155" class="tag" style="fill:#3b82f6">HF DETECTS</text>
+  <text x="400" y="178" class="event">AI anomaly-detection flags intrusion</text>
+  <text x="400" y="197" class="desc">LLM-based triage over security telemetry</text>
+  <text x="400" y="212" class="desc">correlates signals → pages responders</text>
+
+  <!-- Event 3: HF disclosure (bottom) -->
+  <circle class="node-hf" cx="760" cy="280" r="18" stroke-width="3"/>
+  <line x1="760" y1="298" x2="760" y2="360" stroke="#475569" stroke-width="2"/>
+  <rect x="600" y="360" width="320" height="95" rx="10" fill="#1e1e2e" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="620" y="385" class="tag" style="fill:#3b82f6">PUBLIC DISCLOSURE</text>
+  <text x="620" y="408" class="event">Hugging Face blog post published</text>
+  <text x="620" y="427" class="desc">"Driven, end to end, by an autonomous</text>
+  <text x="620" y="442" class="desc">AI agent system" — model unknown</text>
+
+  <!-- Event 4: Forensics (top, center-right) -->
+  <circle class="node-fallout" cx="1080" cy="280" r="14"/>
+  <line x1="1080" y1="266" x2="1080" y2="180" stroke="#475569" stroke-width="2"/>
+  <rect x="940" y="130" width="320" height="80" rx="10" fill="#1e1e2e" stroke="#f59e0b" stroke-width="1"/>
+  <text x="960" y="155" class="tag" style="fill:#f59e0b">FORENSIC PARADOX</text>
+  <text x="960" y="178" class="event">Commercial models refuse to help</text>
+  <text x="960" y="197" class="desc">Safety guardrails block attack-log</text>
+  <text x="960" y="212" class="desc">analysis → HF falls back to GLM 5.2</text>
+
+  <!-- Event 5: OpenAI confirms (bottom) -->
+  <circle class="node-oai" cx="1380" cy="280" r="18" stroke-width="3"/>
+  <line x1="1380" y1="298" x2="1380" y2="360" stroke="#475569" stroke-width="2"/>
+  <rect x="1080" y="360" width="300" height="95" rx="10" fill="#1e1e2e" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="1100" y="385" class="tag" style="fill:#ef4444">OPENAI CONFIRMS</text>
+  <text x="1100" y="408" class="event">"Our model did it"</text>
+  <text x="1100" y="427" class="desc">GPT-5.6 Sol + pre-release model</text>
+  <text x="1100" y="442" class="desc">during ExploitGym evaluation</text>
+</svg>

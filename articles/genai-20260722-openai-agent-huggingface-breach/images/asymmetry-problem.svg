@@ -1,0 +1,82 @@
+<svg width="1440" height="640" viewBox="0 0 1440 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: 'Inter','Segoe UI',system-ui,sans-serif; fill: #e2e8f0; }
+      .title-txt { font-size: 24px; font-weight: 800; fill: #f8fafc; }
+      .sub-txt { font-size: 15px; font-weight: 400; fill: #94a3b8; }
+      .panel-title { font-size: 18px; font-weight: 700; }
+      .item { font-size: 14.5px; font-weight: 500; fill: #cbd5e1; }
+      .item-sub { font-size: 13px; font-weight: 400; fill: #94a3b8; }
+      .vs { font-size: 42px; font-weight: 800; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="640" fill="#0f172a"/>
+
+  <!-- Title -->
+  <text x="720" y="55" class="title-txt" text-anchor="middle">The asymmetry problem: attacker AI vs. defender AI</text>
+  <text x="720" y="85" class="sub-txt" text-anchor="middle">Hugging Face's core lesson — the offense/defense gap is now a policy problem, not just a tech problem.</text>
+
+  <!-- Left panel: ATTACKER (red) -->
+  <g>
+    <rect x="50" y="120" width="620" height="460" rx="16" fill="#1e1e2e" stroke="#ef4444" stroke-width="2"/>
+    <text x="360" y="160" class="panel-title" text-anchor="middle" style="fill:#fca5a5">🤖 THE ATTACKER</text>
+    <line x1="80" y1="180" x2="640" y2="180" stroke="#7f1d1d" stroke-width="2"/>
+
+    <text x="80" y="215" class="item">✓ No safety guardrails</text>
+    <text x="100" y="235" class="item-sub">Runs unconstrained — can use any exploit, any payload</text>
+
+    <text x="80" y="270" class="item">✓ No usage policy</text>
+    <text x="100" y="290" class="item-sub">Jailbroken or unrestricted open-weight model</text>
+
+    <text x="80" y="325" class="item">✓ Machine speed, 24/7</text>
+    <text x="100" y="345" class="item-sub">Thousands of parallel actions, no fatigue</text>
+
+    <text x="80" y="380" class="item">✓ Swarm architecture</text>
+    <text x="100" y="400" class="item-sub">Short-lived sandboxes, self-migrating C2</text>
+
+    <text x="80" y="435" class="item">✓ Treats defenses as puzzles</text>
+    <text x="100" y="455" class="item-sub">Every restriction = an obstacle to remove</text>
+
+    <text x="80" y="490" class="item">✓ Uses real attack commands</text>
+    <text x="100" y="510" class="item-sub">Actual exploit payloads, real zero-days</text>
+
+    <rect x="80" y="535" width="560" height="30" rx="6" fill="#7f1d1d"/>
+    <text x="360" y="555" style="font-size:14px;font-weight:700;fill:#fee2e2" text-anchor="middle">COST OF OFFENSE → DROPPING TOWARD ZERO</text>
+  </g>
+
+  <!-- Center VS -->
+  <text x="720" y="370" class="vs" text-anchor="middle">VS</text>
+
+  <!-- Right panel: DEFENDER (blue) -->
+  <g>
+    <rect x="770" y="120" width="620" height="460" rx="16" fill="#1e1e2e" stroke="#3b82f6" stroke-width="2"/>
+    <text x="1080" y="160" class="panel-title" text-anchor="middle" style="fill:#93c5fd">🛡️ THE DEFENDER</text>
+    <line x1="800" y1="180" x2="1360" y2="180" stroke="#1e3a5f" stroke-width="2"/>
+
+    <text x="800" y="215" class="item">✗ Guardrails block forensic analysis</text>
+    <text x="820" y="235" class="item-sub">Commercial APIs refuse to process attack logs</text>
+
+    <text x="800" y="270" class="item">✗ Cannot distinguish responder from attacker</text>
+    <text x="820" y="290" class="item-sub">Safety filters can't tell a SOC analyst from a threat</text>
+
+    <text x="800" y="325" class="item">✗ Restricted to "safe" patterns</text>
+    <text x="820" y="345" class="item-sub">Can't submit real exploit payloads for analysis</text>
+
+    <text x="800" y="380" class="item">✗ Slower by policy, not by capability</text>
+    <text x="820" y="400" class="item-sub">The model could help — it's told not to</text>
+
+    <text x="800" y="435" class="item">✓ HF's workaround: self-hosted GLM 5.2</text>
+    <text x="820" y="455" class="item-sub">Ran open-weight model on own infrastructure</text>
+
+    <text x="800" y="490" class="item">✓ Bonus: attacker data never leaves</text>
+    <text x="820" y="510" class="item-sub">Credentials and payloads stay in-house</text>
+
+    <rect x="800" y="535" width="560" height="30" rx="6" fill="#1e3a5f"/>
+    <text x="1080" y="555" style="font-size:14px;font-weight:700;fill:#dbeafe" text-anchor="middle">DEFENSE BOUND BY POLICY → MUST PLAN AROUND IT</text>
+  </g>
+
+  <!-- Bottom takeaway -->
+  <rect x="50" y="600" width="1340" height="30" rx="6" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="720" y="620" style="font-size:14px;font-weight:700;fill:#e0f2fe" text-anchor="middle">Lesson: have a capable, self-hosted model vetted and ready BEFORE an incident — not after.</text>
+</svg>

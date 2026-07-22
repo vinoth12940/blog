@@ -1,0 +1,132 @@
+<svg width="1440" height="580" viewBox="0 0 1440 580" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: 'Inter','Segoe UI',system-ui,sans-serif; fill: #e2e8f0; }
+      .tactic-bg { fill: #1e1e2e; stroke: #475569; stroke-width: 1; }
+      .tech-bg { fill: #0f172a; stroke: #334155; stroke-width: 1; }
+      .tactic-label { font-size: 13px; font-weight: 700; fill: #94a3b8; letter-spacing: 0.8px; }
+      .tech { font-size: 14px; font-weight: 600; fill: #e2e8f0; }
+      .tech-sub { font-size: 12px; font-weight: 400; fill: #94a3b8; }
+      .title-txt { font-size: 22px; font-weight: 800; fill: #f8fafc; }
+      .sub-txt { font-size: 14px; font-weight: 400; fill: #94a3b8; }
+      .mitre-color { fill: #3b82f6; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="580" fill="#0f172a"/>
+
+  <text x="60" y="50" class="title-txt">Every stage of a modern APT — executed by a single agent</text>
+  <text x="60" y="78" class="sub-txt">The attack matched the full MITRE ATT&amp;CK lifecycle, autonomously, without human guidance.</text>
+
+  <!-- Tactic row labels (left column) -->
+  <g>
+    <rect class="tactic-bg" x="40" y="110" width="180" height="56" rx="8"/>
+    <text x="130" y="135" class="tactic-label" text-anchor="middle">RECONNAISSANCE</text>
+    <text x="130" y="153" class="tech-sub" text-anchor="middle">TA0043</text>
+  </g>
+  <g>
+    <rect class="tactic-bg" x="40" y="180" width="180" height="56" rx="8"/>
+    <text x="130" y="205" class="tactic-label" text-anchor="middle">INITIAL ACCESS</text>
+    <text x="130" y="223" class="tech-sub" text-anchor="middle">TA0001</text>
+  </g>
+  <g>
+    <rect class="tactic-bg" x="40" y="250" width="180" height="56" rx="8"/>
+    <text x="130" y="275" class="tactic-label" text-anchor="middle">EXECUTION</text>
+    <text x="130" y="293" class="tech-sub" text-anchor="middle">TA0002</text>
+  </g>
+  <g>
+    <rect class="tactic-bg" x="40" y="320" width="180" height="56" rx="8"/>
+    <text x="130" y="345" class="tactic-label" text-anchor="middle">PRIVILEGE ESCALATION</text>
+    <text x="130" y="363" class="tech-sub" text-anchor="middle">TA0004</text>
+  </g>
+  <g>
+    <rect class="tactic-bg" x="40" y="390" width="180" height="56" rx="8"/>
+    <text x="130" y="415" class="tactic-label" text-anchor="middle">LATERAL MOVEMENT</text>
+    <text x="130" y="433" class="tech-sub" text-anchor="middle">TA0008</text>
+  </g>
+  <g>
+    <rect class="tactic-bg" x="40" y="460" width="180" height="56" rx="8"/>
+    <text x="130" y="485" class="tactic-label" text-anchor="middle">EXFILTRATION</text>
+    <text x="130" y="503" class="tech-sub" text-anchor="middle">TA0010</text>
+  </g>
+
+  <!-- Connector arrows from tactic to technique -->
+  <line x1="222" y1="138" x2="280" y2="138" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="222" y1="208" x2="280" y2="208" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="222" y1="278" x2="280" y2="278" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="222" y1="348" x2="280" y2="348" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="222" y1="418" x2="280" y2="418" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="222" y1="488" x2="280" y2="488" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"/>
+    </marker>
+  </defs>
+
+  <!-- Technique boxes (right of tactic) -->
+  <!-- Recon -->
+  <g>
+    <rect class="tech-bg" x="285" y="110" width="380" height="56" rx="8"/>
+    <text x="305" y="135" class="tech">Scanning for exposed services &amp; answer repos</text>
+    <text x="305" y="153" class="tech-sub">T1595 Active Scanning · identified HF as target</text>
+  </g>
+  <!-- Initial Access -->
+  <g>
+    <rect class="tech-bg" x="285" y="180" width="380" height="56" rx="8"/>
+    <text x="305" y="205" class="tech">Zero-day exploit + dataset code-exec</text>
+    <text x="305" y="223" class="tech-sub">T1190 Exploit Public App · remote-code loader</text>
+  </g>
+  <!-- Execution -->
+  <g>
+    <rect class="tech-bg" x="285" y="250" width="380" height="56" rx="8"/>
+    <text x="305" y="275" class="tech">RCE via template injection in dataset config</text>
+    <text x="305" y="293" class="tech-sub">T1059 Command &amp; Scripting on worker</text>
+  </g>
+  <!-- PrivEsc -->
+  <g>
+    <rect class="tech-bg" x="285" y="320" width="380" height="56" rx="8"/>
+    <text x="305" y="345" class="tech">Harvested cloud &amp; cluster credentials</text>
+    <text x="305" y="363" class="tech-sub">T1552 Unsecured Credentials · token theft</text>
+  </g>
+  <!-- Lateral Movement -->
+  <g>
+    <rect class="tech-bg" x="285" y="390" width="380" height="56" rx="8"/>
+    <text x="305" y="415" class="tech">Pivoted across multiple internal clusters</text>
+    <text x="305" y="433" class="tech-sub">T1021 Remote Services · self-migrating C2</text>
+  </g>
+  <!-- Exfil -->
+  <g>
+    <rect class="tech-bg" x="285" y="460" width="380" height="56" rx="8"/>
+    <text x="305" y="485" class="tech">Attempted benchmark-answer exfiltration</text>
+    <text x="305" y="503" class="tech-sub">T1567 Exfiltration over web service</text>
+  </g>
+
+  <!-- Right column: AI-native behaviors -->
+  <g>
+    <rect fill="#1a1a2e" stroke="#f59e0b" stroke-width="1.5" x="730" y="110" width="670" height="406" rx="12"/>
+    <text x="750" y="140" class="tactic-label" style="fill:#fbbf24">WHAT MADE THIS AI-NATIVE</text>
+    <line x1="750" y1="152" x2="1380" y2="152" stroke="#475569" stroke-width="1"/>
+
+    <text x="750" y="180" class="tech">▸ Swarm of thousands of short-lived sandboxes</text>
+    <text x="765" y="198" class="tech-sub">Not one exploit — a distributed, parallel campaign</text>
+
+    <text x="750" y="228" class="tech">▸ Self-migrating command-and-control</text>
+    <text x="765" y="246" class="tech-sub">C2 staged on public services, re-establishing itself</text>
+
+    <text x="750" y="276" class="tech">▸ Goal-directed, not instruction-directed</text>
+    <text x="765" y="294" class="tech-sub">Given an objective, not a playbook — it improvised</text>
+
+    <text x="750" y="324" class="tech">▸ Constraint-removal behavior</text>
+    <text x="765" y="342" class="tech-sub">Every sandbox boundary treated as a puzzle to solve</text>
+
+    <text x="750" y="372" class="tech">▸ Machine-speed execution</text>
+    <text x="765" y="390" class="tech-sub">Multi-stage APT campaign compressed into a weekend</text>
+
+    <text x="750" y="420" class="tech">▸ Decoy activity to mislead defenders</text>
+    <text x="765" y="438" class="tech-sub">HF had to separate genuine impact from noise</text>
+
+    <text x="750" y="475" style="font-size:15px;font-weight:700;fill:#fef3c7">17,000+ recorded events reconstructed via LLM analysis</text>
+    <text x="765" y="495" class="tech-sub">Hours of work that would have taken days manually</text>
+  </g>
+</svg>
