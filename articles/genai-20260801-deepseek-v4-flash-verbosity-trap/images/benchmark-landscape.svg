@@ -1,0 +1,102 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="760" fill="url(#bg2)"/>
+
+  <text x="720" y="54" text-anchor="middle" fill="#f1f5f9" font-family="Inter, sans-serif" font-size="30" font-weight="800">Benchmark Landscape: Where V4 Flash Actually Wins</text>
+  <text x="720" y="88" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="17">Strong on agentic / tool-use evaluations. Brutal on long-horizon autonomy.</text>
+
+  <!-- Chart area -->
+  <!-- Y-axis label -->
+  <text x="60" y="380" fill="#475569" font-family="Inter, sans-serif" font-size="13" transform="rotate(-90 60 380)">score (higher = better)</text>
+
+  <!-- Grid lines -->
+  <line x1="180" y1="140" x2="1380" y2="140" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="180" y1="230" x2="1380" y2="230" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="180" y1="320" x2="1380" y2="320" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="180" y1="410" x2="1380" y2="410" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="180" y1="500" x2="1380" y2="500" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="180" y1="590" x2="1380" y2="590" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Axis labels -->
+  <text x="160" y="145" text-anchor="end" fill="#64748b" font-family="Inter, sans-serif" font-size="12">100</text>
+  <text x="160" y="235" text-anchor="end" fill="#64748b" font-family="Inter, sans-serif" font-size="12">75</text>
+  <text x="160" y="325" text-anchor="end" fill="#64748b" font-family="Inter, sans-serif" font-size="12">50</text>
+  <text x="160" y="415" text-anchor="end" fill="#64748b" font-family="Inter, sans-serif" font-size="12">25</text>
+  <text x="160" y="505" text-anchor="end" fill="#64748b" font-family="Inter, sans-serif" font-size="12">10</text>
+  <text x="160" y="595" text-anchor="end" fill="#64748b" font-family="Inter, sans-serif" font-size="12">0</text>
+
+  <!-- Bars: positions x from 220, each bar width 110, gap 30 -->
+  <!-- TerminalBench 82.7 -> h = 82.7/100 * 450 = 372 -->
+  <rect x="220" y="218" width="110" height="372" rx="4" fill="#22d3ee"/>
+  <text x="275" y="208" text-anchor="middle" fill="#67e8f9" font-family="Inter, sans-serif" font-size="15" font-weight="700">82.7</text>
+  <text x="275" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Terminal</text>
+  <text x="275" y="636" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Bench 2.1</text>
+  <text x="275" y="656" text-anchor="middle" fill="#22d3ee" font-family="Inter, sans-serif" font-size="11" font-weight="600">agentic</text>
+
+  <!-- Cybergym 76.7 -> h = 345 -->
+  <rect x="360" y="245" width="110" height="345" rx="4" fill="#22d3ee"/>
+  <text x="415" y="235" text-anchor="middle" fill="#67e8f9" font-family="Inter, sans-serif" font-size="15" font-weight="700">76.7</text>
+  <text x="415" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Cybergym</text>
+  <text x="415" y="656" text-anchor="middle" fill="#22d3ee" font-family="Inter, sans-serif" font-size="11" font-weight="600">agentic</text>
+
+  <!-- Toolathlon 70.3 -> h = 316 -->
+  <rect x="500" y="274" width="110" height="316" rx="4" fill="#22d3ee"/>
+  <text x="555" y="264" text-anchor="middle" fill="#67e8f9" font-family="Inter, sans-serif" font-size="15" font-weight="700">70.3</text>
+  <text x="555" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Toolathlon</text>
+  <text x="555" y="656" text-anchor="middle" fill="#22d3ee" font-family="Inter, sans-serif" font-size="11" font-weight="600">agentic</text>
+
+  <!-- DSBench-FullStack 68.7 -> h = 309 -->
+  <rect x="640" y="281" width="110" height="309" rx="4" fill="#67e8f9"/>
+  <text x="695" y="271" text-anchor="middle" fill="#a5f3fc" font-family="Inter, sans-serif" font-size="15" font-weight="700">68.7</text>
+  <text x="695" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">DSBench</text>
+  <text x="695" y="636" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">FullStack</text>
+  <text x="695" y="656" text-anchor="middle" fill="#0ea5e9" font-family="Inter, sans-serif" font-size="11" font-weight="600">tool-use</text>
+
+  <!-- DSBench-Hard 59.6 -> h = 268 -->
+  <rect x="780" y="322" width="110" height="268" rx="4" fill="#67e8f9"/>
+  <text x="835" y="312" text-anchor="middle" fill="#a5f3fc" font-family="Inter, sans-serif" font-size="15" font-weight="700">59.6</text>
+  <text x="835" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">DSBench</text>
+  <text x="835" y="636" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Hard</text>
+  <text x="835" y="656" text-anchor="middle" fill="#0ea5e9" font-family="Inter, sans-serif" font-size="11" font-weight="600">tool-use</text>
+
+  <!-- DeepSWE 54.4 -> h = 245 -->
+  <rect x="920" y="345" width="110" height="245" rx="4" fill="#67e8f9"/>
+  <text x="975" y="335" text-anchor="middle" fill="#a5f3fc" font-family="Inter, sans-serif" font-size="15" font-weight="700">54.4</text>
+  <text x="975" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">DeepSWE</text>
+  <text x="975" y="656" text-anchor="middle" fill="#0ea5e9" font-family="Inter, sans-serif" font-size="11" font-weight="600">tool-use</text>
+
+  <!-- NL2Repo 54.2 -> h = 244 -->
+  <rect x="1060" y="346" width="110" height="244" rx="4" fill="#67e8f9"/>
+  <text x="1115" y="336" text-anchor="middle" fill="#a5f3fc" font-family="Inter, sans-serif" font-size="15" font-weight="700">54.2</text>
+  <text x="1115" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">NL2Repo</text>
+  <text x="1115" y="656" text-anchor="middle" fill="#0ea5e9" font-family="Inter, sans-serif" font-size="11" font-weight="600">tool-use</text>
+
+  <!-- Agent Last Exam 25.2 -> h = 113 -->
+  <rect x="1200" y="477" width="110" height="113" rx="4" fill="#f87171"/>
+  <text x="1255" y="467" text-anchor="middle" fill="#fca5a5" font-family="Inter, sans-serif" font-size="15" font-weight="700">25.2</text>
+  <text x="1255" y="618" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Agent Last</text>
+  <text x="1255" y="636" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">Exam</text>
+  <text x="1255" y="656" text-anchor="middle" fill="#f87171" font-family="Inter, sans-serif" font-size="11" font-weight="600">long-horizon</text>
+
+  <!-- Baseline/median reference line at 50 -->
+  <line x1="180" y1="365" x2="1380" y2="365" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7"/>
+  <text x="1375" y="360" text-anchor="end" fill="#fbbf24" font-family="Inter, sans-serif" font-size="12" font-weight="600">class median ≈ 50</text>
+
+  <!-- Legend -->
+  <rect x="180" y="690" width="16" height="16" rx="3" fill="#22d3ee"/>
+  <text x="204" y="703" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="13">agentic / terminal</text>
+  <rect x="380" y="690" width="16" height="16" rx="3" fill="#67e8f9"/>
+  <text x="404" y="703" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="13">tool-use / engineering</text>
+  <rect x="620" y="690" width="16" height="16" rx="3" fill="#f87171"/>
+  <text x="644" y="703" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="13">long-horizon autonomy (unsolved)</text>
+  <rect x="940" y="690" width="16" height="16" rx="3" fill="#fbbf24" opacity="0.7"/>
+  <text x="964" y="703" fill="#cbd5e1" font-family="Inter, sans-serif" font-size="13">class median reference</text>
+
+  <text x="720" y="740" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-size="12" font-style="italic">Vendor-published scores (DeepSeek Harness, max effort). Verify on your own evals.</text>
+</svg>
