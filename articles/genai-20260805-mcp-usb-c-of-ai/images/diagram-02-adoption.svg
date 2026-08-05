@@ -1,0 +1,115 @@
+<svg width="100%" viewBox="0 0 1440 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <linearGradient id="bg-grad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1e2e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="560" fill="url(#bg-grad2)"/>
+
+  <text x="720" y="45" text-anchor="middle" fill="#e2e8f0" font-family="Inter, sans-serif" font-size="26" font-weight="700">MCP Adoption Timeline</text>
+  <text x="720" y="70" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="15">From Anthropic experiment to industry standard in under 2 years</text>
+
+  <!-- Timeline axis -->
+  <line x1="120" y1="300" x2="1320" y2="300" stroke="#334155" stroke-width="3"/>
+
+  <!-- ===== Milestone 1: Nov 2024 ===== -->
+  <circle cx="200" cy="300" r="14" fill="#4f46e5" stroke="#818cf8" stroke-width="2"/>
+  <text x="200" y="305" text-anchor="middle" fill="#e2e8f0" font-family="Inter, sans-serif" font-size="10" font-weight="700">1</text>
+  <text x="200" y="340" text-anchor="middle" fill="#818cf8" font-family="Inter, sans-serif" font-size="14" font-weight="600">Nov 2024</text>
+
+  <rect x="110" y="150" width="180" height="120" rx="10" fill="#1e293b" stroke="#4f46e5" stroke-width="0.8"/>
+  <text x="200" y="175" text-anchor="middle" fill="#c7d2fe" font-family="Inter, sans-serif" font-size="14" font-weight="600">Anthropic Launch</text>
+  <text x="200" y="195" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">Open standard for AI</text>
+  <text x="200" y="210" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">data integration</text>
+  <text x="200" y="234" text-anchor="middle" fill="#818cf8" font-family="JetBrains Mono, monospace" font-size="11">Python · TS · C# · Java</text>
+  <text x="200" y="252" text-anchor="middle" fill="#818cf8" font-family="JetBrains Mono, monospace" font-size="11">SDKs released</text>
+  <line x1="200" y1="265" x2="200" y2="286" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- ===== Milestone 2: Mar 2025 ===== -->
+  <circle cx="430" cy="300" r="14" fill="#3b82f6" stroke="#93c5fd" stroke-width="2"/>
+  <text x="430" y="305" text-anchor="middle" fill="#e2e8f0" font-family="Inter, sans-serif" font-size="10" font-weight="700">2</text>
+  <text x="430" y="340" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="14" font-weight="600">Mar 2025</text>
+
+  <rect x="340" y="350" width="180" height="120" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="0.8"/>
+  <text x="430" y="375" text-anchor="middle" fill="#bfdbfe" font-family="Inter, sans-serif" font-size="14" font-weight="600">OpenAI Adopts</text>
+  <text x="430" y="395" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">ChatGPT desktop</text>
+  <text x="430" y="410" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">integrates MCP</text>
+  <text x="430" y="434" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="12" font-weight="600">Rival adopts rival's</text>
+  <text x="430" y="450" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="12" font-weight="600">standard</text>
+  <line x1="430" y1="350" x2="430" y2="320" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- ===== Milestone 3: Apr 2025 ===== -->
+  <circle cx="610" cy="300" r="14" fill="#eab308" stroke="#fde047" stroke-width="2"/>
+  <text x="610" y="305" text-anchor="middle" fill="#1e1e2e" font-family="Inter, sans-serif" font-size="10" font-weight="700">3</text>
+  <text x="610" y="340" text-anchor="middle" fill="#fde047" font-family="Inter, sans-serif" font-size="14" font-weight="600">Apr 2025</text>
+
+  <rect x="520" y="150" width="180" height="120" rx="10" fill="#1e293b" stroke="#eab308" stroke-width="0.8"/>
+  <text x="610" y="175" text-anchor="middle" fill="#fef3c7" font-family="Inter, sans-serif" font-size="14" font-weight="600">Security Research</text>
+  <text x="610" y="195" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">Prompt injection</text>
+  <text x="610" y="210" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">tool poisoning found</text>
+  <text x="610" y="234" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-size="12">ArXiv: 2503.23278</text>
+  <text x="610" y="252" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-size="11">Hacker News coverage</text>
+  <line x1="610" y1="270" x2="610" y2="286" stroke="#eab308" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- ===== Milestone 4: Sep 2025 ===== -->
+  <circle cx="770" cy="300" r="14" fill="#14b8a6" stroke="#5eead4" stroke-width="2"/>
+  <text x="770" y="305" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-size="10" font-weight="700">4</text>
+  <text x="770" y="340" text-anchor="middle" fill="#5eead4" font-family="Inter, sans-serif" font-size="14" font-weight="600">Sep 2025</text>
+
+  <rect x="680" y="350" width="180" height="120" rx="10" fill="#1e293b" stroke="#14b8a6" stroke-width="0.8"/>
+  <text x="770" y="375" text-anchor="middle" fill="#99f6e4" font-family="Inter, sans-serif" font-size="14" font-weight="600">ChatGPT Dev Mode</text>
+  <text x="770" y="395" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">OpenAI opens MCP</text>
+  <text x="770" y="410" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">to all users</text>
+  <text x="770" y="434" text-anchor="middle" fill="#5eead4" font-family="Inter, sans-serif" font-size="12" font-weight="600">Third-party tools</text>
+  <text x="770" y="450" text-anchor="middle" fill="#5eead4" font-family="Inter, sans-serif" font-size="12" font-weight="600">inside ChatGPT</text>
+  <line x1="770" y1="350" x2="770" y2="320" stroke="#14b8a6" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- ===== Milestone 5: Dec 2025 ===== -->
+  <circle cx="940" cy="300" r="14" fill="#8b5cf6" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="940" y="305" text-anchor="middle" fill="#e2e8f0" font-family="Inter, sans-serif" font-size="10" font-weight="700">5</text>
+  <text x="940" y="340" text-anchor="middle" fill="#c4b5fd" font-family="Inter, sans-serif" font-size="14" font-weight="600">Dec 2025</text>
+
+  <rect x="850" y="150" width="180" height="120" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="940" y="175" text-anchor="middle" fill="#ddd6fe" font-family="Inter, sans-serif" font-size="14" font-weight="600">Linux Foundation</text>
+  <text x="940" y="195" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">AAIF created</text>
+  <text x="940" y="210" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">under Linux Foundation</text>
+  <text x="940" y="234" text-anchor="middle" fill="#a78bfa" font-family="Inter, sans-serif" font-size="12" font-weight="600">Anthropic + OpenAI</text>
+  <text x="940" y="252" text-anchor="middle" fill="#a78bfa" font-family="Inter, sans-serif" font-size="12" font-weight="600">+ Block co-founders</text>
+  <line x1="940" y1="270" x2="940" y2="286" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- ===== Milestone 6: Apr 2026 ===== -->
+  <circle cx="1080" cy="300" r="14" fill="#f97316" stroke="#fdba74" stroke-width="2"/>
+  <text x="1080" y="305" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-size="10" font-weight="700">6</text>
+  <text x="1080" y="340" text-anchor="middle" fill="#fdba74" font-family="Inter, sans-serif" font-size="14" font-weight="600">Apr 2026</text>
+
+  <rect x="990" y="350" width="180" height="120" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="0.8"/>
+  <text x="1080" y="375" text-anchor="middle" fill="#fed7aa" font-family="Inter, sans-serif" font-size="14" font-weight="600">MCP Dev Summit</text>
+  <text x="1080" y="395" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">1,200 attendees</text>
+  <text x="1080" y="410" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">NYC · Gateways + gRPC</text>
+  <text x="1080" y="434" text-anchor="middle" fill="#fdba74" font-family="Inter, sans-serif" font-size="12" font-weight="600">Salesforce: 4.5M calls</text>
+  <text x="1080" y="450" text-anchor="middle" fill="#fdba74" font-family="Inter, sans-serif" font-size="12" font-weight="600">via MCP</text>
+  <line x1="1080" y1="350" x2="1080" y2="320" stroke="#f97316" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- ===== Milestone 7: 2026 State ===== -->
+  <circle cx="1240" cy="300" r="18" fill="#22c55e" stroke="#86efac" stroke-width="2"/>
+  <text x="1240" y="305" text-anchor="middle" fill="#0f172a" font-family="Inter, sans-serif" font-size="10" font-weight="700">★</text>
+  <text x="1240" y="340" text-anchor="middle" fill="#86efac" font-family="Inter, sans-serif" font-size="14" font-weight="700">Aug 2026</text>
+
+  <rect x="1140" y="150" width="200" height="120" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="0.8"/>
+  <text x="1240" y="175" text-anchor="middle" fill="#bbf7d0" font-family="Inter, sans-serif" font-size="14" font-weight="600">Industry Standard</text>
+  <text x="1240" y="195" text-anchor="middle" fill="#4ade80" font-family="Inter, sans-serif" font-size="22" font-weight="700">210+ Servers</text>
+  <text x="1240" y="218" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">11 SDK languages</text>
+  <text x="1240" y="234" text-anchor="middle" fill="#4ade80" font-family="Inter, sans-serif" font-size="12" font-weight="600">49.6K GitHub stars</text>
+  <text x="1240" y="252" text-anchor="middle" fill="#4ade80" font-family="Inter, sans-serif" font-size="12" font-weight="600">GitHub MCP Registry</text>
+  <line x1="1240" y1="270" x2="1240" y2="282" stroke="#22c55e" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- Footer -->
+  <text x="720" y="520" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-size="12">Key inflection: Dec 2025 Linux Foundation transfer removed vendor-lockin concerns · Apr 2026 Dev Summit signaled production readiness</text>
+</svg>
