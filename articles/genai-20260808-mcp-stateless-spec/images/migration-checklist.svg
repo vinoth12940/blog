@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="600" viewBox="0 0 1440 600">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="600" fill="url(#bg5)"/>
+
+  <!-- Title -->
+  <text x="720" y="48" text-anchor="middle" fill="#f1f5f9" font-family="Inter, sans-serif" font-size="28" font-weight="700">Migration Checklist: What Changes for Your MCP Server</text>
+  <text x="720" y="75" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="16">Breaking changes, what's deprecated, and what stays compatible</text>
+
+  <!-- THREE COLUMNS -->
+  <!-- Column 1: Breaking Changes -->
+  <rect x="40" y="110" width="430" height="450" rx="14" fill="#1e1e2e" stroke="#ef4444" stroke-width="2"/>
+  <rect x="40" y="110" width="430" height="50" rx="14" fill="#7f1d1d"/>
+  <rect x="40" y="140" width="430" height="20" fill="#7f1d1d"/>
+  <text x="255" y="143" text-anchor="middle" fill="#fca5a5" font-family="Inter, sans-serif" font-size="18" font-weight="700">🔴 Breaking Changes</text>
+  
+  <g font-family="Inter, sans-serif" font-size="14">
+    <text x="65" y="190" fill="#ef4444" font-weight="600">initialize / initialized</text>
+    <text x="65" y="210" fill="#94a3b8" font-size="12">Removed. Use server/discover RPC instead.</text>
+    
+    <text x="65" y="245" fill="#ef4444" font-weight="600">Mcp-Session-Id header</text>
+    <text x="65" y="265" fill="#94a3b8" font-size="12">Gone. State lives in _meta or tool args.</text>
+    
+    <text x="65" y="300" fill="#ef4444" font-weight="600">Held-open SSE streams</text>
+    <text x="65" y="320" fill="#94a3b8" font-size="12">Replaced by MRTR pattern for elicitation.</text>
+    
+    <text x="65" y="355" fill="#ef4444" font-weight="600">elicitation/create</text>
+    <text x="65" y="375" fill="#94a3b8" font-size="12">Use resultType: "input_required" instead.</text>
+    
+    <text x="65" y="410" fill="#ef4444" font-weight="600">sampling/createMessage</text>
+    <text x="65" y="430" fill="#94a3b8" font-size="12">Same MRTR replacement pattern.</text>
+    
+    <text x="65" y="465" fill="#ef4444" font-weight="600">roots/list</text>
+    <text x="65" y="485" fill="#94a3b8" font-size="12">Server→client requests redesigned.</text>
+    
+    <text x="65" y="520" fill="#ef4444" font-weight="600">List response order</text>
+    <text x="65" y="540" fill="#94a3b8" font-size="12">Must be deterministic for caching.</text>
+  </g>
+
+  <!-- Column 2: Deprecated (Still Works) -->
+  <rect x="500" y="110" width="430" height="450" rx="14" fill="#1e1e2e" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="500" y="110" width="430" height="50" rx="14" fill="#78350f"/>
+  <rect x="500" y="140" width="430" height="20" fill="#78350f"/>
+  <text x="715" y="143" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-size="18" font-weight="700">🟡 Deprecated (12mo+ grace)</text>
+  
+  <g font-family="Inter, sans-serif" font-size="14">
+    <text x="525" y="190" fill="#f59e0b" font-weight="600">Roots</text>
+    <text x="525" y="210" fill="#94a3b8" font-size="12">Still functional. Don't adopt in new code.</text>
+    
+    <text x="525" y="245" fill="#f59e0b" font-weight="600">Sampling</text>
+    <text x="525" y="265" fill="#94a3b8" font-size="12">Works via legacy paths. Migrate to MRTR.</text>
+    
+    <text x="525" y="300" fill="#f59e0b" font-weight="600">Logging</text>
+    <text x="525" y="320" fill="#94a3b8" font-size="12">Deprecated but operational.</text>
+    
+    <text x="525" y="355" fill="#f59e0b" font-weight="600">HTTP+SSE transport</text>
+    <text x="525" y="375" fill="#94a3b8" font-size="12">Legacy transport. Year-long offramp.</text>
+    
+    <text x="525" y="410" fill="#f59e0b" font-weight="600">Dynamic Client Registration</text>
+    <text x="525" y="430" fill="#94a3b8" font-size="12">Still works. Move to CIMD when ready.</text>
+    
+    <text x="525" y="465" fill="#f59e0b" font-weight="600">Old change notifications</text>
+    <text x="525" y="485" fill="#94a3b8" font-size="12">HTTP GET endpoint → subscriptions/listen.</text>
+  </g>
+  <rect x="525" y="510" width="380" height="35" rx="8" fill="#78350f" stroke="#f59e0b" stroke-width="1"/>
+  <text x="715" y="533" text-anchor="middle" fill="#fcd34d" font-family="Inter, sans-serif" font-size="13" font-weight="600">SEP-2577: 12-month minimum window</text>
+
+  <!-- Column 3: Backward Compatible -->
+  <rect x="960" y="110" width="440" height="450" rx="14" fill="#1e1e2e" stroke="#10b981" stroke-width="2"/>
+  <rect x="960" y="110" width="440" height="50" rx="14" fill="#064e3b"/>
+  <rect x="960" y="140" width="440" height="20" fill="#064e3b"/>
+  <text x="1180" y="143" text-anchor="middle" fill="#34d399" font-family="Inter, sans-serif" font-size="18" font-weight="700">🟢 Still Works / Better</text>
+  
+  <g font-family="Inter, sans-serif" font-size="14">
+    <text x="985" y="190" fill="#10b981" font-weight="600">tools/call, tools/list</text>
+    <text x="985" y="210" fill="#94a3b8" font-size="12">Core tool APIs unchanged.</text>
+    
+    <text x="985" y="245" fill="#10b981" font-weight="600">prompts/list, resources/read</text>
+    <text x="985" y="265" fill="#94a3b8" font-size="12">Now cacheable with ttlMs.</text>
+    
+    <text x="985" y="300" fill="#10b981" font-weight="600">JSON-RPC 2.0 message format</text>
+    <text x="985" y="320" fill="#94a3b8" font-size="12">Same wire format for request/response.</text>
+    
+    <text x="985" y="355" fill="#10b981" font-weight="600">Legacy clients (2025-11-25)</text>
+    <text x="985" y="375" fill="#94a3b8" font-size="12">v2 servers still answer initialize for</text>
+    <text x="985" y="393" fill="#94a3b8" font-size="12">backward compatibility.</text>
+    
+    <text x="985" y="425" fill="#10b981" font-weight="600">OAuth 2.1 flows</text>
+    <text x="985" y="445" fill="#94a3b8" font-size="12">Hardened, not removed.</text>
+    
+    <text x="985" y="480" fill="#10b981" font-weight="600">All 4 Tier 1 SDKs</text>
+    <text x="985" y="500" fill="#94a3b8" font-size="12">TypeScript, Python, Go, C# updated.</text>
+  </g>
+  <rect x="985" y="520" width="390" height="35" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+  <text x="1180" y="543" text-anchor="middle" fill="#6ee7b7" font-family="Inter, sans-serif" font-size="13" font-weight="600">Upgrade server → old clients keep working</text>
+</svg>

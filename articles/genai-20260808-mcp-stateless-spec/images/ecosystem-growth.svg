@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="680" viewBox="0 0 1440 680">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e1e2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="680" fill="url(#bg3)"/>
+
+  <!-- Title -->
+  <text x="720" y="48" text-anchor="middle" fill="#f1f5f9" font-family="Inter, sans-serif" font-size="28" font-weight="700">MCP Ecosystem Growth: Nov 2024 → Aug 2026</text>
+  <text x="720" y="75" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="16">From niche protocol to mainstream agent infrastructure in 20 months</text>
+
+  <!-- Metric cards row -->
+  <!-- Card 1: Downloads -->
+  <rect x="60" y="110" width="310" height="160" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="215" y="145" text-anchor="middle" fill="#3b82f6" font-family="Inter, sans-serif" font-size="14" font-weight="600">MONTHLY SDK DOWNLOADS</text>
+  <text x="215" y="200" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="56" font-weight="800">97M+</text>
+  <text x="215" y="230" text-anchor="middle" fill="#93c5fd" font-family="Inter, sans-serif" font-size="13">TS + Python SDKs each</text>
+  <text x="215" y="250" text-anchor="middle" fill="#93c5fd" font-family="Inter, sans-serif" font-size="13">crossed 1B total downloads</text>
+
+  <!-- Card 2: Servers -->
+  <rect x="400" y="110" width="310" height="160" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <text x="555" y="145" text-anchor="middle" fill="#10b981" font-family="Inter, sans-serif" font-size="14" font-weight="600">ACTIVE PUBLIC SERVERS</text>
+  <text x="555" y="200" text-anchor="middle" fill="#34d399" font-family="Inter, sans-serif" font-size="56" font-weight="800">10K+</text>
+  <text x="555" y="230" text-anchor="middle" fill="#6ee7b7" font-family="Inter, sans-serif" font-size="13">9,652 in official registry</text>
+  <text x="555" y="250" text-anchor="middle" fill="#6ee7b7" font-family="Inter, sans-serif" font-size="13">(May 2026 snapshot)</text>
+
+  <!-- Card 3: GitHub -->
+  <rect x="740" y="110" width="310" height="160" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="895" y="145" text-anchor="middle" fill="#f59e0b" font-family="Inter, sans-serif" font-size="14" font-weight="600">GITHUB ECOSYSTEM</text>
+  <text x="895" y="195" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-size="40" font-weight="800">86,148 ★</text>
+  <text x="895" y="230" text-anchor="middle" fill="#fcd34d" font-family="Inter, sans-serif" font-size="13">15,926 mcp-server repos</text>
+  <text x="895" y="250" text-anchor="middle" fill="#fcd34d" font-family="Inter, sans-serif" font-size="13">10,799 forks on servers repo</text>
+
+  <!-- Card 4: Enterprise -->
+  <rect x="1080" y="110" width="310" height="160" rx="14" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <text x="1235" y="145" text-anchor="middle" fill="#a78bfa" font-family="Inter, sans-serif" font-size="14" font-weight="600">ENTERPRISE PRODUCTION</text>
+  <text x="1235" y="190" text-anchor="middle" fill="#c4b5fd" font-family="Inter, sans-serif" font-size="40" font-weight="800">28%</text>
+  <text x="1235" y="218" text-anchor="middle" fill="#ddd6fe" font-family="Inter, sans-serif" font-size="13">Fortune 500 with MCP</text>
+  <text x="1235" y="236" text-anchor="middle" fill="#ddd6fe" font-family="Inter, sans-serif" font-size="13">servers deployed</text>
+  <text x="1235" y="254" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">(Stacklok survey: 29% limited, 12% broad)</text>
+
+  <!-- Platform support section -->
+  <text x="720" y="320" text-anchor="middle" fill="#f1f5f9" font-family="Inter, sans-serif" font-size="20" font-weight="700">Platform Support: Universal</text>
+  
+  <g font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">
+    <!-- Platform pills -->
+    <rect x="100" y="345" width="160" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="180" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">ChatGPT</text>
+
+    <rect x="285" y="345" width="140" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="355" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">Claude</text>
+
+    <rect x="450" y="345" width="140" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="520" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">Cursor</text>
+
+    <rect x="615" y="345" width="140" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="685" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">Gemini</text>
+
+    <rect x="780" y="345" width="200" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="880" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">MS Copilot</text>
+
+    <rect x="1005" y="345" width="160" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="1085" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">VS Code</text>
+
+    <rect x="1190" y="345" width="160" height="38" rx="19" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="1270" y="369" text-anchor="middle" fill="#60a5fa" font-weight="600">+ more</text>
+  </g>
+
+  <!-- Timeline -->
+  <text x="720" y="430" text-anchor="middle" fill="#f1f5f9" font-family="Inter, sans-serif" font-size="20" font-weight="700">Specification Timeline</text>
+  
+  <line x1="120" y1="490" x2="1320" y2="490" stroke="#334155" stroke-width="3"/>
+  
+  <!-- Timeline dots -->
+  <circle cx="160" cy="490" r="10" fill="#3b82f6"/>
+  <text x="160" y="520" text-anchor="middle" fill="#60a5fa" font-family="Inter, sans-serif" font-size="13" font-weight="600">Nov 2024</text>
+  <text x="160" y="540" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">MCP announced</text>
+  <text x="160" y="556" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="11">Anthropic launch</text>
+
+  <circle cx="490" cy="490" r="10" fill="#a78bfa"/>
+  <text x="490" y="520" text-anchor="middle" fill="#c4b5fd" font-family="Inter, sans-serif" font-size="13" font-weight="600">Nov 2025</text>
+  <text x="490" y="540" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">Spec 2025-11-25</text>
+  <text x="490" y="556" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="11">Remote MCP, registries</text>
+
+  <circle cx="820" cy="490" r="10" fill="#f59e0b"/>
+  <text x="820" y="520" text-anchor="middle" fill="#fbbf24" font-family="Inter, sans-serif" font-size="13" font-weight="600">Dec 2025</text>
+  <text x="820" y="540" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">AAIF donation</text>
+  <text x="820" y="556" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="11">Linux Foundation</text>
+
+  <circle cx="1150" cy="490" r="14" fill="#10b981" stroke="#34d399" stroke-width="3"/>
+  <text x="1150" y="520" text-anchor="middle" fill="#34d399" font-family="Inter, sans-serif" font-size="13" font-weight="700">Jul 2026</text>
+  <text x="1150" y="540" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="11">Spec 2026-07-28</text>
+  <text x="1150" y="556" text-anchor="middle" fill="#6ee7b7" font-family="Inter, sans-serif" font-size="11">Stateless core 🔥</text>
+
+  <!-- Bottom: Spec key changes -->
+  <text x="720" y="610" text-anchor="middle" fill="#f1f5f9" font-family="Inter, sans-serif" font-size="16" font-weight="600">Governance: Linux Foundation Agentic AI Foundation (neutral home)</text>
+  <text x="720" y="635" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="13">SDKs: TypeScript · Python · Go · C# (Tier 1) · Rust (beta)</text>
+  <text x="720" y="658" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="12">Sources: Anthropic ecosystem update, MCP Registry API, GitHub API, Stacklok enterprise survey</text>
+</svg>
