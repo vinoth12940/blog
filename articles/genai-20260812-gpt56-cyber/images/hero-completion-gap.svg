@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" viewBox="0 0 1440 810">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="barRed" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="barGray" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="100%" stop-color="#6b7280"/>
+    </linearGradient>
+    <linearGradient id="barGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="810" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="720" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#f8fafc">The Alignment Gap: Willingness ≠ Capability</text>
+  <text x="720" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#94a3b8">Advanced Cybersecurity Completion Rate — OpenAI internal eval</text>
+
+  <!-- Chart area -->
+  <!-- Y-axis labels -->
+  <text x="220" y="110" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#64748b">100%</text>
+  <text x="220" y="260" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#64748b">75%</text>
+  <text x="220" y="410" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#64748b">50%</text>
+  <text x="220" y="560" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#64748b">25%</text>
+  <text x="220" y="710" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#64748b">0%</text>
+
+  <!-- Grid lines -->
+  <line x1="240" y1="105" x2="1380" y2="105" stroke="#1e293b" stroke-width="1"/>
+  <line x1="240" y1="255" x2="1380" y2="255" stroke="#1e293b" stroke-width="1"/>
+  <line x1="240" y1="405" x2="1380" y2="405" stroke="#1e293b" stroke-width="1"/>
+  <line x1="240" y1="555" x2="1380" y2="555" stroke="#1e293b" stroke-width="1"/>
+  <line x1="240" y1="705" x2="1380" y2="705" stroke="#334155" stroke-width="2"/>
+
+  <!-- Bar 1: GPT-5.6 Sol (safeguards on) 1.5% -->
+  <rect x="310" y="696" width="180" height="9" rx="4" fill="url(#barGray)"/>
+  <text x="400" y="690" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#9ca3af">1.5%</text>
+  <text x="400" y="740" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.6 Sol</text>
+  <text x="400" y="758" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b">Safeguards ON</text>
+
+  <!-- Bar 2: GPT-5.6 Sol Daybreak Blue 2% -->
+  <rect x="560" y="693" width="180" height="12" rx="4" fill="url(#barBlue)"/>
+  <text x="650" y="687" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">2%</text>
+  <text x="650" y="740" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.6 Sol</text>
+  <text x="650" y="758" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b">Daybreak Blue</text>
+
+  <!-- Bar 3: GPT-5.5 Cyber 57.3% -->
+  <rect x="810" y="361" width="180" height="344" rx="4" fill="url(#barGreen)"/>
+  <text x="900" y="355" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#34d399">57.3%</text>
+  <text x="900" y="740" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.5-Cyber</text>
+  <text x="900" y="758" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b">Daybreak Red (prev gen)</text>
+
+  <!-- Bar 4: GPT-5.6 Cyber 95% -->
+  <rect x="1060" y="15" width="180" height="690" rx="4" fill="url(#barRed)"/>
+  <text x="1150" y="9" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#f87171">95%</text>
+  <text x="1150" y="740" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.6-Cyber</text>
+  <text x="1150" y="758" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b">Daybreak Red</text>
+
+  <!-- Arrow annotation -->
+  <path d="M 470 420 Q 700 300 1030 60" stroke="#fbbf24" stroke-width="2" stroke-dasharray="8 4" fill="none"/>
+  <polygon points="1035,55 1025,48 1028,62" fill="#fbbf24"/>
+  <text x="720" y="410" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#fbbf24" font-style="italic">63x improvement</text>
+
+  <!-- Footer -->
+  <text x="720" y="790" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#475569">Source: OpenAI "Expanding Daybreak" announcement, Aug 10 2026</text>
+</svg>
