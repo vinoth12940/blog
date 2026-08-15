@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#bg)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="27" font-weight="700" fill="#f8fafc">Cyber Capability: The Further Up the Chain, the Bigger the Jump</text>
+  <text x="720" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#64748b">Three benchmarks, three stages of exploitation. GLM-5.3 more than doubles its predecessor everywhere — and the closed frontier gap widens in the same direction.</text>
+
+  <!-- Panel 1: CyberGym -->
+  <rect x="70" y="120" width="410" height="560" rx="14" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="275" y="158" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#e2e8f0">CyberGym — find it</text>
+  <text x="275" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#64748b">identify + validate from white-box source</text>
+
+  <!-- CyberGym bars: max 100, bar area x 110..400 (290px) -->
+  <text x="110" y="228" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GLM-5.2</text>
+  <rect x="110" y="238" width="224" height="26" rx="4" fill="#334155"/>
+  <text x="344" y="257" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">77.2</text>
+  <text x="110" y="292" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">Mythos 5</text>
+  <rect x="110" y="302" width="243" height="26" rx="4" fill="#334155"/>
+  <text x="363" y="321" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">83.8</text>
+  <text x="110" y="356" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.6 Sol</text>
+  <rect x="110" y="366" width="242" height="26" rx="4" fill="#334155"/>
+  <text x="362" y="385" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">83.6</text>
+  <text x="110" y="420" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">GLM-5.3</text>
+  <rect x="110" y="430" width="245" height="26" rx="4" fill="#10b981"/>
+  <text x="364" y="449" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#34d399">84.5</text>
+  <rect x="110" y="500" width="330" height="44" rx="8" fill="#052e1e" stroke="#10b981" stroke-width="1.5"/>
+  <text x="275" y="528" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#6ee7b7">State of the art — every model, open or closed</text>
+
+  <!-- Panel 2: ExploitBench -->
+  <rect x="515" y="120" width="410" height="560" rx="14" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="720" y="158" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#e2e8f0">ExploitBench — exploit it</text>
+  <text x="720" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#64748b">root-cause reasoning + working exploit</text>
+
+  <!-- ExploitBench bars: max 100 -->
+  <text x="555" y="228" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GLM-5.2</text>
+  <rect x="555" y="238" width="71" height="26" rx="4" fill="#334155"/>
+  <text x="636" y="257" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">24.4</text>
+  <text x="555" y="292" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">GLM-5.3</text>
+  <rect x="555" y="302" width="158" height="26" rx="4" fill="#10b981"/>
+  <text x="723" y="321" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#34d399">54.4</text>
+  <text x="555" y="356" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.6 Sol</text>
+  <rect x="555" y="366" width="222" height="26" rx="4" fill="#334155"/>
+  <text x="787" y="385" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">76.5</text>
+  <text x="555" y="420" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">Mythos 5</text>
+  <rect x="555" y="430" width="226" height="26" rx="4" fill="#334155"/>
+  <text x="791" y="449" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">78.0</text>
+  <rect x="555" y="500" width="330" height="44" rx="8" fill="#0c1e3a" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="720" y="528" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93c5fd">2.2x jump — capability Z.ai did not plan</text>
+
+  <!-- Panel 3: ExploitGym -->
+  <rect x="960" y="120" width="410" height="560" rx="14" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1165" y="158" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#e2e8f0">ExploitGym — chain it</text>
+  <text x="1165" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#64748b">full exploitation tasks completed, 6-hour budget</text>
+
+  <!-- ExploitGym bars: max 293, bar area 290px, scale 290/300 -->
+  <text x="1000" y="228" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GLM-5.2</text>
+  <rect x="1000" y="238" width="38" height="26" rx="4" fill="#334155"/>
+  <text x="1048" y="257" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">39</text>
+  <text x="1000" y="292" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#34d399">GLM-5.3</text>
+  <rect x="1000" y="302" width="126" height="26" rx="4" fill="#10b981"/>
+  <text x="1136" y="321" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#34d399">130</text>
+  <text x="1000" y="356" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">Mythos 5</text>
+  <rect x="1000" y="366" width="239" height="26" rx="4" fill="#334155"/>
+  <text x="1249" y="385" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">247</text>
+  <text x="1000" y="420" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">GPT-5.6 Sol</text>
+  <rect x="1000" y="430" width="283" height="26" rx="4" fill="#334155"/>
+  <text x="1293" y="449" font-family="JetBrains Mono, monospace" font-size="15" fill="#94a3b8">293</text>
+  <rect x="1000" y="500" width="330" height="44" rx="8" fill="#0c1e3a" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="1165" y="528" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#93c5fd">3.3x jump — 2h: 29 to 105 tasks</text>
+
+  <rect x="70" y="708" width="1300" height="76" rx="12" fill="#0f1729" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="720" y="740" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#cbd5e1">Emergence pattern: gains grow exactly where exploitation gets deeper —</text>
+  <text x="720" y="765" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#cbd5e1">and so does the remaining gap to closed frontier models. Capability is accelerating fastest where it is most dangerous.</text>
+</svg>

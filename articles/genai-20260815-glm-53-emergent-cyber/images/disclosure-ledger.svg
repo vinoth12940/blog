@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="760" fill="url(#bg)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="27" font-weight="700" fill="#f8fafc">The Security Disclosure Ledger: 2,436 Real Bugs in Real Software</text>
+  <text x="720" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#64748b">Found with security teams incl. NSFOCUS, CyberKunlun, DARKAVY + Tsinghua and Nankai researchers. Tracked publicly at cvd.z.ai.</text>
+
+  <!-- Stat cards row 1 -->
+  <rect x="70" y="120" width="300" height="120" rx="12" fill="#0c1626" stroke="#ef4444" stroke-width="2"/>
+  <text x="220" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="38" font-weight="700" fill="#f87171">1,097</text>
+  <text x="220" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">critical + high severity findings</text>
+
+  <rect x="400" y="120" width="300" height="120" rx="12" fill="#0c1626" stroke="#1e293b" stroke-width="2"/>
+  <text x="550" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="38" font-weight="700" fill="#60a5fa">2,436</text>
+  <text x="550" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">total findings, expert-reviewed + deduped</text>
+
+  <rect x="730" y="120" width="300" height="120" rx="12" fill="#0c1626" stroke="#1e293b" stroke-width="2"/>
+  <text x="880" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="38" font-weight="700" fill="#60a5fa">269</text>
+  <text x="880" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">open-source projects affected</text>
+
+  <rect x="1060" y="120" width="310" height="120" rx="12" fill="#0c1626" stroke="#1e293b" stroke-width="2"/>
+  <text x="1215" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="38" font-weight="700" fill="#60a5fa">26.6</text>
+  <text x="1215" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">avg years each bug lived before discovery</text>
+
+  <!-- Severity distribution -->
+  <text x="70" y="300" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#e2e8f0">Severity distribution</text>
+  <!-- stacked bar: total 2436, width 1300: crit 107=57px, high 990=528, med 1286=686, low 53=28 -->
+  <rect x="70" y="320" width="57" height="44" rx="0" fill="#dc2626"/>
+  <rect x="127" y="320" width="528" height="44" fill="#f97316"/>
+  <rect x="655" y="320" width="686" height="44" fill="#eab308"/>
+  <rect x="1341" y="320" width="29" height="44" rx="0" fill="#64748b"/>
+  <rect x="70" y="320" width="1300" height="44" rx="8" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+
+  <circle cx="78" cy="396" r="5" fill="#dc2626"/><text x="92" y="401" font-family="Inter, sans-serif" font-size="14" fill="#cbd5e1">Critical 107</text>
+  <circle cx="240" cy="396" r="5" fill="#f97316"/><text x="254" y="401" font-family="Inter, sans-serif" font-size="14" fill="#cbd5e1">High 990</text>
+  <circle cx="400" cy="396" r="5" fill="#eab308"/><text x="414" y="401" font-family="Inter, sans-serif" font-size="14" fill="#cbd5e1">Medium 1,286</text>
+  <circle cx="580" cy="396" r="5" fill="#64748b"/><text x="594" y="401" font-family="Inter, sans-serif" font-size="14" fill="#cbd5e1">Low 53</text>
+
+  <!-- Disclosure status -->
+  <text x="70" y="470" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#e2e8f0">Disclosure status at launch</text>
+  <rect x="70" y="490" width="630" height="90" rx="12" fill="#052e1e" stroke="#10b981" stroke-width="2"/>
+  <text x="100" y="528" font-family="JetBrains Mono, monospace" font-size="30" font-weight="700" fill="#34d399">53</text>
+  <text x="180" y="525" font-family="Inter, sans-serif" font-size="15" fill="#cbd5e1">publicly disclosed with CVEs</text>
+  <text x="180" y="550" font-family="Inter, sans-serif" font-size="13" fill="#64748b">Linux kernel UAF · WebKit (Safari) · FreeBSD</text>
+
+  <rect x="740" y="490" width="630" height="90" rx="12" fill="#0c1e3a" stroke="#2563eb" stroke-width="2"/>
+  <text x="770" y="528" font-family="JetBrains Mono, monospace" font-size="30" font-weight="700" fill="#60a5fa">2,383</text>
+  <text x="890" y="525" font-family="Inter, sans-serif" font-size="15" fill="#cbd5e1">under embargo, moving through CVD</text>
+  <text x="890" y="550" font-family="Inter, sans-serif" font-size="13" fill="#64748b">coordinated disclosure with maintainers</text>
+
+  <!-- Timeline strip -->
+  <rect x="70" y="615" width="1300" height="100" rx="12" fill="#0f1729" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="100" y="652" font-family="Inter, sans-serif" font-size="15" fill="#e2e8f0">The bugs span <tspan font-weight="700" fill="#f87171">45 years of software history</tspan> — the oldest was introduced in <tspan font-weight="700" fill="#f87171">1981</tspan>.</text>
+  <text x="100" y="684" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Kernels, operating systems, browser engines, open-source infrastructure, web apps, network protocols.</text>
+  <text x="1085" y="684" font-family="Inter, sans-serif" font-size="14" fill="#64748b">Source: cvd.z.ai</text>
+</svg>

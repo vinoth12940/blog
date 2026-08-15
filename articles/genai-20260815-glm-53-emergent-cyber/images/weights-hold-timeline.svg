@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="780" fill="url(#bg)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="27" font-weight="700" fill="#f8fafc">The First Open-Weights Safety Hold in GLM History</text>
+  <text x="720" y="86" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#64748b">GLM-5.2 shipped weights within days. GLM-5.3 pauses — because its cyber capability arrived faster than Z.ai's own training intended.</text>
+
+  <!-- Timeline -->
+  <line x1="110" y1="200" x2="1330" y2="200" stroke="#334155" stroke-width="3"/>
+
+  <!-- Aug 14 launch -->
+  <circle cx="200" cy="200" r="12" fill="#10b981"/>
+  <text x="200" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e2e8f0">Aug 14, 2026</text>
+  <text x="200" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Launch day</text>
+  <rect x="105" y="266" width="190" height="96" rx="10" fill="#052e1e" stroke="#10b981" stroke-width="1.5"/>
+  <text x="200" y="296" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#a7f3d0">API + GLM Coding Plan live</text>
+  <text x="200" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#a7f3d0">subscribers auto-upgraded</text>
+  <text x="200" y="344" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#a7f3d0">ZCode + Claude Code ready</text>
+
+  <!-- Safety window -->
+  <rect x="380" y="180" width="580" height="40" rx="20" fill="#1a1205" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="670" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="14.5" fill="#fcd34d">Safety evaluation + hardening window — "most robust risk review to date"</text>
+  <line x1="410" y1="240" x2="410" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <line x1="930" y1="240" x2="930" y2="200" stroke="#475569" stroke-width="1.5"/>
+  <rect x="380" y="266" width="580" height="96" rx="10" fill="#0c1626" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="670" y="296" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#fde68a">What is being reviewed: exploit-chain reasoning that</text>
+  <text x="670" y="318" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#fde68a">emerged during post-training without being a training</text>
+  <text x="670" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#fde68a">target — at MIT-license blast radius</text>
+
+  <!-- Aug 28 weights -->
+  <circle cx="1190" cy="200" r="12" fill="#60a5fa"/>
+  <text x="1190" y="155" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e2e8f0">~Aug 28, 2026</text>
+  <text x="1190" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Open weights (expected)</text>
+  <rect x="1085" y="266" width="210" height="96" rx="10" fill="#0c1e3a" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="1190" y="296" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#93c5fd">MIT license, no usage</text>
+  <text x="1190" y="318" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#93c5fd">restrictions, downloadable</text>
+  <text x="1190" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#93c5fd">by anyone on Earth</text>
+
+  <line x1="295" y1="314" x2="375" y2="314" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+  <line x1="960" y1="314" x2="1080" y2="314" stroke="#475569" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Bottom: deployment math + context -->
+  <rect x="70" y="410" width="640" height="200" rx="14" fill="#0f1729" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="100" y="448" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e2e8f0">Self-hosting math (GLM-5.2 architecture)</text>
+  <circle cx="112" cy="480" r="3" fill="#60a5fa"/><text x="126" y="485" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">743B-param MoE, ~40B active — same base model</text>
+  <circle cx="112" cy="515" r="3" fill="#60a5fa"/><text x="126" y="520" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">~1.5 TB GPU memory at full precision</text>
+  <circle cx="112" cy="550" r="3" fill="#60a5fa"/><text x="126" y="555" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">~239 GB quantized — a serious but buildable rig</text>
+  <circle cx="112" cy="585" r="3" fill="#60a5fa"/><text x="126" y="590" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">MIT license: no regional restrictions on self-hosting</text>
+
+  <rect x="730" y="410" width="640" height="200" rx="14" fill="#0f1729" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="760" y="448" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#e2e8f0">Why the pause matters</text>
+  <circle cx="772" cy="480" r="3" fill="#f87171"/><text x="786" y="485" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">AISI: GLM-5.2 already gave near-frontier autonomous</text>
+  <text x="786" y="508" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">attack capability for ~$46 per full simulation run</text>
+  <circle cx="772" cy="540" r="3" fill="#f87171"/><text x="786" y="545" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">Once released, MIT weights cannot be recalled — and</text>
+  <text x="786" y="568" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">safety training can be stripped locally, invisibly</text>
+  <circle cx="772" cy="596" r="3" fill="#f87171"/><text x="786" y="601" font-family="Inter, sans-serif" font-size="14.5" fill="#cbd5e1">First Chinese frontier hold citing a specific emergent capability</text>
+
+  <text x="720" y="675" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#94a3b8">Two weeks is not a regulator's embargo. It is a lab admitting its own training run surprised it —</text>
+  <text x="720" y="700" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#94a3b8">and choosing to slow down before putting irreversible weights in public hands.</text>
+  <text x="720" y="742" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#475569">Independent benchmark verification becomes possible only when the weights land (~Aug 28)</text>
+</svg>
