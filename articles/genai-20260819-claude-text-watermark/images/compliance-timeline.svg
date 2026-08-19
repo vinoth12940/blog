@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="760" fill="url(#bg)"/>
+
+  <text x="720" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#f8fafc">How a Brussels Regulation Reached Every Claude User</text>
+  <text x="720" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#64748b">The marking applies to supported Claude models wherever they are offered — not just in Europe.</text>
+
+  <!-- Timeline spine -->
+  <line x1="110" y1="300" x2="1330" y2="300" stroke="#1e293b" stroke-width="4"/>
+
+  <!-- Node 1: Aug 2 -->
+  <circle cx="200" cy="300" r="12" fill="#2563eb" stroke="#60a5fa" stroke-width="3"/>
+  <rect x="90" y="150" width="240" height="120" rx="12" fill="#0c1e3a" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="210" y="188" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#93c5fd">August 2, 2026</text>
+  <text x="210" y="216" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#bfdbfe">EU AI Act Article 50</text>
+  <text x="210" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#bfdbfe">marking obligations</text>
+  <text x="210" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#bfdbfe">enter into application</text>
+
+  <!-- Node 2: signatories -->
+  <circle cx="500" cy="300" r="12" fill="#7c3aed" stroke="#a78bfa" stroke-width="3"/>
+  <rect x="390" y="150" width="240" height="120" rx="12" fill="#17123a" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="510" y="188" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#c4b5fd">~190 organisations</text>
+  <text x="510" y="216" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#ddd6fe">sign the Code of Practice</text>
+  <text x="510" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#ddd6fe">by end of July — half are</text>
+  <text x="510" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#ddd6fe">small and recent companies</text>
+
+  <!-- Node 3: Aug 10 -->
+  <circle cx="800" cy="300" r="12" fill="#d97757" stroke="#f0a58b" stroke-width="3"/>
+  <rect x="690" y="150" width="240" height="120" rx="12" fill="#251512" stroke="#d97757" stroke-width="1.5"/>
+  <text x="810" y="188" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#f0a58b">August 10, 2026</text>
+  <text x="810" y="216" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fcd9cb">Anthropic confirms Claude</text>
+  <text x="810" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fcd9cb">text watermarks + C2PA</text>
+  <text x="810" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fcd9cb">file provenance — worldwide</text>
+
+  <!-- Node 4: new models -->
+  <circle cx="1100" cy="300" r="12" fill="#10b981" stroke="#34d399" stroke-width="3"/>
+  <rect x="990" y="150" width="240" height="120" rx="12" fill="#052e1e" stroke="#10b981" stroke-width="1.5"/>
+  <text x="1110" y="188" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#6ee7b7">Day one</text>
+  <text x="1110" y="216" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#a7f3d0">models launched Aug 2+</text>
+  <text x="1110" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#a7f3d0">carry marking at launch;</text>
+  <text x="1110" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#a7f3d0">older models to follow</text>
+
+  <!-- date labels on spine -->
+  <text x="200" y="340" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">legal trigger</text>
+  <text x="500" y="340" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">industry sign-up</text>
+  <text x="800" y="340" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">vendor rollout</text>
+  <text x="1100" y="340" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748b">enforcement reality</text>
+
+  <!-- Signatory wall -->
+  <rect x="70" y="400" width="700" height="280" rx="14" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="100" y="438" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#e2e8f0">Section 1 signatories include</text>
+  <text x="100" y="476" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Aleph Alpha · Anthropic · Black Forest Labs · Cohere</text>
+  <text x="100" y="506" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Google · Meta · Microsoft · Mistral · OpenAI · Synthesia</text>
+  <text x="100" y="548" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Section 2 deployers: Bulgari · Fastweb · Getty Images</text>
+  <text x="100" y="578" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Iberdrola · Lenovo · Lufthansa</text>
+  <rect x="100" y="608" width="640" height="48" rx="8" fill="#17123a" stroke="#7c3aed" stroke-width="1"/>
+  <text x="420" y="638" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#c4b5fd">every major frontier lab has now committed to the same code</text>
+
+  <!-- What the code requires -->
+  <rect x="800" y="400" width="570" height="280" rx="14" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="830" y="438" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#e2e8f0">Why watermarking — not labels</text>
+  <text x="830" y="476" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Article 50 requires marking "in a machine-readable</text>
+  <text x="830" y="500" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">way and detectable as artificially generated"</text>
+  <text x="830" y="540" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">A badge in the chat UI dies at copy-paste.</text>
+  <text x="830" y="564" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">The mark has to live in the artifact itself.</text>
+  <text x="830" y="604" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">Next: two EU task forces launch September 2026</text>
+  <text x="830" y="628" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8">to advance the state of the art in marking.</text>
+
+  <!-- Bottom bar -->
+  <rect x="70" y="700" width="1300" height="36" rx="8" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+  <text x="720" y="724" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#64748b">Sources: European Commission Code of Practice announcement · Anthropic support documentation · TechCrunch, August 11, 2026</text>
+</svg>

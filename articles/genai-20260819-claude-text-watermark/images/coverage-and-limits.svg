@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="800" fill="url(#bg)"/>
+
+  <text x="720" y="54" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#f8fafc">Where the Mark Reaches — and Where It Stops</text>
+  <text x="720" y="88" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#64748b">Coverage is broader than most coverage suggests. The limits are broader than most headlines admit.</text>
+
+  <!-- LEFT: covered surfaces -->
+  <rect x="70" y="130" width="630" height="460" rx="14" fill="#052e1e" stroke="#10b981" stroke-width="2"/>
+  <text x="385" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#6ee7b7">Covered — model-level, all surfaces</text>
+  <text x="385" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">if a supported Claude model wrote it, the mark is there</text>
+
+  <rect x="110" y="220" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="245" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">Claude app &amp; web</text>
+  <rect x="400" y="220" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="535" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">Claude Platform API</text>
+
+  <rect x="110" y="292" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="245" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">Claude Code</text>
+  <rect x="400" y="292" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="535" y="328" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">Claude Cowork</text>
+
+  <rect x="110" y="364" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="245" y="400" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">Claude Tag</text>
+  <rect x="400" y="364" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="535" y="392" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">via AWS Bedrock</text>
+  <text x="535" y="412" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#64748b">Google Cloud · Microsoft Foundry</text>
+
+  <rect x="110" y="452" width="560" height="110" rx="10" fill="#0c1626" stroke="#10b981" stroke-width="1"/>
+  <text x="390" y="492" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6ee7b7">Generated files: PNG · JPG · SVG</text>
+  <text x="390" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">carry digitally signed C2PA provenance metadata</text>
+  <text x="390" y="542" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#94a3b8">where the format supports it</text>
+
+  <!-- RIGHT: limits -->
+  <rect x="740" y="130" width="630" height="460" rx="14" fill="#2a1215" stroke="#ef4444" stroke-width="2"/>
+  <text x="1055" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#f87171">Limits — Anthropic's own caveats</text>
+  <text x="1055" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fca5a5">conditions that make the mark difficult or impossible to detect</text>
+
+  <rect x="780" y="220" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="915" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">heavy editing</text>
+  <text x="915" y="268" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#f87171">signal degrades</text>
+  <rect x="1070" y="220" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1205" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">paraphrasing</text>
+  <text x="1205" y="268" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#f87171">rewrite breaks it</text>
+
+  <rect x="780" y="292" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="915" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">translation</text>
+  <text x="915" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#f87171">crossing languages</text>
+  <rect x="1070" y="292" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1205" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">mixed sources</text>
+  <text x="1205" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#f87171">AI + human blend</text>
+
+  <rect x="780" y="364" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="915" y="392" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">short passages</text>
+  <text x="915" y="412" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#f87171">too little to detect</text>
+  <rect x="1070" y="364" width="270" height="56" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1205" y="392" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#e2e8f0">older models</text>
+  <text x="1205" y="412" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#f87171">may lack support</text>
+
+  <rect x="780" y="452" width="560" height="110" rx="10" fill="#0c1626" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="1060" y="492" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#f87171">File provenance is fragile too</text>
+  <text x="1060" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fca5a5">screenshots, format conversions, and any process that</text>
+  <text x="1060" y="542" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fca5a5">strips metadata can erase C2PA provenance</text>
+
+  <!-- Bottom: what it means -->
+  <rect x="70" y="620" width="1300" height="140" rx="14" fill="#0c1626" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="720" y="660" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#fcd34d">The two inferences you still cannot make</text>
+  <text x="720" y="696" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#e2e8f0">Mark found → Claude processed the text — but a human may have written it and asked Claude to proofread or translate</text>
+  <text x="720" y="726" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#e2e8f0">Mark absent → proves nothing — the text may be unmarked AI output, edited output, or from an older model</text>
+</svg>
