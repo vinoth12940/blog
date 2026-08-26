@@ -1,0 +1,45 @@
+<svg width="1440" height="860" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1440" height="860" fill="#0f172a"/>
+  <text x="60" y="88" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="44" font-weight="700" fill="#e5e7eb">Fitting 30B into a 24 GB envelope</text>
+  <text x="60" y="128" font-family="Inter, -apple-system, sans-serif" font-size="22" fill="#94a3b8">FP16 would need 55+ GB — quantization to ~4-bit shrinks the LM to under 20 GB, leaving room for everything else</text>
+
+  <!-- FP16 bar -->
+  <text x="60" y="205" font-family="Inter, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#94a3b8">Full precision (FP16/BF16)</text>
+  <rect x="60" y="225" width="600" height="58" rx="10" fill="#3f1d1d" stroke="#f87171" stroke-width="1.5"/>
+  <text x="80" y="261" font-family="'JetBrains Mono', monospace" font-size="19" fill="#fca5a5">55+ GB — no consumer GPU fits this</text>
+  <text x="680" y="261" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#64748b">off the chart &#8594;</text>
+
+  <!-- quantized stack -->
+  <text x="60" y="345" font-family="Inter, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#4ade80">K-Quant ~4-bit on one 24 GB GPU</text>
+  <!-- scale: 24GB = 720px wide, so 1GB = 30px -->
+  <rect x="60" y="365" width="720" height="58" rx="10" fill="#065f46" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="80" y="401" font-family="'JetBrains Mono', monospace" font-size="19" fill="#d1fae5">Model weights (~4-bit) &#8804; 20 GB</text>
+  <rect x="780" y="365" width="120" height="58" rx="10" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="840" y="401" font-family="'JetBrains Mono', monospace" font-size="17" fill="#93c5fd" text-anchor="middle">KV</text>
+  <rect x="900" y="365" width="100" height="58" rx="10" fill="#4c1d95" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="950" y="401" font-family="'JetBrains Mono', monospace" font-size="17" fill="#c4b5fd" text-anchor="middle">Vision</text>
+  <rect x="1000" y="365" width="90" height="58" rx="10" fill="#78350f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="1045" y="401" font-family="'JetBrains Mono', monospace" font-size="16" fill="#fde68a" text-anchor="middle">Draft</text>
+  <text x="1110" y="401" font-family="Inter, -apple-system, sans-serif" font-size="17" fill="#64748b">&#8592; ~22-23 GB total on RTX 3090</text>
+
+  <!-- context comparison -->
+  <text x="60" y="505" font-family="Inter, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#e5e7eb">Same RTX 3090, same Q4_K_XL quant — usable F16 KV context</text>
+
+  <!-- Muse Glimmer bar -->
+  <text x="60" y="548" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#4ade80">Muse Glimmer 30B</text>
+  <rect x="60" y="565" width="1000" height="54" rx="10" fill="#065f46" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="80" y="599" font-family="'JetBrains Mono', monospace" font-size="19" fill="#d1fae5">262,144 tokens F16 KV cache</text>
+  <text x="1080" y="599" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#4ade80">262K</text>
+
+  <!-- Qwen bar -->
+  <text x="60" y="660" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#93c5fd">Qwen3.6-27B</text>
+  <rect x="60" y="677" width="267" height="54" rx="10" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="711" font-family="'JetBrains Mono', monospace" font-size="18" fill="#93c5fd">70,000 tokens</text>
+  <text x="350" y="711" font-family="Inter, -apple-system, sans-serif" font-size="17" fill="#64748b">— or 125K with Q8 KV compression</text>
+
+  <!-- Gemma bar -->
+  <text x="60" y="772" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#fbbf24">Gemma 4 31B</text>
+  <rect x="60" y="789" width="198" height="54" rx="10" fill="#78350f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="80" y="823" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fde68a">52,000 tokens</text>
+  <text x="280" y="823" font-family="Inter, -apple-system, sans-serif" font-size="17" fill="#64748b">— 81K with Q8 KV compression</text>
+</svg>

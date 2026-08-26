@@ -1,0 +1,40 @@
+<svg width="1440" height="850" viewBox="0 0 1440 850" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1440" height="850" fill="#0f172a"/>
+  <text x="60" y="88" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="44" font-weight="700" fill="#e5e7eb">Where it wins, where it doesn&#8217;t</text>
+  <text x="60" y="128" font-family="Inter, -apple-system, sans-serif" font-size="22" fill="#94a3b8">Community-run TerminalBench 2.1 (coding-agent reliability) vs the memory advantage — both matter</text>
+
+  <!-- TerminalBench bars -->
+  <text x="60" y="200" font-family="Inter, -apple-system, sans-serif" font-size="21" font-weight="600" fill="#e5e7eb">TerminalBench 2.1 — community-reported, August 2026</text>
+
+  <text x="60" y="248" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#93c5fd">Qwen3.6-27B</text>
+  <rect x="60" y="262" width="546" height="54" rx="10" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="296" font-family="'JetBrains Mono', monospace" font-size="19" fill="#bfdbfe">60.7</text>
+
+  <text x="60" y="340" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#4ade80">Muse Glimmer 30B</text>
+  <rect x="60" y="354" width="465" height="54" rx="10" fill="#065f46" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="80" y="388" font-family="'JetBrains Mono', monospace" font-size="19" fill="#d1fae5">51.7</text>
+
+  <text x="60" y="432" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#fbbf24">Gemma 4 31B</text>
+  <rect x="60" y="446" width="391" height="54" rx="10" fill="#78350f" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="80" y="480" font-family="'JetBrains Mono', monospace" font-size="19" fill="#fde68a">43.4</text>
+
+  <!-- divider -->
+  <line x1="60" y1="530" x2="1380" y2="530" stroke="#1f2937" stroke-width="2"/>
+
+  <!-- wins vs doesn't -->
+  <rect x="60" y="570" width="640" height="230" rx="16" fill="#0d2a26" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="90" y="616" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#4ade80">Where Glimmer wins</text>
+  <text x="90" y="656" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; 262K F16 context on one RTX 3090 (Qwen: 70K)</text>
+  <text x="90" y="688" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Fits 24 GB with vision + drafter + KV headroom</text>
+  <text x="90" y="720" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; 168K+ Ollama downloads in week one</text>
+  <text x="90" y="752" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Apache 2.0 — commercial use, no strings</text>
+  <text x="90" y="784" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Reported fewer tokens burned per task</text>
+
+  <rect x="740" y="570" width="640" height="230" rx="16" fill="#2a1215" stroke="#f87171" stroke-width="1.5"/>
+  <text x="770" y="616" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#f87171">Where it doesn&#8217;t</text>
+  <text x="770" y="656" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; TerminalBench 2.1: 51.7 vs Qwen&#8217;s 60.7</text>
+  <text x="770" y="688" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; No official SWE-bench score published yet</text>
+  <text x="770" y="720" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Local testers rate coding output below Qwen3.6</text>
+  <text x="770" y="752" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; One report of terminal-command looping</text>
+  <text x="770" y="784" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; The max_tokens trap: default budgets hide skill</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1440" height="760" fill="#0f172a"/>
+  <text x="60" y="88" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="44" font-weight="700" fill="#e5e7eb">The max_tokens trap</text>
+  <text x="60" y="128" font-family="Inter, -apple-system, sans-serif" font-size="22" fill="#94a3b8">A reasoning model spends its output budget thinking before it answers — tight limits make it look broken</text>
+
+  <!-- token budget pipe -->
+  <rect x="60" y="180" width="1320" height="70" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <text x="90" y="223" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#e5e7eb">Output token budget (max_tokens)</text>
+
+  <!-- Case A: tight budget -->
+  <rect x="60" y="300" width="640" height="290" rx="16" fill="#2a1215" stroke="#f87171" stroke-width="1.5"/>
+  <text x="90" y="346" font-family="Inter, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#f87171">Tight budget (default)</text>
+  <rect x="90" y="380" width="580" height="56" rx="10" fill="#3f1d1d" stroke="#f87171" stroke-width="1"/>
+  <text x="110" y="416" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fca5a5">reasoning trace fills the whole budget</text>
+  <rect x="90" y="452" width="30" height="56" rx="6" fill="#111827" stroke="#64748b" stroke-width="1"/>
+  <text x="140" y="486" font-family="'JetBrains Mono', monospace" font-size="18" fill="#94a3b8">&#8592; nothing left for the answer</text>
+  <text x="90" y="556" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#fecaca">Result: empty or truncated output</text>
+  <text x="90" y="580" font-family="Inter, -apple-system, sans-serif" font-size="16" fill="#94a3b8">Community harness: 6 of 13 tasks passing</text>
+
+  <!-- Case B: generous budget -->
+  <rect x="740" y="300" width="640" height="290" rx="16" fill="#0d2a26" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="770" y="346" font-family="Inter, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#4ade80">Generous budget</text>
+  <rect x="770" y="380" width="340" height="56" rx="10" fill="#065f46" stroke="#22c55e" stroke-width="1"/>
+  <text x="790" y="416" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">reasoning trace</text>
+  <rect x="1120" y="380" width="230" height="56" rx="10" fill="#065f46" stroke="#22c55e" stroke-width="1"/>
+  <text x="1140" y="416" font-family="'JetBrains Mono', monospace" font-size="18" fill="#86efac">visible answer</text>
+  <text x="770" y="556" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#d1fae5">Result: the real model shows up</text>
+  <text x="770" y="580" font-family="Inter, -apple-system, sans-serif" font-size="16" fill="#94a3b8">Same harness, same model: 11 of 13 passing</text>
+
+  <text x="60" y="660" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#e5e7eb">Practical settings, straight from the community threads:</text>
+  <text x="60" y="694" font-family="'JetBrains Mono', monospace" font-size="18" fill="#c9c9c9">reasoning_strength: xhigh / high / medium / low (default high) &#160;&#160;&#183;&#160;&#160; max_tokens &#8805; 32K, streaming on</text>
+  <text x="60" y="726" font-family="Inter, -apple-system, sans-serif" font-size="16" fill="#64748b">Source: r/LocalLLM max_tokens thread, Aug 2026 — 6/13 &#8594; 11/13 pass rate from budget alone</text>
+</svg>
