@@ -1,0 +1,37 @@
+<svg width="1440" height="810" viewBox="0 0 1440 810" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1440" height="810" fill="#0f172a"/>
+  <text x="60" y="88" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="44" font-weight="700" fill="#e5e7eb">Agent memory is two problems, not one</text>
+  <text x="60" y="128" font-family="Inter, -apple-system, sans-serif" font-size="22" fill="#94a3b8">Retrieval is mostly solved. State maintenance &#8212; what is currently TRUE &#8212; is the open one.</text>
+
+  <!-- Problem 1: Retrieval -->
+  <rect x="60" y="180" width="640" height="380" rx="16" fill="#111827" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="90" y="228" font-family="Inter, -apple-system, sans-serif" font-size="26" font-weight="600" fill="#93c5fd">Problem 1 &#8212; Retrieval</text>
+  <text x="90" y="262" font-family="'JetBrains Mono', monospace" font-size="19" fill="#c9c9c9">"What past information is relevant?"</text>
+  <rect x="90" y="292" width="580" height="52" rx="10" fill="#0d1526" stroke="#334155" stroke-width="1"/>
+  <text x="112" y="325" font-family="'JetBrains Mono', monospace" font-size="18" fill="#9ca3af">Vector DB &#183; embeddings &#183; cosine similarity</text>
+  <rect x="90" y="356" width="580" height="52" rx="10" fill="#0d1526" stroke="#334155" stroke-width="1"/>
+  <text x="112" y="389" font-family="'JetBrains Mono', monospace" font-size="18" fill="#9ca3af">Status: works reasonably well &#10003;</text>
+  <rect x="90" y="420" width="580" height="112" rx="10" fill="#1a1030" stroke="#a78bfa" stroke-width="1"/>
+  <text x="112" y="456" font-family="Inter, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#c4b5fd">Blind spot:</text>
+  <text x="112" y="486" font-family="'JetBrains Mono', monospace" font-size="17" fill="#c4b5fd">retrieves "object_a points to object_b" even</text>
+  <text x="112" y="512" font-family="'JetBrains Mono', monospace" font-size="17" fill="#c4b5fd">after it was disproven two hours later.</text>
+
+  <!-- Problem 2: Maintenance -->
+  <rect x="740" y="180" width="640" height="380" rx="16" fill="#111827" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="770" y="228" font-family="Inter, -apple-system, sans-serif" font-size="26" font-weight="600" fill="#fcd34d">Problem 2 &#8212; Maintenance</text>
+  <text x="770" y="262" font-family="'JetBrains Mono', monospace" font-size="19" fill="#c9c9c9">"What is currently true?"</text>
+  <rect x="770" y="292" width="580" height="52" rx="10" fill="#1a1206" stroke="#92400e" stroke-width="1"/>
+  <text x="792" y="325" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fde68a">Dead hypotheses resurrected mid-investigation</text>
+  <rect x="770" y="356" width="580" height="52" rx="10" fill="#1a1206" stroke="#92400e" stroke-width="1"/>
+  <text x="792" y="389" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fde68a">Conclusions survive their disproven premises</text>
+  <rect x="770" y="420" width="580" height="52" rx="10" fill="#1a1206" stroke="#92400e" stroke-width="1"/>
+  <text x="792" y="453" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fde68a">Contradictions handed to the model as-is</text>
+  <rect x="770" y="484" width="580" height="48" rx="10" fill="#0d1526" stroke="#334155" stroke-width="1"/>
+  <text x="792" y="515" font-family="'JetBrains Mono', monospace" font-size="18" fill="#9ca3af">Status: nobody's vector DB does this &#10007;</text>
+
+  <!-- Bottom strip -->
+  <rect x="60" y="600" width="1320" height="150" rx="16" fill="#0d2a26" stroke="#34d399" stroke-width="1.5"/>
+  <text x="90" y="650" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#6ee7b7">Lemmalog's bet (Jordy Zomer, Aug 2026)</text>
+  <text x="90" y="688" font-family="'JetBrains Mono', monospace" font-size="19" fill="#d1fae5">Treat agent memory as a DATABASE problem: Datalog facts + rules + fixed points +</text>
+  <text x="90" y="720" font-family="'JetBrains Mono', monospace" font-size="19" fill="#d1fae5">provenance &#8212; so a retracted observation invalidates its dependent conclusions automatically.</text>
+</svg>

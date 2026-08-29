@@ -1,0 +1,39 @@
+<svg width="1440" height="850" viewBox="0 0 1440 850" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1440" height="850" fill="#0f172a"/>
+  <text x="60" y="88" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="42" font-weight="700" fill="#e5e7eb">Where Datalog memory wins &#8212; and where it still loses</text>
+  <text x="60" y="128" font-family="Inter, -apple-system, sans-serif" font-size="22" fill="#94a3b8">LongMemEval + LoCoMo (1,986 questions) category results from Zomer&#8217;s benchmarks</text>
+
+  <!-- Wins -->
+  <rect x="60" y="180" width="640" height="440" rx="16" fill="#0d2a26" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="90" y="226" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#4ade80">Where it wins</text>
+  <text x="90" y="268" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Knowledge Update: 0.579 vs 0.202 full-context</text>
+  <text x="90" y="304" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Adversarial false premises: 0.707 vs 0.509 &#8212;</text>
+  <text x="90" y="336" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#160;&#160;&#160;structured memory can say "no"</text>
+  <text x="90" y="372" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Temporal: 0.257 &#8594; 0.454 after fixing date</text>
+  <text x="90" y="404" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#160;&#160;&#160;normalization (was comparing symbol IDs)</text>
+  <text x="90" y="440" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Provenance trees: "why do you believe this?"</text>
+  <text x="90" y="472" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Retractions propagate: dead conclusions die</text>
+  <text x="90" y="504" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#160;&#160;&#160;with their premises, automatically</text>
+  <text x="90" y="540" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#8594; Query cost stays flat as history grows:</text>
+  <text x="90" y="572" font-family="'JetBrains Mono', monospace" font-size="18" fill="#d1fae5">&#160;&#160;&#160;turn 500 = ~2.5K tokens, not 1M</text>
+
+  <!-- Losses -->
+  <rect x="740" y="180" width="640" height="440" rx="16" fill="#2a1215" stroke="#f87171" stroke-width="1.5"/>
+  <text x="770" y="226" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#f87171">Where it loses</text>
+  <text x="770" y="268" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Multi-session recall: 0.211 vs PropMem 0.582 &#8212;</text>
+  <text x="770" y="300" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#160;&#160;&#160;facts never extracted can&#8217;t be derived</text>
+  <text x="770" y="336" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Inferential: 0.164 vs 0.289 &#8212; conditional</text>
+  <text x="770" y="368" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#160;&#160;&#160;nuance dies when flattened into tuples</text>
+  <text x="770" y="404" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Plain factual recall trails full-context</text>
+  <text x="770" y="440" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Overall F1 behind PropMem on BOTH benchmarks</text>
+  <text x="770" y="476" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Front-end quality dominates: entity resolution</text>
+  <text x="770" y="508" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#160;&#160;&#160;("car" &#8800; "Civic" &#8800; "Honda") cost real points</text>
+  <text x="770" y="544" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#8594; Extraction errors still hallucinate &#8212; the DB</text>
+  <text x="770" y="576" font-family="'JetBrains Mono', monospace" font-size="18" fill="#fecaca">&#160;&#160;&#160;only contains what the parser emitted</text>
+
+  <!-- Takeaway strip -->
+  <rect x="60" y="660" width="1320" height="140" rx="16" fill="#1e1b34" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="90" y="710" font-family="Inter, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#c4b5fd">The emerging architecture is hybrid, not either/or:</text>
+  <text x="90" y="748" font-family="'JetBrains Mono', monospace" font-size="18" fill="#ddd6fe">deductive state (facts + rules + provenance) &#160;+&#160; episodic memory (raw source text) &#160;+&#160; semantic retrieval (embeddings)</text>
+  <text x="90" y="780" font-family="'JetBrains Mono', monospace" font-size="17" fill="#a78bfa">Lemmalog already combines all three &#8212; and ships as an MCP server agents can call directly.</text>
+</svg>

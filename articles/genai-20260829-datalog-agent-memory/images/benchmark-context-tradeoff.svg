@@ -1,0 +1,50 @@
+<svg width="1440" height="880" viewBox="0 0 1440 880" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1440" height="880" fill="#0f172a"/>
+  <text x="60" y="88" font-family="Inter, -apple-system, 'Segoe UI', sans-serif" font-size="42" font-weight="700" fill="#e5e7eb">Twice the F1 of full context &#8212; at 1/38th the tokens</text>
+  <text x="60" y="128" font-family="Inter, -apple-system, sans-serif" font-size="22" fill="#94a3b8">LongMemEval (102 questions, 3 runs) &#183; extraction paid once, cached &#183; numbers from Zomer&#8217;s writeup</text>
+
+  <!-- F1 bars -->
+  <text x="60" y="200" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#e5e7eb">LongMemEval F1 (higher is better)</text>
+
+  <!-- PropMem 0.550 -> scale: 0.6 = 700px, so px = F1/0.6*700 -->
+  <text x="60" y="248" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#93c5fd">PropMem</text>
+  <rect x="60" y="262" width="642" height="50" rx="9" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="294" font-family="'JetBrains Mono', monospace" font-size="19" fill="#bfdbfe">0.550</text>
+
+  <text x="60" y="340" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#93c5fd">SimpleMem</text>
+  <rect x="60" y="354" width="560" height="50" rx="9" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="386" font-family="'JetBrains Mono', monospace" font-size="19" fill="#bfdbfe">0.480</text>
+
+  <text x="60" y="432" font-family="Inter, -apple-system, sans-serif" font-size="19" font-weight="700" fill="#fbbf24">Lemmalog</text>
+  <rect x="60" y="446" width="540" height="50" rx="9" fill="#78350f" stroke="#fbbf24" stroke-width="2"/>
+  <text x="80" y="478" font-family="'JetBrains Mono', monospace" font-size="19" fill="#fde68a">0.463 &#177;0.010</text>
+
+  <text x="60" y="524" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#94a3b8">OpenClaw</text>
+  <rect x="60" y="538" width="285" height="50" rx="9" fill="#111827" stroke="#475569" stroke-width="1.5"/>
+  <text x="80" y="570" font-family="'JetBrains Mono', monospace" font-size="19" fill="#9ca3af">0.244</text>
+
+  <text x="60" y="616" font-family="Inter, -apple-system, sans-serif" font-size="19" fill="#f87171">Full Context (entire history)</text>
+  <rect x="60" y="630" width="259" height="50" rx="9" fill="#2a1215" stroke="#f87171" stroke-width="1.5"/>
+  <text x="80" y="662" font-family="'JetBrains Mono', monospace" font-size="19" fill="#fecaca">0.222</text>
+
+  <!-- Right column: context -->
+  <rect x="820" y="230" width="560" height="450" rx="16" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <text x="850" y="278" font-family="Inter, -apple-system, sans-serif" font-size="23" font-weight="600" fill="#e5e7eb">Context given to the answering model</text>
+
+  <text x="850" y="330" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#f87171">Full context, per question</text>
+  <rect x="850" y="346" width="500" height="56" rx="10" fill="#2a1215" stroke="#f87171" stroke-width="1.5"/>
+  <text x="872" y="382" font-family="'JetBrains Mono', monospace" font-size="21" fill="#fecaca">~104,000 tokens</text>
+
+  <text x="850" y="446" font-family="Inter, -apple-system, sans-serif" font-size="18" fill="#6ee7b7">Lemmalog, per question</text>
+  <rect x="850" y="462" width="60" height="56" rx="10" fill="#0d2a26" stroke="#34d399" stroke-width="1.5"/>
+  <text x="924" y="498" font-family="'JetBrains Mono', monospace" font-size="21" fill="#d1fae5">~2,700 tokens</text>
+
+  <text x="850" y="570" font-family="Inter, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#fbbf24">38&#215; smaller</text>
+  <text x="850" y="610" font-family="'JetBrains Mono', monospace" font-size="16" fill="#9ca3af">extraction (Claude Sonnet 4.6) paid once,</text>
+  <text x="850" y="636" font-family="'JetBrains Mono', monospace" font-size="16" fill="#9ca3af">chunked + file-cached per conversation</text>
+
+  <!-- Honest footnote -->
+  <rect x="60" y="720" width="1320" height="120" rx="16" fill="#0f1729" stroke="#475569" stroke-width="1"/>
+  <text x="90" y="766" font-family="Inter, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#cbd5e1">The honest read: PropMem and SimpleMem still beat Lemmalog overall.</text>
+  <text x="90" y="800" font-family="'JetBrains Mono', monospace" font-size="17" fill="#94a3b8">But 0.226 &#8594; 0.463 across Zomer&#8217;s debugging iterations &#8212; doubling without a bigger model &#8212; is the real story.</text>
+</svg>

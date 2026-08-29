@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your AI Agent Doesn't Need a Bigger Context Window. It Needs a Database.</title>
+    <meta name="description" content="A security researcher accidentally built a Datalog engine for LLM memory — and beat full-context prompting at twice the score while handing the model 38x fewer tokens. What Lemmalog teaches us about the two problems hiding inside 'agent memory'.">
+    <meta property="og:title" content="Your AI Agent Doesn't Need a Bigger Context Window. It Needs a Database.">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-08-29">
+    <meta property="og:description" content="A security researcher accidentally built a Datalog engine for LLM memory — and beat full-context prompting at twice the score while handing the model 38x fewer tokens.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20260829-datalog-agent-memory/images/hero-memory-two-problems.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        .hero-img { width: 100%; border-radius: 12px; margin: 2rem 0; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #3b82f6; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #93c5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .warning { border-left-color: #f59e0b; }
+        .warning p { color: #fcd34d; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>Your AI Agent Doesn't Need a Bigger Context Window. It Needs a Database.</h1>
+    <div class="meta">August 29, 2026 &middot; 10 min read &middot; Agents, AI Infrastructure, LLMs</div>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260829-datalog-agent-memory/images/hero-memory-two-problems.png" alt="Diagram splitting agent memory into two problems: retrieval (what past information is relevant) which is mostly solved by vector databases, and state maintenance (what is currently true) which remains open">
+        <p class="caption">"Memory" has been hiding two different problems. Vector databases only solve one of them.</p>
+    </div>
+
+    <p>Every developer who has run an AI agent past the two-hour mark knows the failure mode. The agent had it, and then it didn't. It suggests an approach your session ruled out ninety minutes ago. It keeps reasoning from an assumption the debugger already disproved. And when you correct it, the retraction goes exactly one layer deep &mdash; everything built on top of the wrong belief survives, quietly poisoning the rest of the investigation.</p>
+
+    <p>The industry's default answer is to throw more context at the problem: longer windows, summarized transcripts, RAG over old conversation turns. Then last week, a security researcher named <strong>Jordy Zomer</strong> posted a writeup that hit the front page of Hacker News (259 points) with a different answer entirely. He wanted his vulnerability-research agent to <em>stop forgetting why it believed things</em> &mdash; and in solving that, he accidentally built what is essentially <strong>program analysis for LLM memory</strong>.</p>
+
+    <p>The project is called <a href="https://github.com/JordyZomer/lemmalog">Lemmalog</a>: a Datalog engine that maintains what an agent currently knows, invalidates dead conclusions automatically, and can answer "why do you believe this?" with a full provenance tree. The benchmark numbers attached to the idea are what turned a nice blog post into a signal.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">2.1&times;</div>
+            <div class="label">LongMemEval F1 vs feeding GPT-4.1 the entire conversation (0.463 vs 0.222)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">38&times;</div>
+            <div class="label">smaller context per question: ~2,700 tokens vs ~104,000</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">0.579</div>
+            <div class="label">Knowledge-Update score &mdash; beating every published system in that category</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">0.707</div>
+            <div class="label">adversarial false-premise score vs 0.509 for full context on LoCoMo</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>The failure mode, stated precisely</h2>
+
+    <p>Zomer's writeup starts with an experience anyone doing long-horizon agent work will recognize. Mid-investigation, you establish a chain of facts: the attacker controls <code>object_a</code>, <code>object_a</code> points to <code>object_b</code>, <code>object_b</code> is a kernel object. Conclusion: the attacker can control a kernel object.</p>
+
+    <p>Two hours later, in the debugger, you discover <code>object_a</code> does <em>not</em> actually point to <code>object_b</code>. The observation was wrong. Now a conventional memory system holds something like this:</p>
+
+    <ul>
+        <li><code>object_a points to object_b</code> &mdash; retracted</li>
+        <li><code>attacker can control object_b</code> &mdash; still sitting there, derived from the retracted fact</li>
+        <li>Both retrieved together, and the model left to hope it sorts out which conclusions still stand</li>
+    </ul>
+
+    <p>Telling an LLM that something is wrong, as Zomer dryly notes, does not necessarily mean it stops believing everything that depended on it. Retrieval-based memory makes this worse in a specific way: the retracted fact and the conclusion drawn from it are both semantically relevant to your query, so both come back, forever.</p>
+
+    <blockquote>
+        <p>During a vulnerability research session, I don't just want the model to remember what we said. I want it to maintain what we currently know.</p>
+    </blockquote>
+
+    <p>And then the pivot that makes the whole piece worth reading: he recognized this shape. Facts. Rules that derive new facts from existing ones. A fixed point containing everything derivable. The ability to update only affected results when an input changes. This is not a chat problem. <strong>This is program analysis</strong> &mdash; a field with forty years of solutions.</p>
+
+    <h2>The architecture: a slightly strange compiler</h2>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260829-datalog-agent-memory/images/architecture-compiler-split.png" alt="Architecture diagram showing the compiler-style split: an LLM front-end probabilistically parses messy inputs into structured facts, then a Datalog engine maintains consequences via rules, fixed points, retractions and provenance, with a second LLM call turning state back into answers">
+        <p class="caption">The LLM is the probabilistic front-end. The database is the deterministic back-end. Neither does the other's job.</p>
+    </div>
+
+    <p>Lemmalog's core move is a division of labor that maps cleanly onto how compilers work:</p>
+
+    <ul>
+        <li><strong>The LLM handles the fuzzy part.</strong> "LLDB shows the freed object is later reused as the destination of the write" becomes <code>freed(object_a)</code> and <code>reused_as(object_a, write_target)</code>. Extraction happens once per conversation, chunked and cached &mdash; you pay for it once, not per question.</li>
+        <li><strong>The Datalog engine handles the deterministic part.</strong> Given facts and rules, it computes and maintains every consequence. When an input fact changes, incremental evaluation updates exactly the affected conclusions &mdash; not the whole knowledge base, and not the model's vibes.</li>
+        <li><strong>Another LLM invocation is the back-end</strong>, turning maintained state back into natural language, next steps, or actions.</li>
+    </ul>
+
+    <blockquote>
+        <p>The amusing part is that our parser is probabilistic, while everything after it does not necessarily have to be.</p>
+    </blockquote>
+
+    <p>For anyone who has spent time with SQL databases, Datalog is the declarative cousin: you write <em>what is true and what follows from what</em>, not <em>how to compute it</em>. A rule like <code>controls_kernel_object(A) :- controls(A, X), points_to(X, Y), kernel_object(Y)</code> says that attacker-controlled objects pointing at kernel objects make kernel objects attacker-controllable. The engine figures out the rest, including what to un-derive when a premise dies.</p>
+
+    <h2>The three hard problems, and how a database solves them</h2>
+
+    <h3>1. Retraction with dependencies</h3>
+
+    <p>Deleting facts sounds trivial until you hit this:</p>
+
+<pre><code>a.
+b.
+c :- a.
+c :- b.</code></pre>
+
+    <p><code>c</code> has two independent justifications. Remove <code>a</code>, and <code>c</code> survives &mdash; <code>b</code> still supports it. Remove both, and <code>c</code> dies. An agent's conclusions are exactly like this: an exploit candidate stays viable through multiple independent primitives, and it should only collapse when its <em>last</em> support does. Lemmalog tracks how every derived fact was produced, so removal propagates correctly instead of bluntly.</p>
+
+    <h3>2. Provenance &mdash; "why do you believe this?"</h3>
+
+    <p>The same dependency tracking gives you explainability almost for free:</p>
+
+<pre><code>candidate_3_is_exploitable
+|
++-- attacker_controls_pointer
+|     +-- observation_41
++-- pointer_reaches_target
+      +-- observation_57
+      +-- rule_12</code></pre>
+
+    <p>This quietly fixes one of the most annoying LLM failure modes: the model confidently asserts "we already established this pointer is attacker-controlled" when no such thing was established. In Lemmalog, <strong>if a conclusion has no provenance, it is not part of the maintained state</strong>. It doesn't stop the model from hallucinating during extraction &mdash; but it makes it much harder for unsupported claims to silently become load-bearing.</p>
+
+    <h3>3. Facts that change over time</h3>
+
+    <p>Replacing a belief isn't the same as deleting it. When <code>primitive_a</code> goes from viable to not-viable, the current state should say "not viable" &mdash; but if you later want to know <em>why</em> you explored that strategy for two hours, the old state matters. Lemmalog attaches validity intervals to facts: <code>viable(primitive_a) [10:14, 12:37)</code>, <code>not_viable(primitive_a) [12:37, ...)</code>. Both "what's true now" and "what did we think then" are queries, not contradictions.</p>
+
+    <h2>Why not just use a vector database?</h2>
+
+    <p>This is the section that elevates the piece from a cool project to a thesis. Zomer's point is that "agent memory" has been conflating two different questions:</p>
+
+    <ul>
+        <li><strong>Retrieval:</strong> <em>what information from the past is relevant to this question?</em> Vector databases are genuinely good at this.</li>
+        <li><strong>Maintenance:</strong> <em>given everything we've learned, what is currently true?</em> Nobody's vector store does this, because cosine similarity has no idea that a stored statement was disproven two hours later, or that five other conclusions depended on it.</li>
+    </ul>
+
+    <blockquote>
+        <p>Cosine vibe similarity and truth are not quite the same thing.</p>
+    </blockquote>
+
+    <p>His current setup combines both: structured state for what's true, hybrid retrieval (BM25, entity-graph boosts, embeddings) for what's relevant, and the original source text kept around for when structure loses nuance. That hybrid shape &mdash; not either/or &mdash; is probably where this field lands.</p>
+
+    <h2>The numbers: honest, mixed, and interesting</h2>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260829-datalog-agent-memory/images/benchmark-context-tradeoff.png" alt="Bar chart of LongMemEval F1 scores with PropMem at 0.550, SimpleMem 0.480, Lemmalog 0.463, OpenClaw 0.244 and Full Context 0.222, next to the per-question context comparison of 104,000 tokens for full context versus 2,700 for Lemmalog">
+        <p class="caption">Lemmalog sits third among dedicated memory systems &mdash; but more than doubles full-context accuracy at 1/38th the tokens.</p>
+    </div>
+
+    <p>Zomer did the thing more people building memory systems should do: he ran standardized benchmarks, three times each, and published where his system <em>loses</em>. On <strong>LongMemEval</strong> (102 questions across single-session facts, multi-session, temporal reasoning, and knowledge updates), three runs gave <code>F1 0.463 &plusmn; 0.010</code>:</p>
+
+    <ul>
+        <li><strong>PropMem: 0.550</strong> &mdash; still the leader</li>
+        <li><strong>SimpleMem: 0.480</strong></li>
+        <li><strong>Lemmalog: 0.463</strong></li>
+        <li><strong>OpenClaw: 0.244</strong></li>
+        <li><strong>Full context (entire history in the prompt): 0.222</strong></li>
+    </ul>
+
+    <p>So no, Datalog did not win. He says so plainly. But look at the two numbers flanking the comparison. Feeding GPT-4.1 the <em>entire conversation</em> scored 0.222 F1 &mdash; and Lemmalog more than doubles that while passing the answering model <strong>~2,700 tokens per question instead of ~104,000</strong>. On LoCoMo (10 long conversations, 1,986 questions, much harder to get lucky on), the pattern repeats: Lemmalog 0.533, behind PropMem's 0.605 and OpenClaw's 0.557, ahead of full context's 0.542 &mdash; at <strong>~3,400 vs ~18,900 tokens</strong> per question. Extraction with Claude Sonnet 4.6 is paid once, cached per conversation.</p>
+
+    <p>And the cost curve is the real story for agent builders. Full-context prompting pays for the entire history on <em>every</em> query:</p>
+
+    <ul>
+        <li><strong>Turn 50:</strong> ~100K tokens/query vs ~2.5K</li>
+        <li><strong>Turn 100:</strong> ~200K tokens/query vs ~2.5K</li>
+        <li><strong>Turn 500:</strong> ~1M tokens/query vs ~2.5K &mdash; except 1M doesn't fit, and the session dies</li>
+    </ul>
+
+    <h2>Where it wins, where it loses</h2>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260829-datalog-agent-memory/images/what-breaks-what-works.png" alt="Two-panel diagram listing where Datalog memory wins (knowledge updates, adversarial questions, temporal state, provenance, flat query cost) and where it loses (multi-session recall, inferential nuance, plain factual recall, overall F1 behind PropMem)">
+        <p class="caption">The category split is the thesis: structure wins exactly where maintaining state matters, and loses where nuance gets flattened.</p>
+    </div>
+
+    <p>The category-level results are more interesting than the averages, because they map precisely onto the design:</p>
+
+    <p><strong>Where structured memory dominates:</strong></p>
+
+    <ul>
+        <li><strong>Knowledge updates:</strong> Lemmalog <strong>0.579</strong> vs PropMem 0.528 and full context <strong>0.202</strong>. "We believed A; A is no longer true; what now?" is literally the retraction machinery.</li>
+        <li><strong>Adversarial false premises (LoCoMo):</strong> <strong>0.707</strong> vs full context's 0.509. When a question asserts something that never happened, a model with a giant transcript pattern-matches its way to an answer anyway. A structured memory can simply find no supporting fact and say <strong>no</strong> &mdash; which turns out to be a killer feature.</li>
+        <li><strong>Temporal reasoning:</strong> 0.257 &rarr; <strong>0.454</strong> after one bug fix (more on that below).</li>
+    </ul>
+
+    <p><strong>Where it genuinely loses:</strong></p>
+
+    <ul>
+        <li><strong>Multi-session recall:</strong> 0.211 vs PropMem's 0.582. Diagnosis: the information wasn't mis-connected &mdash; it was <em>never extracted</em>. If the extractor never emits a fact about the Airbnb booking, no amount of derivation conjures it.</li>
+        <li><strong>Inferential questions:</strong> 0.164 vs 0.289. Flattening "I prefer quiet restaurants, except when traveling with friends" into <code>prefers(user, quiet_restaurants)</code> destroys half the meaning before Datalog ever runs. His proposed fix &mdash; conditional rules that stay conditional &mdash; is the right instinct.</li>
+        <li><strong>Plain factual recall</strong> still trails full context (0.399 vs 0.517 on LoCoMo), which should humble anyone who thinks structured memory is a wholesale replacement.</li>
+    </ul>
+
+    <h2>The debugging stories are the actual gold</h2>
+
+    <p>The most valuable part of the writeup isn't the leaderboard &mdash; it's the failure autopsy. The first standardized LongMemEval configuration scored <strong>0.226</strong>. The final one scores <strong>0.463</strong>. More than double, and almost none of that came from touching the model. It came from finding six concrete computer-science bugs:</p>
+
+    <ul>
+        <li><strong>The accidental censorship bug.</strong> An anti-hallucination instruction &mdash; "make sure the answer is actually supported by the retrieved facts" &mdash; was interpreted as <em>refuse unless one fact literally contains the answer</em>. Score dropped to 0.371; 32 of 102 questions were refused, all answerable. "Which airline did I fly most?" has no stored fact answering it &mdash; the answer requires <em>counting</em> over flight facts. The fix: refuse when the premise is absent or misattributed, but actually reason when evidence needs combining.</li>
+        <li><strong>The stemmer bug.</strong> A relevance filter's plural stemmer only folded words longer than four characters. So <code>owns</code> never matched <code>own</code>, every count line got silently dropped, and counting questions received no counts. Classic.</li>
+        <li><strong>The date bug.</strong> Date-like values were compared as interned Datalog symbols, and the engine's <code>&lt;</code> operator compares internal symbol IDs &mdash; not dates. Normalizing to integers and deriving <code>happened_before</code> from real timestamps bought nearly twenty F1 points in temporal reasoning.</li>
+        <li><strong>Entity resolution.</strong> "I bought a Honda Civic" / "my car broke down" / "the Civic is fixed" became three unrelated objects: <code>honda_civic</code>, <code>car</code>, <code>civic</code>. A reconciliation pass connecting mentions to canonical entities was worth real points.</li>
+    </ul>
+
+    <blockquote>
+        <p>None of those required making the language model larger. They required maintaining better state around it.</p>
+    </blockquote>
+
+    <p>That sentence is the whole article, as far as I'm concerned. We keep reaching for bigger models and longer windows to fix what are, at bottom, data-engineering problems wearing an AI costume.</p>
+
+    <hr>
+
+    <h2>What this means for agent builders</h2>
+
+    <p>I build long-running agents &mdash; my own production setup runs multi-hour research and ops workflows on a headless home server, and I've hit every failure mode in Zomer's intro. Here's what I'd actually take from this piece:</p>
+
+    <ul>
+        <li><strong>Stop treating the transcript as the source of truth.</strong> The transcript is a log. Logs are for audits; state is for decisions. If your agent's beliefs live only in message history, invalidation is impossible by construction.</li>
+        <li><strong>Long-horizon sessions need provenance, not just memory.</strong> "Why do you believe that?" should be a query with a real answer &mdash; observation IDs, rules, and timestamps &mdash; not a request for the model to reconstruct its feelings.</li>
+        <li><strong>Flat query cost is an architecture property, not an optimization.</strong> ~2.5K tokens per query at turn 50 and at turn 500 changes what agents you can afford to run at all. Full-context agents have a hard ceiling where the session stops fitting.</li>
+        <li><strong>The front-end dominates.</strong> The Datalog engine didn't get smarter between 0.483 and 0.533 on LoCoMo &mdash; the extraction, entity resolution, and retrieval did. If you build one of these, most of your iterations will be parser engineering, not logic engineering.</li>
+        <li><strong>Structured memory can say "no."</strong> The adversarial score (0.707 vs 0.509) is the sleeper result. Agents that verify premises against maintained state instead of pattern-matching transcripts are categorically harder to fool &mdash; and given everything 2026 has taught us about prompt injection and agent blast radius, that's not a benchmark nicety. It's a security control.</li>
+    </ul>
+
+    <h2>Verdict</h2>
+
+    <p>Lemmalog is not the best memory system on the leaderboard, and Zomer is admirably upfront about it &mdash; PropMem still beats it on both benchmarks, LoCoMo is a conversational-memory test rather than a vulnerability investigation, and 102 questions is a small sample. His own next experiment is the honest one: point a long-horizon agent at a real investigation and see if maintained state stops it from resurrecting dead hypotheses.</p>
+
+    <p>But as a directional signal, this lands. The idea that an agent's knowledge should live in a database with rules, retractions, and provenance &mdash; with the LLM as a probabilistic parser at the edges &mdash; is old AI (logic programming never died, it was waiting) executed with new-world benchmarks. The source is <a href="https://github.com/JordyZomer/lemmalog">open on GitHub</a>, and it ships with an MCP server, which means your existing agent can use it today without changing frameworks.</p>
+
+    <p>We keep asking for bigger context windows every time an agent forgets something. Sometimes the answer is that the agent should have been maintaining state all along &mdash; and we've known how to build that part for decades.</p>
+
+    <hr>
+
+    <h3>Sources</h3>
+
+    <ul>
+        <li><a href="https://pwning.systems/posts/llm-memory-program-analysis/">I accidentally turned LLM memory into program analysis</a> &mdash; Jordy Zomer, pwning.systems, August 28, 2026 (primary source for all benchmark numbers)</li>
+        <li><a href="https://github.com/JordyZomer/lemmalog">JordyZomer/lemmalog</a> &mdash; open-source Datalog engine for LLM agent memory</li>
+        <li><a href="https://news.ycombinator.com/item?id=49485416">Hacker News discussion</a> &mdash; 259 points, 71 comments, August 28, 2026</li>
+        <li><a href="https://arxiv.org/abs/2410.10813">LongMemEval</a> &mdash; benchmark for long-term interactive memory</li>
+        <li><a href="https://arxiv.org/abs/2402.17753">LoCoMo</a> &mdash; benchmark for very long-term conversational memory</li>
+    </ul>
+</article>
+</body>
+</html>
