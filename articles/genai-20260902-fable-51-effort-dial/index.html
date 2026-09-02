@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fable 5.1's Real Revolution Is the Effort Dial — Not the Benchmarks</title>
+    <meta name="description" content="Anthropic cut agent costs by 25 to 45 percent without touching the sticker price. The real story in Fable 5.1 is the effort dial, the cache-read economics behind the discount, and a migration checklist that matters if you run agents in production.">
+    <meta property="og:title" content="Fable 5.1's Real Revolution Is the Effort Dial — Not the Benchmarks">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-09-02">
+    <meta property="og:description" content="Anthropic cut agent costs by 25 to 45 percent without touching the sticker price. The real story is the effort dial and the cache-read economics behind the discount.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20260902-fable-51-effort-dial/images/hero-effort-dial.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #c4b5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>Fable 5.1's Real Revolution Is the Effort Dial — Not the Benchmarks</h1>
+    <div class="meta">September 2, 2026 &middot; 10 min read &middot; AI Pricing, Agents, Anthropic</div>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260902-fable-51-effort-dial/images/hero-effort-dial.png" alt="Diagram of Claude Fable 5.1 launch economics: model card with unchanged $10/$50 pricing beside the effort dial showing per-prompt costs from $0.10 at low effort to $3.30 at max effort, plus stat cards for 75% cheaper cache reads, 25% typical savings, and 45% agentic savings">
+        <p class="caption">The list price didn't move. Everything around it did.</p>
+    </div>
+
+    <p>Anthropic shipped Claude Fable 5.1 and Mythos 5.1 on September 1, and the launch coverage dutifully reported the benchmarks: <strong>52.6%</strong> on Terminal-Bench-Science 0.1, <strong>65.0%</strong> on Humanity's Last Exam with tools, a new state of the art on CursorBench 3.2.0. All real, all verified against the launch post. But after spending a day inside the announcement, the docs, and the system card, I've concluded the benchmark numbers are the least interesting thing Anthropic shipped.</p>
+
+    <p>The interesting thing is that they've turned <strong>how hard the model thinks</strong> into a first-class pricing dimension — and the math behind it says more about where frontier AI pricing is going than any leaderboard.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">33&times;</div>
+            <div class="label">cost spread across the effort dial on one identical prompt — $0.10 (low) to $3.30 (max)</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">−75%</div>
+            <div class="label">cache read price: $1.00 → $0.25 per MTok, the actual source of the "cost cut"</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">−45%</div>
+            <div class="label">real-world cost for highly agentic workloads, per Anthropic's four-week usage data</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">$10/$50</div>
+            <div class="label">input/output per MTok — unchanged from Fable 5. The sticker price is a decoy</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Quick primer: what actually shipped</h2>
+
+    <p>Fable 5.1 and Mythos 5.1 are the same underlying model with different safeguard configurations — Fable 5.1 is generally available, Mythos 5.1 is restricted to trusted-access programs for cybersecurity and life sciences work. The essentials, straight from the launch post and model docs:</p>
+
+    <ul>
+        <li><strong>Model ID:</strong> <code>claude-fable-5-1</code> (same ID on the Claude API and Google Cloud Vertex; <code>anthropic.claude-fable-5-1</code> on Amazon Bedrock). Available day one on AWS, Google Cloud, and Microsoft Azure.</li>
+        <li><strong>Context:</strong> 1M token context window, 128K max output — spec-for-spec the same as Fable 5.</li>
+        <li><strong>Knowledge cutoff:</strong> June 2026.</li>
+        <li><strong>Pricing:</strong> $10 per million input tokens, $50 per million output tokens. Identical to Fable 5's rate card.</li>
+        <li><strong>Effort levels:</strong> low, medium, high, xhigh, max — with adaptive thinking always on and no option to turn reasoning off entirely.</li>
+    </ul>
+
+    <p>So how does a model with an identical rate card cost 25–45% less to run? Two mechanisms, and understanding both will change how you build.</p>
+
+    <h2>Mechanism one: the effort dial</h2>
+
+    <p>Fable 5.1 lets you set a reasoning effort level <em>per message</em> — low, medium, high, xhigh, max. That's an API parameter, not a different product tier. Simon Willison ran the same pelican-on-a-bicycle prompt through every level on launch day, and his numbers are the clearest public picture of what the dial actually costs:</p>
+
+    <ul>
+        <li><strong>low</strong>: ~24 seconds, 1,998 output tokens, $0.10</li>
+        <li><strong>medium</strong>: ~23 seconds, 1,977 output tokens, $0.10</li>
+        <li><strong>high</strong>: ~30 seconds, 2,612 output tokens, $0.13</li>
+        <li><strong>xhigh</strong>: 7 min 51 s, 36,767 output tokens, $1.83</li>
+        <li><strong>max</strong>: 13 min 54 s, 65,927 output tokens, $3.30</li>
+    </ul>
+
+    <p>Read that again: <strong>the same prompt, the same model, a 33× cost spread</strong>. And it's not just money. Max effort spent nearly fourteen minutes producing almost 66,000 tokens — mostly invisible reasoning — before rendering its answer.</p>
+
+    <p>Willison also noticed something subtler: at low and medium, the model appears to skip visible reasoning entirely, and the outputs were barely distinguishable in quality. The dial's lower rungs aren't a crippled mode. They're where most of your traffic probably belongs.</p>
+
+    <blockquote>
+        <p>The five effort levels are effectively five different price-performance points, and most teams are running all their traffic at whatever the SDK default happens to be.</p>
+    </blockquote>
+
+    <p>Which brings up an uncomfortable detail: <strong>the default matters, and it's different depending on where you use the model</strong>. Per Anthropic's launch post, Fable 5.1 defaults to <em>high</em> effort in Claude Code, and to <em>medium</em> in Claude Cowork and on Claude.ai. Same model, different default bill, depending on which surface you're in. If you benchmarked the model informally by chatting with it and then built against the API, you tested one product and shipped another.</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260902-fable-51-effort-dial/images/effort-cost-curves.png" alt="Scatter chart of Terminal-Bench-Science 0.1 score versus cost per task for Fable 5.1 and Fable 5 at five effort levels, showing Fable 5.1 at low effort beating Fable 5 at max effort while costing a quarter as much">
+        <p class="caption">The chart that should reorganize your model-evaluation process: Fable 5.1 at low effort outscores Fable 5 at max — at a quarter of the cost.</p>
+    </div>
+
+    <p>Anthropic's own effort-ladder data for Terminal-Bench-Science 0.1 makes the point brutally. At <strong>low</strong> effort, Fable 5.1 scores 26.3% at $11.10 per task. Fable 5 at <strong>max</strong> effort scored 24.7% at $44.10. The previous generation's maximum reasoning effort is now dominated by this generation's minimum. And the marginal returns up the ladder are steep: you pay $26.80 more per task to go from 26.3% to 52.6%.</p>
+
+    <p>Is that worth it? For the hardest tier of scientific and agentic problems — where 52.6% versus 26.3% is the difference between solved and not-solved — absolutely. For the median production request, almost certainly not. The entire game in 2026 agent economics is knowing which of your requests are which.</p>
+
+    <h2>Mechanism two: the cache-read cut</h2>
+
+    <p>The second mechanism explains the headline savings — and it's aimed so precisely at agent builders that it reads like a pricing memo about who Anthropic thinks its real customers are.</p>
+
+    <p>Anthropic dropped cache read pricing by <strong>75%</strong>, from $1.00 to <strong>$0.25 per million tokens</strong>. The input and output rates didn't move a cent. On paper, nothing about the rate card changed. In practice:</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260902-fable-51-effort-dial/images/cache-read-economics.png" alt="Stacked bar chart showing indexed costs where cache reads made up 40 percent of typical workload cost and 65 percent of highly agentic workload cost, with Fable 5.1 reducing totals to 75 and 55 respectively">
+        <p class="caption">In tool-heavy agent loops, cache reads were nearly two-thirds of the bill. Cutting their price 75% is where the entire "cost cut" comes from.</p>
+    </div>
+
+    <p>Anthropic measured four weeks of real August 2026 usage and published the indexed results. On typical workloads, cache reads were about <strong>40% of spend</strong>; on context-heavy, tool-heavy agentic work, they were about <strong>65%</strong>. The agentic pattern is easy to recognize: your agent loop re-sends the system prompt, tool definitions, conversation history, and codebase context on every single step. That's the part of your bill that's cached — and it's the part that just got 75% cheaper.</p>
+
+    <p>Compound the two effects and the published totals land: roughly <strong>25% cheaper for typical workloads</strong>, and up to <strong>roughly 45% cheaper for highly agentic work</strong> (indexed cost 100 → 55, in Anthropic's own measurement).</p>
+
+    <p>Notice what Anthropic did <em>not</em> do: cut the headline number. There's no "$5 input" splash announcement. The rate card is identical, and the discount is hidden in the line item that only agents trigger at volume. It's a signal about where the marginal customer is: less the chat user, more the team running thousand-step agent loops against a codebase. Compare that with the summer's model-tier price wars — where rivals compete on sticker price and tokenizers quietly inflate your token count — and Anthropic's move is almost elegant. The sticker price stays high for optics; the effective price falls for the workloads that are actually growing.</p>
+
+    <h2>The quiet launch: Mythos 5.1</h2>
+
+    <p>Mythos 5.1 is the same model with safeguards tuned for cybersecurity and life sciences, available only through Anthropic's trusted-access programs (Project Glasswing; currently US organizations, expanding in coordination with the US government). Its biology access program was developed in partnership with the US government, with scientist enrollment expected to open soon.</p>
+
+    <p>Two details worth your attention even if you'll never touch Mythos:</p>
+
+    <ul>
+        <li><strong>The Fable/Mythos Terminal-Bench gap is a safeguards artifact.</strong> On Anthropic's Terminal-Bench 4.0 chart, Mythos 5.1 hits 60.9% (max effort) versus Fable 5.1's 55.8% — and Anthropic explicitly attributes the gap to the tasks where Fable's broader cyber safeguards intervened, expecting the difference to shrink as the new safeguards roll out. When a safety configuration measurably costs performance points on a benchmark, that's the clearest public data yet on the real price of safety tuning.</li>
+        <li><strong>Safeguards got dramatically less annoying.</strong> The new cyber safeguards block <strong>60% fewer false positives</strong> than before, and Fable 5.1 can now be used to discover software vulnerabilities — though not to develop exploits.</li>
+    </ul>
+
+    <h2>Enterprise Frontier Safeguards: zero retention without the trade</h2>
+
+    <p>The third under-reported piece is <strong>Enterprise Frontier Safeguards (EFS)</strong>. The pitch: enterprise-grade privacy — equivalent to a zero-data-retention policy — while keeping state-of-the-art adversarial-use protections. The mechanism: your data lives in cloud infrastructure controlled entirely by you, not Anthropic.</p>
+
+    <p>It rolls out to enterprise customers in phases beginning later this fall. Until then, eligible customers can already run Fable 5.1 with zero data retention.</p>
+
+    <p>Context matters here. This launch lands with Anthropic in the middle of a pre-IPO courtship of exactly the enterprises that spent the last year complaining about retention clauses and overzealous safeguards. Price cut, retention fixed, false positives down 60%, vulnerability discovery now permitted. That's not a coincidence; that's a coordinated repositioning for the buyer that was easiest to lose: the regulated enterprise running agents on sensitive code and data.</p>
+
+    <h2>The migration checklist — including three breaking changes</h2>
+
+    <p>If you're already calling <code>claude-fable-5</code>, the docs flag three breaking changes and five additive improvements. These are the details that will actually bite people in production:</p>
+
+    <div class="img-container">
+        <img src="https://vinoth12940.github.io/blog/articles/genai-20260902-fable-51-effort-dial/images/migration-changes.png" alt="Two-column diagram listing the three breaking changes: forced tool use returns an error, thinking blocks are tied to the producing model, and editing earlier turns invalidates thinking blocks; and five additive changes: per-message effort, turn-scoped system messages, progress updates, cheaper cache reads, and content provenance">
+        <p class="caption">The migration surface: three breaking changes on the left, five additive upgrades on the right.</p>
+    </div>
+
+    <p><strong>The three breaking changes:</strong></p>
+    <ul>
+        <li><strong>Forced tool use now returns an error.</strong> If your loop sets <code>tool_choice</code> to force a specific tool, it will break against 5.1. Prompt for the tool use or restructure the loop.</li>
+        <li><strong>Thinking blocks are tied to the model that produced them.</strong> Fable 5.1 can't read thinking blocks generated by earlier models. If you have multi-model handoffs sharing one conversation history, that history is now partially illegible to the new model.</li>
+        <li><strong>Editing earlier turns invalidates thinking blocks.</strong> Chat-replay patterns and prompt-optimization pipelines that retroactively edit conversation turns will silently bust reasoning caches and change behavior.</li>
+    </ul>
+
+    <p><strong>The five additive changes worth adopting:</strong> per-message effort control (beta), turn-scoped system messages (beta), readable progress updates between tool calls (<code>display: "updates"</code>, beta), the reduced cache-read price, and content provenance support.</p>
+
+    <pre><code># Migration quick reference
+API:      claude-fable-5-1
+Bedrock:  anthropic.claude-fable-5-1
+Vertex:   claude-fable-5-1
+
+# Effort is set per message — spend max only where it pays
+messages[-1]["effort"] = "low"   # routine steps
+messages[-1]["effort"] = "xhigh" # the one hard step</code></pre>
+
+    <h2>How to actually decide your effort settings</h2>
+
+    <p>Here's the playbook I'd run against any agent workload after this launch:</p>
+
+    <ol>
+        <li><strong>Profile before you tune.</strong> Instrument your agent loop and record cost per step. If you don't know what a median step costs at your current effort setting, you're not optimizing, you're guessing.</li>
+        <li><strong>Drop the default to low or medium for routine steps.</strong> Willison's data and Anthropic's curves both show the bottom of the dial is dramatically cheaper with minimal quality loss on ordinary tasks.</li>
+        <li><strong>Reserve xhigh and max for the steps that fail without them.</strong> Treat the top of the dial like a scarce resource: verification passes, architecture decisions, the one gnarly bug. The 26.3% → 52.6% jump on Anthropic's science benchmark was bought with a 3.4× cost increase — pay it only where failure is expensive.</li>
+        <li><strong>Re-run your evals per effort level, not just per model.</strong> A model comparison at mismatched effort settings is a comparison of different products. If your eval suite doesn't pin effort, your leaderboard is noise.</li>
+        <li><strong>Check your cache-read ratio.</strong> If cache reads are less than a third of your agent's spend, you're leaving the new discount on the table — which usually means your loop isn't structuring prompts for cache hits (stable system prompts, stable tool definitions, append-only history).</li>
+    </ol>
+
+    <blockquote>
+        <p>The teams that win on agent economics in the next year won't be the ones that picked the "best" model. They'll be the ones that treat reasoning effort, cache structure, and per-step routing as engineering parameters — because that's what they now are.</p>
+    </blockquote>
+
+    <hr>
+
+    <h2>The takeaway</h2>
+
+    <p>The benchmarks are real, and for scientific coding work the leap is genuinely large — 52.6% versus the mid-20s for everything else Anthropic tested. But the durable lesson of this launch is structural. The unit of pricing is no longer the token; it's the <strong>token-times-effort</strong>. The interesting number is no longer the rate card; it's the shape of your workload against the dial and the cache.</p>
+
+    <p>Anthropic kept the sticker price frozen and rebuilt the bill underneath it — around exactly the workload shape (long, cached, agentic) that its enterprise customers are scaling. Watch for the effort dial to show up across the rest of their model family, and watch competitors respond in kind. The next price war won't be fought on dollars per million tokens. It'll be fought on dollars per <em>solved task</em> — and this launch is the first time a frontier lab has given developers real knobs to fight it themselves.</p>
+
+    <hr>
+
+    <h2>Sources</h2>
+    <ul>
+        <li><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1">Anthropic — Claude Fable 5.1 and Mythos 5.1 announcement (Sep 1, 2026)</a> — pricing, savings figures, EFS, safeguards, effort defaults, Terminal-Bench-Science / HLE / CursorBench / OSWorld results</li>
+        <li><a href="https://platform.claude.com/docs/en/models/fable-5-1/overview">Claude Fable 5.1 model docs</a> — model IDs, 1M context / 128K output, June 2026 knowledge cutoff, breaking and additive changes</li>
+        <li><a href="https://www.anthropic.com/document/claude-fable-5-1-mythos-5-1-system-card">Fable 5.1 / Mythos 5.1 system card</a></li>
+        <li><a href="https://simonwillison.net/2026/Sep/1/claude-fable-5-1/">Simon Willison — Claude Fable 5.1 made me a really nice animated pelican (Sep 1, 2026)</a> — independent per-effort cost measurements</li>
+        <li><a href="https://news.ycombinator.com/item?id=49525378">Hacker News discussion (1,300+ comments)</a></li>
+    </ul>
+</article>
+</body>
+</html>

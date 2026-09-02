@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="780" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">Where the 25% and 45% Savings Actually Come From</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">Indexed cost of identical workloads, Fable 5 = 100 · four weeks of real August 2026 usage, Anthropic-measured</text>
+
+  <!-- legend -->
+  <rect x="430" y="118" width="18" height="18" rx="3" fill="#fbbf24"/>
+  <text x="456" y="133" font-size="15" fill="#e2e8f0">Cache reads</text>
+  <rect x="600" y="118" width="18" height="18" rx="3" fill="#475569"/>
+  <text x="626" y="133" font-size="15" fill="#e2e8f0">All other tokens</text>
+
+  <!-- baseline -->
+  <line x1="120" y1="600" x2="1320" y2="600" stroke="#334155" stroke-width="2"/>
+
+  <!-- ===== Typical workload group (centered ~390) ===== -->
+  <text x="390" y="150" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">Typical workload</text>
+  <!-- Fable 5: other 60 (252px), cache 40 (168px), total 420px, base 600 -->
+  <rect x="270" y="348" width="180" height="252" fill="#475569"/>
+  <rect x="270" y="180" width="180" height="168" fill="#fbbf24"/>
+  <text x="360" y="170" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">100</text>
+  <text x="360" y="628" text-anchor="middle" font-size="15" fill="#94a3b8">Fable 5</text>
+  <!-- segment labels -->
+  <text x="360" y="483" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="600">60</text>
+  <text x="360" y="272" text-anchor="middle" font-size="14" fill="#78350f" font-weight="700">40</text>
+
+  <!-- Fable 5.1: other 64 (269px), cache 11 (46px), total 315px -->
+  <rect x="530" y="285" width="180" height="269" fill="#475569"/>
+  <rect x="530" y="239" width="180" height="46" fill="#fbbf24"/>
+  <text x="620" y="228" text-anchor="middle" font-size="18" font-weight="700" fill="#34d399">75</text>
+  <text x="620" y="628" text-anchor="middle" font-size="15" fill="#94a3b8">Fable 5.1</text>
+  <text x="620" y="428" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="600">64</text>
+  <text x="620" y="268" text-anchor="middle" font-size="13" fill="#78350f" font-weight="700">11</text>
+  <text x="620" y="656" text-anchor="middle" font-size="14" fill="#34d399" font-weight="600">~25% less</text>
+
+  <!-- ===== Agentic workload group (centered ~1050) ===== -->
+  <text x="1050" y="150" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">Highly agentic workload</text>
+  <!-- Fable 5: other 35 (147px), cache 65 (273px), total 420px -->
+  <rect x="930" y="453" width="180" height="147" fill="#475569"/>
+  <rect x="930" y="180" width="180" height="273" fill="#fbbf24"/>
+  <text x="1020" y="170" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">100</text>
+  <text x="1020" y="628" text-anchor="middle" font-size="15" fill="#94a3b8">Fable 5</text>
+  <text x="1020" y="535" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="600">35</text>
+  <text x="1020" y="325" text-anchor="middle" font-size="14" fill="#78350f" font-weight="700">65</text>
+
+  <!-- Fable 5.1: other 38 (160px), cache 17 (71px), total 231px -->
+  <rect x="1190" y="440" width="180" height="160" fill="#475569"/>
+  <rect x="1190" y="369" width="180" height="71" fill="#fbbf24"/>
+  <text x="1280" y="358" text-anchor="middle" font-size="18" font-weight="700" fill="#a78bfa">55</text>
+  <text x="1280" y="628" text-anchor="middle" font-size="15" fill="#94a3b8">Fable 5.1</text>
+  <text x="1280" y="528" text-anchor="middle" font-size="14" fill="#e2e8f0" font-weight="600">38</text>
+  <text x="1280" y="411" text-anchor="middle" font-size="13" fill="#78350f" font-weight="700">17</text>
+  <text x="1280" y="656" text-anchor="middle" font-size="14" fill="#a78bfa" font-weight="600">~45% less</text>
+
+  <!-- insight card -->
+  <rect x="120" y="690" width="1200" height="66" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="720" y="718" text-anchor="middle" font-size="16" fill="#fbbf24" font-weight="600">In tool-heavy agent loops, cache reads were 65% of the bill. Anthropic cut the unit price 75% — $1.00 → $0.25 per MTok —</text>
+  <text x="720" y="742" text-anchor="middle" font-size="16" fill="#fbbf24" font-weight="600">and left the $10/$50 sticker price untouched. The discount is aimed exactly at people running agents.</text>
+</svg>

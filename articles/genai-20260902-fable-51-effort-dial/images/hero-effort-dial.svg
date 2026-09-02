@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="dialGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f87171"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="820" fill="#0f172a"/>
+
+  <text x="720" y="62" text-anchor="middle" font-size="36" font-weight="700" fill="#f1f5f9">One Model, Five Price Points</text>
+  <text x="720" y="98" text-anchor="middle" font-size="20" fill="#94a3b8">Claude Fable 5.1 — list price unchanged, but the effort dial and cache pricing redraw the bill</text>
+
+  <!-- Left: model card -->
+  <rect x="70" y="140" width="350" height="290" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="95" y="178" font-size="21" font-weight="700" fill="#22d3ee">Claude Fable 5.1</text>
+  <text x="95" y="204" font-size="14" fill="#64748b">released September 1, 2026</text>
+  <text x="95" y="242" font-size="15" fill="#94a3b8">Model ID</text>
+  <text x="95" y="266" font-size="16" fill="#e2e8f0" font-family="JetBrains Mono, monospace">claude-fable-5-1</text>
+  <text x="95" y="304" font-size="15" fill="#94a3b8">Context window</text>
+  <text x="398" y="304" text-anchor="end" font-size="16" font-weight="600" fill="#e2e8f0">1M tokens</text>
+  <text x="95" y="332" font-size="15" fill="#94a3b8">Max output</text>
+  <text x="398" y="332" text-anchor="end" font-size="16" font-weight="600" fill="#e2e8f0">128K tokens</text>
+  <text x="95" y="360" font-size="15" fill="#94a3b8">List price</text>
+  <text x="398" y="360" text-anchor="end" font-size="16" font-weight="600" fill="#e2e8f0">$10 / $50 per MTok</text>
+  <text x="95" y="388" font-size="15" fill="#94a3b8">Thinking</text>
+  <text x="398" y="388" text-anchor="end" font-size="16" font-weight="600" fill="#e2e8f0">adaptive, always on</text>
+  <text x="95" y="416" font-size="13" fill="#64748b">price unchanged vs Fable 5</text>
+
+  <!-- Right: effort slider -->
+  <text x="1075" y="178" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">The effort dial (per message)</text>
+  <text x="1075" y="204" text-anchor="middle" font-size="14" fill="#64748b">one identical prompt, cost measured by Simon Willison, Sep 1 2026</text>
+
+  <line x1="880" y1="300" x2="1270" y2="300" stroke="url(#dialGrad)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- dial stops: low, med, high, xhigh, max -->
+  <g font-size="14">
+    <circle cx="880" cy="300" r="11" fill="#22d3ee"/>
+    <text x="880" y="272" text-anchor="middle" fill="#e2e8f0" font-weight="600">low</text>
+    <text x="880" y="336" text-anchor="middle" fill="#22d3ee" font-weight="700" font-size="17">$0.10</text>
+    <text x="880" y="358" text-anchor="middle" fill="#94a3b8" font-size="12">~24s</text>
+
+    <circle cx="977" cy="300" r="11" fill="#34d399"/>
+    <text x="977" y="272" text-anchor="middle" fill="#e2e8f0" font-weight="600">medium</text>
+    <text x="977" y="336" text-anchor="middle" fill="#34d399" font-weight="700" font-size="17">$0.10</text>
+    <text x="977" y="358" text-anchor="middle" fill="#94a3b8" font-size="12">~23s</text>
+
+    <circle cx="1075" cy="300" r="11" fill="#a78bfa"/>
+    <text x="1075" y="272" text-anchor="middle" fill="#e2e8f0" font-weight="600">high</text>
+    <text x="1075" y="336" text-anchor="middle" fill="#a78bfa" font-weight="700" font-size="17">$0.13</text>
+    <text x="1075" y="358" text-anchor="middle" fill="#94a3b8" font-size="12">~30s</text>
+
+    <circle cx="1172" cy="300" r="11" fill="#fbbf24"/>
+    <text x="1172" y="272" text-anchor="middle" fill="#e2e8f0" font-weight="600">xhigh</text>
+    <text x="1172" y="336" text-anchor="middle" fill="#fbbf24" font-weight="700" font-size="17">$1.83</text>
+    <text x="1172" y="358" text-anchor="middle" fill="#94a3b8" font-size="12">7m 51s</text>
+
+    <circle cx="1270" cy="300" r="11" fill="#f87171"/>
+    <text x="1270" y="272" text-anchor="middle" fill="#e2e8f0" font-weight="600">max</text>
+    <text x="1270" y="336" text-anchor="middle" fill="#f87171" font-weight="700" font-size="17">$3.30</text>
+    <text x="1270" y="358" text-anchor="middle" fill="#94a3b8" font-size="12">13m 54s</text>
+  </g>
+
+  <!-- 33x bracket -->
+  <path d="M 880 390 L 880 410 L 1270 410 L 1270 390" fill="none" stroke="#f87171" stroke-width="2" marker-start="url(#arrow)"/>
+  <text x="1075" y="438" text-anchor="middle" font-size="18" font-weight="700" fill="#f87171">same prompt, 33× cost spread</text>
+  <text x="1075" y="462" text-anchor="middle" font-size="13" fill="#64748b">output tokens: ~2,000 at low vs 65,927 at max</text>
+
+  <!-- bottom stat cards -->
+  <g>
+    <rect x="70" y="520" width="410" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="275" y="580" text-anchor="middle" font-size="40" font-weight="700" fill="#34d399">−75%</text>
+    <text x="275" y="614" text-anchor="middle" font-size="16" fill="#e2e8f0">cache reads</text>
+    <text x="275" y="640" text-anchor="middle" font-size="14" fill="#94a3b8">$1.00 → $0.25 per MTok</text>
+
+    <rect x="515" y="520" width="410" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="720" y="580" text-anchor="middle" font-size="40" font-weight="700" fill="#22d3ee">−25%</text>
+    <text x="720" y="614" text-anchor="middle" font-size="16" fill="#e2e8f0">typical workloads</text>
+    <text x="720" y="640" text-anchor="middle" font-size="14" fill="#94a3b8">indexed cost 100 → 75</text>
+
+    <rect x="960" y="520" width="410" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1165" y="580" text-anchor="middle" font-size="40" font-weight="700" fill="#a78bfa">−45%</text>
+    <text x="1165" y="614" text-anchor="middle" font-size="16" fill="#e2e8f0">highly agentic workloads</text>
+    <text x="1165" y="640" text-anchor="middle" font-size="14" fill="#94a3b8">indexed cost 100 → 55</text>
+  </g>
+
+  <rect x="70" y="706" width="1300" height="58" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="741" text-anchor="middle" font-size="16" fill="#fbbf24" font-weight="600">Default effort: Claude Code = high · Claude.ai and Cowork = medium — same model, different default bill</text>
+
+  <text x="720" y="798" text-anchor="middle" font-size="12" fill="#475569">Sources: anthropic.com launch post (Sep 1, 2026); per-prompt effort costs from Simon Willison's independent testing</text>
+</svg>
