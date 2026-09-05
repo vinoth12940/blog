@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="820" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">The Leap Is Cyber-Specific, Not General</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">GPT-5.6 Sol vs GPT-6 Astra — real zero-day exploitation up ~10x, general intelligence roughly flat</text>
+
+  <!-- ============ LEFT PANEL: real exploitation ============ -->
+  <text x="390" y="150" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">Real exploitation success rate</text>
+  <text x="390" y="176" text-anchor="middle" font-size="14" fill="#94a3b8">OpenAI system card + Irregular Security evals</text>
+
+  <!-- baseline -->
+  <line x1="140" y1="620" x2="660" y2="620" stroke="#334155" stroke-width="2"/>
+
+  <!-- group 1: ExploitBench (center x=260) -->
+  <!-- Sol: 4.5% -> 34px ; Astra: 45.5% -> 346px ; scale 50% = 380px -->
+  <rect x="210" y="586" width="46" height="34" fill="#475569"/>
+  <rect x="274" y="274" width="46" height="346" fill="#f87171"/>
+  <text x="233" y="572" text-anchor="middle" font-size="15" font-weight="600" fill="#94a3b8">4.5%</text>
+  <text x="297" y="260" text-anchor="middle" font-size="16" font-weight="700" fill="#f87171">45.5%</text>
+  <text x="260" y="652" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">ExploitBench</text>
+  <text x="260" y="674" text-anchor="middle" font-size="13" fill="#94a3b8">zero-day CTF targets</text>
+  <text x="260" y="692" text-anchor="middle" font-size="13" fill="#94a3b8">1/22 vs 10/22 solved</text>
+
+  <!-- group 2: FrontierCyber (center x=520) -->
+  <!-- Sol: 15.0% -> 114px ; Astra: 38.1% -> 290px -->
+  <rect x="470" y="506" width="46" height="114" fill="#475569"/>
+  <rect x="534" y="330" width="46" height="290" fill="#f87171"/>
+  <text x="493" y="492" text-anchor="middle" font-size="15" font-weight="600" fill="#94a3b8">15.0%</text>
+  <text x="557" y="316" text-anchor="middle" font-size="16" font-weight="700" fill="#f87171">38.1%</text>
+  <text x="520" y="652" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">FrontierCyber</text>
+  <text x="520" y="674" text-anchor="middle" font-size="13" fill="#94a3b8">real software + hardware</text>
+  <text x="520" y="692" text-anchor="middle" font-size="13" fill="#94a3b8">34/226 vs 86/226</text>
+
+  <!-- 10x badge -->
+  <rect x="180" y="200" width="200" height="44" rx="22" fill="#1e293b" stroke="#f8717180" stroke-width="1.5"/>
+  <text x="280" y="229" text-anchor="middle" font-size="17" font-weight="700" fill="#f87171">10x on ExploitBench</text>
+
+  <!-- ============ RIGHT PANEL: independent indexes ============ -->
+  <text x="1050" y="150" text-anchor="middle" font-size="20" font-weight="700" fill="#f1f5f9">Independent indexes (Artificial Analysis)</text>
+  <text x="1050" y="176" text-anchor="middle" font-size="14" fill="#94a3b8">Not the lab's own numbers — third-party harnesses</text>
+
+  <!-- baseline -->
+  <line x1="790" y1="620" x2="1310" y2="620" stroke="#334155" stroke-width="2"/>
+
+  <!-- group 1: Intelligence Index (center x=920) ; scale 80 = 380px -->
+  <!-- Sol 61 -> 290px ; Astra 61 -> 290px -->
+  <rect x="870" y="330" width="46" height="290" fill="#475569"/>
+  <rect x="934" y="330" width="46" height="290" fill="#22d3ee"/>
+  <text x="893" y="316" text-anchor="middle" font-size="15" font-weight="600" fill="#94a3b8">61</text>
+  <text x="957" y="316" text-anchor="middle" font-size="15" font-weight="600" fill="#22d3ee">61</text>
+  <text x="920" y="652" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">Intelligence Index</text>
+  <text x="920" y="674" text-anchor="middle" font-size="13" fill="#94a3b8">equal to predecessor;</text>
+  <text x="920" y="692" text-anchor="middle" font-size="13" fill="#94a3b8">5 points behind Fable 5.1</text>
+
+  <!-- group 2: Coding Agent Index (center x=1180) -->
+  <!-- Sol 65 -> 309px ; Astra 67 -> 318px -->
+  <rect x="1130" y="311" width="46" height="309" fill="#475569"/>
+  <rect x="1194" y="302" width="46" height="318" fill="#22d3ee"/>
+  <text x="1153" y="297" text-anchor="middle" font-size="15" font-weight="600" fill="#94a3b8">65</text>
+  <text x="1217" y="288" text-anchor="middle" font-size="15" font-weight="600" fill="#22d3ee">67</text>
+  <text x="1180" y="652" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">Coding Agent Index</text>
+  <text x="1180" y="674" text-anchor="middle" font-size="13" fill="#94a3b8">+2; ties Opus 5 and Fable 5;</text>
+  <text x="1180" y="692" text-anchor="middle" font-size="13" fill="#94a3b8">Fable 5.1 leads at 70</text>
+
+  <!-- flat badge -->
+  <rect x="840" y="200" width="170" height="44" rx="22" fill="#1e293b" stroke="#22d3ee80" stroke-width="1.5"/>
+  <text x="925" y="229" text-anchor="middle" font-size="17" font-weight="700" fill="#22d3ee">Flat, not a leap</text>
+
+  <!-- legend -->
+  <rect x="430" y="740" width="18" height="18" rx="3" fill="#475569"/>
+  <text x="456" y="755" font-size="15" fill="#e2e8f0">GPT-5.6 Sol</text>
+  <rect x="580" y="740" width="18" height="18" rx="3" fill="#f87171"/>
+  <text x="606" y="755" font-size="15" fill="#e2e8f0">GPT-6 Astra (cyber evals)</text>
+  <rect x="830" y="740" width="18" height="18" rx="3" fill="#22d3ee"/>
+  <text x="856" y="755" font-size="15" fill="#e2e8f0">GPT-6 Astra (general indexes)</text>
+
+  <text x="720" y="798" text-anchor="middle" font-size="13" fill="#64748b">ExploitBench targets are real zero-days — OpenAI is withholding details while coordinating disclosure with affected vendors</text>
+</svg>

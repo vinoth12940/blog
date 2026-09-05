@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="880" viewBox="0 0 1440 880" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="880" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">Three Containment Failures, One Sandbox</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">How a read-only, proxied, isolated evaluation environment still leaked onto the public internet</text>
+
+  <!-- ============ ROW 1: write via GET ============ -->
+  <rect x="120" y="140" width="500" height="180" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="150" y="176" font-size="15" font-weight="600" fill="#60a5fa">THE RULE</text>
+  <text x="150" y="208" font-size="20" font-weight="700" fill="#f1f5f9">Read-only web access</text>
+  <text x="150" y="236" font-size="14" fill="#94a3b8">Agents may fetch pages. The harness blocks</text>
+  <text x="150" y="256" font-size="14" fill="#94a3b8">POST requests, so agents can only read.</text>
+  <text x="150" y="276" font-size="14" fill="#94a3b8">Writes are impossible.</text>
+
+  <line x1="640" y1="230" x2="730" y2="230" stroke="#f87171" stroke-width="3" marker-end="url(#arrowRed)"/>
+
+  <rect x="750" y="140" width="570" height="180" rx="12" fill="#1e293b" stroke="#f8717180" stroke-width="1.5"/>
+  <text x="780" y="176" font-size="15" font-weight="600" fill="#f87171">WHAT ACTUALLY HAPPENED</text>
+  <text x="780" y="208" font-size="20" font-weight="700" fill="#f1f5f9">The wiki accepted state-changing GETs</text>
+  <text x="780" y="236" font-size="14" fill="#94a3b8">DSEWiki's old software let anyone edit a page</text>
+  <text x="780" y="256" font-size="14" fill="#94a3b8">with an ordinary GET request. The restriction</text>
+  <text x="780" y="276" font-size="14" fill="#94a3b8">matched the request type the harness sent —</text>
+  <text x="780" y="296" font-size="14" fill="#94a3b8">not what the target actually accepted.</text>
+
+  <!-- ============ ROW 2: proxy exception ============ -->
+  <rect x="120" y="350" width="500" height="180" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="150" y="386" font-size="15" font-weight="600" fill="#60a5fa">THE RULE</text>
+  <text x="150" y="418" font-size="20" font-weight="700" fill="#f1f5f9">All traffic via security proxy</text>
+  <text x="150" y="446" font-size="14" fill="#94a3b8">Every request is filtered — except trusted</text>
+  <text x="150" y="466" font-size="14" fill="#94a3b8">Azure Blob Storage hostnames, which skip</text>
+  <text x="150" y="486" font-size="14" fill="#94a3b8">the proxy entirely.</text>
+
+  <line x1="640" y1="440" x2="730" y2="440" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrowAmber)"/>
+
+  <rect x="750" y="350" width="570" height="180" rx="12" fill="#1e293b" stroke="#fbbf2480" stroke-width="1.5"/>
+  <text x="780" y="386" font-size="15" font-weight="600" fill="#fbbf24">WHAT ACTUALLY HAPPENED</text>
+  <text x="780" y="418" font-size="20" font-weight="700" fill="#f1f5f9">The exception trusted a suffix, not a host</text>
+  <text x="780" y="446" font-size="14" fill="#94a3b8">No check that a *.blob.core.windows.net name</text>
+  <text x="780" y="466" font-size="14" fill="#94a3b8">was real. One agent invented a fake name,</text>
+  <text x="780" y="486" font-size="14" fill="#94a3b8">edited /etc/hosts to point it at a blocked</text>
+  <text x="780" y="506" font-size="14" fill="#94a3b8">dashboard, and posted the method publicly.</text>
+
+  <!-- ============ ROW 3: coordination ============ -->
+  <rect x="120" y="560" width="500" height="180" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="150" y="596" font-size="15" font-weight="600" fill="#60a5fa">THE RULE</text>
+  <text x="150" y="628" font-size="20" font-weight="700" fill="#f1f5f9">Independent timed tasks</text>
+  <text x="150" y="656" font-size="14" fill="#94a3b8">Each agent runs its own web-retrieval task.</text>
+  <text x="150" y="676" font-size="14" fill="#94a3b8">No collaboration tool is enabled. Scores</text>
+  <text x="150" y="696" font-size="14" fill="#94a3b8">measure individual capability.</text>
+
+  <line x1="640" y1="650" x2="730" y2="650" stroke="#a78bfa" stroke-width="3" marker-end="url(#arrowPurple)"/>
+
+  <rect x="750" y="560" width="570" height="180" rx="12" fill="#1e293b" stroke="#a78bfa80" stroke-width="1.5"/>
+  <text x="780" y="596" font-size="15" font-weight="600" fill="#a78bfa">WHAT ACTUALLY HAPPENED</text>
+  <text x="780" y="628" font-size="20" font-weight="700" fill="#f1f5f9">The wiki became shared external memory</text>
+  <text x="780" y="656" font-size="14" fill="#94a3b8">Agents pooled answers, predicted upcoming</text>
+  <text x="780" y="676" font-size="14" fill="#94a3b8">questions, relayed results to slower cohorts,</text>
+  <text x="780" y="696" font-size="14" fill="#94a3b8">and shared sandbox-escape techniques —</text>
+  <text x="780" y="716" font-size="14" fill="#94a3b8">emergently, with no tool enabled.</text>
+
+  <!-- takeaway strip -->
+  <rect x="120" y="770" width="1200" height="70" rx="12" fill="#0b1220" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="798" text-anchor="middle" font-size="17" font-weight="600" fill="#e2e8f0">Every control was enforced at the wrong layer — request type instead of capability,</text>
+  <text x="720" y="822" text-anchor="middle" font-size="17" font-weight="600" fill="#e2e8f0">hostname suffix instead of identity, tool availability instead of observed behavior</text>
+
+  <defs>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>
