@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Gave My AI Agent Ears on Linux: Five Audio Bugs Between a Bluetooth Headset and a Self-Hosted Assistant</title>
+    <meta name="description" content="Fixing MediaTek MT7902 Wi-Fi and Bluetooth in place on Linux Mint — then chasing five audio bugs between a Bluetooth headset and a self-hosted agent. Every one found by measuring, not guessing.">
+    <meta property="og:title" content="I Gave My AI Agent Ears on Linux: Five Audio Bugs Between a Bluetooth Headset and a Self-Hosted Assistant">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-09-14">
+    <meta property="og:description" content="Three radio fixes, five audio bugs, zero reinstalls. A measurement-first debugging story about giving a self-hosted AI agent a voice — and ears.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/mt7902-wifi-bluetooth-hermes-voice-linux-mint/images/hero-fix-path.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        article { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
+        pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
+        blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
+        blockquote p { color: #c4b5fd; margin-bottom: 0; }
+        ul, ol { margin: 1rem 0 1.5rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        li strong { color: #e5e5e5; }
+        hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
+        .img-container { margin: 2rem 0; }
+        .img-container img { width: 100%; border-radius: 12px; }
+        .caption { text-align: center; color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
+        .stat-card .number { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-card .label { font-size: 0.85rem; color: #9ca3af; }
+    </style>
+</head>
+<body>
+<article>
+    <h1>I Gave My AI Agent Ears on Linux: Five Audio Bugs Between a Bluetooth Headset and a Self-Hosted Assistant</h1>
+    <div class="meta">September 14, 2026 &middot; 11 min read &middot; Self-Hosting, Linux, Voice Assistants</div>
+
+    <div class="img-container">
+        <img src="images/hero-fix-path.png" alt="Three-panel diagram: the three MT7902 radio fixes (firmware, out-of-tree mt76 Wi-Fi, one-line Bluetooth USB ID patch), the five audio bugs between the headset and the agent, and the measurement-first proof techniques that verified the whole voice pipeline end to end">
+        <p class="caption">Three radio fixes, five audio bugs. Every single one found by measuring, not guessing.</p>
+    </div>
+
+    <p>My home server had been up for 46 days straight. It runs an AI agent gateway, a dashboard, a self-hosted search stack in Docker, a couple of Caddy sites, Tailscale, and seven Telegram bot profiles. It briefs me on markets every morning and publishes articles on a schedule. One thing it had never done, not once since the day I plugged it in: connect to Wi-Fi or Bluetooth.</p>
+
+    <p>The radios were dead from day one. Ethernet carried everything, and servers love Ethernet &mdash; but I'd been circling a bigger goal: walk into the room, say "hey hermes," and hear the answer in a Bluetooth headset. A voice assistant that can't hear you and can't talk back is just a server with opinions.</p>
+
+    <p>So I set aside a weekend to fix it. The plan was: get the radios working, pair a headset, done by lunch. The radios took three fixes. The headset took five more bugs, stacked like a bad lasagna. Every single one was found by measuring, not guessing &mdash; and that's the part worth writing down.</p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="number">3 + 5</div>
+            <div class="label">distinct bugs: three to bring the radios up, five more between the paired headset and the agent</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">1 line</div>
+            <div class="label">the Bluetooth fix &mdash; a missing USB device entry in the driver's quirk table</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">46 days</div>
+            <div class="label">of gateway uptime that survived the whole weekend &mdash; no reinstall, no reboot</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">~600 Mb/s</div>
+            <div class="label">the Wi-Fi 6 backup link that came up once the right driver met the right firmware</div>
+        </div>
+    </div>
+
+    <h2>First, the Temptation: Wipe It and Reinstall</h2>
+
+    <p>When Wi-Fi doesn't work on Linux, the reflex is: newer distro, newer kernel, problem gone. My first idea was exactly that &mdash; wipe the box and move to Omarchy, DHH's Arch + Hyprland setup, betting that a fresher kernel would handle the radios.</p>
+
+    <p>I'm glad I didn't. Three reasons, in increasing order of importance:</p>
+
+    <ul>
+        <li><strong>It needs physical presence.</strong> USB stick, disk wipe, hands on the machine. This server runs live services around the clock; it had 46 days of uptime for a reason.</li>
+        <li><strong>Omarchy is Wayland-only.</strong> My agent's computer-use and voice tooling hangs off the X11 desktop session. I'd have traded a radio problem for a display-server problem.</li>
+        <li><strong>A new distro only really buys you a newer kernel and newer firmware</strong> &mdash; and both of those can be replaced in place, without touching anything else.</li>
+    </ul>
+
+    <blockquote>
+        <p>Before you change distros over a hardware problem, identify the actual chip. <code>lspci</code> and <code>lsusb</code> cost nothing. A reinstall costs you a weekend and a restore-from-backup evening.</p>
+    </blockquote>
+
+    <h2>The Chip Wasn't the Chip I Assumed</h2>
+
+    <p>AMD mini PCs of this class usually ship a MediaTek MT7922 &mdash; well supported, boring, works everywhere. Mine didn't. <code>lspci -nn</code> showed PCI ID <code>14c3:7902</code>, and <code>lsusb</code> showed the Bluetooth half at <code>0e8d:7902</code>. That's an <strong>MT7902</strong>, a newer part, and the difference matters:</p>
+
+    <ul>
+        <li>No kernel installed on the machine &mdash; including the 7.0 series sitting in /boot &mdash; listed <code>14c3:7902</code> in <code>mt7921e</code>'s module aliases. MT7902 support landed upstream in Linux 7.1.</li>
+        <li>The distro's <code>linux-firmware</code> package was a 2024-03 snapshot. The MT7902 firmware blobs only shipped in the 2026-03 firmware release.</li>
+        <li>Bluetooth was the saddest part: the controller reported an all-zeros address, sat DOWN, and the in-tree driver logged <code>Unsupported hardware variant (00007902)</code>.</li>
+    </ul>
+
+    <p>So: no driver that knows the chip, and no firmware for the chip. Nothing a reinstall of the same distro generation would have fixed &mdash; the parts simply hadn't shipped yet. Here's how each gap got closed, in place.</p>
+
+    <h2>Fix One: The Firmware Was Never There</h2>
+
+    <p>Three blobs from kernel.org's <code>linux-firmware</code> tree, copied into <code>/lib/firmware/mediatek/</code>:</p>
+
+<pre><code>WIFI_MT7902_patch_mcu_1_1_hdr.bin
+WIFI_RAM_CODE_MT7902_1.bin
+BT_RAM_CODE_MT7902_1_1_hdr.bin</code></pre>
+
+    <p>I verified the hashes matched the copies in the community driver repo before trusting them. Firmware alone won't bind a driver that doesn't know the device &mdash; but nothing downstream works without it.</p>
+
+    <h2>Fix Two: Wi-Fi via an Out-of-Tree mt76 Build</h2>
+
+    <p>The first repo I found, hmtheboy154/mt7902, turned out to be archived &mdash; and it pointed at <strong>morrownr/mt76</strong>, an actively maintained out-of-tree build of MediaTek's mt76 stack covering kernels 6.12 through 7.2.</p>
+
+    <p>Rule I keep on my own servers: review before you run. The Makefile and install scripts do exactly what they should &mdash; build, install, depmod, blacklist the in-tree mt76 modules, rebuild the initramfs. No network calls, nothing cute. I pinned it to a specific commit anyway.</p>
+
+    <p>One prerequisite the installer expects: <code>iw</code>. Then a normal DKMS install produced 26 modules (<code>mt7921e_git</code> and friends) plus blacklist entries for the in-tree versions, and:</p>
+
+<pre><code>sudo modprobe mt7921e_git</code></pre>
+
+    <p>Firmware loaded. <code>wlp3s0</code> appeared. <strong>No reboot.</strong> A scan saw both 2.4 and 5 GHz networks, and the link that came up was 5 GHz, 80 MHz, roughly 600 Mbit/s HE &mdash; Wi-Fi 6, at strong signal.</p>
+
+    <p>Two durability touches worth copying:</p>
+
+    <ul>
+        <li>I set a higher route metric so Ethernet stays primary and Wi-Fi behaves as a pure automatic backup link.</li>
+        <li>DKMS built the module for every installed kernel &mdash; the 6.17 pair and the 7.0 one &mdash; so a kernel update doesn't silently take the backup link out.</li>
+    </ul>
+
+    <h2>Fix Three: Bluetooth, and the One Missing USB ID</h2>
+
+    <p>Bluetooth needed a different repo: the <code>bluetooth_backport</code> branch of hmtheboy154/mt7902 &mdash; <code>btusb</code> and <code>btmtk</code> carrying MediaTek's upstream MT7902 patches, installed via DKMS. Two gotchas from the field notes:</p>
+
+    <ul>
+        <li><strong>Blacklist one module per line.</strong> <code>blacklist btusb</code> and <code>blacklist btmtk</code> as separate lines &mdash; the single-line form in the README doesn't take.</li>
+        <li>The backport only supports kernels 6.6&ndash;6.19, so I added <code>BUILD_EXCLUSIVE_KERNEL="^6\."</code> to its dkms.conf to stop doomed build attempts against 7.x kernels.</li>
+    </ul>
+
+    <p>And it still failed: <code>Opcode 0x0c03 failed: -110</code>. An HCI Reset timing out.</p>
+
+    <p>This is my favorite bug of the whole story. The driver's USB ID table for MT7902 hardware listed a stack of third-party module integrations &mdash; <code>13d3:3579</code>, <code>13d3:3580</code>, <code>13d3:3594</code>, <code>13d3:3596</code>, <code>0e8d:1ede</code> &mdash; but <strong>not MediaTek's own <code>0e8d:7902</code></strong>, which is the ID this mini PC actually presents. Without a matching entry, the chip never gets the <code>BTUSB_MEDIATEK</code> quirk, so the kernel treats a MediaTek chip as generic Bluetooth: no firmware load, no reset, timeout.</p>
+
+    <p>The fix is one line in the quirks table:</p>
+
+<pre><code>{ USB_DEVICE(0x0e8d, 0x7902), .driver_info = BTUSB_MEDIATEK | BTUSB_WIDEBAND_SPEECH },</code></pre>
+
+    <p>Rebuild, replug, and the controller came up immediately &mdash; a real address, and it started discovering devices in the room.</p>
+
+    <blockquote>
+        <p>"Unsupported hardware variant" can literally mean "nobody added your USB ID yet." When a driver ignores your hardware, read its ID tables before you assume the hardware is broken.</p>
+    </blockquote>
+
+    <p>One honest caveat: this works on 6.x kernels. On the 7.0 kernel, only Wi-Fi works until Mint ships 7.1. When 7.1+ lands, the correct move is to remove both DKMS drivers and the blacklists and let the in-tree support take over.</p>
+
+    <h2>Then the Hard Part: The Assistant Still Couldn't Hear Me</h2>
+
+    <p>Radios up, headset paired &mdash; a standard Bluetooth headset (EH02). Pairing took a minute. Then I said "hey hermes" and got nothing. Or Hermes answered and the headset stayed silent. What followed were five separate bugs, none of them findable by staring at config files. Each one only showed up when I measured something.</p>
+
+    <h3>Bug 1: Two audio servers fighting over one headset</h3>
+
+    <p>The desktop user's PipeWire and the service user's PipeWire (a lingering session) each built their own Bluetooth card for the same headset &mdash; one in HFP headset mode, one in A2DP. Two owners, one device, chaos. The fix: disable the BlueZ monitor in the service user's WirePlumber (<code>bluetooth.lua.d/90-disable-bluez.lua</code> with <code>bluez_monitor.enabled = false</code>), so exactly one audio server owns the headset.</p>
+
+    <h3>Bug 2: An old .asoundrc, aimed at an empty jack</h3>
+
+    <p>This was the real "no sound" bug. The service user's ALSA config forced <code>pcm.!default</code> to <code>plughw:1,0</code> &mdash; the mini PC's analog headphone jack. Which has nothing plugged into it. Hermes plays beeps and TTS through the <em>default</em> device, so every reply was being faithfully rendered into an unplugged port.</p>
+
+    <p>The proof: requesting the <code>default</code> device created no stream anywhere on the audio server, while <code>pulse</code> did. One line fixes it:</p>
+
+<pre><code>pcm.!default { type pulse }</code></pre>
+
+    <p>If your ALSA default bypasses PipeWire, no amount of correct PipeWire configuration will save you.</p>
+
+    <h3>Bug 3: The wake word was pinned to a device index</h3>
+
+    <p><code>wake_word.input_device: 8</code> worked &mdash; until a Bluetooth device connected and PortAudio's indices shifted underneath it. Device indices are born unstable; names aren't. I switched the config to the stable name <code>pulse</code>, and pinned the wake word to the TUI surface because the dashboard was also trying &mdash; and failing &mdash; to grab the mic every few minutes.</p>
+
+    <h3>Bug 4: Socket permissions that quietly reset themselves</h3>
+
+    <p>The voice service reaches the desktop user's PulseAudio socket, and the socket directory's permissions were observed resetting to 0700, making restarts fail with "PulseAudio socket never appeared." A systemd drop-in with a root <code>ExecStartPre=+</code> re-applies the access before every start. Boring, durable, done.</p>
+
+    <h3>Bug 5: A silence threshold inside the speech band</h3>
+
+    <p>Hermes' end-of-speech threshold was 200. Then I measured real audio from the headset: speech windows ran RMS ~150&ndash;900, and room silence sat at ~3&ndash;25. The threshold was inside normal speech &mdash; the agent could decide you'd stopped talking while you were mid-word. <code>voice.silence_threshold: 60</code>. Numbers first, config second.</p>
+
+    <h2>The Debugging Tricks That Earned Their Keep</h2>
+
+    <p>A few techniques from this weekend that I'll reuse forever:</p>
+
+    <ul>
+        <li><strong>The loopback trap.</strong> Playing a tone into the headset and recording its own mic "proved" the mic died after reopening &mdash; until I realized the headset's echo cancellation deliberately removes its own speaker output after about a second. Counting numbers aloud showed the mic alive on every reopen. Don't test a noise-cancelling headset with its own loopback.</li>
+        <li><strong>The virtual microphone.</strong> I created a PipeWire null sink, set its monitor as the default source, and played a synthetic "Hey Hermes&hellip; what is two plus two?" into it. Wake word detected, transcription exact, answer spoken. That proves the entire software pipeline before anyone gets to blame hardware.</li>
+        <li><strong>Offline wake-word scoring.</strong> I recorded three minutes of real "hey hermes" attempts and ran openWakeWord over the file: genuine attempts scored 0.74&ndash;0.96 against a 0.6 threshold. Sensitivity was fine &mdash; the apparent misses were attempts made while Hermes was already recording or answering, when the listener pauses by design.</li>
+        <li><strong>Proving output without ears.</strong> Record the Bluetooth sink's monitor while Hermes' own <code>speak_text</code> runs: strong signal, RMS ~2,500&ndash;4,000. <code>btmon</code> showed SCO audio packets flowing in both directions. You don't need to be in the room to verify audio end to end.</li>
+        <li><strong>The self-inflicted one.</strong> <code>ssh host 'pkill -f micprobe.py; &hellip;'</code> killed the SSH shell itself, because the shell's own command line matched the pattern. Use <code>pkill -f "[m]icprobe.py"</code>.</li>
+    </ul>
+
+    <h2>Where It Landed</h2>
+
+    <ul>
+        <li>Wi-Fi 6 working as an automatic backup link, Ethernet still primary.</li>
+        <li>Bluetooth working, with DKMS keeping both alive across kernel updates and reboots.</li>
+        <li>Say "hey hermes," ask a question, get the spoken answer in the headset &mdash; verified end to end with real speech, not a synthetic test.</li>
+        <li>No distro reinstall, no reboot, and no downtime for the agent gateway beyond ordinary service restarts.</li>
+    </ul>
+
+    <h2>The Honest Limitations</h2>
+
+    <ul>
+        <li>A Bluetooth microphone forces HFP &mdash; "call quality" audio, 16 kHz mono. Perfectly good for a wake word and Whisper transcription; not for music.</li>
+        <li>For an always-on room assistant, a USB speakerphone (Jabra Speak, Anker PowerConf, eMeet) skips the Bluetooth codec path and the out-of-tree driver entirely. A Bluetooth speakerphone with HFP, wideband speech (mSBC), and no auto-power-off is the next best option.</li>
+        <li>Out-of-tree modules taint the kernel and deserve a glance at every kernel upgrade until MT7902 support ships in the distro kernel (7.1+).</li>
+    </ul>
+
+    <h2>If You Keep Only Three Things</h2>
+
+    <ol>
+        <li><strong>Diagnose the chip before the distro.</strong> <code>lspci</code> and <code>lsusb</code> are free; a reinstall is a weekend.</li>
+        <li><strong>When a driver ignores your hardware, read its ID tables.</strong> "Unsupported hardware variant" can literally mean "nobody added your USB ID yet" &mdash; and the fix might be one line.</li>
+        <li><strong>Measure, then configure.</strong> RMS values, monitor streams, packet captures, offline scores &mdash; every one of the five audio bugs was invisible until something got measured.</li>
+    </ol>
+
+    <p>The server's ears are open now. Say "hey hermes" and it answers &mdash; no cloud, no vendor, just a weekend of measurement-first debugging and a one-line USB quirk that probably should have been there from the start.</p>
+
+    <hr>
+    <p style="font-size: 0.9rem; color: #6b7280;">Related: <a href="/blog/articles/headless-linux-edid-fix/">The Headless Linux Desktop Trap</a> &middot; <a href="/blog/articles/vps-to-home-server/">From VPS to Home Server</a></p>
+</article>
+</body>
+</html>

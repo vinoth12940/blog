@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="820" fill="#0f172a"/>
+
+  <text x="720" y="64" text-anchor="middle" font-size="36" font-weight="700" fill="#f1f5f9">From Dead Radios to “Hey Hermes”</text>
+  <text x="720" y="100" text-anchor="middle" font-size="19" fill="#94a3b8">Three radio fixes, five audio bugs — every one found by measuring, not guessing</text>
+
+  <!-- arrows between panels -->
+  <line x1="472" y1="430" x2="512" y2="430" stroke="#f87171" stroke-width="2.5"/>
+  <polygon points="512,424 522,430 512,436" fill="#f87171"/>
+  <line x1="922" y1="430" x2="962" y2="430" stroke="#f87171" stroke-width="2.5"/>
+  <polygon points="962,424 972,430 962,436" fill="#f87171"/>
+
+  <!-- Panel 1: The Radios -->
+  <rect x="70" y="140" width="400" height="580" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="95" y="180" font-size="22" font-weight="700" fill="#22d3ee">1 · The Radios</text>
+  <text x="95" y="206" font-size="14" fill="#64748b">MT7902 — a chip no installed kernel knew</text>
+  <text x="95" y="240" font-size="15" fill="#94a3b8">IDs on the box</text>
+  <text x="95" y="264" font-size="15" fill="#e2e8f0" font-family="JetBrains Mono, monospace">14c3:7902 (PCI) &#183; 0e8d:7902 (USB)</text>
+
+  <rect x="95" y="290" width="350" height="118" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="112" y="318" font-size="15" font-weight="600" fill="#e2e8f0">Fix 1 — Firmware was never there</text>
+  <text x="112" y="342" font-size="13.5" fill="#94a3b8">3 blobs from kernel.org linux-firmware</text>
+  <text x="112" y="364" font-size="13.5" fill="#94a3b8">into /lib/firmware/mediatek/ (hash-verified)</text>
+  <text x="112" y="386" font-size="13.5" fill="#64748b">distro package: 2024-03 snapshot</text>
+
+  <rect x="95" y="420" width="350" height="128" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="112" y="448" font-size="15" font-weight="600" fill="#e2e8f0">Fix 2 — Wi-Fi: out-of-tree mt76</text>
+  <text x="112" y="472" font-size="13.5" fill="#94a3b8">morrownr/mt76 via DKMS, pinned commit</text>
+  <text x="112" y="494" font-size="13.5" fill="#94a3b8">wlp3s0 up, no reboot — Wi-Fi 6 backup link</text>
+  <text x="112" y="516" font-size="13.5" fill="#94a3b8">5 GHz &#183; 80 MHz &#183; ~600 Mbit/s HE</text>
+  <text x="112" y="538" font-size="13.5" fill="#64748b">higher route metric: Ethernet stays primary</text>
+
+  <rect x="95" y="560" width="350" height="140" rx="10" fill="#0f172a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="112" y="588" font-size="15" font-weight="600" fill="#e2e8f0">Fix 3 — Bluetooth: one missing USB ID</text>
+  <text x="112" y="612" font-size="13.5" fill="#94a3b8">btusb backport + HCI Reset timeout (-110)</text>
+  <text x="112" y="634" font-size="13.5" fill="#94a3b8">quirks table lacked MediaTek&#39;s own ID</text>
+  <text x="112" y="660" font-size="13" fill="#fbbf24" font-family="JetBrains Mono, monospace">USB_DEVICE(0x0e8d, 0x7902)</text>
+  <text x="112" y="682" font-size="13.5" fill="#94a3b8">one line + rebuild → controller alive</text>
+
+  <!-- Panel 2: The Audio Path -->
+  <rect x="520" y="140" width="400" height="580" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="545" y="180" font-size="22" font-weight="700" fill="#a78bfa">2 · The Audio Path</text>
+  <text x="545" y="206" font-size="14" fill="#64748b">headset paired, agent deaf — five bugs</text>
+
+  <rect x="545" y="228" width="350" height="88" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="562" y="254" font-size="14.5" font-weight="600" fill="#e2e8f0">Bug 1 — two audio servers, one headset</text>
+  <text x="562" y="276" font-size="13.5" fill="#94a3b8">desktop + service PipeWire both claimed it</text>
+  <text x="562" y="298" font-size="13.5" fill="#64748b">fix: bluez_monitor.enabled = false (service)</text>
+
+  <rect x="545" y="328" width="350" height="88" rx="10" fill="#0f172a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="562" y="354" font-size="14.5" font-weight="600" fill="#e2e8f0">Bug 2 — .asoundrc aimed at an empty jack</text>
+  <text x="562" y="376" font-size="13.5" fill="#94a3b8">default = plughw:1,0 (nothing plugged in)</text>
+  <text x="562" y="398" font-size="13" fill="#fbbf24" font-family="JetBrains Mono, monospace">pcm.!default { type pulse }</text>
+
+  <rect x="545" y="428" width="350" height="88" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="562" y="454" font-size="14.5" font-weight="600" fill="#e2e8f0">Bug 3 — wake word pinned to index 8</text>
+  <text x="562" y="476" font-size="13.5" fill="#94a3b8">PortAudio indices shift when BT connects</text>
+  <text x="562" y="498" font-size="13.5" fill="#64748b">fix: stable device name &quot;pulse&quot;</text>
+
+  <rect x="545" y="528" width="350" height="88" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="562" y="554" font-size="14.5" font-weight="600" fill="#e2e8f0">Bug 4 — socket perms reset to 0700</text>
+  <text x="562" y="576" font-size="13.5" fill="#94a3b8">&quot;PulseAudio socket never appeared&quot;</text>
+  <text x="562" y="598" font-size="13.5" fill="#64748b">fix: root ExecStartPre=+ re-applies access</text>
+
+  <rect x="545" y="628" width="350" height="88" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="562" y="654" font-size="14.5" font-weight="600" fill="#e2e8f0">Bug 5 — silence threshold inside speech</text>
+  <text x="562" y="676" font-size="13.5" fill="#94a3b8">speech RMS 150–900 vs threshold 200</text>
+  <text x="562" y="698" font-size="13.5" fill="#64748b">measured → voice.silence_threshold: 60</text>
+
+  <!-- Panel 3: Proof -->
+  <rect x="970" y="140" width="400" height="580" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="995" y="180" font-size="22" font-weight="700" fill="#4ade80">3 · Proof</text>
+  <text x="995" y="206" font-size="14" fill="#64748b">measured, not guessed</text>
+
+  <rect x="995" y="228" width="350" height="96" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="1012" y="254" font-size="14.5" font-weight="600" fill="#e2e8f0">The loopback trap</text>
+  <text x="1012" y="276" font-size="13.5" fill="#94a3b8">echo cancellation eats the headset&#39;s own</text>
+  <text x="1012" y="296" font-size="13.5" fill="#94a3b8">tone after ~1s — test with real speech</text>
+
+  <rect x="995" y="336" width="350" height="96" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="1012" y="362" font-size="14.5" font-weight="600" fill="#e2e8f0">The virtual microphone</text>
+  <text x="1012" y="384" font-size="13.5" fill="#94a3b8">null-sink monitor + synthetic wake phrase</text>
+  <text x="1012" y="404" font-size="13.5" fill="#94a3b8">proved the whole software pipeline E2E</text>
+
+  <rect x="995" y="444" width="350" height="96" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="1012" y="470" font-size="14.5" font-weight="600" fill="#e2e8f0">Offline wake-word scoring</text>
+ <text x="1012" y="492" font-size="13.5" fill="#94a3b8">3 min of real attempts: scores 0.74–0.96</text>
+  <text x="1012" y="512" font-size="13.5" fill="#94a3b8">vs 0.6 threshold — sensitivity was fine</text>
+
+  <rect x="995" y="552" width="350" height="96" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="1012" y="578" font-size="14.5" font-weight="600" fill="#e2e8f0">Output without ears</text>
+  <text x="1012" y="600" font-size="13.5" fill="#94a3b8">BT sink monitor RMS ~2,500–4,000 during</text>
+  <text x="1012" y="620" font-size="13.5" fill="#94a3b8">TTS; btmon showed SCO packets both ways</text>
+
+  <rect x="995" y="660" width="350" height="60" rx="10" fill="#0f172a" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="1012" y="686" font-size="14.5" font-weight="600" fill="#4ade80">Result: &quot;hey hermes&quot; → spoken answer,</text>
+  <text x="1012" y="706" font-size="14.5" font-weight="600" fill="#4ade80">verified end to end with real speech</text>
+
+  <!-- bottom strip -->
+  <text x="720" y="762" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">No reinstall. No reboot. One missing line in a USB ID table.</text>
+  <text x="720" y="790" text-anchor="middle" font-size="14" fill="#64748b">MT7902 Wi-Fi + Bluetooth on Linux Mint, in place — then the five bugs between the headset and the agent</text>
+</svg>
