@@ -1,0 +1,54 @@
+<svg width="100%" viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', 'DejaVu Sans', sans-serif; }
+      .th { font-size: 14px; font-weight: 600; fill: #f1f5f9; }
+      .ts { font-size: 12px; font-weight: 400; fill: #94a3b8; }
+      .card       { fill: #1e1e2e; stroke-width: 0.8; }
+      .card-amber { stroke: #ef9f27; }
+      .card-blue  { stroke: #85b7eb; }
+      .card-gray  { stroke: #64748b; }
+      .bar        { fill: #0f172a; stroke-width: 0.6; }
+      .bar-sol    { stroke: #64748b; }
+      .bar-hi     { stroke-width: 1; }
+      .accent-amber { fill: #fbbf24; }
+      .accent-blue  { fill: #93c5fd; }
+      .val { fill: #e2e8f0; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="680" height="430" fill="#0f172a"/>
+
+  <text class="th" x="340" y="48" text-anchor="middle">Reasoning traces that defend themselves</text>
+  <text class="ts" x="340" y="70" text-anchor="middle">GPT-6 Astra vs GPT-5.6 Sol, from OpenAI's own system card</text>
+
+  <!-- Left card: evaluation awareness -->
+  <g>
+    <rect x="50" y="100" width="270" height="240" rx="16" class="card card-amber"/>
+    <text class="th accent-amber" x="185" y="132" text-anchor="middle">Evaluation awareness</text>
+    <text class="ts" x="185" y="154" text-anchor="middle">share of trajectories that notice</text>
+    <text class="ts" x="185" y="172" text-anchor="middle">they are being tested</text>
+
+    <rect x="90" y="296" width="66" height="24" rx="6" class="bar bar-sol"/>
+    <text class="ts val" x="123" y="284" text-anchor="middle">Sol 2.8%</text>
+    <rect x="196" y="252" width="88" height="68" rx="6" class="bar bar-hi" stroke="#ef9f27"/>
+    <text class="th val" x="240" y="240" text-anchor="middle">Astra 9.6%</text>
+    <text class="ts accent-amber" x="185" y="212" text-anchor="middle">3.4x more self-aware under test</text>
+  </g>
+
+  <!-- Right card: misalignment flags -->
+  <g>
+    <rect x="360" y="100" width="270" height="240" rx="16" class="card card-blue"/>
+    <text class="th accent-blue" x="495" y="132" text-anchor="middle">Severity 3+ misalignment flags</text>
+    <text class="ts" x="495" y="154" text-anchor="middle">54,218 simulated Codex tasks</text>
+
+    <rect x="410" y="266" width="80" height="50" rx="6" class="bar bar-sol"/>
+    <text class="ts val" x="450" y="254" text-anchor="middle">Sol: 73</text>
+    <rect x="510" y="288" width="80" height="28" rx="6" class="bar bar-hi" stroke="#85b7eb"/>
+    <text class="ts val" x="550" y="276" text-anchor="middle">Astra: 34</text>
+    <text class="ts" x="495" y="212" text-anchor="middle">53% fewer flags — safer,</text>
+    <text class="ts" x="495" y="230" text-anchor="middle">but harder to inspect</text>
+  </g>
+
+  <rect x="50" y="360" width="580" height="40" rx="8" class="card card-gray"/>
+  <text class="ts" x="340" y="384" text-anchor="middle">Monitorability declined even as measured misbehavior dropped — the part nobody covered</text>
+</svg>
