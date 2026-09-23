@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrowcyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="860" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" fill="#f1f5f9" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Two ways for a model to think</text>
+  <text x="720" y="86" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="17">Why recurrent depth changes what you can see of the reasoning</text>
+
+  <!-- LEFT: classic chain of thought -->
+  <g>
+    <rect x="60" y="120" width="600" height="660" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="360" y="164" text-anchor="middle" fill="#22d3ee" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Chain of Thought (GPT-5.6 class)</text>
+
+    <rect x="120" y="200" width="220" height="80" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="230" y="235" text-anchor="middle" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="17">Prompt in</text>
+    <text x="230" y="259" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="14">shallow step</text>
+
+    <line x1="230" y1="280" x2="230" y2="318" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowcyan)"/>
+
+    <rect x="110" y="322" width="240" height="56" rx="10" fill="#0b1220" stroke="#475569" stroke-width="1.2"/>
+    <text x="230" y="356" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono, monospace" font-size="15">"Let me think step 1..."</text>
+
+    <line x1="230" y1="378" x2="230" y2="408" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowcyan)"/>
+
+    <rect x="110" y="412" width="240" height="56" rx="10" fill="#0b1220" stroke="#475569" stroke-width="1.2"/>
+    <text x="230" y="446" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono, monospace" font-size="15">"...step 2, because..."</text>
+
+    <line x1="230" y1="468" x2="230" y2="498" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowcyan)"/>
+
+    <rect x="110" y="502" width="240" height="56" rx="10" fill="#0b1220" stroke="#475569" stroke-width="1.2"/>
+    <text x="230" y="536" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono, monospace" font-size="15">"...step 3, therefore..."</text>
+
+    <line x1="230" y1="558" x2="230" y2="588" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowcyan)"/>
+
+    <rect x="120" y="592" width="220" height="70" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="230" y="622" text-anchor="middle" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="17">Answer out</text>
+    <text x="230" y="645" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="14">notes written in English</text>
+
+    <rect x="100" y="690" width="520" height="66" rx="10" fill="#052e2b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="360" y="717" text-anchor="middle" fill="#34d399" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">Monitorable: humans can read the scratchpad</text>
+    <text x="360" y="741" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="14">caught misaligned behavior in training via CoT monitoring</text>
+  </g>
+
+  <!-- RIGHT: recurrent depth -->
+  <g>
+    <rect x="780" y="120" width="600" height="660" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1080" y="164" text-anchor="middle" fill="#a78bfa" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Recurrent Depth (GPT-6 Astra)</text>
+
+    <rect x="850" y="200" width="220" height="80" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="960" y="235" text-anchor="middle" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="17">Prompt in</text>
+    <text x="960" y="259" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="14">deep single step</text>
+
+    <line x1="960" y1="280" x2="960" y2="312" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- loop box -->
+    <rect x="840" y="316" width="480" height="230" rx="12" fill="#171226" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="1080" y="348" text-anchor="middle" fill="#a78bfa" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">Latent loop (same block, N passes)</text>
+
+    <rect x="880" y="368" width="140" height="60" rx="10" fill="#0f172a" stroke="#7c5cd6" stroke-width="1.2"/>
+    <text x="950" y="394" text-anchor="middle" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15">reason</text>
+    <text x="950" y="414" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="13">inside hidden state</text>
+
+    <path d="M 1020 398 L 1056 398" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="1060" y="368" width="140" height="60" rx="10" fill="#0f172a" stroke="#7c5cd6" stroke-width="1.2"/>
+    <text x="1130" y="394" text-anchor="middle" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15">carry state</text>
+    <text x="1130" y="414" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="13">no tokens emitted</text>
+
+    <path d="M 1200 398 C 1260 398 1260 452 1200 452" stroke="#a78bfa" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <path d="M 1060 452 C 1000 452 1000 398 1060 398" stroke="#a78bfa" stroke-width="2" fill="none"/>
+    <rect x="1010" y="428" width="140" height="48" rx="8" fill="#0f172a" stroke="#a78bfa" stroke-width="1.2" stroke-dasharray="5,4"/>
+    <text x="1080" y="449" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono, monospace" font-size="14">repeat N x</text>
+    <text x="1080" y="468" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="12">latent, not verbal</text>
+
+    <rect x="880" y="492" width="400" height="36" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="1080" y="516" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">thought completes "in its head"</text>
+
+    <line x1="1080" y1="546" x2="1080" y2="588" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="970" y="592" width="220" height="70" rx="10" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1080" y="622" text-anchor="middle" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="17">Answer out</text>
+    <text x="1080" y="645" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="14">fewer notes to read</text>
+
+    <rect x="820" y="690" width="520" height="66" rx="10" fill="#2a1a05" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1080" y="717" text-anchor="middle" fill="#fbbf24" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">Cheaper, faster, deeper per step</text>
+    <text x="1080" y="741" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="14">but the window into the reasoning narrows</text>
+  </g>
+
+  <text x="720" y="830" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="14">Source: The Information report on Astra's architecture; OpenAI responses, Sep 2026</text>
+</svg>

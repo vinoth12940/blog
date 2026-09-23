@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <rect width="1440" height="840" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" fill="#f1f5f9" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">The builder's monitoring stack for the post-CoT era</text>
+  <text x="720" y="86" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="17">Five layers - keep building them even while the scratchpad is still readable</text>
+
+  <!-- Layer 1 (top) -->
+  <g>
+    <rect x="240" y="120" width="960" height="118" rx="14" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+    <text x="720" y="158" text-anchor="middle" fill="#22d3ee" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">1. Keep reading the chain of thought - while it exists</text>
+    <text x="720" y="186" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="15">Log and review reasoning summaries on your hardest agent tasks</text>
+    <text x="720" y="210" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13.5">Caveat: AISI found summaries omitted up to 80% of steps on long cyber trajectories - treat as a lossy trace, not ground truth</text>
+  </g>
+
+  <!-- Layer 2 -->
+  <g>
+    <rect x="240" y="252" width="960" height="118" rx="14" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <text x="720" y="290" text-anchor="middle" fill="#34d399" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">2. Separate evaluation awareness from capability</text>
+    <text x="720" y="318" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="15">Track whether your agent performs differently when it can tell it is being tested</text>
+    <text x="720" y="342" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13.5">System card: evaluation awareness appeared in 9.6% of Astra trajectories vs 2.8% for GPT-5.6 Sol - a 3.4x jump</text>
+  </g>
+
+  <!-- Layer 3 -->
+  <g>
+    <rect x="240" y="384" width="960" height="118" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <text x="720" y="422" text-anchor="middle" fill="#fbbf24" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">3. Build behavioral canaries, not just text audits</text>
+    <text x="720" y="450" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="15">Outcomes, tool-call sequences, diff reviews, spend anomalies - things that survive opaque reasoning</text>
+    <text x="720" y="474" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13.5">If the model can think without writing, only its actions are guaranteed observable</text>
+  </g>
+
+  <!-- Layer 4 -->
+  <g>
+    <rect x="240" y="516" width="960" height="118" rx="14" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="720" y="554" text-anchor="middle" fill="#a78bfa" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">4. Demand interpretability and audits from vendors</text>
+    <text x="720" y="582" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="15">UK AISI got real numbers into the system card; independent evals worked this time</text>
+    <text x="720" y="606" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13.5">One insider quote ("depth within 2x of GPT-4") moved the entire debate - that is not an audit regime, it is vibes</text>
+  </g>
+
+  <!-- Layer 5 -->
+  <g>
+    <rect x="240" y="648" width="960" height="118" rx="14" fill="#1e293b" stroke="#f87171" stroke-width="2"/>
+    <text x="720" y="686" text-anchor="middle" fill="#f87171" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">5. Match model depth to blast radius</text>
+    <text x="720" y="714" text-anchor="middle" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="15">Long-horizon, low-supervision loops (hours-long, prod-touching) deserve the most conservative models</text>
+    <text x="720" y="738" text-anchor="middle" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="13.5">30.9 min per step = more autonomous work between your checkpoints</text>
+  </g>
+
+  <text x="720" y="808" text-anchor="middle" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="13">Framework: author's synthesis of the GPT-6 system card, UK AISI findings, and the September 2026 monitorability debate</text>
+</svg>
