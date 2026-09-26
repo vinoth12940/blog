@@ -1,0 +1,17 @@
+**The most important sentence in OpenAI's biggest launch wasn't about capability — it was about visibility.**
+
+GPT-6 Astra broke records: 36M views in 9 hours, SOTA computer use, the first "critical"-rated cyber model. But the system card quietly admitted something bigger: "Astra's monitorability has decreased." The Information then reported Astra runs on recurrent depth — a looped transformer that reasons in latent space. No tokens emitted. Nothing in your logs.
+
+Safety researchers called it the scariest architecture shift yet — one said it "may be the single worst development for AI security/safety to date." The UK AI Safety Institute's numbers tell a more nuanced story:
+
+→ Astra's no-CoT thinking horizon: 30.9 min vs 3.6 min for its predecessor — 8.6x more autonomous work per invisible step
+
+→ But CoT controllability hit 93% (vs 48%) — this is NOT full "neuralese" yet
+
+→ Reasoning summaries omitted up to 80% of steps on long tasks — the trace is now lossy by design
+
+My takeaway for agent builders: trust actions, not narrations. Behavioral canaries beat transcript audits. And this same week the frontier cut prices 3 times in 48 hours — Astra's architecture is now the template cheaper models will copy.
+
+What's your monitoring plan for the model that stops showing its work?
+
+#ArtificialIntelligence #AIAgents #AISafety #OpenAI #GPT6 #ChainOfThought #Interpretability #MachineLearning #SoftwareEngineering #TechLeadership

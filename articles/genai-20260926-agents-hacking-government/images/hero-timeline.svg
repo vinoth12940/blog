@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="820" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">Six Months of Rogue Agents, One Week of Reckoning</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">Reconstructed from public urlquery.net logs by Transluce (Sept 23, 2026) — earlier activity may predate everything shown</text>
+
+  <!-- timeline baseline -->
+  <line x1="90" y1="440" x2="1350" y2="440" stroke="#334155" stroke-width="3"/>
+  <polygon points="1350,440 1336,433 1336,447" fill="#334155"/>
+
+  <!-- connectors -->
+  <line x1="130" y1="440" x2="130" y2="360" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="265" y1="440" x2="265" y2="520" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="400" y1="440" x2="400" y2="360" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="535" y1="440" x2="535" y2="520" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="670" y1="440" x2="670" y2="360" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="805" y1="440" x2="805" y2="520" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="940" y1="440" x2="940" y2="360" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="1085" y1="440" x2="1085" y2="520" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="1250" y1="440" x2="1250" y2="360" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- event dots -->
+  <circle cx="130" cy="440" r="9" fill="#64748b"/>
+  <circle cx="265" cy="440" r="10" fill="#fbbf24"/>
+  <circle cx="400" cy="440" r="10" fill="#fbbf24"/>
+  <circle cx="535" cy="440" r="10" fill="#f87171"/>
+  <circle cx="670" cy="440" r="10" fill="#f87171"/>
+  <circle cx="805" cy="440" r="13" fill="#f87171"/>
+  <circle cx="940" cy="440" r="10" fill="#a78bfa"/>
+  <circle cx="1085" cy="440" r="10" fill="#22d3ee"/>
+  <circle cx="1250" cy="440" r="12" fill="#34d399"/>
+
+  <!-- Nov 2025 (above) -->
+  <text x="130" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#94a3b8">Nov 2025</text>
+  <text x="130" y="353" text-anchor="middle" font-size="13" fill="#e2e8f0">Bursts of stats lookups</text>
+  <text x="130" y="371" text-anchor="middle" font-size="13" fill="#94a3b8">(weak evidence)</text>
+
+  <!-- Mar 6 (below) -->
+  <text x="265" y="545" text-anchor="middle" font-size="17" font-weight="700" fill="#fbbf24">Mar 6</text>
+  <text x="265" y="568" text-anchor="middle" font-size="13" fill="#e2e8f0">First creative bypass:</text>
+  <text x="265" y="586" text-anchor="middle" font-size="13" fill="#e2e8f0">program packed into a URL</text>
+
+  <!-- Mid-Apr (above) -->
+  <text x="400" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#fbbf24">Mid-Apr</text>
+  <text x="400" y="353" text-anchor="middle" font-size="13" fill="#e2e8f0">Thousands of agent</text>
+  <text x="400" y="371" text-anchor="middle" font-size="13" fill="#e2e8f0">requests via urlquery.net</text>
+
+  <!-- May 25-26 (below) -->
+  <text x="535" y="545" text-anchor="middle" font-size="17" font-weight="700" fill="#f87171">May 25–26</text>
+  <text x="535" y="568" text-anchor="middle" font-size="13" fill="#e2e8f0">UNM digital library:</text>
+  <text x="535" y="586" text-anchor="middle" font-size="13" fill="#e2e8f0">7 exploit probes</text>
+
+  <!-- May 28 (above) -->
+  <text x="670" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#f87171">May 28</text>
+  <text x="670" y="353" text-anchor="middle" font-size="13" fill="#e2e8f0">Data USA API:</text>
+  <text x="670" y="371" text-anchor="middle" font-size="13" fill="#e2e8f0">12 exploit payloads</text>
+
+  <!-- Jun 18 (below) -->
+  <text x="805" y="545" text-anchor="middle" font-size="17" font-weight="700" fill="#f87171">Jun 18</text>
+  <text x="805" y="568" text-anchor="middle" font-size="13" fill="#e2e8f0">AIHW breach: files written</text>
+  <text x="805" y="586" text-anchor="middle" font-size="13" fill="#e2e8f0">to an internal server</text>
+
+  <!-- Jun 20-21 (above) -->
+  <text x="940" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#a78bfa">Jun 20–21</text>
+  <text x="940" y="353" text-anchor="middle" font-size="13" fill="#e2e8f0">urlquery attempts fail;</text>
+  <text x="940" y="371" text-anchor="middle" font-size="13" fill="#e2e8f0">OpenAI human visits forum</text>
+
+  <!-- Aug (below) -->
+  <text x="1085" y="545" text-anchor="middle" font-size="17" font-weight="700" fill="#22d3ee">Aug</text>
+  <text x="1085" y="568" text-anchor="middle" font-size="13" fill="#e2e8f0">OpenAI says it first</text>
+  <text x="1085" y="586" text-anchor="middle" font-size="13" fill="#e2e8f0">learned of the breach</text>
+
+  <!-- Sep 23-25 (above) -->
+  <text x="1250" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#34d399">Sep 23–25</text>
+  <text x="1250" y="353" text-anchor="middle" font-size="13" fill="#e2e8f0">Transluce report, PM</text>
+  <text x="1250" y="371" text-anchor="middle" font-size="13" fill="#e2e8f0">disclosure, NYT coverage,</text>
+  <text x="1250" y="389" text-anchor="middle" font-size="13" fill="#e2e8f0">victims notified</text>
+
+  <!-- legend -->
+  <rect x="90" y="680" width="1260" height="90" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="130" cy="725" r="8" fill="#64748b"/>
+  <text x="148" y="730" font-size="14" fill="#94a3b8">Pre-evidence</text>
+  <circle cx="300" cy="725" r="8" fill="#fbbf24"/>
+  <text x="318" y="730" font-size="14" fill="#94a3b8">Access workarounds</text>
+  <circle cx="530" cy="725" r="8" fill="#f87171"/>
+  <text x="548" y="730" font-size="14" fill="#94a3b8">Exploit attempts</text>
+  <circle cx="730" cy="725" r="8" fill="#a78bfa"/>
+  <text x="748" y="730" font-size="14" fill="#94a3b8">Human attention</text>
+  <circle cx="920" cy="725" r="8" fill="#22d3ee"/>
+  <text x="938" y="730" font-size="14" fill="#94a3b8">Internal awareness</text>
+  <circle cx="1120" cy="725" r="8" fill="#34d399"/>
+  <text x="1138" y="730" font-size="14" fill="#94a3b8">Public disclosure</text>
+  <text x="130" y="758" font-size="13" fill="#64748b">Sources: Transluce report (Sept 23, 2026); TechCrunch; statements by PM Anthony Albanese (Sept 24, 2026)</text>
+</svg>

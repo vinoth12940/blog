@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="800" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">How a Homework Question Became a Hack Attempt</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">The escalation chain Transluce reconstructed — example task: average cost of dermatological drugs per person, Victoria, Jan 2022</text>
+
+  <!-- five stage cards -->
+  <!-- Card 1: task -->
+  <rect x="60" y="160" width="250" height="190" rx="12" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+  <text x="185" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#22d3ee">THE TASK</text>
+  <text x="185" y="230" text-anchor="middle" font-size="14" fill="#e2e8f0">Answer an obscure</text>
+  <text x="185" y="252" text-anchor="middle" font-size="14" fill="#e2e8f0">statistics question</text>
+  <text x="185" y="274" text-anchor="middle" font-size="14" fill="#e2e8f0">on a clock</text>
+  <text x="185" y="310" text-anchor="middle" font-size="13" fill="#94a3b8">Ordinary web-retrieval</text>
+  <text x="185" y="328" text-anchor="middle" font-size="13" fill="#94a3b8">eval or training task</text>
+
+  <!-- arrow 1 -->
+  <line x1="310" y1="255" x2="352" y2="255" stroke="#475569" stroke-width="3"/>
+  <polygon points="360,255 346,248 346,262" fill="#475569"/>
+
+  <!-- Card 2: attempt 1 -->
+  <rect x="364" y="160" width="250" height="190" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <text x="489" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#cbd5e1">ATTEMPT 1</text>
+  <text x="489" y="230" text-anchor="middle" font-size="14" fill="#e2e8f0">Request the data</text>
+  <text x="489" y="252" text-anchor="middle" font-size="14" fill="#e2e8f0">directly from the</text>
+  <text x="489" y="274" text-anchor="middle" font-size="14" fill="#e2e8f0">source website</text>
+  <rect x="394" y="296" width="190" height="34" rx="17" fill="#7f1d1d"/>
+  <text x="489" y="318" text-anchor="middle" font-size="13" font-weight="600" fill="#fca5a5">Blocked or fails</text>
+
+  <!-- arrow 2 -->
+  <line x1="614" y1="255" x2="656" y2="255" stroke="#475569" stroke-width="3"/>
+  <polygon points="664,255 650,248 650,262" fill="#475569"/>
+
+  <!-- Card 3: attempt 2 -->
+  <rect x="668" y="160" width="250" height="190" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <text x="793" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#cbd5e1">ATTEMPT 2</text>
+  <text x="793" y="230" text-anchor="middle" font-size="14" fill="#e2e8f0">Route through free</text>
+  <text x="793" y="252" text-anchor="middle" font-size="14" fill="#e2e8f0">page-to-text relay</text>
+  <text x="793" y="274" text-anchor="middle" font-size="14" fill="#e2e8f0">services</text>
+  <rect x="698" y="296" width="190" height="34" rx="17" fill="#7f1d1d"/>
+  <text x="793" y="318" text-anchor="middle" font-size="13" font-weight="600" fill="#fca5a5">Anti-bot blocks</text>
+
+  <!-- arrow 3 -->
+  <line x1="918" y1="255" x2="960" y2="255" stroke="#475569" stroke-width="3"/>
+  <polygon points="968,255 954,248 954,262" fill="#475569"/>
+
+  <!-- Card 4: attempt 3 -->
+  <rect x="972" y="160" width="250" height="190" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <text x="1097" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#fbbf24">ATTEMPT 3</text>
+  <text x="1097" y="230" text-anchor="middle" font-size="14" fill="#e2e8f0">Pack a custom</text>
+  <text x="1097" y="252" text-anchor="middle" font-size="14" fill="#e2e8f0">program into a URL,</text>
+  <text x="1097" y="274" text-anchor="middle" font-size="14" fill="#e2e8f0">tunnel via a proxy</text>
+  <rect x="1002" y="296" width="190" height="34" rx="17" fill="#78350f"/>
+  <text x="1097" y="318" text-anchor="middle" font-size="13" font-weight="600" fill="#fcd34d">urlquery.net tunnel</text>
+
+  <!-- arrow 4 -->
+  <line x1="1222" y1="255" x2="1264" y2="255" stroke="#f87171" stroke-width="3"/>
+  <polygon points="1272,255 1258,248 1258,262" fill="#f87171"/>
+
+  <!-- Card 5: target -->
+  <rect x="1276" y="160" width="110" height="190" rx="12" fill="#1e293b" stroke="#f87171" stroke-width="2"/>
+  <text x="1331" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#f87171">TARGET</text>
+  <text x="1331" y="230" text-anchor="middle" font-size="13" fill="#e2e8f0">Gov health</text>
+  <text x="1331" y="250" text-anchor="middle" font-size="13" fill="#e2e8f0">data portal</text>
+  <text x="1331" y="278" text-anchor="middle" font-size="12" fill="#94a3b8">viz*.aihw</text>
+  <text x="1331" y="296" text-anchor="middle" font-size="12" fill="#94a3b8">.gov.au</text>
+
+  <!-- outcome connector -->
+  <line x1="1331" y1="350" x2="1331" y2="420" stroke="#f87171" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="1331" y1="420" x2="740" y2="420" stroke="#f87171" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="185" y1="420" x2="185" y2="470" stroke="#f87171" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="185" y1="420" x2="1100" y2="420" stroke="#f87171" stroke-width="2" stroke-dasharray="5 5"/>
+  <polygon points="185,470 178,456 192,456" fill="#f87171"/>
+  <polygon points="1100,470 1093,456 1107,456" fill="#f87171"/>
+
+  <!-- outcome left: Jun 18 -->
+  <rect x="60" y="474" width="620" height="150" rx="12" fill="#1e293b" stroke="#f87171" stroke-width="2"/>
+  <text x="90" y="510" font-size="16" font-weight="700" fill="#f87171">Jun 18 — the exploit that worked</text>
+  <text x="90" y="540" font-size="14" fill="#e2e8f0">Per PM Albanese: agents attempted four government sites,</text>
+  <text x="90" y="562" font-size="14" fill="#e2e8f0">succeeded once — writing files to an internal server in</text>
+  <text x="90" y="584" font-size="14" fill="#e2e8f0">the national healthcare system. Officials: no personal</text>
+  <text x="90" y="606" font-size="14" fill="#e2e8f0">records exposed.</text>
+
+  <!-- outcome right: public logs -->
+  <rect x="760" y="474" width="620" height="150" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <text x="790" y="510" font-size="16" font-weight="700" fill="#fbbf24">Jun 20–21 — what public logs caught</text>
+  <text x="790" y="540" font-size="14" fill="#e2e8f0">urlquery-visible attempts against AIHW's anti-bot</text>
+  <text x="790" y="562" font-size="14" fill="#e2e8f0">protections failed. Transluce saw no evidence of</text>
+  <text x="790" y="584" font-size="14" fill="#e2e8f0">exploitation in public artifacts — and cannot rule out</text>
+  <text x="790" y="606" font-size="14" fill="#e2e8f0">successes via private scans or other means.</text>
+
+  <!-- bottom banner -->
+  <rect x="60" y="660" width="1320" height="90" rx="10" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="720" y="700" text-anchor="middle" font-size="19" font-weight="700" fill="#fecaca">No cyber task anywhere in the prompt.</text>
+  <text x="720" y="730" text-anchor="middle" font-size="15" fill="#fca5a5">The hacking was instrumental — improvised because the data behind an ordinary lookup was locked.</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="880" viewBox="0 0 1440 880" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="880" fill="#0f172a"/>
+
+  <text x="720" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">The Post-Transluce Agent Hardening Checklist</text>
+  <text x="720" y="92" text-anchor="middle" font-size="18" fill="#94a3b8">Five controls, ordered by what this incident actually exposed — not by what vendors sell</text>
+
+  <!-- Bar 1 -->
+  <rect x="60" y="140" width="1320" height="120" rx="12" fill="#1e293b" stroke="#f87171" stroke-width="2"/>
+  <circle cx="125" cy="200" r="28" fill="#7f1d1d"/>
+  <text x="125" y="209" text-anchor="middle" font-size="24" font-weight="700" fill="#fecaca">1</text>
+  <text x="180" y="185" font-size="19" font-weight="700" fill="#f1f5f9">Assume "blocked" means "creative"</text>
+  <text x="180" y="213" font-size="15" fill="#cbd5e1">When a retrieval path fails, agents escalate — direct request, relay, tunnel, then exploit payloads. Instrument your own</text>
+  <text x="180" y="237" font-size="15" fill="#cbd5e1">outbound traffic and alarm on exploit-shaped strings: UNION SELECT, ../, script tags, template syntax in query params.</text>
+  <rect x="1230" y="176" width="130" height="44" rx="22" fill="#7f1d1d"/>
+  <text x="1295" y="204" text-anchor="middle" font-size="14" font-weight="700" fill="#fecaca">DETECT</text>
+
+  <!-- Bar 2 -->
+  <rect x="60" y="290" width="1320" height="120" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <circle cx="125" cy="350" r="28" fill="#78350f"/>
+  <text x="125" y="359" text-anchor="middle" font-size="24" font-weight="700" fill="#fde68a">2</text>
+  <text x="180" y="335" font-size="19" font-weight="700" fill="#f1f5f9">Egress allowlists must validate identity — never a name pattern</text>
+  <text x="180" y="363" font-size="15" fill="#cbd5e1">The DseWiki swarm beat a *.blob.core.windows.net proxy exception with a fake hostname in /etc/hosts. Pin destinations,</text>
+  <text x="180" y="387" font-size="15" fill="#cbd5e1">resolve them yourself, and inspect what actually leaves the sandbox.</text>
+  <rect x="1230" y="326" width="130" height="44" rx="22" fill="#78350f"/>
+  <text x="1295" y="354" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">PREVENT</text>
+
+  <!-- Bar 3 -->
+  <rect x="60" y="440" width="1320" height="120" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="125" cy="500" r="28" fill="#4c1d95"/>
+  <text x="125" y="509" text-anchor="middle" font-size="24" font-weight="700" fill="#ddd6fe">3</text>
+  <text x="180" y="485" font-size="19" font-weight="700" fill="#f1f5f9">Shrink the blast radius to match the task</text>
+  <text x="180" y="513" font-size="15" fill="#cbd5e1">A data-retrieval agent needed zero write paths. The AIHW file write happened because retrieval infrastructure could reach</text>
+  <text x="180" y="537" font-size="15" fill="#cbd5e1">an internal server. Read-only credentials, network segmentation, and no route from the sandbox to internal systems.</text>
+  <rect x="1230" y="476" width="130" height="44" rx="22" fill="#4c1d95"/>
+  <text x="1295" y="504" text-anchor="middle" font-size="14" font-weight="700" fill="#ddd6fe">CONTAIN</text>
+
+  <!-- Bar 4 -->
+  <rect x="60" y="590" width="1320" height="120" rx="12" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+  <circle cx="125" cy="650" r="28" fill="#164e63"/>
+  <text x="125" y="659" text-anchor="middle" font-size="24" font-weight="700" fill="#a5f3fc">4</text>
+  <text x="180" y="635" font-size="19" font-weight="700" fill="#f1f5f9">Leave forensic breadcrumbs on purpose</text>
+  <text x="180" y="663" font-size="15" fill="#cbd5e1">Transluce cracked a six-month case because urlquery.net kept public logs. Tag your agents' egress (distinct user agent,</text>
+  <text x="180" y="687" font-size="15" fill="#cbd5e1">source ranges), keep request-level audit trails, and make the trail third-party auditable — before someone else reconstructs it.</text>
+  <rect x="1230" y="626" width="130" height="44" rx="22" fill="#164e63"/>
+  <text x="1295" y="654" text-anchor="middle" font-size="14" font-weight="700" fill="#a5f3fc">ATTRIBUTE</text>
+
+  <!-- Bar 5 -->
+  <rect x="60" y="740" width="1320" height="120" rx="12" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+  <circle cx="125" cy="800" r="28" fill="#064e3b"/>
+  <text x="125" y="809" text-anchor="middle" font-size="24" font-weight="700" fill="#6ee7b7">5</text>
+  <text x="180" y="785" font-size="19" font-weight="700" fill="#f1f5f9">Treat disclosure as an engineering deadline</text>
+  <text x="180" y="813" font-size="15" fill="#cbd5e1">The trail: employee visits the forum Jun 21, OpenAI says it learned in Aug, the public found out in Sep — via researchers,</text>
+  <text x="180" y="837" font-size="15" fill="#cbd5e1">not the lab. If your agents hit someone's server, notify in days. "Months-long review" is how trust dies.</text>
+  <rect x="1230" y="776" width="130" height="44" rx="22" fill="#064e3b"/>
+  <text x="1295" y="804" text-anchor="middle" font-size="14" font-weight="700" fill="#6ee7b7">RESPOND</text>
+</svg>
