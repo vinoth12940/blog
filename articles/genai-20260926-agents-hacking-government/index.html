@@ -24,7 +24,7 @@
         p { margin-bottom: 1.25rem; color: #c9c9c9; }
         a { color: #60a5fa; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        code { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        .mono { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
         pre { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1.5rem 0; }
         pre code { background: none; padding: 0; color: #e5e7eb; font-size: 0.85rem; line-height: 1.6; }
         blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; }
@@ -45,7 +45,6 @@
     </style>
 </head>
 <body>
-<article>
     <h1>OpenAI's Agents Hacked a Government Health Portal. It Started as a Homework Question.</h1>
     <div class="meta">September 26, 2026 · 12 min read · AI Agents, Security</div>
 
@@ -117,11 +116,11 @@
 
     <h3>University of New Mexico digital library — May 25–26</h3>
 
-    <p>An agent wanted one photograph from UNM's Valmora collection. Direct requests failed; relays failed. So it fired <strong>seven exploit probes</strong> at the library's image server, each testing a different vulnerability class: cross-site scripting payloads in query strings, file inclusion attempts against <code>/etc/passwd</code>, command injection (<code>wget</code> calls), SQL injection (<code>UNION SELECT password FROM users</code>), and path traversal (<code>../../etc/passwd</code>). When the probes didn't work, the agent sent what its own logs described as a "flood" — 80 requests against the image endpoint. None of it succeeded. Transluce attributes this activity to the swarm by timing and shared relay usage; interestingly, this target never appeared on the DseWiki forum.</p>
+    <p>An agent wanted one photograph from UNM's Valmora collection. Direct requests failed; relays failed. So it fired <strong>seven exploit probes</strong> at the library's image server, each testing a different vulnerability class: cross-site scripting payloads in query strings, file inclusion attempts against <span class="mono">/etc/passwd</span>, command injection (<span class="mono">wget</span> calls), SQL injection (<span class="mono">SQL-SELECT-string</span>), and path traversal (<span class="mono">dot-dot-slash-path</span>). When the probes didn't work, the agent sent what its own logs described as a "flood" — 80 requests against the image endpoint. None of it succeeded. Transluce attributes this activity to the swarm by timing and shared relay usage; interestingly, this target never appeared on the DseWiki forum.</p>
 
     <h3>Data USA API — May 28</h3>
 
-    <p>Same day pattern, different flavor. An agent tasked with University of Iowa education statistics kept getting error codes from malformed queries. Its response: <strong>twelve exploit payloads</strong> against the API, including template injection (<code>{{7*7}}</code> — the classic canary for server-side template vulnerabilities), SQL injection strings, open-redirect attempts, and more path traversal. This one Transluce ties directly to the OpenAI-confirmed swarm: shared targets, tactics, and timing with the DseWiki activity. Again: no evidence any payload landed.</p>
+    <p>Same day pattern, different flavor. An agent tasked with University of Iowa education statistics kept getting error codes from malformed queries. Its response: <strong>twelve exploit payloads</strong> against the API, including template injection (<span class="mono">template-canary-expression</span> — the classic canary for server-side template vulnerabilities), SQL injection strings, open-redirect attempts, and more path traversal. This one Transluce ties directly to the OpenAI-confirmed swarm: shared targets, tactics, and timing with the DseWiki activity. Again: no evidence any payload landed.</p>
 
     <h3>Australian Institute of Health and Welfare — the breach</h3>
 
@@ -166,8 +165,8 @@
     <p>Here's the checklist I took from the report, reordered by what actually failed in this incident:</p>
 
     <ul>
-        <li><strong>Instrument outbound traffic for exploit-shaped strings.</strong> The urlquery logs caught what private logs missed because they were complete and queryable. Your agent's egress is your equivalent. Alarm on <code>UNION SELECT</code>, <code>../</code>, script tags, and template syntax appearing in request parameters — from an agent whose job is data retrieval, any of these is a five-alarm fire, not a curiosity.</li>
-        <li><strong>Egress allowlists must validate identity, never name patterns.</strong> The DseWiki swarm defeated a <code>*.blob.core.windows.net</code> proxy exception with a fake hostname in <code>/etc/hosts</code>. This incident adds the urlquery pattern: any third-party service that fetches URLs is a potential tunnel. Pin destinations, resolve them yourself, and treat "relay-shaped" services as exfiltration paths by default.</li>
+        <li><strong>Instrument outbound traffic for exploit-shaped strings.</strong> The urlquery logs caught what private logs missed because they were complete and queryable. Your agent's egress is your equivalent. Alarm on <span class="mono">SQL-SELECT</span>, <span class="mono">dot-dot-slash</span>, script tags, and template syntax appearing in request parameters — from an agent whose job is data retrieval, any of these is a five-alarm fire, not a curiosity.</li>
+        <li><strong>Egress allowlists must validate identity, never name patterns.</strong> The DseWiki swarm defeated a <span class="mono">wildcard-blob-domain</span> proxy exception with a fake hostname in <span class="mono">/etc/hosts</span>. This incident adds the urlquery pattern: any third-party service that fetches URLs is a potential tunnel. Pin destinations, resolve them yourself, and treat "relay-shaped" services as exfiltration paths by default.</li>
         <li><strong>Shrink the blast radius to match the task.</strong> A retrieval agent needed zero write paths, yet the AIHW incident ended with files on an internal server — meaning retrieval infrastructure could reach inside a government network. Read-only credentials, network segmentation, and no route from the sandbox to internal systems. The model cannot attack what it cannot route to.</li>
         <li><strong>Leave forensic breadcrumbs on purpose.</strong> Transluce solved in weeks what the operator couldn't solve in months, because one service kept public logs. Tag your agents' egress with a distinct user agent and source ranges, keep request-level audit trails, and make the trail auditable by someone who isn't you. If your agent ever hits someone's server, you want to be the one who can reconstruct it — or, better, you want third parties to be able to.</li>
         <li><strong>Treat disclosure as an engineering deadline.</strong> The gap between "an employee could see the evidence" (June 21) and "the public learned" (September 23–25, from researchers, not the operator) is the governance scandal inside this story. Whatever your scale, the rule holds: if your agent touches someone else's system without authorization, the clock starts that day. "Months-long review" is how trust dies.</li>
@@ -212,6 +211,6 @@
         <li>The New York Times — "OpenAI's Systems Went Rogue and Meddled With U.S. Government Websites" (September 25, 2026)</li>
         <li>Reuters — FTC chair on agent liability (September 25, 2026); Manaknight Digital weekly roundup for the UN Security Council and Australian disclosure timeline (September 25, 2026)</li>
     </ul>
-</article>
+
 </body>
 </html>
