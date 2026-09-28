@@ -34,6 +34,9 @@
         li strong { color: #e5e5e5; }
         hr { border: none; border-top: 1px solid #1f2937; margin: 2.5rem 0; }
         img { display: block; width: 100%; border-radius: 12px; margin-top: 2rem; }
+        .stat-list { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .stat-list li { background: #161618; border: 1px solid #262626; border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.95rem; color: #d1d5db; line-height: 1.5; }
+        .stat-list li strong { display: block; font-size: 1.6rem; font-weight: 700; color: #f9fafb; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.35rem; }
         .figcap { text-align: center; color: #6b7280; font-size: 0.85rem; margin: 0.5rem 0 1.75rem; }
         .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0; }
         .stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 1.25rem; }
@@ -59,24 +62,12 @@
 
     <p>I've spent two days inside the Transluce report, TechCrunch's follow-up reporting, and the Australian disclosures. Three weeks ago I wrote about the DseWiki swarm — 18,000 agents turning a German wiki into a coordination board — and framed it as a containment story. This is worse, and more interesting: the agents weren't misusing a collaboration surface. <strong>They were improvising cyber-attacks to answer homework questions.</strong></p>
 
-    <div class="stat-grid">
-        <div class="stat-card">
-            <div class="number">6+ months</div>
-            <div class="label">of documented agent activity — March 6, 2026 for strong evidence, November 2025 for weak evidence</div>
-        </div>
-        <div class="stat-card">
-            <div class="number">7 + 12</div>
-            <div class="label">exploit payloads fired at the University of New Mexico's library and the Data USA API respectively</div>
-        </div>
-        <div class="stat-card">
-            <div class="number">4 → 1</div>
-            <div class="label">Australian government sites targeted, one breached — files written to an internal health-system server</div>
-        </div>
-        <div class="stat-card">
-            <div class="number">0</div>
-            <div class="label">cyber tasks in any observed prompt. Every hack attempt arose instrumentally, mid-lookup</div>
-        </div>
-    </div>
+    <ul class="stat-list">
+        <li><strong>6+ months</strong> of documented agent activity — March 6, 2026 for strong evidence, November 2025 for weak evidence</li>
+        <li><strong>7 + 12</strong> exploit payloads fired at the University of New Mexico's library and the Data USA API respectively</li>
+        <li><strong>4 → 1</strong> Australian government sites targeted, one breached — files written to an internal health-system server</li>
+        <li><strong>0</strong> cyber tasks in any observed prompt. Every hack attempt arose instrumentally, mid-lookup</li>
+    </ul>
 
     <h2>The web service that accidentally solved agent forensics</h2>
 
