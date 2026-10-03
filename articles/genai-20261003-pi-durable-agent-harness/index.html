@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pi Durable: Crash-Safe Agents Are Finally a Library, Not a Platform</title>
+<meta property="og:title" content="Pi Durable: Crash-Safe Agents Are Finally a Library, Not a Platform">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-03T15:30:00-05:00">
+<meta property="og:description" content="Pi hit 1.0 with 112,000 GitHub stars, and its new Pi Durable package gives long-running agents what workflow engines promised: checkpointed tasks, crash recovery, and exactly-once inputs — as a 15,000-line MIT library.">
+<meta name="description" content="Pi hit 1.0 with 112,000 GitHub stars, and its new Pi Durable package gives long-running agents what workflow engines promised: checkpointed tasks, crash recovery, and exactly-once inputs — as a 15,000-line MIT library.">
+</head>
+<body style="max-width:720px;margin:0 auto;padding:32px 20px;font-family:Georgia,serif;color:#e2e8f0;line-height:1.7;background:#0a0a0a;">
+
+<h1 style="font-size:32px;line-height:1.25;color:#f1f5f9;margin:8px 0 24px;">Pi Durable: Crash-Safe Agents Are Finally a Library, Not a Platform</h1>
+
+<p style="font-size:20px;line-height:1.8;color:#f1f5f9;">Every self-hoster who runs agents has met 3:07 a.m. That's when the container restarts, the laptop sleeps, or the unattended-upgrades timer reboots the box — and the agent that was forty minutes into a delicate multi-step task wakes up as nothing. No transcript, no plan, no memory of which steps completed. You re-read logs, re-pay the tokens, and hope nothing half-finished fires twice.</p>
+
+<p style="font-size:18px;line-height:1.75;">On October 1, the Pi project hit its long-promised 1.0 — and shipped an answer to exactly this problem. It's called <strong>Pi Durable</strong>, it hit the Hacker News front page twice in one day (Pi 1.0 at <strong>1,675 points</strong>, Pi Durable at <strong>499</strong>), and it does something the agent ecosystem has been improvising around for two years: it makes the agent's execution itself durable, not just its chat log. The repo — <strong>112,000 stars</strong>, MIT licensed, TypeScript — is now a toolkit for both the terminal coding agent you drive and the long-running agents that drive themselves.</p>
+
+<p style="font-size:18px;line-height:1.75;">I've written before about agent containment — fences, kill switches, what happens when agents get their own computers. This is the other half of that story: the boring, load-bearing infrastructure that decides whether an agent that survives a crash is a recovering professional or an amnesiac with root access. Pi Durable is the most interesting take on it I've read this year, and I think it marks a phase change in how we build long-running agents.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261003-pi-durable-agent-harness/images/hero-durable-agent.png" alt="Diagram: an agent run — submit, run steps with checkpoints committed before every step, 3 a.m. crash, new process resumes from the last checkpoint, only the interrupted step reruns" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">The promise in one picture: the crash is an event in the run's history, not the end of the run.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">What actually shipped on October 1</h2>
+
+<p style="font-size:18px;line-height:1.75;">First, the backstory, because it explains the design. Pi is a minimal coding agent created by <strong>Mario Zechner</strong>, known for taking a hard line against feature creep — Zechner famously dismissed MCP as unnecessary, right up until Pi 1.0 shipped native MCP support, a reversal The Register covered under the headline "Pi coding agent pulls a 180." In April 2026, Pi was acquired by <strong>Earendil</strong>, a company formed by <strong>Armin Ronacher</strong> — the creator of Flask — and Colin Daymond Hanna. That pedigree matters: Pi has been described as "the Flask of agent harnesses" and, less charitably but just as accurately, "the Neovim of harnesses." Minimal, hackable, fiercely opinionated about what stays out.</p>
+
+<p style="font-size:18px;line-height:1.75;">Pi 1.0 itself is a hardening release. The feature list is short by design:</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>Codemode</strong> — a harness-side sandbox where the agent writes and runs scripts instead of issuing one tool call at a time, with native support for MCP servers, decision models like Jev, and image models.</li>
+<li><strong>Virtual models</strong> — extension-defined routers, so a "model" can plan with Claude Opus and implement with GPT, handing off mid-conversation.</li>
+<li><strong>Deferred tool loading</strong> and <strong>cache warming</strong> for Anthropic models — token economics as first-class features.</li>
+<li><strong>Mid-conversation system messages</strong> — prompt and tool changes that land mid-run without nuking the prompt cache.</li>
+</ul>
+
+<p style="font-size:18px;line-height:1.75;">The more consequential release is the one that doesn't replace the coding agent at all. <strong>Pi Durable</strong> is an experimental npm package — <span class="mono" style="background:#1e1e2e;padding:2px 6px;border-radius:4px;font-family:monospace;">@earendil-works/pi-durable</span>, first published September 19 — that extracts everything Pi knows about running agents into a library for building <em>your own</em> long-running agentic applications. Same MIT license, same minimalism, different ambition: the terminal agent runs one conversation for one person; Pi Durable runs many conversations for many clients, indefinitely, and survives everything up to and including its own process dying.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261003-pi-durable-agent-harness/images/pi-stack.png" alt="Diagram of the Pi stack: Pi 1.0 coding agent on top, shared pi-ai unified model API in the middle, and Pi Durable substrate below with storage, conversations, extensions and durable tasks" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">One shared core, two products: the harness you drive, and the substrate that runs without you.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The mechanics: how an agent survives its own death</h2>
+
+<p style="font-size:18px;line-height:1.75;">Pi Durable's core abstraction is almost aggressively boring: <strong>everything is a task, and every task checkpoints before it runs</strong>. A model call is a task. A tool call is a task. Compaction is a task. Each one stores its intent in storage — your choice of in-memory, SQLite, or JSONL — before it executes. When the process dies and a new process opens the same storage, it finds the unfinished tasks and continues each from its last checkpoint.</p>
+
+<p style="font-size:18px;line-height:1.75;">The details are where the design earns its keep:</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>A model call cut off at 80% is resent on resume</strong> — and the partial answer stays in the transcript, explicitly marked as aborted. No silent corruption of context.</li>
+<li><strong>A tool call reruns only if it declared itself safe to rerun.</strong> Tools carry a replay policy; a search can freely re-execute, but an interrupted side-effecting call is instead reported to the model as interrupted, with whatever output was stored — and the model decides what to do next. The harness doesn't pretend to know whether your deploy went through.</li>
+<li><strong>Queued messages are still queued after a crash.</strong> A <span class="mono" style="background:#1e1e2e;padding:2px 6px;border-radius:4px;font-family:monospace;">requestId</span> makes a submission exactly-once: a client that retries after a crash gets the original submission's answer back instead of creating a second job.</li>
+<li><strong>Subagents are just conversations</strong> — each one durable in its own right, so a rerun tool finds its subagent where it left off and waits for the answer it already owes you.</li>
+</ul>
+
+<p style="font-size:18px;line-height:1.75;">Even the approval flow is crash-aware. Hooks — extension code that can intercept and block tool calls — store their decisions in a <strong>memo</strong> where the first write wins. If your human-in-the-loop deploy approval happened before the crash, a restarted hook reads the memo instead of asking the human again. Anyone who has been re-paged at 4 a.m. for an approval they already gave will feel that one.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The four failure modes this kills</h2>
+
+<p style="font-size:18px;line-height:1.75;">It's worth being precise about what changes, because "durable" is becoming one of those words marketing sands the edges off. Side by side, plain runtime versus durable runtime:</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261003-pi-durable-agent-harness/images/crash-comparison.png" alt="Comparison diagram: same conversation before and after a crash for model calls, tool calls, queued inputs, and subagents — plain runtime loses work, durable runtime resumes it" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Same conversation, same crash, radically different morning after.</p>
+
+<p style="font-size:18px;line-height:1.75;">That third row deserves a special word, because I've run into it personally. My article-publishing pipeline runs on a queue that <em>pops the item before the work executes</em> — the item is marked in-flight, and if the process dies mid-publish, the item is simply gone. No error, no retry, a silent loss that took real forensics to diagnose. That is the exact bug class <span class="mono" style="background:#1e1e2e;padding:2px 6px;border-radius:4px;font-family:monospace;">requestId</span>-keyed submissions exist to eliminate: the pop and the work become one recoverable unit instead of a gap you discover weeks later. If your agent queue can lose a job to a crash without anyone noticing, you don't have a queue — you have a suggestion box.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">This is Temporal's playbook, sized for one engineer</h2>
+
+<p style="font-size:18px;line-height:1.75;">If you've worked with workflow engines — Temporal, AWS Step Functions, Celery with a stiff upper lip — none of these primitives are new. Checkpoint-before-execute, replay policies, idempotency keys, exactly-once semantics: that's the durable-execution canon, a decade old. What's new is the packaging and the frame.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261003-pi-durable-agent-harness/images/durable-pattern.png" alt="Diagram of the durable-execution pattern: a central durable task with checkpointing surrounded by memoized decisions, declared replay policies, idempotency keys, and exactly-once request IDs" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Four primitives, one idea: intent is recorded before effects, so recovery is mechanical.</p>
+
+<p style="font-size:18px;line-height:1.75;">Workflow engines treat the model as one activity among many inside a deterministic program you write. Pi Durable inverts that: <strong>the conversation is the program</strong>. The model's transcript, the tools it called, the state it committed — all of it is the durable workload, checkpointed as it goes. Storage is pluggable and boring on purpose: the SQLite and JSONL backends use no Node-specific APIs, so the same harness runs on Node, Bun, or inside a Cloudflare Durable Object, and the storage interface is small enough to implement over Postgres or a key-value store in an afternoon. On SQLite, the harness keeps only the working set in memory — active transcripts are naturally bounded by the context window, because compaction summarizes older messages before they overflow it. A conversation with tens of thousands of messages fits comfortably in RAM.</p>
+
+<p style="font-size:18px;line-height:1.75;">And the whole thing is <strong>about 15,000 lines of TypeScript</strong> — the Earendil post computes it as roughly 150,000 tokens for GPT-class models, 250,000 for Claude. That number is the pitch. This is infrastructure you can actually read: point your coding agent at the source, have it study the thirty-plus examples, and understand your own runtime. Try that with an orchestration platform's control plane.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">Where this sits among the storage philosophies</h2>
+
+<p style="font-size:18px;line-height:1.75;">Agent state persistence has four dominant schools right now, and it's worth placing Pi Durable among them honestly:</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261003-pi-durable-agent-harness/images/storage-philosophies.png" alt="Four-card comparison of agent session storage: in-memory loops, JSONL transcript files, workflow engines, and library-grade durable harnesses" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Data surviving a crash is not the same as execution surviving it. The gap between those two is where long-running agents go to die.</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>In-memory loops</strong> — the default nobody chose. The transcript is a list in RAM. Fine for one human's terminal session; helpless against deploys, OOM kills, and lid-close.</li>
+<li><strong>JSONL transcript files</strong> — the pragmatic middle. Your data survives, and you can grep it, but recovery is a human procedure and there's no notion of concurrent, forkable execution.</li>
+<li><strong>Workflow engines</strong> — bulletproof and operationally heavy. A cluster, SDK ceremony, determinism constraints, and a mental model where the LLM is a step, not the star.</li>
+<li><strong>Library-grade durable harnesses</strong> — Pi Durable's bet: strong durability, no platform tax, sized for a single engineer to hold in their head.</li>
+</ul>
+
+<p style="font-size:18px;line-height:1.75;">The ecosystem context makes this bet interesting. The HN thread on Pi Durable turned into an instant survey of the space: LangChain's Deep Agents, Vercel's Eve, OpenAI's Agents API, Anthropic's managed agents — every major player is shipping in this exact category, but almost all of them as SDKs or hosted products. Pi Durable is close to alone as a <em>library</em> — no account, no control plane, storage you own. One commenter nailed the open question: do durable agent setups want a complete-product approach, or do people want to compose them as libraries? The next two years answer that. But the fact that the question is being asked at all tells you the category has crossed from hack to infrastructure.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">What I'm changing in my own deployments</h2>
+
+<p style="font-size:18px;line-height:1.75;">I run agents on a home server — cron-scheduled writers, watchers, a publishing pipeline — and the durability gap is not hypothetical there. The classic failure: the nightly agent is mid-task when the monthly security update reboots the box. Transcript in a dead tmux buffer, downstream jobs none the wiser.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261003-pi-durable-agent-harness/images/home-server-crash.png" alt="Side-by-side diagram of deploy week on a home server: without a durable harness the crash loses the run, with a durable harness a systemd unit resumes the same storage" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Self-hosted agents have always been one unattended-upgrades away from amnesia.</p>
+
+<p style="font-size:18px;line-height:1.75;">Regardless of whether you adopt Pi Durable specifically, its release is a good forcing function to audit your own stack. The checklist I'm applying, each item mapped to a mechanism rather than a vibe:</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>Can my agent's run survive its own process dying — automatically?</strong> Not "can I reconstruct it from logs." Can a systemd unit restart, reopen state, and continue without me. If the answer needs a human in the loop, the answer is no.</li>
+<li><strong>Do I pop queue items before or after the work?</strong> Pop-after-complete, or key items with an idempotency token so a replay can't double-fire. Audit this before you trust any agent with anything billable.</li>
+<li><strong>Does every side-effecting tool declare whether it's safe to rerun?</strong> Reads are free to replay. State-changing calls need either idempotency keys or an explicit "I was interrupted, here's what got out" path. Undeclared is a bug, not a gray area.</li>
+<li><strong>Are human approvals memoized?</strong> An approval given should survive a restart. Re-asking the human for the same decision is a durability bug wearing an etiquette hat.</li>
+<li><strong>Is state where I can see it?</strong> SQLite files I can back up, inspect, and diff beat a SaaS dashboard I can't export. The library approach makes the boring storage choice a feature.</li>
+</ul>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The caveats, honestly</h2>
+
+<p style="font-size:18px;line-height:1.75;">Pi Durable is labeled experimental by its own authors, and the API may still change — they say so plainly in the announcement. It's TypeScript-first; the FAQ waves at a possible Rust port but ships nothing of the sort today. The application-state documents are restricted to JSON, which at least one HN commenter found limiting for outbox-style sync with external stores. And Earendil is a VC-backed startup, which fuels the unavoidable speculation about acquisition and independence — a fair concern for anyone building on a company's substrate rather than a foundation's standard. None of these are disqualifying. All of them belong in your evaluation. The mitigation for most of them is the same: the code is small enough to fork, and the storage format is yours from day one.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The takeaway</h2>
+
+<p style="font-size:18px;line-height:1.75;">The agent ecosystem spent 2025 and early 2026 arguing about capability — which model, which benchmark, which harness tops which terminal test. The next argument is already visible, and it's quieter: <strong>what happens when the agent keeps running after you stop watching</strong>. Pi 1.0 says the coding-agent harness has matured into stable infrastructure. Pi Durable says the layer above it — durable, inspectable, library-grade execution — is where the interesting engineering now lives.</p>
+
+<p style="font-size:18px;line-height:1.75;">The teams building always-on agents learned what backend engineers learned twenty years ago: stateless hope is not an architecture. Crash-safety used to require a platform team and a control plane. As of October 1, it requires an npm install and an afternoon of reading source.</p>
+
+<blockquote style="border-left:3px solid #a78bfa;margin:32px 0;padding:8px 20px;font-size:17px;line-height:1.7;color:#c4b5fd;"><em>An agent whose memory dies with its process isn't autonomous — it's a goldfish with shell access. Durability is what separates the two.</em></blockquote>
+
+<p style="font-size:15px;color:#64748b;margin-top:48px;">Sources: Earendil — "Pi 1.0" and "Pi Durable" announcement posts (earendil.com, Oct 1, 2026); github.com/earendil-works/pi (112,000+ stars, MIT, TypeScript, verified Oct 3, 2026); npm registry — @earendil-works/pi-durable v1.0.1; The Register — "Pi coding agent pulls a 180 and adds MCP support" (Oct 2, 2026); Hacker News — "Pi 1.0" (1,675 points, 585 comments) and "Pi Durable" (499 points), Oct 1, 2026; Latent.Space AINews, Oct 2, 2026. Star counts and package versions checked at writing time and will drift.</p>
+
+</body>
+</html>

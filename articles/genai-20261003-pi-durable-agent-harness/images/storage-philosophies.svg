@@ -1,0 +1,54 @@
+<svg width="1440" height="810" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1200" height="675" fill="#0f172a"/>
+
+  <text x="600" y="48" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#f1f5f9">Agent session state: four storage philosophies</text>
+  <text x="600" y="76" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" fill="#94a3b8">What happens when the process dies — the question every long-running agent must answer</text>
+
+  <!-- Card 1: REPL -->
+  <rect x="60" y="120" width="530" height="240" rx="14" fill="#1e1e2e" stroke="#f87171" stroke-width="1.4"/>
+  <text x="325" y="156" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#f87171">In-memory loop</text>
+  <text x="325" y="178" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">the default nobody chose</text>
+  <line x1="100" y1="196" x2="550" y2="196" stroke="#334155" stroke-width="1"/>
+  <text x="100" y="226" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• transcript = Python list / stdout</text>
+  <text x="100" y="252" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• crash = start over from zero</text>
+  <text x="100" y="278" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• fine for one human's terminal session</text>
+  <text x="100" y="304" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• cannot survive deploys, OOM, sleep</text>
+  <rect x="100" y="320" width="450" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="325" y="338" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">durability: none</text>
+
+  <!-- Card 2: transcript logs -->
+  <rect x="630" y="120" width="530" height="240" rx="14" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.4"/>
+  <text x="895" y="156" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#fbbf24">JSONL transcript files</text>
+  <text x="895" y="178" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">the pragmatic middle</text>
+  <line x1="670" y1="196" x2="1120" y2="196" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="226" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• append-only, greppable, portable</text>
+  <text x="670" y="252" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• crash = re-read the file, resume manually</text>
+  <text x="670" y="278" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• no task semantics, no concurrency</text>
+  <text x="670" y="304" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• recovery is a human procedure</text>
+  <rect x="670" y="320" width="450" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="895" y="338" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">durability: data survives, execution doesn't</text>
+
+  <!-- Card 3: workflow engines -->
+  <rect x="60" y="390" width="530" height="240" rx="14" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.4"/>
+  <text x="325" y="426" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">Workflow engines (Temporal et al.)</text>
+  <text x="325" y="448" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">the enterprise answer</text>
+  <line x1="100" y1="466" x2="550" y2="466" stroke="#334155" stroke-width="1"/>
+  <text x="100" y="496" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• bulletproof replay, real durability</text>
+  <text x="100" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• costs: a cluster, SDKs, determinism rules</text>
+  <text x="100" y="548" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• the model becomes one activity among many</text>
+  <text x="100" y="574" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• heavy for an agent that mostly chats</text>
+  <rect x="100" y="590" width="450" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="325" y="608" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">durability: excellent — operational weight with it</text>
+
+  <!-- Card 4: Pi Durable -->
+  <rect x="630" y="390" width="530" height="240" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="1.6"/>
+  <text x="895" y="426" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">Library-grade durable harness</text>
+  <text x="895" y="448" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Pi Durable's bet — the LLM is the program</text>
+  <line x1="670" y1="466" x2="1120" y2="466" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="496" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• checkpointed tasks: model calls, tools, compaction</text>
+  <text x="670" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• SQLite/JSONL storage, no cluster to run</text>
+  <text x="670" y="548" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• a conversation IS the durable unit</text>
+  <text x="670" y="574" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" fill="#e2e8f0">• ~15K lines you can actually read</text>
+  <rect x="670" y="590" width="450" height="26" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="895" y="608" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">durability: strong — without the platform tax</text>
+</svg>

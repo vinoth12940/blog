@@ -1,0 +1,52 @@
+<svg width="1440" height="810" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1200" height="675" fill="#0f172a"/>
+
+  <text x="600" y="48" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#f1f5f9">Same conversation, before and after the crash</text>
+  <text x="600" y="76" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" fill="#94a3b8">Durable execution, applied to the four actions every agent takes</text>
+
+  <!-- headers -->
+  <text x="330" y="118" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#94a3b8">PLAIN RUNTIME</text>
+  <text x="870" y="118" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#34d399">DURABLE RUNTIME</text>
+
+  <!-- Row 1: model call -->
+  <rect x="60" y="140" width="540" height="104" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="330" y="172" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Model call cut off at 80%</text>
+  <text x="330" y="196" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">tokens billed, answer lost, context unclear —</text>
+  <text x="330" y="216" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">you paste the logs and pray</text>
+  <rect x="640" y="140" width="460" height="104" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.4"/>
+  <text x="870" y="172" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Request resent on resume</text>
+  <text x="870" y="196" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">the partial answer stays in the transcript,</text>
+  <text x="870" y="216" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">explicitly marked as aborted</text>
+
+  <!-- Row 2: tool call -->
+  <rect x="60" y="264" width="540" height="104" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="330" y="296" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Tool call dies mid-flight</text>
+  <text x="330" y="320" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">did the deploy happen? nobody knows —</text>
+  <text x="330" y="340" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">the honest answer is "check production"</text>
+  <rect x="640" y="264" width="460" height="104" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.4"/>
+  <text x="870" y="296" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Declared replay policy decides</text>
+  <text x="870" y="320" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">reads rerun freely; side-effecting calls report</text>
+  <text x="870" y="340" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">the interruption and the model chooses next step</text>
+
+  <!-- Row 3: queued input -->
+  <rect x="60" y="388" width="540" height="104" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="330" y="420" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Job popped from queue, then crash</text>
+  <text x="330" y="444" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">work vanished with the process —</text>
+  <text x="330" y="464" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">the silent failure mode queue users know well</text>
+  <rect x="640" y="388" width="460" height="104" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.4"/>
+  <text x="870" y="420" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">requestId = exactly-once input</text>
+  <text x="870" y="444" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">the retried client gets the original</text>
+  <text x="870" y="464" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">submission back instead of asking twice</text>
+
+  <!-- Row 4: subagent -->
+  <rect x="60" y="512" width="540" height="104" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="330" y="544" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Subagent state lives in RAM</text>
+  <text x="330" y="568" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">parent crash orphans every child —</text>
+  <text x="330" y="588" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">start over, re-pay the tokens</text>
+  <rect x="640" y="512" width="460" height="104" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.4"/>
+  <text x="870" y="544" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Subagent = its own durable conversation</text>
+  <text x="870" y="568" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">the rerun tool finds it and waits</text>
+  <text x="870" y="588" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">for the answer it already owes you</text>
+
+  <text x="600" y="652" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">Every step is a checkpointed task over pluggable storage (Memory · SQLite · JSONL) — Pi Durable docs, Oct 2026</text>
+</svg>
