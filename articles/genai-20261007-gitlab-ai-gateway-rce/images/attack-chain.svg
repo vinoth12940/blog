@@ -1,0 +1,85 @@
+<svg width="1440" height="810" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1200" height="675" fill="#0f172a"/>
+
+  <text x="600" y="48" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#f1f5f9">The template-sandbox escape chain</text>
+  <text x="600" y="76" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" fill="#94a3b8">A user-configured prompt template is code the gateway executes — GitLab's advisory, restated as a pipeline</text>
+
+  <!-- step 1 -->
+  <rect x="60" y="108" width="258" height="190" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="189" y="140" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#22d3ee">1 · AUTHED USER</text>
+  <text x="189" y="168" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">anyone with Duo Agent</text>
+  <text x="189" y="188" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Platform access</text>
+  <text x="189" y="216" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">no admin role,</text>
+  <text x="189" y="236" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">no special entitlement</text>
+  <rect x="171" y="262" width="36" height="24" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="189" y="279" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">PR:L</text>
+
+  <!-- step 2 -->
+  <rect x="358" y="108" width="258" height="190" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="487" y="140" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#22d3ee">2 · CRAFTED FLOW</text>
+  <text x="487" y="168" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">user submits a custom flow</text>
+  <text x="487" y="188" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">configuration whose prompt</text>
+  <text x="487" y="208" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">template carries syntax the</text>
+  <text x="487" y="228" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">sandbox never neutralized</text>
+  <rect x="469" y="262" width="36" height="24" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="487" y="279" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">AC:L</text>
+
+  <!-- step 3 -->
+  <rect x="656" y="108" width="258" height="190" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.6"/>
+  <text x="785" y="140" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#f87171">3 · SANDBOX ESCAPE</text>
+  <text x="785" y="168" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">during rendering, the template</text>
+  <text x="785" y="188" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">breaks out of its isolation</text>
+  <text x="785" y="208" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">context — the prompt layer</text>
+  <text x="785" y="228" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">becomes an execution layer</text>
+  <rect x="767" y="262" width="36" height="24" rx="6" fill="#0f172a" stroke="#f87171" stroke-width="1"/>
+  <text x="785" y="279" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#f87171">S:C</text>
+
+  <!-- step 4 -->
+  <rect x="954" y="108" width="186" height="190" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.6"/>
+  <text x="1047" y="140" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#f87171">4 · RCE</text>
+  <text x="1047" y="168" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">arbitrary commands run</text>
+  <text x="1047" y="188" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">on the gateway host,</text>
+  <text x="1047" y="208" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">as the gateway</text>
+  <text x="1047" y="228" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">service account</text>
+  <rect x="1029" y="262" width="36" height="24" rx="6" fill="#0f172a" stroke="#f87171" stroke-width="1"/>
+  <text x="1047" y="279" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#f87171">I:H</text>
+
+  <!-- chain arrows -->
+  <line x1="318" y1="203" x2="352" y2="203" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="616" y1="203" x2="650" y2="203" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="914" y1="203" x2="948" y2="203" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- blast radius -->
+  <rect x="60" y="340" width="1080" height="52" rx="10" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="372" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#e2e8f0">Blast radius: what one escaped template reaches on that host</text>
+
+  <rect x="60" y="410" width="256" height="120" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.2"/>
+  <text x="188" y="442" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#f87171">Org-wide model keys</text>
+  <text x="188" y="466" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">exfiltrate once,</text>
+  <text x="188" y="486" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">bill against you forever</text>
+  <rect x="344" y="410" width="256" height="120" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.2"/>
+  <text x="472" y="442" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#f87171">Every AI request</text>
+  <text x="472" y="466" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">code, diffs, secrets —</text>
+  <text x="472" y="486" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">flows through prompts</text>
+  <rect x="628" y="410" width="256" height="120" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="756" y="442" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#e2e8f0">Every Duo feature</text>
+  <text x="756" y="466" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">take the gateway down</text>
+  <text x="756" y="486" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">and AI is off org-wide</text>
+  <rect x="912" y="410" width="228" height="120" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="1026" y="442" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#e2e8f0">Internal reach</text>
+  <text x="1026" y="466" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">a trusted host inside</text>
+  <text x="1026" y="486" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">the network perimeter</text>
+
+  <!-- fix strip -->
+  <rect x="60" y="556" width="1080" height="56" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.4"/>
+  <text x="600" y="580" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#34d399">Fixed in AI Gateway 19.2.4 / 19.3.2 / 19.4.1</text>
+  <text x="600" y="602" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">GitLab-hosted gateways were patched server-side — only self-hosted installs needed action</text>
+
+  <text x="600" y="646" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">Chain reconstructed from GitLab's official advisory (Oct 2, 2026); CVSS tags mark the matching vector fields</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>

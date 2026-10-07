@@ -1,0 +1,76 @@
+<svg width="1440" height="810" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1200" height="675" fill="#0f172a"/>
+
+  <text x="600" y="48" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#f1f5f9">Your AI gateway is a root shell in waiting</text>
+  <text x="600" y="76" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" fill="#94a3b8">GitLab's AI Gateway brokers every Duo AI feature — and held org-wide secrets one sandbox escape away</text>
+
+  <!-- left column: who routes through it -->
+  <text x="210" y="122" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#94a3b8">EVERY AI FEATURE ROUTES THROUGH IT</text>
+  <rect x="60" y="140" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="210" y="172" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Duo Chat and IDE suggestions</text>
+  <text x="210" y="196" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">completions, explanations, fixes</text>
+  <rect x="60" y="236" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="210" y="268" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Code review summaries</text>
+  <text x="210" y="292" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">your source code and diffs, in</text>
+  <rect x="60" y="332" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="210" y="364" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Duo Agent Platform</text>
+  <text x="210" y="388" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">autonomous flows, tool calls</text>
+  <rect x="60" y="428" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="210" y="460" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Custom AI flows</text>
+  <text x="210" y="484" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">customer-configured templates</text>
+
+  <!-- arrows into gateway -->
+  <line x1="360" y1="180" x2="424" y2="240" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="276" x2="424" y2="290" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="372" x2="424" y2="358" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="360" y1="468" x2="424" y2="408" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- center: the gateway -->
+  <rect x="430" y="140" width="340" height="368" rx="16" fill="#1e1e2e" stroke="#a78bfa" stroke-width="2"/>
+  <text x="600" y="182" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#f1f5f9">AI GATEWAY</text>
+  <text x="600" y="208" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#a78bfa">the broker for every model call</text>
+  <rect x="456" y="228" width="288" height="54" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="250" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">Prompt template store</text>
+  <text x="600" y="270" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">flows rendered per request</text>
+  <rect x="456" y="294" width="288" height="54" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="316" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">Flow runner</text>
+  <text x="600" y="336" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">executes agent-driven pipelines</text>
+  <rect x="456" y="360" width="288" height="54" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="382" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">Org-wide provider keys</text>
+  <text x="600" y="402" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">one bucket of credentials</text>
+  <rect x="456" y="426" width="288" height="54" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="448" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="700" fill="#e2e8f0">Every request path</text>
+  <text x="600" y="468" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">sees code, diffs, and prompts</text>
+
+  <!-- arrows out of gateway -->
+  <line x1="770" y1="180" x2="834" y2="240" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="770" y1="276" x2="834" y2="290" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="770" y1="372" x2="834" y2="358" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="770" y1="468" x2="834" y2="408" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- right column: what it holds -->
+  <text x="990" y="122" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#94a3b8">WHAT IT HOLDS AND REACHES</text>
+  <rect x="840" y="140" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.4"/>
+  <text x="990" y="172" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Cloud model API keys</text>
+  <text x="990" y="196" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">org-wide, highly abusable</text>
+  <rect x="840" y="236" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="990" y="268" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Model providers</text>
+  <text x="990" y="292" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">cloud endpoints it calls out to</text>
+  <rect x="840" y="332" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="990" y="364" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Internal tools</text>
+  <text x="990" y="388" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">agents may invoke privileged ones</text>
+  <rect x="840" y="428" width="300" height="80" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="990" y="460" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Your source code</text>
+  <text x="990" y="484" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#94a3b8">flows through prompts constantly</text>
+
+  <!-- bottom banner -->
+  <rect x="60" y="548" width="1080" height="64" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.4"/>
+  <text x="600" y="574" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#f87171">One sandbox escape away from arbitrary command execution</text>
+  <text x="600" y="598" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#94a3b8">CVE-2026-90970 · CVSS 9.9 · disclosed October 2, 2026</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>

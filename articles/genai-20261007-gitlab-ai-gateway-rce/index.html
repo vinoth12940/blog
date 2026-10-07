@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitLab's AI Gateway Scored 9.9: Your Prompt Template Is Server-Side Code Now</title>
+<meta property="og:title" content="GitLab's AI Gateway Scored 9.9: Your Prompt Template Is Server-Side Code Now">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-07T16:30:00-05:00">
+<meta property="og:description" content="CVE-2026-90970, CVSS 9.9: an authenticated GitLab user escaped the AI Gateway's prompt template sandbox and ran arbitrary commands. What it means for anyone self-hosting AI infrastructure.">
+<meta name="description" content="CVE-2026-90970, CVSS 9.9: an authenticated GitLab user escaped the AI Gateway's prompt template sandbox and ran arbitrary commands. What it means for anyone self-hosting AI infrastructure.">
+</head>
+<body style="max-width:720px;margin:0 auto;padding:32px 20px;font-family:Georgia,serif;color:#e2e8f0;line-height:1.7;background:#0a0a0a;">
+
+<h1 style="font-size:32px;line-height:1.25;color:#f1f5f9;margin:8px 0 24px;">GitLab's AI Gateway Scored 9.9: Your Prompt Template Is Server-Side Code Now</h1>
+
+<p style="font-size:20px;line-height:1.8;color:#f1f5f9;">On October 2, GitLab published a short advisory for a component most of its thirty million users have never seen: the AI Gateway, the service that brokers every Duo AI feature. The bug — CVE-2026-90970, CVSS <strong>9.9</strong> — let an authenticated user escape the <em>prompt template sandbox</em> through a crafted flow configuration and execute arbitrary commands on the gateway. Read that again: the prompt template. The thing we all treat as a blob of instructions for a language model turned out to be the attack surface.</p>
+
+<p style="font-size:18px;line-height:1.75;">I keep coming back to that phrase — <em>prompt template sandbox</em>. It quietly concedes something the industry has been dancing around for two years: somewhere along the way, prompt templates stopped being text and became server-rendered code, complete with the one thing code should never have in a template engine — an escape hatch a user can reach. This advisory is the first time I've seen that idea get a 9.9.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261007-gitlab-ai-gateway-rce/images/hero-gateway-position.png" alt="Diagram: GitLab Duo chat, code review, agent platform and custom flows all route through the AI Gateway, which holds org-wide provider keys and reaches model providers, internal tools, and your source code" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Every AI feature routes through one broker — and that broker holds the keys to all of them.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">What the AI Gateway actually is</h2>
+
+<p style="font-size:18px;line-height:1.75;">GitLab's AI features — Duo Chat, IDE code suggestions, merge request summaries, vulnerability explanations, and the newer Duo Agent Platform for autonomous flows — don't each talk to model providers on their own. They all route through a single service: the <strong>AI Gateway</strong>. It stores the prompt templates those features render, runs the flow pipelines agents execute through, and holds the <strong>organization-wide provider keys</strong> for whatever models you've wired up.</p>
+
+<p style="font-size:18px;line-height:1.75;">GitLab operates a hosted version of this gateway for GitLab.com, GitLab Dedicated, and Self-Managed instances using the managed path. But there's a second deployment mode: <strong>GitLab Duo Self-Hosted</strong>, where customers running air-gapped, regulated, or data-residency-constrained environments operate their own gateway instance on their own infrastructure. That's the population this advisory was really written for.</p>
+
+<p style="font-size:18px;line-height:1.75;">Scale matters here. GitLab's platform counts over <strong>30 million registered users</strong> and is used by more than half the Fortune 100 — names like Nvidia, Lockheed Martin, Goldman Sachs, and Airbus. A command-execution bug in the service that holds every org's model credentials, sitting in the middle of every AI request, is not a niche event.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">Anatomy of a 9.9</h2>
+
+<p style="font-size:18px;line-height:1.75;">The published vector is <span class="mono" style="background:#1e1e2e;padding:2px 6px;border-radius:4px;font-family:monospace;">CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H</span>. If you don't read CVSS fluently, here's the translation — and every field maps to something concrete about the bug:</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261007-gitlab-ai-gateway-rce/images/cvss-anatomy.png" alt="Diagram breaking down the CVSS vector AV:N AC:L PR:L UI:N S:C C:H I:H A:H, with each metric mapped to a concrete fact about the vulnerability" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">A 9.9, field by field. The Scope Changed marker is the one that should worry you most.</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>AV:N</strong> — reachable over the network. It's a service; of course it's on the wire.</li>
+<li><strong>AC:L</strong> — low attack complexity. No race condition to win, no timing luck. A crafted flow configuration was enough.</li>
+<li><strong>PR:L</strong> — the part that stings. You don't need to be an admin. Any authenticated user with <strong>Duo Agent Platform access</strong> qualifies.</li>
+<li><strong>UI:N</strong> — nobody has to click anything. There's no phishing stage.</li>
+<li><strong>S:C</strong> — <em>scope changed</em>, the field that separates "data leak" from "sandbox failure." The attack crossed a security boundary the product itself drew: the prompt template was supposed to be isolated from the system rendering it. The isolation failed.</li>
+<li><strong>C:H / I:H / A:H</strong> — once you're on the gateway host, everything is on the table: the org-wide keys are readable, commands run as the gateway's service account, and the host can be taken down — which takes every AI feature in the organization down with it.</li>
+</ul>
+
+<p style="font-size:18px;line-height:1.75;">Why 9.9 and not 10.0? Only because of that <span class="mono" style="background:#1e1e2e;padding:2px 6px;border-radius:4px;font-family:monospace;">PR:L</span> — you need an account with Duo Agent Platform access. GitLab also hedged honestly: the escape worked <em>"under certain conditions."</em> Fair. But "under certain conditions, any user with agent access can run commands on the box that holds all your keys" is not the kind of conditions you negotiate with. GitLab credited <strong>invisiblemeerkat</strong> for the responsible disclosure — and notably, reached out to affected self-hosted customers privately before publishing anything.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The escape chain, step by step</h2>
+
+<p style="font-size:18px;line-height:1.75;">GitLab classified the flaw as an <strong>improper neutralization issue in the custom flow prompt template</strong>. Strip the compliance language and here's what that means: the gateway renders user-configurable prompt templates through some template engine, and the engine's isolation — the sandbox that's supposed to let you template text without executing code — did not neutralize something a user could craft. The rendering step, which should have been pure text substitution, became code execution.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261007-gitlab-ai-gateway-rce/images/attack-chain.png" alt="Four-step attack chain: authenticated user, crafted flow configuration, prompt template sandbox escape, arbitrary command execution — with the blast radius of org-wide keys, request traffic, AI features, and internal reach" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Four steps from a regular account to a shell on the broker — plus what that shell can reach.</p>
+
+<p style="font-size:18px;line-height:1.75;">The blast radius deserves its own sentence. Whoever lands on that host doesn't just get one feature's data. They get the <strong>organization-wide provider keys</strong> — steal them once and they can bill model calls against your account from anywhere. They sit in the path of <strong>every AI request</strong>, which in 2026 means a stream of source code, diffs, and prompts. They can switch the gateway off, and with it every Duo feature at once. And they're standing on a host that is, by definition, trusted inside your network — a lovely pivot point toward whatever else the gateway is allowed to reach.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">One CVE, two very different customers</h2>
+
+<p style="font-size:18px;line-height:1.75;">The most operationally interesting part of this advisory is who had to act. The fixed versions are <strong>19.2.4, 19.3.2, and 19.4.1</strong> of the AI Gateway itself — a separate version line from GitLab's main application, which tells you it's its own deployable service. Impacted versions ran the gamut: everything from 18.1.6 before 19.2.4, 19.3 before 19.3.2, and 19.4 before 19.4.1.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261007-gitlab-ai-gateway-rce/images/hosted-vs-selfhosted.png" alt="Side-by-side diagram: GitLab-hosted AI Gateway customers needed no action because the fix was already deployed, while self-hosted Duo customers had to patch immediately" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Same CVE, two customer classes — and the pager only rings on one side.</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>GitLab-hosted gateway customers:</strong> GitLab had already deployed the fix server-side before publishing anything. Their advisory states plainly that GitLab.com, Dedicated, and Self-Managed instances using the hosted gateway are protected and need to do nothing.</li>
+<li><strong>Self-hosted gateway customers (Duo Self-Hosted):</strong> "update immediately." Patch, restart, verify. They got targeted outreach before the public post, which is the right disclosure choreography — but the work, and the risk window, is theirs.</li>
+</ul>
+
+<p style="font-size:18px;line-height:1.75;">Notice who self-hosts AI gateways: exactly the organizations with the slowest change processes — air-gapped networks, regulated industries, jurisdictions with data-residency law. The deployment model built for maximum control is also the one that must sprint for every AI-infra CVE. That trade-off used to buy you distance from the internet. It doesn't buy you distance from the vulnerability feed anymore.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">This didn't happen in a vacuum</h2>
+
+<p style="font-size:18px;line-height:1.75;">Zoom out one month and the pattern is hard to miss. In September, GitLab patched <strong>CVE-2026-85706</strong>, a maximum-severity path traversal in Community and Enterprise Edition that let an <em>unauthenticated</em> attacker read credentials and secrets from vulnerable servers. Within a day, CISA added it to its actively-exploited catalog and gave federal agencies <strong>three days</strong> to patch under Binding Operational Directive 26-04. It was the <strong>fifth GitLab vulnerability tagged exploited-in-the-wild since November 2021</strong>, one of them used by ransomware gangs.</p>
+
+<p style="font-size:18px;line-height:1.75;">And the same week as the AI Gateway advisory, researchers reported <strong>PoeLLM malware</strong> — a cryptomining campaign that specifically hunts exposed AI servers. Different technique, entirely different target profile, same underlying reality: attackers have added AI infrastructure to their default scan lists. Your model gateway is now inventoried the way internet-facing Redis instances were five years ago.</p>
+
+<img src="https://vinoth12940.github.io/blog/articles/genai-20261007-gitlab-ai-gateway-rce/images/security-pattern.png" alt="Timeline diagram of three October 2026 incidents: GitLab path traversal actively exploited, the AI Gateway 9.9 sandbox escape, and PoeLLM malware infecting exposed AI servers" style="max-width:100%;height:auto;border-radius:8px;">
+<p class="figcap" style="font-size:14px;color:#94a3b8;margin-top:8px;">Three incidents, one month, one lesson: the isolation layer around AI workloads is where attackers now look first.</p>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">Prompt templates are code — treat them like it</h2>
+
+<p style="font-size:18px;line-height:1.75;">None of this is conceptually new; it's just wearing new clothes. Server-side template injection has been a celebrated bug class for a decade — <em>template injection equals remote code execution</em> is standing wisdom in application security, and mature template engines ship hardened sandboxes precisely because their escape routes keep getting found. When Apache Airflow fixed CVE-2024-37210 in 2024, the issue was a path traversal where connection and variable targets got resolved server-side during template rendering — dangerous for exactly the same reason: something user-influenced being processed inside a trusted rendering context.</p>
+
+<p style="font-size:18px;line-height:1.75;">What's new in the LLM era is the blast radius attached to templates. A prompt template used to interpolate a customer's name into an email. In an AI gateway, it interpolates your <strong>source code, your diffs, your agent tool calls — right next to a bucket of org-wide model credentials</strong>. The trust boundary around template rendering didn't move, but the value of what's behind it exploded. The industry re-priced the input; it hasn't finished re-pricing the renderer.</p>
+
+<p style="font-size:18px;line-height:1.75;">GitLab's fix — proper neutralization in three patched gateway versions — is the correct endpoint. But the general lesson is architectural: <strong>if users can author templates, you are running a code-execution service, whatever your marketing calls it.</strong> That has consequences:</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>Classify template authors like code committers.</strong> Who can define a custom flow is a deployment-critical permission now, not a convenience setting. In this incident it gated the entire chain.</li>
+<li><strong>Neutralize at render, not at review.</strong> Sandboxed engines, pinned versions, and an escape-corpus test suite in CI beat hoping reviewers catch clever syntax.</li>
+<li><strong>Shrink the credential blast radius.</strong> Org-wide eternal provider keys next to a template renderer is a design smell. Per-feature scoped, short-lived, rotate-on-read credentials make the next 9.9 boring.</li>
+<li><strong>Put the gateway host on a short leash.</strong> Egress filtering, audit logging, and minimal local privileges — assume the sandbox has an exit someone hasn't found yet.</li>
+</ul>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The self-hoster's audit checklist</h2>
+
+<p style="font-size:18px;line-height:1.75;">I run AI plumbing on my own hardware, so I read advisories like this one as a checklist against my own stack. If you self-host anything that renders prompts — a LiteLLM proxy, a gateway of your own, agent pipelines with user-editable prompts — this is the pass I'd run this week:</p>
+
+<ul style="font-size:17px;line-height:1.8;">
+<li><strong>Inventory your AI gateways.</strong> Every service that stands between a user and a model API is now critical infrastructure. Name them, version them, put them in your patch tracker. If a component's version line surprises you, that's the finding.</li>
+<li><strong>Ask who can author a prompt template.</strong> Not who can use one — who can <em>define</em> one. If the answer is "any authenticated user," you have GitLab's pre-patch permission model.</li>
+<li><strong>Check the rendering engine's sandbox story.</strong> Is template rendering actually sandboxed? Which engine, which version, when did you last test it against a template-injection payload list?</li>
+<li><strong>Scope the keys behind the renderer.</strong> If compromising the renderer yields eternal org-wide keys, fix that before someone proves it matters. Scope per feature, expire aggressively.</li>
+<li><strong>Treat air-gapped as slow, not safe.</strong> The CVEs arrive by feed regardless. If you can't patch AI infra quickly, at least assume the version you're running is public knowledge — these things get flagged, enumerated, and exploited faster every quarter.</li>
+<li><strong>Don't roll your own template engine.</strong> The temptation in self-hosted setups is a home-grown mustache-style renderer in a scripting language. Every escape in this story happened inside a vendor's hardened sandbox. Yours will not do better.</li>
+</ul>
+
+<hr style="border:none;border-top:1px solid #334155;margin:40px 0;">
+
+<h2 style="font-size:26px;color:#f1f5f9;margin-top:48px;">The takeaway</h2>
+
+<p style="font-size:18px;line-height:1.75;">The AI Gateway advisory is three paragraphs long and fixes itself into a routine patch. But it marks a line: this is the first time I've seen a <strong>prompt template sandbox escape</strong> assigned a near-maximum severity by a major vendor — the moment prompt infrastructure formally joined the threat model. The AI stack got a whole new class of load-bearing component, and it took exactly two years from "ChatGPT wrappers everywhere" to "your prompt renderer is a 9.9."</p>
+
+<p style="font-size:18px;line-height:1.75;">If you run GitLab with self-hosted Duo, the action is real and immediate: versions <strong>19.2.4, 19.3.2, or 19.4.1</strong>, today, not this sprint. Everyone else building with agents: audit what renders your prompts and what that renderer can touch. The next advisory in this bug class will not be GitLab's.</p>
+
+<blockquote style="border-left:3px solid #a78bfa;margin:32px 0;padding:8px 20px;font-size:17px;line-height:1.7;color:#c4b5fd;"><em>A prompt template is server-side code with a friendly name. The sandbox is not a formality — it's the only thing between a user's clever syntax and your organization's keys.</em></blockquote>
+
+<p style="font-size:15px;color:#64748b;margin-top:48px;">Sources: GitLab — "GitLab AI Gateway Critical Patch Release: 19.2.4, 19.3.2, and 19.4.1" (docs.gitlab.com release feed, published Oct 2, 2026; CVSS vector, impacted ranges, and advisory language verified against the official entry); BleepingComputer — "GitLab warns of critical RCE vulnerability in AI Gateway service" (Oct 2, 2026) and "PoeLLM malware infects exposed AI servers in cryptomining attacks" (Oct 7, 2026); CISA Known Exploited Vulnerabilities catalog (CVE-2026-85706, Sept 2026); Apache Airflow advisory for CVE-2024-37210 (2024). Severity scores and version numbers checked at writing time and will not change; threat-activity claims reflect reporting as of Oct 7, 2026.</p>
+
+</body>
+</html>

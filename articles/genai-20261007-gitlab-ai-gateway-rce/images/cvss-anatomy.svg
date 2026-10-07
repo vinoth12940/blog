@@ -1,0 +1,72 @@
+<svg width="1440" height="810" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1200" height="675" fill="#0f172a"/>
+
+  <text x="600" y="48" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#f1f5f9">Anatomy of a 9.9: the vector tells the whole story</text>
+  <text x="600" y="76" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" fill="#94a3b8">Every field of CVE-2026-90970's score maps to one concrete fact about the bug</text>
+
+  <rect x="300" y="96" width="600" height="38" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="121" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="16" fill="#22d3ee">CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H</text>
+
+  <!-- row 1 -->
+  <rect x="60" y="156" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="191" y="192" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">AV:N</text>
+  <text x="191" y="224" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Network: reachable remotely,</text>
+  <text x="191" y="244" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">no subnet hopping</text>
+  <text x="191" y="276" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">the gateway is on the wire</text>
+
+  <rect x="346" y="156" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="477" y="192" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">AC:L</text>
+  <text x="477" y="224" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Low complexity: no race,</text>
+  <text x="477" y="244" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">no lucky timing to win</text>
+  <text x="477" y="276" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">a crafted flow was enough</text>
+
+  <rect x="632" y="156" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="763" y="192" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">PR:L</text>
+  <text x="763" y="224" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Low privileges: any user</text>
+  <text x="763" y="244" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">with Duo Agent access</text>
+  <text x="763" y="276" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">no admin role required</text>
+
+  <rect x="918" y="156" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="1049" y="192" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">UI:N</text>
+  <text x="1049" y="224" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">No user interaction:</text>
+  <text x="1049" y="244" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">nobody clicks anything</text>
+  <text x="1049" y="276" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">no phishing stage needed</text>
+
+  <!-- row 2 -->
+  <rect x="60" y="330" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="2"/>
+  <text x="191" y="366" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#f87171">S:C</text>
+  <text x="191" y="398" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">Scope changed: the escape</text>
+  <text x="191" y="418" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#fca5a5">crossed the sandbox boundary</text>
+  <text x="191" y="450" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#f87171">the tell — sandbox failed</text>
+
+  <rect x="346" y="330" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="477" y="366" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">C:H</text>
+  <text x="477" y="398" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Confidentiality: total —</text>
+  <text x="477" y="418" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">org-wide keys readable</text>
+  <text x="477" y="450" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">every provider credential</text>
+
+  <rect x="632" y="330" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="763" y="366" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">I:H</text>
+  <text x="763" y="398" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Integrity: total — commands</text>
+  <text x="763" y="418" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">run as the gateway service</text>
+  <text x="763" y="450" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">the attacker is the broker</text>
+
+  <rect x="918" y="330" width="262" height="150" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="1049" y="366" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="18" font-weight="700" fill="#22d3ee">A:H</text>
+  <text x="1049" y="398" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">Availability: total —</text>
+  <text x="1049" y="418" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12.5" fill="#94a3b8">every AI feature dies</text>
+  <text x="1049" y="450" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">one host, all features down</text>
+
+  <!-- summary band -->
+  <rect x="60" y="514" width="1120" height="76" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.4"/>
+  <text x="600" y="546" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">Read as one sentence: an authenticated user, over the network, with no clicks,</text>
+  <text x="600" y="572" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#e2e8f0">escaped the sandbox and owned the host. Critical = the 9.0-10.0 band.</text>
+
+  <text x="600" y="640" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" fill="#64748b">Source: GitLab advisory — "GitLab AI Gateway Critical Patch Release," Oct 2, 2026</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>
