@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <marker id="arrA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#34d399"/>
+    </marker>
+    <marker id="arrB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="900" fill="#0f172a"/>
+
+  <text x="720" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f8fafc">The Hybrid Pattern: Small Local Brain, Big Cloud Muscle</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">How a 2B-active model changes what has to leave your machine at all</text>
+
+  <!-- Left card: on-device -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="150" width="560" height="480" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <rect x="70" y="150" width="560" height="64" rx="16" fill="#0b1f18"/>
+    <text x="350" y="190" text-anchor="middle" font-size="23" font-weight="700" fill="#34d399">ON DEVICE — LFM2.5-24B-A2B</text>
+    <text x="100" y="252" font-size="18" font-weight="600" fill="#e2e8f0">What it handles locally:</text>
+    <text x="100" y="290" font-size="16" fill="#cbd5e1">• Reads the email, calendar, files, notes</text>
+    <text x="100" y="324" font-size="16" fill="#cbd5e1">• Decides which tool to call and with what args</text>
+    <text x="100" y="358" font-size="16" fill="#cbd5e1">• Multi-step agent loops at 184 tok/s</text>
+    <text x="100" y="392" font-size="16" fill="#cbd5e1">• 131K context: your whole project, in RAM</text>
+    <rect x="100" y="430" width="500" height="76" rx="10" fill="#0b1f18" stroke="#34d399" stroke-width="1"/>
+    <text x="350" y="462" text-anchor="middle" font-size="17" font-weight="700" fill="#34d399">Stays on device:</text>
+    <text x="350" y="490" text-anchor="middle" font-size="15" fill="#a7f3d0">personal data · credentials · message history · health data</text>
+    <rect x="100" y="530" width="500" height="76" rx="10" fill="#111827" stroke="#334155" stroke-width="1"/>
+    <text x="350" y="562" text-anchor="middle" font-size="17" font-weight="700" fill="#e2e8f0">Cost: $0 per token</text>
+    <text x="350" y="590" text-anchor="middle" font-size="15" fill="#94a3b8">15 GB RAM · works offline · no rate limits</text>
+  </g>
+
+  <!-- Right card: cloud -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="810" y="150" width="560" height="480" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <rect x="810" y="150" width="560" height="64" rx="16" fill="#2a2210"/>
+    <text x="1090" y="190" text-anchor="middle" font-size="23" font-weight="700" fill="#fbbf24">CLOUD API — frontier model</text>
+    <text x="840" y="252" font-size="18" font-weight="600" fill="#e2e8f0">What still needs a bigger model:</text>
+    <text x="840" y="290" font-size="16" fill="#cbd5e1">• Deep reasoning on hard synthesis tasks</text>
+    <text x="840" y="324" font-size="16" fill="#cbd5e1">• Code refactors across large repos (SWE-Bench gap)</text>
+    <text x="840" y="358" font-size="16" fill="#cbd5e1">• Knowledge-heavy Q and A (GPQA gap)</text>
+    <text x="840" y="392" font-size="16" fill="#cbd5e1">• Cold-start tasks with no local precedent</text>
+    <rect x="840" y="430" width="500" height="76" rx="10" fill="#2a2210" stroke="#fbbf24" stroke-width="1"/>
+    <text x="1090" y="462" text-anchor="middle" font-size="17" font-weight="700" fill="#fbbf24">Leaves the device:</text>
+    <text x="1090" y="490" text-anchor="middle" font-size="15" fill="#fde68a">a sanitized, minimal query — not the raw context</text>
+    <rect x="840" y="530" width="500" height="76" rx="10" fill="#111827" stroke="#334155" stroke-width="1"/>
+    <text x="1090" y="562" text-anchor="middle" font-size="17" font-weight="700" fill="#e2e8f0">Cost: per-token, metered</text>
+    <text x="1090" y="590" text-anchor="middle" font-size="15" fill="#94a3b8">used only when the task earns it</text>
+  </g>
+
+  <!-- Middle orchestrator -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="640" y="330" width="160" height="130" rx="14" fill="#0b1220" stroke="#22d3ee" stroke-width="2"/>
+    <text x="720" y="378" text-anchor="middle" font-size="17" font-weight="700" fill="#22d3ee">ROUTER</text>
+    <text x="720" y="404" text-anchor="middle" font-size="14" fill="#94a3b8">agent harness</text>
+    <text x="720" y="426" text-anchor="middle" font-size="14" fill="#94a3b8">routes by task</text>
+  </g>
+  <line x1="632" y1="390" x2="512" y2="390" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrA)"/>
+  <line x1="808" y1="390" x2="928" y2="390" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrB)"/>
+
+  <!-- Bottom takeaway strip -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="680" width="1300" height="150" rx="14" fill="#111827" stroke="#334155"/>
+    <text x="720" y="726" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">The shift that matters</text>
+    <text x="720" y="760" text-anchor="middle" font-size="17" fill="#94a3b8">Before: private data had to leave to get smart answers. Now: 80-90% of agent steps — reading, routing, tool calls —</text>
+    <text x="720" y="788" text-anchor="middle" font-size="17" fill="#94a3b8">finish locally, and only the genuinely hard reasoning crosses the network. Privacy becomes the default, not a paid tier.</text>
+    <text x="720" y="816" text-anchor="middle" font-size="14" fill="#64748b">Routing split is an illustrative planning estimate, not a benchmark result</text>
+  </g>
+</svg>

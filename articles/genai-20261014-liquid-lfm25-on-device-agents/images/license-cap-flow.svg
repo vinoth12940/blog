@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <marker id="arrY" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#34d399"/>
+    </marker>
+    <marker id="arrN" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="780" fill="#0f172a"/>
+
+  <text x="720" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f8fafc">The $10M Line: Who Can Ship This for Free</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">LFM Open License v1.0 — open weights, not open terms. Section 5 decides.</text>
+
+  <!-- Start -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="540" y="150" width="360" height="70" rx="12" fill="#0b1220" stroke="#22d3ee" stroke-width="2"/>
+    <text x="720" y="192" text-anchor="middle" font-size="19" font-weight="600" fill="#e2e8f0">Shipping a product on LFM2.5?</text>
+  </g>
+
+  <line x1="720" y1="220" x2="720" y2="268" stroke="#22d3ee" stroke-width="2.5"/>
+
+  <!-- Diamond decision -->
+  <g font-family="Inter, Arial, sans-serif">
+    <polygon points="720,270 960,345 720,420 480,345" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="720" y="338" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">Is your company's</text>
+    <text x="720" y="364" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">annual revenue over $10M?</text>
+  </g>
+
+  <!-- No path (left, green) -->
+  <line x1="478" y1="345" x2="300" y2="345" stroke="#34d399" stroke-width="2.5"/>
+  <line x1="300" y1="345" x2="300" y2="440" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrY)"/>
+  <text x="380" y="330" font-size="16" font-weight="700" fill="#34d399" font-family="Inter, Arial, sans-serif">NO — free commercial use</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="110" y="445" width="380" height="210" rx="14" fill="#0b1f18" stroke="#34d399" stroke-width="2"/>
+    <text x="300" y="488" text-anchor="middle" font-size="20" font-weight="700" fill="#34d399">You're clear</text>
+    <text x="140" y="527" font-size="16" fill="#cbd5e1">• Indie devs, startups under $10M</text>
+    <text x="140" y="559" font-size="16" fill="#cbd5e1">• Any commercial product, any price</text>
+    <text x="140" y="591" font-size="16" fill="#cbd5e1">• Fine-tuning and redistribution OK</text>
+    <text x="140" y="623" font-size="16" fill="#cbd5e1">• Non-profits and research: always free</text>
+  </g>
+
+  <!-- Yes path (right, amber) -->
+  <line x1="962" y1="345" x2="1140" y2="345" stroke="#fbbf24" stroke-width="2.5"/>
+  <line x1="1140" y1="345" x2="1140" y2="440" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrN)"/>
+  <text x="1050" y="330" font-size="16" font-weight="700" fill="#fbbf24" text-anchor="end" font-family="Inter, Arial, sans-serif">YES — not licensed</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="950" y="445" width="380" height="210" rx="14" fill="#2a2210" stroke="#fbbf24" stroke-width="2"/>
+    <text x="1140" y="488" text-anchor="middle" font-size="20" font-weight="700" fill="#fbbf24">Talk to Liquid AI</text>
+    <text x="980" y="527" font-size="16" fill="#cbd5e1">• Commercial use beyond $10M needs</text>
+    <text x="980" y="559" font-size="16" fill="#cbd5e1">   separate enterprise terms</text>
+    <text x="980" y="591" font-size="16" fill="#cbd5e1">• Applies to derivative works too —</text>
+    <text x="980" y="623" font-size="16" fill="#cbd5e1">   your fine-tune inherits the license</text>
+  </g>
+
+  <!-- Bottom strip: same license everywhere -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="110" y="690" width="1220" height="60" rx="10" fill="#111827" stroke="#334155"/>
+    <text x="720" y="726" text-anchor="middle" font-size="16" fill="#94a3b8">The community GGUF, MLX and ONNX repos on Hugging Face carry the same license — quantizing doesn't launder the terms</text>
+  </g>
+</svg>

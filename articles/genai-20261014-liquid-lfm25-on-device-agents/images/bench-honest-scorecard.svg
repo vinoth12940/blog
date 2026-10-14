@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980">
+  <defs>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="980" fill="#0f172a"/>
+
+  <text x="720" y="72" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Honest Scorecard: Where a 2B-Active Model Wins and Loses</text>
+  <text x="720" y="112" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Vendor-reported numbers, all models on vLLM · LFM2.5-24B-A2B (green) vs three larger MoE peers</text>
+
+  <!-- Legend -->
+  <g font-family="Inter, Arial, sans-serif" font-size="15">
+    <rect x="270" y="140" width="16" height="16" rx="3" fill="#34d399"/><text x="294" y="154" fill="#e2e8f0">LFM2.5-24B-A2B (2.45B active)</text>
+    <rect x="560" y="140" width="16" height="16" rx="3" fill="#60a5fa"/><text x="584" y="154" fill="#e2e8f0">Qwen3.6-35B-A3B</text>
+    <rect x="770" y="140" width="16" height="16" rx="3" fill="#a78bfa"/><text x="794" y="154" fill="#e2e8f0">Gemma-4-26B-A4B-it</text>
+    <rect x="1010" y="140" width="16" height="16" rx="3" fill="#fbbf24"/><text x="1034" y="154" fill="#e2e8f0">Nemotron-3.5-Lightning</text>
+  </g>
+
+  <!-- Benchmark blocks: horizontal grouped bars -->
+  <!-- Block 1: AutomationBench WIN -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="60" y="185" width="1320" height="180" rx="12" fill="#1e293b" stroke="#334155"/>
+    <text x="90" y="222" font-size="21" font-weight="700" fill="#34d399">AutomationBench</text>
+    <text x="90" y="247" font-size="14" fill="#94a3b8">agentic task automation · scale 0–30</text>
+    <text x="1350" y="222" text-anchor="end" font-size="15" font-weight="700" fill="#34d399">3.2× the next model</text>
+    <text x="380" y="283" font-size="14" fill="#cbd5e1" text-anchor="end">LFM2.5</text><rect x="392" y="268" width="924" height="20" rx="4" fill="#34d399"/><text x="1324" y="283" font-size="14" font-weight="700" fill="#34d399">27.69</text>
+    <text x="380" y="315" font-size="14" fill="#cbd5e1" text-anchor="end">Qwen3.6</text><rect x="392" y="300" width="291" height="20" rx="4" fill="#60a5fa"/><text x="691" y="315" font-size="14" fill="#60a5fa">8.72</text>
+    <text x="380" y="347" font-size="14" fill="#cbd5e1" text-anchor="end">Gemma-4</text><rect x="392" y="332" width="182" height="20" rx="4" fill="#a78bfa"/><text x="582" y="347" font-size="14" fill="#a78bfa">5.46</text>
+  </g>
+
+  <!-- Block 2: IFEval WIN -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="60" y="385" width="1320" height="180" rx="12" fill="#1e293b" stroke="#334155"/>
+    <text x="90" y="422" font-size="21" font-weight="700" fill="#34d399">IFEval / IFBench / Multi-IF</text>
+    <text x="90" y="447" font-size="14" fill="#94a3b8">instruction following · sweeps all three</text>
+    <text x="1350" y="422" text-anchor="end" font-size="15" font-weight="700" fill="#34d399">clean sweep</text>
+    <text x="380" y="483" font-size="14" fill="#cbd5e1" text-anchor="end">LFM2.5 IFEval</text><rect x="392" y="468" width="900" height="20" rx="4" fill="#34d399"/><text x="1300" y="483" font-size="14" font-weight="700" fill="#34d399">96.75</text>
+    <text x="380" y="515" font-size="14" fill="#cbd5e1" text-anchor="end">Qwen3.6 IFEval</text><rect x="392" y="500" width="869" height="20" rx="4" fill="#60a5fa"/><text x="1269" y="515" font-size="14" fill="#60a5fa">93.06</text>
+    <text x="380" y="547" font-size="14" fill="#cbd5e1" text-anchor="end">LFM2.5 IFBench</text><rect x="392" y="532" width="694" height="20" rx="4" fill="#34d399"/><text x="1094" y="547" font-size="14" font-weight="700" fill="#34d399">74.69</text>
+  </g>
+
+  <!-- Block 3: SWE-Bench LOSS -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="60" y="585" width="1320" height="180" rx="12" fill="#1e293b" stroke="#334155"/>
+    <text x="90" y="622" font-size="21" font-weight="700" fill="#fbbf24">SWE-Bench Verified (OpenCode)</text>
+    <text x="90" y="647" font-size="14" fill="#94a3b8">real-world code fixes · scale 0–70</text>
+    <text x="1350" y="622" text-anchor="end" font-size="15" font-weight="700" fill="#fbbf24">-15.2 vs Qwen3.6</text>
+    <text x="380" y="683" font-size="14" fill="#cbd5e1" text-anchor="end">LFM2.5</text><rect x="392" y="668" width="510" height="20" rx="4" fill="#34d399"/><text x="910" y="683" font-size="14" font-weight="700" fill="#34d399">51.00</text>
+    <text x="380" y="715" font-size="14" fill="#cbd5e1" text-anchor="end">Qwen3.6</text><rect x="392" y="700" width="662" height="20" rx="4" fill="#60a5fa"/><text x="1062" y="715" font-size="14" fill="#60a5fa">66.20</text>
+    <text x="380" y="747" font-size="14" fill="#cbd5e1" text-anchor="end">Nemotron</text><rect x="392" y="732" width="534" height="20" rx="4" fill="#fbbf24"/><text x="934" y="747" font-size="14" fill="#fbbf24">53.40</text>
+  </g>
+
+  <!-- Block 4: GPQA LOSS -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="60" y="785" width="1320" height="165" rx="12" fill="#1e293b" stroke="#334155"/>
+    <text x="90" y="822" font-size="21" font-weight="700" fill="#fbbf24">GPQA Diamond</text>
+    <text x="90" y="847" font-size="14" fill="#94a3b8">PhD-level science knowledge · scale 0–90</text>
+    <text x="1350" y="822" text-anchor="end" font-size="15" font-weight="700" fill="#fbbf24">-9.3 vs Qwen3.6</text>
+    <text x="380" y="883" font-size="14" fill="#cbd5e1" text-anchor="end">LFM2.5</text><rect x="392" y="868" width="744" height="20" rx="4" fill="#34d399"/><text x="1144" y="883" font-size="14" font-weight="700" fill="#34d399">74.42</text>
+    <text x="380" y="915" font-size="14" fill="#cbd5e1" text-anchor="end">Qwen3.6</text><rect x="392" y="900" width="837" height="20" rx="4" fill="#60a5fa"/><text x="1237" y="915" font-size="14" fill="#60a5fa">83.69</text>
+  </g>
+
+  <text x="720" y="960" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#64748b">Source: Liquid AI model card, published Oct 13 2026 · the pattern: tool use and instruction following lead, deep knowledge and coding lag larger peers</text>
+</svg>

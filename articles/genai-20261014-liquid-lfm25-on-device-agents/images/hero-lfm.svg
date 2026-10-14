@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="820" fill="url(#heroGrad)"/>
+
+  <!-- Kicker -->
+  <text x="720" y="88" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600" fill="#22d3ee" letter-spacing="4">LIQUID AI · LFM2.5-24B-A2B · OCTOBER 2026</text>
+
+  <!-- Headline -->
+  <text x="720" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#f8fafc">A 24B Agent Brain With a 2B Energy Bill</text>
+  <text x="720" y="225" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" fill="#94a3b8">The open-weight model built to run agents on your device — not in someone's cloud</text>
+
+  <!-- Stat cards row -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="90" y="280" width="290" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="235" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#22d3ee">24.0B</text>
+    <text x="235" y="385" text-anchor="middle" font-size="18" fill="#94a3b8">total parameters</text>
+    <text x="235" y="412" text-anchor="middle" font-size="17" font-weight="600" fill="#34d399">only 2.45B active</text>
+
+    <rect x="410" y="280" width="290" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="555" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#a78bfa">131K</text>
+    <text x="555" y="385" text-anchor="middle" font-size="18" fill="#94a3b8">context window</text>
+    <text x="555" y="412" text-anchor="middle" font-size="17" font-weight="600" fill="#34d399">up from 32K</text>
+
+    <rect x="730" y="280" width="290" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="875" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#fbbf24">184</text>
+    <text x="875" y="385" text-anchor="middle" font-size="18" fill="#94a3b8">tokens/s decode</text>
+    <text x="875" y="412" text-anchor="middle" font-size="17" font-weight="600" fill="#34d399">Apple M5 Max, Q4_K_M</text>
+
+    <rect x="1050" y="280" width="290" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1195" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#f472b6">$10M</text>
+    <text x="1195" y="385" text-anchor="middle" font-size="18" fill="#94a3b8">revenue threshold</text>
+    <text x="1195" y="412" text-anchor="middle" font-size="17" font-weight="600" fill="#34d399">below it: free commercial use</text>
+  </g>
+
+  <!-- Flow: model to devices -->
+  <rect x="530" y="490" width="380" height="74" rx="12" fill="#0b1220" stroke="#22d3ee" stroke-width="2"/>
+  <text x="720" y="521" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#e2e8f0">One 15 GB model file</text>
+  <text x="720" y="548" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">GGUF · MLX · ONNX · FP8 on day one</text>
+
+  <line x1="470" y1="527" x2="528" y2="527" stroke="#22d3ee" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="912" y1="527" x2="970" y2="527" stroke="#22d3ee" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="720" y1="566" x2="720" y2="612" stroke="#22d3ee" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Device row -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="180" y="618" width="270" height="130" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="315" y="662" text-anchor="middle" font-size="30">📱</text>
+    <text x="315" y="696" text-anchor="middle" font-size="19" font-weight="600" fill="#e2e8f0">Phone / tablet</text>
+    <text x="315" y="723" text-anchor="middle" font-size="15" fill="#94a3b8">MLX 4-bit · private by default</text>
+
+    <rect x="585" y="618" width="270" height="130" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="720" y="662" text-anchor="middle" font-size="30">💻</text>
+    <text x="720" y="696" text-anchor="middle" font-size="19" font-weight="600" fill="#e2e8f0">Laptop (M-series)</text>
+    <text x="720" y="723" text-anchor="middle" font-size="15" fill="#94a3b8">184 tok/s on M5 Max</text>
+
+    <rect x="990" y="618" width="270" height="130" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1125" y="662" text-anchor="middle" font-size="30">🖥️</text>
+    <text x="1125" y="696" text-anchor="middle" font-size="19" font-weight="600" fill="#e2e8f0">Mini-PC / edge server</text>
+    <text x="1125" y="723" text-anchor="middle" font-size="15" fill="#94a3b8">114 tok/s on Ryzen AI Max+ 395</text>
+  </g>
+
+  <!-- Footer note -->
+  <text x="720" y="790" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#64748b">Speeds: Liquid AI Pipette benchmarks, llama.cpp, Q4_K_M, 4K-token input context</text>
+</svg>
