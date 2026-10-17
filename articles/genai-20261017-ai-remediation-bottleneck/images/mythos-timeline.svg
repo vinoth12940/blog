@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760">
+  <defs>
+    <linearGradient id="tlGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="tlArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="760" fill="url(#tlGrad)"/>
+
+  <text x="720" y="80" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">SIX MONTHS FROM MODEL TO LINE ITEM</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">The Mythos Timeline</text>
+
+  <!-- main line -->
+  <line x1="90" y1="420" x2="1350" y2="420" stroke="#334155" stroke-width="3" marker-end="url(#tlArr)"/>
+
+  <!-- Node 1: Apr 7 -->
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="150" cy="420" r="12" fill="#0f172a" stroke="#22d3ee" stroke-width="3"/>
+    <line x1="150" y1="408" x2="150" y2="300" stroke="#334155" stroke-width="1.5"/>
+    <rect x="60" y="180" width="240" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="180" y="212" text-anchor="middle" font-size="17" font-weight="700" fill="#22d3ee">APRIL 7, 2026</text>
+    <text x="180" y="240" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">Mythos announced —</text>
+    <text x="180" y="262" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">withheld from the public</text>
+    <text x="180" y="286" text-anchor="middle" font-size="13.5" fill="#94a3b8">found thousands of high-severity</text>
+  </g>
+
+  <!-- Node 2: Apr Glasswing -->
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="400" cy="420" r="12" fill="#0f172a" stroke="#a78bfa" stroke-width="3"/>
+    <line x1="400" y1="432" x2="400" y2="520" stroke="#334155" stroke-width="1.5"/>
+    <rect x="290" y="520" width="220" height="130" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="400" y="552" text-anchor="middle" font-size="17" font-weight="700" fill="#a78bfa">APRIL 2026</text>
+    <text x="400" y="580" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">Project Glasswing:</text>
+    <text x="400" y="602" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">gated access for banks,</text>
+    <text x="400" y="624" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">companies, agencies</text>
+  </g>
+
+  <!-- Node 3: May preview -->
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="650" cy="420" r="12" fill="#0f172a" stroke="#34d399" stroke-width="3"/>
+    <line x1="650" y1="408" x2="650" y2="300" stroke="#334155" stroke-width="1.5"/>
+    <rect x="530" y="180" width="240" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="650" y="212" text-anchor="middle" font-size="17" font-weight="700" fill="#34d399">MAY 2026</text>
+    <text x="650" y="240" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">Preview: 10,000+ flaws</text>
+    <text x="650" y="262" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">across 50 partner orgs;</text>
+    <text x="650" y="286" text-anchor="middle" font-size="13.5" fill="#94a3b8">regulators paused cyber exams</text>
+  </g>
+
+  <!-- Node 4: Oct 6 Dimon -->
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="900" cy="420" r="12" fill="#0f172a" stroke="#fbbf24" stroke-width="3"/>
+    <line x1="900" y1="432" x2="900" y2="520" stroke="#334155" stroke-width="1.5"/>
+    <rect x="780" y="520" width="240" height="130" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="900" y="552" text-anchor="middle" font-size="17" font-weight="700" fill="#fbbf24">OCTOBER 6</text>
+    <text x="900" y="580" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">Dimon on Bloomberg TV:</text>
+    <text x="900" y="602" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">"risks went up 10-fold</text>
+    <text x="900" y="624" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">after Mythos"</text>
+  </g>
+
+  <!-- Node 5: Oct 13 Treasury -->
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="1120" cy="420" r="12" fill="#0f172a" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="1120" y1="408" x2="1120" y2="300" stroke="#334155" stroke-width="1.5"/>
+    <rect x="1000" y="180" width="240" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1120" y="212" text-anchor="middle" font-size="17" font-weight="700" fill="#94a3b8">OCTOBER 13</text>
+    <text x="1120" y="240" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">Treasury: $1.21B+ AML</text>
+    <text x="1120" y="262" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">penalties for BofA —</text>
+    <text x="1120" y="286" text-anchor="middle" font-size="13.5" fill="#94a3b8">separate case, same quarter</text>
+  </g>
+
+  <!-- Node 6: Oct 14 disclosure -->
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="1330" cy="420" r="12" fill="#0f172a" stroke="#f87171" stroke-width="3"/>
+    <line x1="1330" y1="432" x2="1330" y2="520" stroke="#334155" stroke-width="1.5"/>
+    <rect x="1180" y="520" width="230" height="130" rx="12" fill="#1e293b" stroke="#f87171" stroke-width="1.8"/>
+    <text x="1295" y="552" text-anchor="middle" font-size="17" font-weight="700" fill="#f87171">OCTOBER 14</text>
+    <text x="1295" y="580" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">BofA discloses 1,000</text>
+    <text x="1295" y="602" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">contractors and $200M+</text>
+    <text x="1295" y="624" text-anchor="middle" font-size="15.5" font-weight="600" fill="#e2e8f0">quarterly remediation</text>
+  </g>
+
+  <text x="720" y="725" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">From a withheld model to a named budget line in one bank's quarterly call — in about six months.</text>
+</svg>

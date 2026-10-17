@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="plGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="plArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="780" fill="url(#plGrad)"/>
+
+  <text x="720" y="80" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">WHERE THE BOTTLENECK ACTUALLY IS</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">The Remediation Pipeline, Compressed at One End</text>
+
+  <!-- Intake funnel -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="90" y="210" width="240" height="150" rx="14" fill="#0b3b4b" stroke="#22d3ee" stroke-width="2.5"/>
+    <text x="210" y="255" text-anchor="middle" font-size="22" font-weight="700" fill="#22d3ee">1 · DISCOVER</text>
+    <text x="210" y="285" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">AI — hours per scan</text>
+    <text x="210" y="312" text-anchor="middle" font-size="14.5" fill="#94a3b8">whole codebases, vendor</text>
+    <text x="210" y="334" text-anchor="middle" font-size="14.5" fill="#94a3b8">software, dependencies</text>
+  </g>
+
+  <!-- stages 2-6 -->
+  <g font-family="Inter, Arial, sans-serif">
+    <line x1="330" y1="285" x2="390" y2="285" stroke="#22d3ee" stroke-width="2" marker-end="url(#plArr)"/>
+    <rect x="395" y="210" width="185" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="487" y="255" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">2 · TRIAGE</text>
+    <text x="487" y="285" text-anchor="middle" font-size="15.5" fill="#fbbf24">humans</text>
+    <text x="487" y="312" text-anchor="middle" font-size="14" fill="#94a3b8">is it real, is it</text>
+    <text x="487" y="334" text-anchor="middle" font-size="14" fill="#94a3b8">exploitable, rank it</text>
+
+    <line x1="580" y1="285" x2="625" y2="285" stroke="#334155" stroke-width="2" marker-end="url(#plArr)"/>
+    <rect x="630" y="210" width="185" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="722" y="255" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">3 · REPRODUCE</text>
+    <text x="722" y="285" text-anchor="middle" font-size="15.5" fill="#fbbf24">humans</text>
+    <text x="722" y="312" text-anchor="middle" font-size="14" fill="#94a3b8">proof of concept,</text>
+    <text x="722" y="334" text-anchor="middle" font-size="14" fill="#94a3b8">scope the blast radius</text>
+
+    <line x1="815" y1="285" x2="860" y2="285" stroke="#334155" stroke-width="2" marker-end="url(#plArr)"/>
+    <rect x="865" y="210" width="185" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="957" y="255" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">4 · PATCH</text>
+    <text x="957" y="285" text-anchor="middle" font-size="15.5" fill="#fbbf24">humans</text>
+    <text x="957" y="312" text-anchor="middle" font-size="14" fill="#94a3b8">write the fix, mind</text>
+    <text x="957" y="334" text-anchor="middle" font-size="14" fill="#94a3b8">the regressions</text>
+
+    <line x1="1050" y1="285" x2="1095" y2="285" stroke="#334155" stroke-width="2" marker-end="url(#plArr)"/>
+    <rect x="1100" y="210" width="120" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1160" y="255" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">5 · TEST</text>
+    <text x="1160" y="285" text-anchor="middle" font-size="15.5" fill="#fbbf24">humans</text>
+    <text x="1160" y="312" text-anchor="middle" font-size="14" fill="#94a3b8">QA + security</text>
+    <text x="1160" y="334" text-anchor="middle" font-size="14" fill="#94a3b8">validation</text>
+
+    <line x1="1220" y1="285" x2="1258" y2="285" stroke="#334155" stroke-width="2" marker-end="url(#plArr)"/>
+    <rect x="1263" y="210" width="120" height="150" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1323" y="255" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">6 · DEPLOY</text>
+    <text x="1323" y="285" text-anchor="middle" font-size="15.5" fill="#fbbf24">humans</text>
+    <text x="1323" y="312" text-anchor="middle" font-size="14" fill="#94a3b8">change control,</text>
+    <text x="1323" y="334" text-anchor="middle" font-size="14" fill="#94a3b8">rollout windows</text>
+  </g>
+
+  <!-- Bottleneck callout -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="395" y="120" width="825" height="60" rx="10" fill="#2a1a1a" stroke="#f87171" stroke-width="1.5"/>
+    <text x="807" y="148" text-anchor="middle" font-size="17" font-weight="700" fill="#f87171">Stage 1 got 100× faster. Stages 2-6 did not.</text>
+    <text x="807" y="170" text-anchor="middle" font-size="14.5" fill="#c9c9c9">the queue is the new attack surface — the intake rate now sets the risk</text>
+    <line x1="807" y1="180" x2="807" y2="208" stroke="#f87171" stroke-width="1.5"/>
+  </g>
+
+  <!-- Staffing bracket -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="395" y="420" width="988" height="90" rx="12" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <text x="889" y="458" text-anchor="middle" font-size="19" font-weight="700" fill="#34d399">Bank of America's answer: add people downstream</text>
+    <text x="889" y="489" text-anchor="middle" font-size="16" fill="#94a3b8">1,000 contractors hired in Q2 2026 + ~3,000 existing staff — "Mythos remediation," not in headcount</text>
+
+    <rect x="90" y="560" width="1293" height="70" rx="12" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+    <text x="736" y="590" text-anchor="middle" font-size="17" font-weight="600" fill="#e2e8f0">Patch velocity is becoming the enterprise security metric that matters</text>
+    <text x="736" y="615" text-anchor="middle" font-size="15" fill="#94a3b8">not how many flaws you can find — everyone can find them now — but how fast you can close them</text>
+
+    <text x="720" y="700" text-anchor="middle" font-size="16" fill="#64748b">Discovery is a compute problem. Remediation is an organizational problem. Only one of them got the AI upgrade.</text>
+  </g>
+</svg>

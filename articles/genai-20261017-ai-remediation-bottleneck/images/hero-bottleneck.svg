@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="880" viewBox="0 0 1440 880">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrC" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="880" fill="url(#heroGrad)"/>
+
+  <!-- Kicker -->
+  <text x="720" y="78" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">ANTHROPIC MYTHOS · BANK OF AMERICA · OCTOBER 2026</text>
+
+  <!-- Headline -->
+  <text x="720" y="148" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="700" fill="#f8fafc">The Remediation Bottleneck</text>
+  <text x="720" y="200" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="25" fill="#94a3b8">Discovery now runs at machine speed. Patching still runs at human speed.</text>
+
+  <!-- Left panel: machine speed -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="80" y="250" width="580" height="290" rx="16" fill="#1e293b" stroke="#22d3ee" stroke-width="2"/>
+    <text x="370" y="298" text-anchor="middle" font-size="20" font-weight="700" fill="#22d3ee" letter-spacing="2">MACHINE SPEED — DISCOVERY</text>
+    <rect x="115" y="325" width="510" height="64" rx="10" fill="#0b1220" stroke="#334155"/>
+    <text x="370" y="352" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">One model, one pass over the codebase</text>
+    <text x="370" y="376" text-anchor="middle" font-size="15" fill="#94a3b8">Mythos: exploit discovery + chaining, autonomously</text>
+    <rect x="115" y="402" width="510" height="64" rx="10" fill="#0b1220" stroke="#334155"/>
+    <text x="370" y="429" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">10,000+ vulnerabilities in the May preview</text>
+    <text x="370" y="453" text-anchor="middle" font-size="15" fill="#94a3b8">across the 50 organizations with access</text>
+    <rect x="115" y="470" width="510" height="60" rx="10" fill="#0b1220" stroke="#334155"/>
+    <text x="370" y="495" text-anchor="middle" font-size="15" fill="#94a3b8">Thousands of high-severity flaws in every major OS</text>
+    <text x="370" y="519" text-anchor="middle" font-size="15" fill="#94a3b8">and browser — found during Anthropic's own testing</text>
+  </g>
+
+  <!-- Right panel: human speed -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="780" y="250" width="580" height="290" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <text x="1070" y="298" text-anchor="middle" font-size="20" font-weight="700" fill="#fbbf24" letter-spacing="2">HUMAN SPEED — REMEDIATION</text>
+    <rect x="815" y="325" width="510" height="64" rx="10" fill="#0b1220" stroke="#334155"/>
+    <text x="1070" y="352" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">Assess each flaw, write a patch, test, deploy</text>
+    <text x="1070" y="376" text-anchor="middle" font-size="15" fill="#94a3b8">every queue item still needs a human gate</text>
+    <rect x="815" y="402" width="510" height="64" rx="10" fill="#0b1220" stroke="#334155"/>
+    <text x="1070" y="429" text-anchor="middle" font-size="18" font-weight="600" fill="#e2e8f0">Bank of America: 4,000 people on the job</text>
+    <text x="1070" y="453" text-anchor="middle" font-size="15" fill="#94a3b8">3,000 existing staff + 1,000 contractors added in Q2</text>
+    <rect x="815" y="479" width="510" height="44" rx="10" fill="#0b1220" stroke="#334155"/>
+    <text x="1070" y="508" text-anchor="middle" font-size="16" fill="#94a3b8">"A couple hundred million dollars plus" in quarterly remediation costs</text>
+  </g>
+
+  <!-- Middle: growing queue -->
+  <g font-family="Inter, Arial, sans-serif">
+    <line x1="662" y1="360" x2="778" y2="360" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arrC)"/>
+    <line x1="778" y1="430" x2="662" y2="430" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrA)"/>
+    <text x="720" y="392" text-anchor="middle" font-size="15" font-weight="600" fill="#f87171">the queue</text>
+    <text x="720" y="412" text-anchor="middle" font-size="15" font-weight="600" fill="#f87171">grows</text>
+    <rect x="697" y="560" width="46" height="10" rx="3" fill="#f87171" opacity="0.5"/>
+    <rect x="691" y="574" width="58" height="10" rx="3" fill="#f87171" opacity="0.7"/>
+    <rect x="685" y="588" width="70" height="10" rx="3" fill="#f87171" opacity="0.9"/>
+  </g>
+
+  <!-- Stat cards -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="80" y="640" width="300" height="160" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="230" y="710" text-anchor="middle" font-size="42" font-weight="700" fill="#22d3ee">1,000</text>
+    <text x="230" y="748" text-anchor="middle" font-size="17" fill="#94a3b8">contractors hired in Q2</text>
+    <text x="230" y="775" text-anchor="middle" font-size="15" font-weight="600" fill="#34d399">"not in headcount"</text>
+
+    <rect x="410" y="640" width="300" height="160" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="560" y="710" text-anchor="middle" font-size="42" font-weight="700" fill="#a78bfa">3,000</text>
+    <text x="560" y="748" text-anchor="middle" font-size="17" fill="#94a3b8">staff already assigned</text>
+    <text x="560" y="775" text-anchor="middle" font-size="15" font-weight="600" fill="#34d399">to the same remediation</text>
+
+    <rect x="740" y="640" width="300" height="160" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="890" y="710" text-anchor="middle" font-size="42" font-weight="700" fill="#fbbf24">$200M+</text>
+    <text x="890" y="748" text-anchor="middle" font-size="17" fill="#94a3b8">quarterly cost (Mythos + AML)</text>
+    <text x="890" y="775" text-anchor="middle" font-size="15" font-weight="600" fill="#34d399">expected to decline</text>
+
+    <rect x="1070" y="640" width="300" height="160" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="1220" y="710" text-anchor="middle" font-size="42" font-weight="700" fill="#f87171">10×</text>
+    <text x="1220" y="748" text-anchor="middle" font-size="17" fill="#94a3b8">cyber-risk multiplier</text>
+    <text x="1220" y="775" text-anchor="middle" font-size="15" font-weight="600" fill="#34d399">JPMorgan CEO, Oct 6</text>
+  </g>
+</svg>
