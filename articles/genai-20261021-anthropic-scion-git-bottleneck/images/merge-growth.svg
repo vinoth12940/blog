@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="tGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="780" fill="url(#tGrad)"/>
+
+  <text x="720" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">CLAUDE TOOK THE KEYBOARD</text>
+  <text x="720" y="124" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">From 2,500 to 30,000 Merges a Day in Four Months</text>
+
+  <!-- timeline -->
+  <line x1="120" y1="330" x2="1320" y2="330" stroke="#334155" stroke-width="3"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="200" cy="330" r="10" fill="#64748b"/>
+    <circle cx="560" cy="330" r="10" fill="#a78bfa"/>
+    <circle cx="920" cy="330" r="10" fill="#22d3ee"/>
+    <circle cx="1280" cy="330" r="10" fill="#34d399"/>
+
+    <text x="200" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#94a3b8">PRE-FEB 2025</text>
+    <rect x="65" y="365" width="270" height="175" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="200" y="410" text-anchor="middle" font-size="15" fill="#cbd5e1">Claude's share of merged</text>
+    <text x="200" y="436" text-anchor="middle" font-size="15" fill="#cbd5e1">production code sat in</text>
+    <text x="200" y="470" text-anchor="middle" font-size="26" font-weight="700" fill="#94a3b8">single digits</text>
+
+    <text x="560" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#a78bfa">EARLY 2026</text>
+    <rect x="425" y="365" width="270" height="175" rx="14" fill="#221a38" stroke="#a78bfa" stroke-width="2"/>
+    <text x="560" y="410" text-anchor="middle" font-size="15" fill="#e2e8f0">reports put Claude's share</text>
+    <text x="560" y="436" text-anchor="middle" font-size="15" fill="#e2e8f0">of merged code above</text>
+    <text x="560" y="478" text-anchor="middle" font-size="26" font-weight="700" fill="#a78bfa">80%</text>
+
+    <text x="920" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#22d3ee">MAY 2026</text>
+    <rect x="785" y="365" width="270" height="175" rx="14" fill="#0b3b4b" stroke="#22d3ee" stroke-width="2"/>
+    <text x="920" y="410" text-anchor="middle" font-size="15" fill="#e2e8f0">average code changes</text>
+    <text x="920" y="436" text-anchor="middle" font-size="15" fill="#e2e8f0">merged per day hit</text>
+    <text x="920" y="478" text-anchor="middle" font-size="26" font-weight="700" fill="#22d3ee">~2,500</text>
+
+    <text x="1280" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#34d399">SEPT 2026</text>
+    <rect x="1145" y="365" width="270" height="175" rx="14" fill="#052e1b" stroke="#34d399" stroke-width="2.5"/>
+    <text x="1280" y="410" text-anchor="middle" font-size="15" fill="#e2e8f0">merged per day blew past</text>
+    <text x="1280" y="436" text-anchor="middle" font-size="15" fill="#e2e8f0">the old ceiling at</text>
+    <text x="1280" y="478" text-anchor="middle" font-size="26" font-weight="700" fill="#34d399">30,000+</text>
+
+    <!-- 12x badge between May and Sept -->
+    <rect x="1035" y="292" width="110" height="38" rx="19" fill="#052e1b" stroke="#34d399" stroke-width="2"/>
+    <text x="1090" y="318" text-anchor="middle" font-size="19" font-weight="700" fill="#34d399">12x</text>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="60" y="590" width="440" height="150" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="280" y="645" text-anchor="middle" font-size="30" font-weight="700" fill="#22d3ee">388 PRs · 46% merged</text>
+    <text x="280" y="685" text-anchor="middle" font-size="14.5" fill="#94a3b8">Claude's autonomous maintenance pull requests,</text>
+    <text x="280" y="708" text-anchor="middle" font-size="14.5" fill="#94a3b8">each one passing through human review</text>
+
+    <rect x="500" y="590" width="440" height="150" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="720" y="645" text-anchor="middle" font-size="30" font-weight="700" fill="#a78bfa">8x per engineer</text>
+    <text x="720" y="685" text-anchor="middle" font-size="14.5" fill="#94a3b8">code merged daily versus the pre-2025</text>
+    <text x="720" y="708" text-anchor="middle" font-size="14.5" fill="#94a3b8">baseline, with the same headcount</text>
+
+    <rect x="940" y="590" width="440" height="150" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="1160" y="645" text-anchor="middle" font-size="26" font-weight="700" fill="#fbbf24">"Practically infinite"</text>
+    <text x="1160" y="685" text-anchor="middle" font-size="14.5" fill="#94a3b8">Anthropic on latent merge demand — every</text>
+    <text x="1160" y="708" text-anchor="middle" font-size="14.5" fill="#94a3b8">removed bottleneck immediately yields more code</text>
+  </g>
+</svg>

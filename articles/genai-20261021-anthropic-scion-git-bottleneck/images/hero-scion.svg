@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="hGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="hArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="820" fill="url(#hGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">THE BOTTLENECK MOVED</text>
+  <text x="720" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">AI Writes the Code. The Pipeline Pays for It.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Generation panel -->
+    <rect x="80" y="170" width="400" height="330" rx="14" fill="#052e1b" stroke="#34d399" stroke-width="2.5"/>
+    <text x="280" y="215" text-anchor="middle" font-size="22" font-weight="700" fill="#34d399">1 · GENERATE</text>
+    <text x="280" y="243" text-anchor="middle" font-size="14.5" font-weight="600" fill="#6ee7b7">MACHINE SPEED</text>
+    <text x="280" y="288" text-anchor="middle" font-size="15" fill="#d1fae5">Claude Code writes most of it —</text>
+    <text x="280" y="314" text-anchor="middle" font-size="15" fill="#d1fae5">80%+ of merged production code</text>
+    <text x="280" y="352" text-anchor="middle" font-size="14" fill="#a7f3d0">maintenance PRs filed autonomously,</text>
+    <text x="280" y="376" text-anchor="middle" font-size="14" fill="#a7f3d0">humans review the output</text>
+    <text x="280" y="440" text-anchor="middle" font-size="42" font-weight="700" fill="#34d399">30,000+</text>
+    <text x="280" y="470" text-anchor="middle" font-size="14" fill="#a7f3d0">merges per day, September 2026</text>
+  </g>
+
+  <line x1="484" y1="335" x2="556" y2="335" stroke="#f87171" stroke-width="3" marker-end="url(#hArr)"/>
+  <text x="520" y="318" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#f87171">the wall</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- The wall: three constraint cards -->
+    <rect x="570" y="170" width="790" height="98" rx="14" fill="#1e293b" stroke="#b91c1c" stroke-width="2"/>
+    <text x="600" y="210" font-size="20" font-weight="700" fill="#f87171">2 · HUMAN REVIEW</text>
+    <text x="600" y="242" font-size="15" fill="#e2e8f0">review time +49%, changes requested ~2x, comments per PR +35% across 700 firms</text>
+
+    <rect x="570" y="286" width="790" height="98" rx="14" fill="#1e293b" stroke="#b91c1c" stroke-width="2"/>
+    <text x="600" y="326" font-size="20" font-weight="700" fill="#f87171">3 · SOURCE CONTROL</text>
+    <text x="600" y="358" font-size="15" fill="#e2e8f0">Git hit its limit: 100 GB main branch, hundreds of mirrors, 25M checkouts a day</text>
+
+    <rect x="570" y="402" width="790" height="98" rx="14" fill="#1e293b" stroke="#b91c1c" stroke-width="2"/>
+    <text x="600" y="442" font-size="20" font-weight="700" fill="#f87171">4 · BUILD + CI</text>
+    <text x="600" y="474" font-size="15" fill="#e2e8f0">naive fetch traffic would exceed 600 PB per day — merges outran the test queue</text>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Stat strip -->
+    <rect x="55" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="210" y="635" text-anchor="middle" font-size="34" font-weight="700" fill="#22d3ee">12x</text>
+    <text x="210" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">daily merge growth,</text>
+    <text x="210" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">May → September 2026</text>
+
+    <rect x="395" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="550" y="635" text-anchor="middle" font-size="34" font-weight="700" fill="#a78bfa">100 GB</text>
+    <text x="550" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">Anthropic's main branch —</text>
+    <text x="550" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">working copy still over 25 GB</text>
+
+    <rect x="735" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="890" y="635" text-anchor="middle" font-size="34" font-weight="700" fill="#fbbf24">600 PB</text>
+    <text x="890" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">per-day Git traffic if all 25M</text>
+    <text x="890" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">daily checkouts fetched naively</text>
+
+    <rect x="1075" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="1230" y="635" text-anchor="middle" font-size="34" font-weight="700" fill="#f87171">±0</text>
+    <text x="1230" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">change in shipped software</text>
+    <text x="1230" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">across 700 firms (Harvard study)</text>
+  </g>
+</svg>

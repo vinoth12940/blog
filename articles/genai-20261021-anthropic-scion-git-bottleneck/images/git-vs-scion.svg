@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="gGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#gGrad)"/>
+
+  <text x="720" y="66" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">WHY GIT BROKE AT ANTHROPIC SCALE</text>
+  <text x="720" y="120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Distributed by Design vs Agent-Native by Design</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- GIT panel -->
+    <rect x="70" y="170" width="620" height="470" rx="16" fill="#0c1a2e" stroke="#22d3ee" stroke-width="2.5"/>
+    <text x="95" y="218" font-size="23" font-weight="700" fill="#22d3ee">GIT — OFFLINE-FIRST</text>
+    <text x="95" y="246" font-size="14.5" fill="#94a3b8">founding assumption: every client holds the repo</text>
+
+    <text x="95" y="300" font-size="16" fill="#e2e8f0">· local clones, pack files, partial-copy workarounds</text>
+    <text x="95" y="338" font-size="16" fill="#e2e8f0">· several hundred internal mirrors just to absorb load</text>
+    <text x="95" y="376" font-size="16" fill="#e2e8f0">· agents must sync working state before they can work</text>
+
+    <rect x="95" y="420" width="180" height="95" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="185" y="462" text-anchor="middle" font-size="19" font-weight="700" fill="#f87171">100 GB</text>
+    <text x="185" y="492" text-anchor="middle" font-size="13" fill="#94a3b8">main branch history</text>
+
+    <rect x="290" y="420" width="180" height="95" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="380" y="462" text-anchor="middle" font-size="19" font-weight="700" fill="#f87171">25 GB</text>
+    <text x="380" y="492" text-anchor="middle" font-size="13" fill="#94a3b8">compressed working copy</text>
+
+    <rect x="485" y="420" width="180" height="95" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="575" y="462" text-anchor="middle" font-size="19" font-weight="700" fill="#f87171">600 PB/day</text>
+    <text x="575" y="492" text-anchor="middle" font-size="13" fill="#94a3b8">traffic if fetched naively</text>
+
+    <text x="380" y="575" text-anchor="middle" font-size="16" font-weight="600" fill="#fbbf24">25 million checkouts per day for CI alone —</text>
+    <text x="380" y="601" text-anchor="middle" font-size="16" font-weight="600" fill="#fbbf24">before agents, dev environments, research jobs</text>
+
+    <!-- VS badge -->
+    <circle cx="720" cy="405" r="30" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="720" y="412" text-anchor="middle" font-size="17" font-weight="700" fill="#e2e8f0">VS</text>
+
+    <!-- SCION panel -->
+    <rect x="750" y="170" width="620" height="470" rx="16" fill="#1a1030" stroke="#a78bfa" stroke-width="2.5"/>
+    <text x="775" y="218" font-size="23" font-weight="700" fill="#a78bfa">SCION — AGENT-NATIVE</text>
+    <text x="775" y="246" font-size="14.5" fill="#94a3b8">founding assumption: clients online, server computes</text>
+
+    <text x="775" y="300" font-size="16" fill="#e2e8f0">· server performs commits, merges, history queries</text>
+    <text x="775" y="338" font-size="16" fill="#e2e8f0">· thin clients fetch only the files they need, on demand</text>
+    <text x="775" y="376" font-size="16" fill="#e2e8f0">· source control exposed as an API — no local repo needed</text>
+
+    <rect x="775" y="420" width="180" height="95" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="865" y="462" text-anchor="middle" font-size="19" font-weight="700" fill="#34d399">200x less</text>
+    <text x="865" y="492" text-anchor="middle" font-size="13" fill="#94a3b8">CPU + memory vs Git mirrors</text>
+
+    <rect x="970" y="420" width="180" height="95" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="1060" y="462" text-anchor="middle" font-size="19" font-weight="700" fill="#34d399">100x faster</text>
+    <text x="1060" y="492" text-anchor="middle" font-size="13" fill="#94a3b8">checkouts: seconds, not minutes</text>
+
+    <rect x="1165" y="420" width="180" height="95" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="1255" y="462" text-anchor="middle" font-size="19" font-weight="700" fill="#34d399">25% CI CPU</text>
+    <text x="1255" y="492" text-anchor="middle" font-size="13" fill="#94a3b8">capacity freed up</text>
+
+    <text x="1060" y="575" text-anchor="middle" font-size="16" font-weight="600" fill="#c4b5fd">a changeset = entry in a write-ahead log,</text>
+    <text x="1060" y="601" text-anchor="middle" font-size="16" font-weight="600" fill="#c4b5fd">pointing at content-addressed blobs</text>
+
+    <!-- bottom bar -->
+    <rect x="70" y="680" width="1300" height="105" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="720" y="725" text-anchor="middle" font-size="17.5" font-weight="600" fill="#e2e8f0">Built alongside: Antique (code review), a code search tool, and source-control IAM —</text>
+    <text x="720" y="757" text-anchor="middle" font-size="16" fill="#94a3b8">by a seven-person team, started in January, migration completed in five months</text>
+  </g>
+</svg>
