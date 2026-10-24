@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="dGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <marker id="dArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#34d399"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="840" fill="url(#dGrad)"/>
+
+  <text x="720" y="58" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#34d399" letter-spacing="4">WHAT DEFENDERS AND SELF-HOSTERS DO NOW</text>
+  <text x="720" y="104" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#f8fafc">Five Moves, In Order</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Row 1 -->
+    <rect x="80" y="150" width="390" height="240" rx="14" fill="#052e1b" stroke="#34d399" stroke-width="2.5"/>
+    <text x="275" y="196" text-anchor="middle" font-size="20" font-weight="700" fill="#34d399">1 · PATCH NOW</text>
+    <text x="275" y="234" text-anchor="middle" font-size="15" fill="#d1fae5">PHP 8.5.12 / 8.4.27 /</text>
+    <text x="275" y="260" text-anchor="middle" font-size="15" fill="#d1fae5">8.3.36 / 8.2.35</text>
+    <text x="275" y="298" text-anchor="middle" font-size="13.5" fill="#6ee7b7">On 8.1 or older? No upstream fix —</text>
+    <text x="275" y="322" text-anchor="middle" font-size="13.5" fill="#6ee7b7">get a vendor backport or upgrade.</text>
+    <text x="275" y="356" text-anchor="middle" font-size="13.5" fill="#6ee7b7">mod_php setups are most exposed.</text>
+
+    <line x1="470" y1="270" x2="530" y2="270" stroke="#34d399" stroke-width="3" marker-end="url(#dArr)"/>
+
+    <rect x="536" y="150" width="390" height="240" rx="14" fill="#111418" stroke="#f87171" stroke-width="2"/>
+    <text x="731" y="196" text-anchor="middle" font-size="20" font-weight="700" fill="#f87171">2 · CAN'T PATCH? GO DARK</text>
+    <text x="731" y="234" text-anchor="middle" font-size="15" fill="#fecaca">NSA and UK NCSC both said it:</text>
+    <text x="731" y="260" text-anchor="middle" font-size="15" fill="#fecaca">take unpatchable sites offline.</text>
+    <text x="731" y="298" text-anchor="middle" font-size="13.5" fill="#fca5a5">30+ UK government services and</text>
+    <text x="731" y="322" text-anchor="middle" font-size="13.5" fill="#fca5a5">multiple EU federal portals did.</text>
+    <text x="731" y="356" text-anchor="middle" font-size="13.5" fill="#fca5a5">Isolate from untrusted networks.</text>
+
+    <line x1="926" y1="270" x2="986" y2="270" stroke="#34d399" stroke-width="3" marker-end="url(#dArr)"/>
+
+    <rect x="992" y="150" width="368" height="240" rx="14" fill="#111418" stroke="#a78bfa" stroke-width="2"/>
+    <text x="1176" y="196" text-anchor="middle" font-size="20" font-weight="700" fill="#a78bfa">3 · CONFIG MITIGATION</text>
+    <text x="1176" y="238" text-anchor="middle" font-size="15" fill="#e9d5ff">session.upload_progress.enabled=0</text>
+    <text x="1176" y="272" text-anchor="middle" font-size="13.5" fill="#c4b5fd">Kills the primary attack path (used by</text>
+    <text x="1176" y="296" text-anchor="middle" font-size="13.5" fill="#c4b5fd">most observed attacks) while you wait</text>
+    <text x="1176" y="320" text-anchor="middle" font-size="13.5" fill="#c4b5fd">for vendor packages. Also cap request</text>
+    <text x="1176" y="344" text-anchor="middle" font-size="13.5" fill="#c4b5fd">size, multipart fields and nesting.</text>
+
+    <!-- Row 2 -->
+    <rect x="80" y="440" width="620" height="240" rx="14" fill="#0c1a2e" stroke="#60a5fa" stroke-width="2"/>
+    <text x="390" y="486" text-anchor="middle" font-size="20" font-weight="700" fill="#60a5fa">4 · HUNT FOR SIGNS OF TRYING</text>
+    <text x="110" y="528" font-size="14.5" fill="#93c5fd">· Multipart requests followed by memory-limit errors or HTTP 500 bursts</text>
+    <text x="110" y="560" font-size="14.5" fill="#93c5fd">· Unexpectedly large or malformed PHPSESSID cookies (heap being exfiltrated)</text>
+    <text x="110" y="592" font-size="14.5" fill="#93c5fd">· Unexplained PHP worker churn — workers dying and respawning</text>
+    <text x="110" y="624" font-size="14.5" fill="#93c5fd">· Flaws run below the app layer: application logs may show nothing at all</text>
+    <text x="390" y="660" text-anchor="middle" font-size="13.5" fill="#60a5fa">patched PHP shows no known exploitation — verify you're actually patched</text>
+
+    <rect x="740" y="440" width="620" height="240" rx="14" fill="#2a1f05" stroke="#fbbf24" stroke-width="2"/>
+    <text x="1050" y="486" text-anchor="middle" font-size="20" font-weight="700" fill="#fbbf24">5 · AUDIT YOUR APPLIANCES</text>
+    <text x="770" y="528" font-size="14.5" fill="#fde68a">· Palo Alto: ALL PAN-OS and Panorama versions affected, fix pending</text>
+    <text x="770" y="560" font-size="14.5" fill="#fde68a">· Cisco: 18 products + 13 cloud services still under investigation</text>
+    <text x="770" y="592" font-size="14.5" fill="#fde68a">· NAS devices bundle PHP — several vendors hadn't shipped patches yet</text>
+    <text x="770" y="624" font-size="14.5" fill="#fde68a">· Managed hosts: DreamHost and others applied fixes network-wide</text>
+    <text x="1050" y="660" text-anchor="middle" font-size="13.5" fill="#fcd34d">anything embedded that never gets patched is the long tail here</text>
+  </g>
+
+  <text x="720" y="760" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-style="italic" fill="#64748b">Wiz: "Applying the PHP security update remains the only complete remediation."</text>
+</svg>

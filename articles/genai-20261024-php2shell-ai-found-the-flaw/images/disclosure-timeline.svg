@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <linearGradient id="tGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#tGrad)"/>
+
+  <text x="720" y="58" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">A COORDINATED DISCLOSURE THAT UNRAVELED</text>
+  <text x="720" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#f8fafc">Aug 11 to Oct 23: Sixty Days From Secret to Scramble</text>
+
+  <!-- legend -->
+  <g font-family="Inter, Arial, sans-serif" font-size="13">
+    <rect x="380" y="128" width="14" height="14" rx="3" fill="#a78bfa"/><text x="402" y="140" fill="#94a3b8">Discovery</text>
+    <rect x="530" y="128" width="14" height="14" rx="3" fill="#60a5fa"/><text x="552" y="140" fill="#94a3b8">Coordination</text>
+    <rect x="710" y="128" width="14" height="14" rx="3" fill="#f87171"/><text x="732" y="140" fill="#94a3b8">Leak and chaos</text>
+    <rect x="880" y="128" width="14" height="14" rx="3" fill="#34d399"/><text x="902" y="140" fill="#94a3b8">Response</text>
+  </g>
+
+  <!-- main timeline spine -->
+  <line x1="80" y1="470" x2="1360" y2="470" stroke="#334155" stroke-width="3"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Aug 11 - Calif discovers -->
+    <circle cx="130" cy="470" r="9" fill="#a78bfa"/>
+    <rect x="70" y="180" width="230" height="250" rx="12" fill="#1e1b34" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="185" y="215" text-anchor="middle" font-size="15" font-weight="700" fill="#a78bfa">AUG 11</text>
+    <text x="185" y="250" text-anchor="middle" font-size="14" fill="#e2e8f0">Calif finds the bug class</text>
+    <text x="185" y="274" text-anchor="middle" font-size="14" fill="#e2e8f0">via OpenAI's "Patch the</text>
+    <text x="185" y="298" text-anchor="middle" font-size="14" fill="#e2e8f0">Planet" initiative</text>
+    <text x="185" y="336" text-anchor="middle" font-size="13" fill="#94a3b8">kept confidential</text>
+    <line x1="185" y1="360" x2="130" y2="462" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Aug 19-24 - Wiz -->
+    <circle cx="350" cy="470" r="9" fill="#a78bfa"/>
+    <rect x="240" y="520" width="230" height="280" rx="12" fill="#1e1b34" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="355" y="555" text-anchor="middle" font-size="15" font-weight="700" fill="#a78bfa">AUG 19-24</text>
+    <text x="355" y="590" text-anchor="middle" font-size="14" fill="#e2e8f0">Wiz Atlas + Gemini 4 Argon</text>
+    <text x="355" y="614" text-anchor="middle" font-size="14" fill="#e2e8f0">+ GPT-5.6 Sol find it too;</text>
+    <text x="355" y="638" text-anchor="middle" font-size="14" fill="#e2e8f0">pre-auth RCE confirmed on</text>
+    <text x="355" y="662" text-anchor="middle" font-size="14" fill="#e2e8f0">Drupal then WordPress</text>
+    <text x="355" y="700" text-anchor="middle" font-size="13" fill="#94a3b8">reported to PHP Aug 24</text>
+    <line x1="355" y1="520" x2="350" y2="480" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Sep 21 - PHP acks -->
+    <circle cx="560" cy="470" r="9" fill="#60a5fa"/>
+    <rect x="470" y="180" width="220" height="250" rx="12" fill="#0c1a2e" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="580" y="215" text-anchor="middle" font-size="15" font-weight="700" fill="#60a5fa">SEP 21</text>
+    <text x="580" y="250" text-anchor="middle" font-size="14" fill="#e2e8f0">PHP acknowledges,</text>
+    <text x="580" y="274" text-anchor="middle" font-size="14" fill="#e2e8f0">starts building the fix.</text>
+    <text x="580" y="298" text-anchor="middle" font-size="14" fill="#e2e8f0">Release planned for</text>
+    <text x="580" y="322" text-anchor="middle" font-size="14" fill="#e2e8f0">Thursday, Oct 22</text>
+    <text x="580" y="360" text-anchor="middle" font-size="13" fill="#94a3b8">Oct 17: AWS MadPot already</text>
+    <text x="580" y="382" text-anchor="middle" font-size="13" fill="#94a3b8">seeing exploitation probes</text>
+    <line x1="580" y1="430" x2="560" y2="462" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Oct 20 - leak -->
+    <circle cx="790" cy="470" r="9" fill="#f87171"/>
+    <rect x="700" y="520" width="230" height="280" rx="12" fill="#2a0d0d" stroke="#f87171" stroke-width="1.5"/>
+    <text x="815" y="555" text-anchor="middle" font-size="15" font-weight="700" fill="#f87171">OCT 20</text>
+    <text x="815" y="590" text-anchor="middle" font-size="14" fill="#fecaca">CVE IDs leak on forums;</text>
+    <text x="815" y="614" text-anchor="middle" font-size="14" fill="#fecaca">vuln hunting and PoC</text>
+    <text x="815" y="638" text-anchor="middle" font-size="14" fill="#fecaca">attempts erupt everywhere.</text>
+    <text x="815" y="662" text-anchor="middle" font-size="14" fill="#fecaca">Calif's PoC video slips out,</text>
+    <text x="815" y="686" text-anchor="middle" font-size="14" fill="#fecaca">copies spread on social</text>
+    <text x="815" y="724" text-anchor="middle" font-size="13" fill="#fca5a5">patch pulled forward a day</text>
+    <line x1="815" y1="520" x2="790" y2="480" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Oct 21 - Chainguard + patch -->
+    <circle cx="1030" cy="470" r="9" fill="#34d399"/>
+    <rect x="940" y="180" width="230" height="250" rx="12" fill="#052e1b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="1055" y="215" text-anchor="middle" font-size="15" font-weight="700" fill="#34d399">OCT 21</text>
+    <text x="1055" y="250" text-anchor="middle" font-size="14" fill="#d1fae5">07:41 UTC: Chainguard</text>
+    <text x="1055" y="274" text-anchor="middle" font-size="14" fill="#d1fae5">publishes fixed images —</text>
+    <text x="1055" y="298" text-anchor="middle" font-size="14" fill="#d1fae5">6+ hours early, citing</text>
+    <text x="1055" y="322" text-anchor="middle" font-size="14" fill="#d1fae5">active exploitation. PHP</text>
+    <text x="1055" y="346" text-anchor="middle" font-size="14" fill="#d1fae5">ships patches same day.</text>
+    <text x="1055" y="384" text-anchor="middle" font-size="13" fill="#6ee7b7">public disclosure + fights</text>
+    <line x1="1055" y1="430" x2="1030" y2="462" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Oct 23 - third bug -->
+    <circle cx="1290" cy="470" r="9" fill="#fbbf24"/>
+    <rect x="1180" y="520" width="220" height="280" rx="12" fill="#2a1f05" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1290" y="555" text-anchor="middle" font-size="15" font-weight="700" fill="#fbbf24">OCT 23</text>
+    <text x="1290" y="590" text-anchor="middle" font-size="14" fill="#fde68a">Third bug reserved as</text>
+    <text x="1290" y="614" text-anchor="middle" font-size="14" fill="#fde68a">CVE-2026-115560 —</text>
+    <text x="1290" y="638" text-anchor="middle" font-size="14" fill="#fde68a">no emergency fix; one</text>
+    <text x="1290" y="662" text-anchor="middle" font-size="14" fill="#fde68a">config setting neutralizes</text>
+    <text x="1290" y="686" text-anchor="middle" font-size="14" fill="#fde68a">it until next release</text>
+    <text x="1290" y="724" text-anchor="middle" font-size="13" fill="#fcd34d">no confirmed breaches yet</text>
+    <line x1="1290" y1="520" x2="1290" y2="480" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,3"/>
+  </g>
+
+  <text x="720" y="860" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-style="italic" fill="#64748b">Cloudflare saw thousands of exploit attempts in the 10 hours before announcement — millions within a day.</text>
+</svg>

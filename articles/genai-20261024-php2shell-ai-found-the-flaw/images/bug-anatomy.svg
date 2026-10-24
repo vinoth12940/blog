@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="880" viewBox="0 0 1440 880">
+  <defs>
+    <linearGradient id="bGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <marker id="bArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+    </marker>
+    <marker id="rArr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="880" fill="url(#bGrad)"/>
+
+  <text x="720" y="58" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">ANATOMY OF THE CHAIN</text>
+  <text x="720" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#f8fafc">How a Dead Request Leaves the Door Open</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Step 1 -->
+    <rect x="80" y="150" width="600" height="120" rx="14" fill="#111418" stroke="#475569" stroke-width="2"/>
+    <text x="110" y="192" font-size="18" font-weight="700" fill="#e2e8f0">1 · REQUEST DIES MID-FLIGHT</text>
+    <text x="110" y="224" font-size="14.5" fill="#94a3b8">An out-of-memory or fatal error interrupts PHP while request data</text>
+    <text x="110" y="250" font-size="14.5" fill="#94a3b8">is only half-initialized. Cleanup never finishes.</text>
+
+    <line x1="380" y1="270" x2="380" y2="320" stroke="#94a3b8" stroke-width="2" marker-end="url(#bArr)"/>
+
+    <!-- Step 2 -->
+    <rect x="80" y="326" width="600" height="120" rx="14" fill="#111418" stroke="#475569" stroke-width="2"/>
+    <text x="110" y="368" font-size="18" font-weight="700" fill="#e2e8f0">2 · STALE STATE SURVIVES</text>
+    <text x="110" y="400" font-size="14.5" fill="#94a3b8">Globals like PS(id) or BG(unserialize) still point at freed memory.</text>
+    <text x="110" y="426" font-size="14.5" fill="#94a3b8">The worker lives on, poisoned, and serves the next request.</text>
+
+    <line x1="380" y1="446" x2="380" y2="496" stroke="#94a3b8" stroke-width="2" marker-end="url(#bArr)"/>
+
+    <!-- Step 3 -->
+    <rect x="80" y="502" width="600" height="120" rx="14" fill="#1e1b34" stroke="#a78bfa" stroke-width="2"/>
+    <text x="110" y="544" font-size="18" font-weight="700" fill="#a78bfa">3 · ATTACKER RECLAIMS THE MEMORY</text>
+    <text x="110" y="576" font-size="14.5" fill="#c4b5fd">A crafted multipart request lands on the same worker and gets its own</text>
+    <text x="110" y="602" font-size="14.5" fill="#c4b5fd">data into the freed region. PHP trusts the stale pointer.</text>
+
+    <line x1="680" y1="562" x2="740" y2="562" stroke="#f87171" stroke-width="2.5" marker-end="url(#rArr2)"/>
+
+    <!-- Outcomes -->
+    <rect x="748" y="440" width="612" height="110" rx="14" fill="#0c1a2e" stroke="#60a5fa" stroke-width="2"/>
+    <text x="778" y="478" font-size="17" font-weight="700" fill="#60a5fa">OUTCOME A · MEMORY DISCLOSURE</text>
+    <text x="778" y="508" font-size="14" fill="#93c5fd">Freed heap gets URL-encoded into a PHPSESSID cookie — leaking</text>
+    <text x="778" y="532" font-size="14" fill="#93c5fd">passwords, tokens and API keys from other users' requests.</text>
+
+    <rect x="748" y="574" width="612" height="110" rx="14" fill="#2a0d0d" stroke="#f87171" stroke-width="2"/>
+    <text x="778" y="612" font-size="17" font-weight="700" fill="#f87171">OUTCOME B · CONTROLLED CORRUPTION</text>
+    <text x="778" y="642" font-size="14" fill="#fecaca">Reclaimed memory becomes fake live bookkeeping — type confusion</text>
+    <text x="778" y="666" font-size="14" fill="#fecaca">and use-after-free chains end in unauthenticated remote code execution.</text>
+
+    <!-- The four bugs strip -->
+    <text x="80" y="712" font-size="16" font-weight="700" fill="#94a3b8">FOUR DEMONSTRATED VARIANTS UNDER TWO CVES (CVSS 9.2)</text>
+    <rect x="80" y="730" width="310" height="110" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="235" y="766" text-anchor="middle" font-size="14" font-weight="700" fill="#f87171">109618 · upload-progress</text>
+    <text x="235" y="792" text-anchor="middle" font-size="13" fill="#94a3b8">unserializer use-after-free →</text>
+    <text x="235" y="814" text-anchor="middle" font-size="13" fill="#94a3b8">RCE: WordPress, Drupal, Joomla</text>
+
+    <rect x="410" y="730" width="310" height="110" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="565" y="766" text-anchor="middle" font-size="14" font-weight="700" fill="#60a5fa">109618 · memory disclosure</text>
+    <text x="565" y="792" text-anchor="middle" font-size="13" fill="#94a3b8">stale PS(id) leaks worker heap —</text>
+    <text x="565" y="814" text-anchor="middle" font-size="13" fill="#94a3b8">works even without session_start()</text>
+
+    <rect x="740" y="730" width="310" height="110" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="895" y="766" text-anchor="middle" font-size="14" font-weight="700" fill="#a78bfa">109619 · fatal backtrace</text>
+    <text x="895" y="792" text-anchor="middle" font-size="13" fill="#94a3b8">dangling EG(last_fatal_error_backtrace)</text>
+    <text x="895" y="814" text-anchor="middle" font-size="13" fill="#94a3b8">→ RCE demonstrated on Drupal</text>
+
+    <rect x="1070" y="730" width="310" height="110" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="1225" y="766" text-anchor="middle" font-size="14" font-weight="700" fill="#fbbf24">109619 · OPcache confusion</text>
+    <text x="1225" y="792" text-anchor="middle" font-size="13" fill="#94a3b8">cross-worker type confusion in</text>
+    <text x="1225" y="814" text-anchor="middle" font-size="13" fill="#94a3b8">shared cache → RCE on WordPress</text>
+  </g>
+</svg>

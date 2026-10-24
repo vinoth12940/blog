@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="830" viewBox="0 0 1440 830">
+  <defs>
+    <linearGradient id="hGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1a1030"/>
+    </linearGradient>
+    <marker id="hArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#a78bfa"/>
+    </marker>
+    <marker id="rArr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="830" fill="url(#hGrad)"/>
+
+  <text x="720" y="62" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">THE AI INFLECTION POINT</text>
+  <text x="720" y="114" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">Dormant for a Decade. Weaponized in a Week.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Left: the dormant flaw -->
+    <rect x="75" y="170" width="390" height="330" rx="14" fill="#111418" stroke="#475569" stroke-width="2"/>
+    <text x="270" y="215" text-anchor="middle" font-size="21" font-weight="700" fill="#94a3b8">1 · THE FLAW</text>
+    <text x="270" y="243" text-anchor="middle" font-size="14" font-weight="600" fill="#64748b">DORMANT 10+ YEARS</text>
+    <text x="270" y="288" text-anchor="middle" font-size="15" fill="#cbd5e1">Memory-safety bugs in PHP core:</text>
+    <text x="270" y="314" text-anchor="middle" font-size="15" fill="#cbd5e1">fatal errors leave stale global state</text>
+    <text x="270" y="352" text-anchor="middle" font-size="14" fill="#94a3b8">present in every release since PHP 5.4</text>
+    <text x="270" y="378" text-anchor="middle" font-size="14" fill="#94a3b8">exploit chain too complex for humans</text>
+    <text x="270" y="404" text-anchor="middle" font-size="14" fill="#94a3b8">to build at scale</text>
+    <text x="270" y="464" text-anchor="middle" font-size="23" font-weight="700" fill="#94a3b8">CVE-2026-109618 / 109619</text>
+  </g>
+
+  <line x1="469" y1="335" x2="541" y2="335" stroke="#a78bfa" stroke-width="3" marker-end="url(#hArr)"/>
+  <text x="505" y="318" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#a78bfa">AI reads it</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Center: the AI stack -->
+    <rect x="548" y="170" width="344" height="330" rx="14" fill="#1e1b34" stroke="#a78bfa" stroke-width="2.5"/>
+    <text x="720" y="215" text-anchor="middle" font-size="21" font-weight="700" fill="#a78bfa">2 · FRONTIER AI</text>
+    <text x="720" y="243" text-anchor="middle" font-size="14" font-weight="600" fill="#c4b5fd">THE EXPLOIT ENGINE</text>
+    <text x="720" y="290" text-anchor="middle" font-size="15.5" fill="#e9d5ff">Wiz Atlas (autonomous research)</text>
+    <text x="720" y="318" text-anchor="middle" font-size="15.5" fill="#e9d5ff">Gemini 4 Argon + GPT-5.6 Sol</text>
+    <text x="720" y="356" text-anchor="middle" font-size="14" fill="#c4b5fd">chains the bugs, adapts to memory</text>
+    <text x="720" y="382" text-anchor="middle" font-size="14" fill="#c4b5fd">layout, iterates per target in hours</text>
+    <text x="720" y="440" text-anchor="middle" font-size="38" font-weight="700" fill="#a78bfa">1 week</text>
+    <text x="720" y="470" text-anchor="middle" font-size="14" fill="#c4b5fd">vs months for a world-class team</text>
+  </g>
+
+  <line x1="896" y1="335" x2="968" y2="335" stroke="#f87171" stroke-width="3" marker-end="url(#rArr)"/>
+  <text x="932" y="318" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#f87171">exploit works</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Right: impact -->
+    <rect x="975" y="170" width="390" height="330" rx="14" fill="#2a0d0d" stroke="#f87171" stroke-width="2.5"/>
+    <text x="1170" y="215" text-anchor="middle" font-size="21" font-weight="700" fill="#f87171">3 · THE IMPACT</text>
+    <text x="1170" y="243" text-anchor="middle" font-size="14" font-weight="600" fill="#fca5a5">PRE-AUTH RCE, NO PASSWORDS</text>
+    <text x="1170" y="288" text-anchor="middle" font-size="15" fill="#fecaca">WordPress, Drupal, Joomla — latest</text>
+    <text x="1170" y="314" text-anchor="middle" font-size="15" fill="#fecaca">images, one unauthenticated request,</text>
+    <text x="1170" y="340" text-anchor="middle" font-size="15" fill="#fecaca">before any app code runs</text>
+    <text x="1170" y="378" text-anchor="middle" font-size="14" fill="#fca5a5">flaw is in PHP itself, not the app</text>
+    <text x="1170" y="440" text-anchor="middle" font-size="42" font-weight="700" fill="#f87171">70%</text>
+    <text x="1170" y="470" text-anchor="middle" font-size="14" fill="#fca5a5">of all websites run PHP</text>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Stat strip -->
+    <rect x="75" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="230" y="635" text-anchor="middle" font-size="36" font-weight="700" fill="#22d3ee">9.2</text>
+    <text x="230" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">CVSS score on both CVEs —</text>
+    <text x="230" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">"most severe in PHP history"</text>
+
+    <rect x="415" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="570" y="635" text-anchor="middle" font-size="36" font-weight="700" fill="#a78bfa">PHP 5.4+</text>
+    <text x="570" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">every release in the last</text>
+    <text x="570" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">decade affected by at least one bug</text>
+
+    <rect x="755" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="910" y="635" text-anchor="middle" font-size="36" font-weight="700" fill="#fbbf24">Oct 21</text>
+    <text x="910" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">patch day, pulled forward</text>
+    <text x="910" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">after the details leaked</text>
+
+    <rect x="1095" y="560" width="310" height="190" rx="14" fill="#111418" stroke="#1f2937" stroke-width="1.5"/>
+    <text x="1250" y="635" text-anchor="middle" font-size="36" font-weight="700" fill="#34d399">0</text>
+    <text x="1250" y="675" text-anchor="middle" font-size="14" fill="#94a3b8">confirmed successful</text>
+    <text x="1250" y="698" text-anchor="middle" font-size="14" fill="#94a3b8">compromises so far</text>
+  </g>
+
+  <text x="720" y="800" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-style="italic" fill="#64748b">Sources: Wiz Research, PHP Foundation, Cloudflare, The Register — October 2026</text>
+</svg>
