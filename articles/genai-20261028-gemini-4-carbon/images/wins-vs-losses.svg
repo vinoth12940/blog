@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="wlGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="800" fill="url(#wlGrad)"/>
+
+  <text x="720" y="66" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">THE HONEST SCORECARD</text>
+  <text x="720" y="120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">Where Carbon Leads — and Where It Doesn't</text>
+  <text x="720" y="154" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Index #1 is not "best at your job". Google's own table says so.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- LEADS -->
+    <rect x="90" y="200" width="610" height="500" rx="16" fill="#0c1a2e" stroke="#34d399" stroke-width="2.5"/>
+    <text x="120" y="248" font-size="20" font-weight="700" fill="#34d399">WHERE CARBON LEADS</text>
+
+    <text x="120" y="305" font-size="16.5" fill="#cbd5e1">Terminal-Bench 4.0 (agentic terminal work)</text>
+    <text x="670" y="305" text-anchor="end" font-size="18" font-weight="700" fill="#34d399">65.2%</text>
+    <text x="120" y="330" font-size="13.5" fill="#64748b">vs GPT-6 Astra 59.1 · Opus 5.5 59.6</text>
+    <line x1="120" y1="348" x2="670" y2="348" stroke="#1f2937" stroke-width="1"/>
+
+    <text x="120" y="392" font-size="16.5" fill="#cbd5e1">AutomationBench (knowledge work)</text>
+    <text x="670" y="392" text-anchor="end" font-size="18" font-weight="700" fill="#34d399">53.9%</text>
+    <text x="120" y="417" font-size="13.5" fill="#64748b">vs Opus 5.5 42.5 · GPT-6 Astra 41.4</text>
+    <line x1="120" y1="435" x2="670" y2="435" stroke="#1f2937" stroke-width="1"/>
+
+    <text x="120" y="479" font-size="16.5" fill="#cbd5e1">GraphWalks, 256K–1M tokens (long context)</text>
+    <text x="670" y="479" text-anchor="end" font-size="18" font-weight="700" fill="#34d399">96.2%</text>
+    <text x="120" y="504" font-size="13.5" fill="#64748b">vs Argon 84.2</text>
+    <line x1="120" y1="522" x2="670" y2="522" stroke="#1f2937" stroke-width="1"/>
+
+    <text x="120" y="566" font-size="16.5" fill="#cbd5e1">Vending-Bench 2 (simulated business)</text>
+    <text x="670" y="566" text-anchor="end" font-size="18" font-weight="700" fill="#34d399">$16,484</text>
+    <text x="120" y="591" font-size="13.5" fill="#64748b">vs GPT-6 Astra $15,515 · Opus 5.5 $9,235</text>
+    <line x1="120" y1="609" x2="670" y2="609" stroke="#1f2937" stroke-width="1"/>
+
+    <text x="120" y="653" font-size="16.5" fill="#cbd5e1">Agents' Last Exam v1.1 (computer use)</text>
+    <text x="670" y="653" text-anchor="end" font-size="18" font-weight="700" fill="#34d399">77.4%</text>
+    <text x="120" y="678" font-size="13.5" fill="#64748b">vs GPT-6 Astra 73.1 · Opus 5.5 71.6</text>
+
+    <!-- TRAILS -->
+    <rect x="740" y="200" width="610" height="500" rx="16" fill="#1e1a10" stroke="#fbbf24" stroke-width="2.5"/>
+    <text x="770" y="248" font-size="20" font-weight="700" fill="#fbbf24">WHERE CARBON TRAILS</text>
+
+    <text x="770" y="305" font-size="16.5" fill="#cbd5e1">FrontierSWE 2 (hard agentic coding)</text>
+    <text x="1320" y="305" text-anchor="end" font-size="18" font-weight="700" fill="#fbbf24">61.2%</text>
+    <text x="770" y="330" font-size="13.5" fill="#64748b">GPT-6 Astra leads at 65.5 · Opus 5.5 62.3</text>
+    <line x1="770" y1="348" x2="1320" y2="348" stroke="#2a2317" stroke-width="1"/>
+
+    <text x="770" y="392" font-size="16.5" fill="#cbd5e1">OSWorld-2.1 offline (computer use)</text>
+    <text x="1320" y="392" text-anchor="end" font-size="18" font-weight="700" fill="#fbbf24">81.5%</text>
+    <text x="770" y="417" font-size="13.5" fill="#64748b">Opus 5.5 leads at 87.2 — its clearest win</text>
+    <line x1="770" y1="435" x2="1320" y2="435" stroke="#2a2317" stroke-width="1"/>
+
+    <text x="770" y="479" font-size="16.5" fill="#cbd5e1">AA Coding Agent Index (Claude Code)</text>
+    <text x="1320" y="479" text-anchor="end" font-size="18" font-weight="700" fill="#fbbf24">59</text>
+    <text x="770" y="504" font-size="13.5" fill="#64748b">Opus 5.5 stays ahead at 62</text>
+    <line x1="770" y1="522" x2="1320" y2="522" stroke="#2a2317" stroke-width="1"/>
+
+    <text x="770" y="566" font-size="16.5" fill="#cbd5e1">Openness</text>
+    <text x="1320" y="566" text-anchor="end" font-size="18" font-weight="700" fill="#fbbf24">none</text>
+    <text x="770" y="591" font-size="13.5" fill="#64748b">no open weights, no self-hosting</text>
+    <line x1="770" y1="609" x2="1320" y2="609" stroke="#2a2317" stroke-width="1"/>
+
+    <text x="770" y="653" font-size="16.5" fill="#cbd5e1">Carbon context window</text>
+    <text x="1320" y="653" text-anchor="end" font-size="18" font-weight="700" fill="#fbbf24">undisclosed</text>
+    <text x="770" y="678" font-size="13.5" fill="#64748b">Argon shipped with 1,048,576 tokens</text>
+  </g>
+
+  <text x="720" y="768" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Source: Google's published comparison table, cross-checked via Artificial Analysis, the-decoder, OfficeChai and MarkTechPost</text>
+</svg>

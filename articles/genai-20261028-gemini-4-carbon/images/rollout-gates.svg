@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="gateGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="800" fill="url(#gateGrad)"/>
+
+  <text x="720" y="66" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">THE PART THAT'S ACTUALLY NEW</text>
+  <text x="720" y="120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">Who Gets Carbon, in What Order</text>
+  <text x="720" y="154" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">A frontier model rolled out through security gates before product surfaces</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- gate 1 -->
+    <rect x="90" y="200" width="290" height="300" rx="16" fill="#0c1a2e" stroke="#475569" stroke-width="2"/>
+    <text x="235" y="248" text-anchor="middle" font-size="34" fill="#94a3b8">⚑</text>
+    <text x="235" y="295" text-anchor="middle" font-size="18.5" font-weight="700" fill="#e2e8f0">Government testing</text>
+    <text x="235" y="320" text-anchor="middle" font-size="14.5" fill="#94a3b8">US voluntary pre-release</text>
+    <text x="235" y="342" text-anchor="middle" font-size="14.5" fill="#94a3b8">model evaluation process</text>
+    <line x1="120" y1="368" x2="350" y2="368" stroke="#1f2937" stroke-width="1"/>
+    <text x="235" y="402" text-anchor="middle" font-size="15" font-weight="600" fill="#fbbf24">happening now</text>
+    <text x="235" y="428" text-anchor="middle" font-size="13" fill="#64748b">before any public access</text>
+
+    <!-- gate 2 -->
+    <rect x="410" y="200" width="290" height="300" rx="16" fill="#0c1a2e" stroke="#22d3ee" stroke-width="3"/>
+    <text x="555" y="248" text-anchor="middle" font-size="34" fill="#22d3ee">🛡</text>
+    <text x="555" y="295" text-anchor="middle" font-size="18.5" font-weight="700" fill="#e2e8f0">Cyber defenders</text>
+    <text x="555" y="320" text-anchor="middle" font-size="14.5" fill="#94a3b8">a vetted subset of security</text>
+    <text x="555" y="342" text-anchor="middle" font-size="14.5" fill="#94a3b8">practitioners get it first</text>
+    <line x1="440" y1="368" x2="670" y2="368" stroke="#1f2937" stroke-width="1"/>
+    <text x="555" y="402" text-anchor="middle" font-size="15" font-weight="600" fill="#22d3ee">starting this week</text>
+    <text x="555" y="428" text-anchor="middle" font-size="13" fill="#64748b">the security community, not the API</text>
+
+    <!-- gate 3 -->
+    <rect x="730" y="200" width="290" height="300" rx="16" fill="#0c1a2e" stroke="#475569" stroke-width="2"/>
+    <text x="875" y="248" text-anchor="middle" font-size="34" fill="#94a3b8">⇄</text>
+    <text x="875" y="295" text-anchor="middle" font-size="18.5" font-weight="700" fill="#e2e8f0">Fairwind partners</text>
+    <text x="875" y="320" text-anchor="middle" font-size="14.5" fill="#94a3b8">Google's trusted-partner</text>
+    <text x="875" y="342" text-anchor="middle" font-size="14.5" fill="#94a3b8">program phases in access</text>
+    <line x1="760" y1="368" x2="990" y2="368" stroke="#1f2937" stroke-width="1"/>
+    <text x="875" y="402" text-anchor="middle" font-size="15" font-weight="600" fill="#fbbf24">gradual</text>
+    <text x="875" y="428" text-anchor="middle" font-size="13" fill="#64748b">feedback loops into guardrails</text>
+
+    <!-- gate 4 -->
+    <rect x="1050" y="200" width="290" height="300" rx="16" fill="#0c1a2e" stroke="#475569" stroke-width="2"/>
+    <text x="1195" y="248" text-anchor="middle" font-size="34" fill="#94a3b8">◇</text>
+    <text x="1195" y="295" text-anchor="middle" font-size="18.5" font-weight="700" fill="#e2e8f0">Everyone else</text>
+    <text x="1195" y="320" text-anchor="middle" font-size="14.5" fill="#94a3b8">developers, businesses</text>
+    <text x="1195" y="342" text-anchor="middle" font-size="14.5" fill="#94a3b8">and consumers</text>
+    <line x1="1080" y1="368" x2="1310" y2="368" stroke="#1f2937" stroke-width="1"/>
+    <text x="1195" y="402" text-anchor="middle" font-size="15" font-weight="600" fill="#fbbf24">"coming soon"</text>
+    <text x="1195" y="428" text-anchor="middle" font-size="13" fill="#64748b">no date attached</text>
+
+    <!-- pricing strip -->
+    <rect x="90" y="545" width="1250" height="180" rx="16" fill="#141d2e" stroke="#334155" stroke-width="1.5"/>
+    <text x="120" y="587" font-size="15" font-weight="600" fill="#fbbf24" letter-spacing="3">WHEN YOU FINALLY GET IT — THE PRICING</text>
+    <text x="120" y="633" font-size="17.5" fill="#cbd5e1">Introductory (same as Argon)</text>
+    <text x="700" y="633" text-anchor="end" font-size="19" font-weight="700" fill="#34d399">$2 / M input · $10 / M output · cached input 95% off</text>
+    <line x1="120" y1="655" x2="1330" y2="655" stroke="#1f2937" stroke-width="1"/>
+    <text x="120" y="695" font-size="17.5" fill="#cbd5e1">After the introductory window</text>
+    <text x="700" y="695" text-anchor="end" font-size="19" font-weight="700" fill="#fbbf24">$4 / M input · $20 / M output</text>
+  </g>
+
+  <text x="720" y="768" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Sources: Google DeepMind announcement (rollout, Fairwind Program, intro pricing) · 9to5Google (post-intro pricing)</text>
+</svg>

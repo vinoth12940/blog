@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="secGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrowS" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="800" fill="url(#secGrad)"/>
+
+  <text x="720" y="66" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">THE SECURITY PITCH</text>
+  <text x="720" y="120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">One Model, Full Cyber-Defense Lifecycle</text>
+  <text x="720" y="154" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Google's headline benchmarks, from finding a vulnerability to shipping the patch</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- FIND -->
+    <rect x="90" y="205" width="380" height="230" rx="16" fill="#0c1a2e" stroke="#22d3ee" stroke-width="2.5"/>
+    <text x="280" y="253" text-anchor="middle" font-size="21" font-weight="700" fill="#22d3ee">1 · FIND</text>
+    <text x="280" y="285" text-anchor="middle" font-size="15" fill="#94a3b8">locate vulnerabilities</text>
+    <text x="280" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#34d399">88.2%</text>
+    <text x="280" y="382" text-anchor="middle" font-size="15" fill="#cbd5e1">SEC-bench Pro</text>
+    <text x="280" y="408" text-anchor="middle" font-size="13.5" fill="#64748b">firm lead over the field</text>
+
+    <!-- arrow -->
+    <line x1="480" y1="320" x2="525" y2="320" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrowS)"/>
+
+    <!-- EXPLOIT -->
+    <rect x="530" y="205" width="380" height="230" rx="16" fill="#0c1a2e" stroke="#22d3ee" stroke-width="2.5"/>
+    <text x="720" y="253" text-anchor="middle" font-size="21" font-weight="700" fill="#22d3ee">2 · VALIDATE</text>
+    <text x="720" y="285" text-anchor="middle" font-size="15" fill="#94a3b8">prove exploitability</text>
+    <text x="720" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#34d399">54.8%</text>
+    <text x="720" y="382" text-anchor="middle" font-size="15" fill="#cbd5e1">ExploitGym</text>
+    <text x="720" y="408" text-anchor="middle" font-size="13.5" fill="#64748b">controlled exploitation</text>
+
+    <!-- arrow -->
+    <line x1="920" y1="320" x2="965" y2="320" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrowS)"/>
+
+    <!-- PATCH -->
+    <rect x="970" y="205" width="380" height="230" rx="16" fill="#0c1a2e" stroke="#22d3ee" stroke-width="2.5"/>
+    <text x="1160" y="253" text-anchor="middle" font-size="21" font-weight="700" fill="#22d3ee">3 · PATCH</text>
+    <text x="1160" y="285" text-anchor="middle" font-size="15" fill="#94a3b8">fix without breaking scope</text>
+    <text x="1160" y="345" text-anchor="middle" font-size="40" font-weight="700" fill="#34d399">71.0%</text>
+    <text x="1160" y="382" text-anchor="middle" font-size="15" fill="#cbd5e1">CWE-bench</text>
+    <text x="1160" y="408" text-anchor="middle" font-size="13.5" fill="#64748b">patch generation</text>
+
+    <!-- safety rails -->
+    <rect x="90" y="485" width="1260" height="215" rx="16" fill="#141d2e" stroke="#334155" stroke-width="1.5"/>
+    <text x="120" y="527" font-size="15" font-weight="600" fill="#fbbf24" letter-spacing="3">SAFETY RAILS GOOGLE SHIPPED WITH IT</text>
+
+    <text x="120" y="575" font-size="17" fill="#cbd5e1">Indirect prompt-injection attack success (Gray Swan benchmark)</text>
+    <text x="1320" y="575" text-anchor="end" font-size="19" font-weight="700" fill="#34d399">0.7% on Argon → 0.0% on Carbon</text>
+    <line x1="120" y1="595" x2="1320" y2="595" stroke="#1f2937" stroke-width="1"/>
+
+    <text x="120" y="635" font-size="17" fill="#cbd5e1">Unsupported claims in deliverables vs Argon</text>
+    <text x="1320" y="635" text-anchor="end" font-size="19" font-weight="700" fill="#34d399">cut roughly 2x</text>
+    <line x1="120" y1="655" x2="1320" y2="655" stroke="#1f2937" stroke-width="1"/>
+
+    <text x="120" y="682" font-size="17" fill="#cbd5e1">Multi-step execution discipline</text>
+    <text x="1320" y="682" text-anchor="end" font-size="17.5" font-weight="600" fill="#34d399">overreach −26% · under-service −29%</text>
+  </g>
+
+  <text x="720" y="768" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Sources: Google DeepMind announcement · the-decoder notes the Gray Swan test now appears saturated — 0.0% is a ceiling, not a guarantee</text>
+</svg>

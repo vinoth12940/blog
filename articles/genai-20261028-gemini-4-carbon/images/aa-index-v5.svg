@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="idxGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="800" fill="url(#idxGrad)"/>
+
+  <text x="720" y="66" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">INDEPENDENT SCOREBOARD</text>
+  <text x="720" y="120" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">Artificial Analysis Intelligence Index v5.0</text>
+  <text x="720" y="154" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Carbon takes the top spot — but one point separates the top three</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- bars: score-45)/15*640 width, x start 430 -->
+    <!-- Carbon 59 -->
+    <text x="410" y="248" text-anchor="end" font-size="19" font-weight="700" fill="#22d3ee">Gemini 4 Carbon</text>
+    <rect x="430" y="222" width="640" height="52" rx="9" fill="#0c1a2e" stroke="#22d3ee" stroke-width="2.5"/>
+    <text x="1045" y="248" font-size="21" font-weight="700" fill="#34d399">59</text>
+    <text x="1090" y="248" font-size="14" fill="#64748b">new #1</text>
+
+    <!-- Opus 5.5 58 -->
+    <text x="410" y="348" text-anchor="end" font-size="18" fill="#cbd5e1">Claude Opus 5.5</text>
+    <rect x="430" y="322" width="554" height="52" rx="9" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="959" y="348" font-size="20" font-weight="700" fill="#e2e8f0">58</text>
+
+    <!-- GPT-6 Astra 57 -->
+    <text x="410" y="448" text-anchor="end" font-size="18" fill="#cbd5e1">GPT-6 Astra</text>
+    <rect x="430" y="422" width="511" height="52" rx="9" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+    <text x="916" y="448" font-size="20" font-weight="700" fill="#e2e8f0">57</text>
+
+    <!-- Argon 50 -->
+    <text x="410" y="548" text-anchor="end" font-size="18" fill="#cbd5e1">Gemini 4 Argon</text>
+    <rect x="430" y="522" width="213" height="52" rx="9" fill="#1e1e2e" stroke="#475569" stroke-width="1.5"/>
+    <text x="668" y="548" font-size="20" font-weight="700" fill="#e2e8f0">50</text>
+    <text x="700" y="548" font-size="14" fill="#64748b">launched 2 weeks before Carbon</text>
+
+    <!-- Fable 5.1 49 -->
+    <text x="410" y="648" text-anchor="end" font-size="18" fill="#cbd5e1">Claude Fable 5.1</text>
+    <rect x="430" y="622" width="170" height="52" rx="9" fill="#1e1e2e" stroke="#475569" stroke-width="1.5"/>
+    <text x="625" y="648" font-size="20" font-weight="700" fill="#e2e8f0">49</text>
+
+    <text x="430" y="716" font-size="14" fill="#64748b">Bar lengths start at 45 to make gaps readable — read the numbers, not the bars.</text>
+  </g>
+
+  <text x="720" y="768" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Source: Artificial Analysis Intelligence Index v5.0, October 2026 · scores at each model's highest reasoning tier</text>
+</svg>

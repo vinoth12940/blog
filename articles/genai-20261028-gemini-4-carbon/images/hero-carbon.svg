@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrowC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="800" fill="url(#heroGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="600" fill="#22d3ee" letter-spacing="4">THE 14-DAY FRONTIER</text>
+  <text x="720" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">The Strongest Gemini Yet — Gated Behind Cyber Defenders</text>
+  <text x="720" y="152" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Two weeks after Argon, Google ships Carbon: #1 on the index, but developers queue last</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Argon card -->
+    <rect x="90" y="195" width="560" height="270" rx="16" fill="#0c1a2e" stroke="#475569" stroke-width="2.5"/>
+    <text x="120" y="243" font-size="22" font-weight="700" fill="#94a3b8">GEMINI 4 ARGON</text>
+    <text x="120" y="272" font-size="14" fill="#64748b">previous frontier model · two weeks earlier</text>
+    <text x="120" y="330" font-size="16.5" fill="#cbd5e1">Artificial Analysis Index v5.0</text>
+    <text x="620" y="330" text-anchor="end" font-size="20" font-weight="700" fill="#94a3b8">50</text>
+    <line x1="120" y1="348" x2="620" y2="348" stroke="#1f2937" stroke-width="1"/>
+    <text x="120" y="390" font-size="16.5" fill="#cbd5e1">Context window</text>
+    <text x="620" y="390" text-anchor="end" font-size="19" font-weight="700" fill="#94a3b8">1,048,576 tokens</text>
+    <line x1="120" y1="408" x2="620" y2="408" stroke="#1f2937" stroke-width="1"/>
+    <text x="120" y="442" font-size="15" font-style="italic" fill="#64748b">The model Wiz used to help crack PHP2Shell</text>
+
+    <!-- arrow -->
+    <line x1="665" y1="330" x2="752" y2="330" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrowC)"/>
+    <text x="709" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" fill="#22d3ee">+14 days</text>
+
+    <!-- Carbon card -->
+    <rect x="790" y="195" width="560" height="270" rx="16" fill="#0c1a2e" stroke="#22d3ee" stroke-width="3"/>
+    <text x="820" y="243" font-size="22" font-weight="700" fill="#22d3ee">GEMINI 4 CARBON</text>
+    <text x="820" y="272" font-size="14" fill="#64748b">announced October 28, 2026</text>
+    <text x="820" y="330" font-size="16.5" fill="#cbd5e1">Artificial Analysis Index v5.0</text>
+    <text x="1320" y="330" text-anchor="end" font-size="20" font-weight="700" fill="#34d399">59 · #1</text>
+    <line x1="820" y1="348" x2="1320" y2="348" stroke="#1f2937" stroke-width="1"/>
+    <text x="820" y="390" font-size="16.5" fill="#cbd5e1">Built for</text>
+    <text x="1320" y="390" text-anchor="end" font-size="19" font-weight="700" fill="#34d399">multi-day agent runs</text>
+    <line x1="820" y1="408" x2="1320" y2="408" stroke="#1f2937" stroke-width="1"/>
+    <text x="820" y="442" font-size="15" font-style="italic" fill="#64748b">State-of-the-art cyber defense, top long-horizon scores</text>
+
+    <!-- access queue -->
+    <rect x="90" y="510" width="1260" height="215" rx="16" fill="#141d2e" stroke="#334155" stroke-width="1.5"/>
+    <text x="120" y="552" font-size="15" font-weight="600" fill="#fbbf24" letter-spacing="3">THE ACCESS QUEUE</text>
+
+    <rect x="120" y="578" width="270" height="108" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="255" y="616" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">1 · US government</text>
+    <text x="255" y="640" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">pre-release testing</text>
+    <text x="255" y="666" text-anchor="middle" font-size="13.5" fill="#fbbf24">active now</text>
+
+    <rect x="430" y="578" width="270" height="108" rx="10" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="565" y="616" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">2 · Cyber defenders</text>
+    <text x="565" y="640" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">(vetted subset)</text>
+    <text x="565" y="666" text-anchor="middle" font-size="13.5" fill="#22d3ee">starting this week</text>
+
+    <rect x="740" y="578" width="270" height="108" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="875" y="616" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">3 · Fairwind Program</text>
+    <text x="875" y="640" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">trusted partners</text>
+    <text x="875" y="666" text-anchor="middle" font-size="13.5" fill="#94a3b8">gradual phase-in</text>
+
+    <rect x="1050" y="578" width="270" height="108" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="1185" y="616" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">4 · Developers,</text>
+    <text x="1185" y="640" text-anchor="middle" font-size="16" font-weight="600" fill="#e2e8f0">businesses, consumers</text>
+    <text x="1185" y="666" text-anchor="middle" font-size="13.5" fill="#94a3b8">"as soon as possible"</text>
+  </g>
+
+  <text x="720" y="768" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Source: Google DeepMind announcement, Oct 28 2026 · Artificial Analysis Intelligence Index v5.0</text>
+</svg>
