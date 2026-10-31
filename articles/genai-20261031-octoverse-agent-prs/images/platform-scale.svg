@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="790" viewBox="0 0 1440 790">
+  <defs>
+    <linearGradient id="psGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="790" fill="url(#psGrad)"/>
+
+  <text x="720" y="66" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">GitHub by the Numbers — the Octoverse Year</text>
+  <text x="720" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">Twelve months to September 30, 2026</text>
+
+  <!-- Row 1 -->
+  <rect x="100" y="140" width="400" height="190" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="300" y="212" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#22d3ee">17.9B</text>
+  <text x="300" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">code pushes</text>
+  <text x="300" y="288" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">more than 2024 and 2025 combined</text>
+
+  <rect x="530" y="140" width="400" height="190" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="730" y="212" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#a78bfa">34.3B</text>
+  <text x="730" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">commits</text>
+  <text x="730" y="288" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">3x the level of two years earlier</text>
+
+  <rect x="960" y="140" width="400" height="190" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="1160" y="212" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#34d399">1.3B</text>
+  <text x="1160" y="252" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">merged pull requests</text>
+  <text x="1160" y="288" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">an average of 3.5M merged per day</text>
+
+  <!-- Row 2 -->
+  <rect x="100" y="360" width="400" height="190" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="300" y="432" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#fbbf24">1,440</text>
+  <text x="300" y="472" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">Actions jobs every second</text>
+  <text x="300" y="508" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">CI runs around the clock, all year</text>
+
+  <rect x="530" y="360" width="400" height="190" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="730" y="432" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#22d3ee">225M</text>
+  <text x="730" y="472" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">developers on GitHub</text>
+  <text x="730" y="508" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">US 38.3M · India 32.0M · Brazil +3.28M/yr</text>
+
+  <rect x="960" y="360" width="400" height="190" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="1160" y="432" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#34d399">2.5B</text>
+  <text x="1160" y="472" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">public contributions</text>
+  <text x="1160" y="508" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">more than double the 2025 total</text>
+
+  <!-- Footer strip -->
+  <rect x="100" y="590" width="1260" height="110" rx="14" fill="rgba(167,139,250,0.08)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="730" y="636" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#cbd5e1">Push protection ran 5.8B secret scans · Dependabot opened 30M+ dependency PRs</text>
+  <text x="730" y="672" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#cbd5e1">TypeScript is now the #1 language by monthly contributors, ahead of Python and JavaScript</text>
+
+  <text x="720" y="756" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" fill="#64748b">Source: GitHub Octoverse 2026, published October 28, 2026</text>
+</svg>

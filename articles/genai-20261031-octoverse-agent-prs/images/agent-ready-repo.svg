@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="910" viewBox="0 0 1440 910">
+  <defs>
+    <linearGradient id="repoGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+    <marker id="arrowD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="910" fill="url(#repoGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">The Agent-Ready Repo</text>
+  <text x="720" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">Five layers that turn random agent contributions into mergeable ones</text>
+
+  <!-- Layer 1 -->
+  <rect x="100" y="140" width="740" height="104" rx="12" fill="#111827" stroke="#22d3ee" stroke-width="1.2"/>
+  <circle cx="150" cy="192" r="22" fill="rgba(34,211,238,0.15)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="150" y="199" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#22d3ee">1</text>
+  <text x="192" y="182" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Agent config file (AGENTS.md)</text>
+  <text x="192" y="216" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Build and test commands, code conventions, scope boundaries</text>
+
+  <line x1="470" y1="244" x2="470" y2="272" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Layer 2 -->
+  <rect x="100" y="272" width="740" height="104" rx="12" fill="#111827" stroke="#a78bfa" stroke-width="1.2"/>
+  <circle cx="150" cy="324" r="22" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="150" y="331" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#a78bfa">2</text>
+  <text x="192" y="314" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Branch protection</text>
+  <text x="192" y="348" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Require pull requests and green status checks before any merge</text>
+
+  <line x1="470" y1="376" x2="470" y2="404" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Layer 3 -->
+  <rect x="100" y="404" width="740" height="104" rx="12" fill="#111827" stroke="#34d399" stroke-width="1.2"/>
+  <circle cx="150" cy="456" r="22" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1"/>
+  <text x="150" y="463" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">3</text>
+  <text x="192" y="446" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">CI that agents can trust</text>
+  <text x="192" y="480" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Fast, deterministic, flake-free — the review signal everyone leans on</text>
+
+  <line x1="470" y1="508" x2="470" y2="536" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Layer 4 -->
+  <rect x="100" y="536" width="740" height="104" rx="12" fill="#111827" stroke="#fbbf24" stroke-width="1.2"/>
+  <circle cx="150" cy="588" r="22" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="150" y="595" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#fbbf24">4</text>
+  <text x="192" y="578" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">CODEOWNERS and review routing</text>
+  <text x="192" y="612" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Auto-route agent changes to the humans who actually own that area</text>
+
+  <line x1="470" y1="640" x2="470" y2="668" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Layer 5 -->
+  <rect x="100" y="668" width="740" height="104" rx="12" fill="#111827" stroke="#f87171" stroke-width="1.2"/>
+  <circle cx="150" cy="720" r="22" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1"/>
+  <text x="150" y="727" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f87171">5</text>
+  <text x="192" y="710" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Push protection and secret scanning</text>
+  <text x="192" y="744" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">5.8B scans last year keep credentials out of git history</text>
+
+  <!-- Right: 8x callout -->
+  <rect x="890" y="140" width="450" height="380" rx="14" fill="#111827" stroke="#34d399" stroke-width="1.2"/>
+  <text x="1115" y="250" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="104" font-weight="800" fill="#34d399">8x</text>
+  <text x="1115" y="296" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#e2e8f0">more commits</text>
+  <text x="930" y="342" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Repos created in 2026 with an agent</text>
+  <text x="930" y="370" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">config file averaged eight times more</text>
+  <text x="930" y="398" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">commits than repos without one.</text>
+  <line x1="930" y1="424" x2="1300" y2="424" stroke="#1f2937" stroke-width="1"/>
+  <text x="930" y="458" font-family="Inter, Arial, sans-serif" font-size="18" font-style="italic" fill="#94a3b8">Correlation, not proof of cause —</text>
+  <text x="930" y="484" font-family="Inter, Arial, sans-serif" font-size="18" font-style="italic" fill="#94a3b8">teams that set up agents may simply</text>
+  <text x="930" y="510" font-family="Inter, Arial, sans-serif" font-size="18" font-style="italic" fill="#94a3b8">be the ones shipping more anyway.</text>
+
+  <!-- Right: why it works -->
+  <rect x="890" y="552" width="450" height="220" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="930" y="596" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f1f5f9">Why the file matters</text>
+  <circle cx="938" cy="630" r="4" fill="#22d3ee"/>
+  <text x="956" y="636" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">It removes agent guesswork about</text>
+  <text x="956" y="662" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">how to build, test, and verify</text>
+  <circle cx="938" cy="696" r="4" fill="#22d3ee"/>
+  <text x="956" y="702" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Scope boundaries prevent drive-by</text>
+  <text x="956" y="728" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">refactors nobody asked for</text>
+  <circle cx="938" cy="740" r="4" fill="#22d3ee"/>
+
+  <text x="720" y="852" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" fill="#64748b">Layers 2-5 are standard GitHub features — free to enable today · Source: GitHub Octoverse 2026</text>
+</svg>

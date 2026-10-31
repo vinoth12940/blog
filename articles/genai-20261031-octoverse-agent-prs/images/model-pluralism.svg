@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="mpGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="780" fill="url(#mpGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">One Developer, Many Models</text>
+  <text x="720" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">Copilot model selection has fragmented — routing is becoming the default workflow</text>
+
+  <!-- Chart label -->
+  <text x="100" y="164" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" fill="#cbd5e1">Where developer-selected Copilot requests went, September 2026</text>
+
+  <!-- Bar 1 -->
+  <text x="100" y="216" font-family="Inter, Arial, sans-serif" font-size="22" fill="#e2e8f0">General-purpose models</text>
+  <rect x="100" y="232" width="608" height="50" rx="8" fill="rgba(34,211,238,0.18)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="683" y="264" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" fill="#22d3ee">38%</text>
+
+  <!-- Bar 2 -->
+  <text x="100" y="330" font-family="Inter, Arial, sans-serif" font-size="22" fill="#e2e8f0">Deep-reasoning and planning models</text>
+  <rect x="100" y="346" width="592" height="50" rx="8" fill="rgba(167,139,250,0.18)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="667" y="378" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" fill="#a78bfa">37%</text>
+
+  <!-- Bar 3 -->
+  <text x="100" y="444" font-family="Inter, Arial, sans-serif" font-size="22" fill="#e2e8f0">Fast and lightweight models</text>
+  <rect x="100" y="460" width="400" height="50" rx="8" fill="rgba(251,191,36,0.18)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="475" y="492" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" fill="#fbbf24">25%</text>
+
+  <!-- Bottom chips -->
+  <rect x="100" y="560" width="380" height="130" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="290" y="618" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#22d3ee">29 → 47</text>
+  <text x="290" y="650" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">distinct models used by paid users</text>
+  <text x="290" y="674" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">May to September 2026</text>
+
+  <rect x="530" y="560" width="380" height="130" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="720" y="618" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#a78bfa">61%</text>
+  <text x="720" y="650" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">of developers who pick their own</text>
+  <text x="720" y="674" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">models used more than one</text>
+
+  <rect x="960" y="560" width="380" height="130" rx="14" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+  <text x="1150" y="618" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#fbbf24">63%</text>
+  <text x="1150" y="650" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">of paying Copilot developers used</text>
+  <text x="1150" y="674" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">auto model selection in September</text>
+
+  <text x="720" y="744" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" fill="#64748b">Bars drawn to scale · Source: GitHub Octoverse 2026, published October 28, 2026</text>
+</svg>
