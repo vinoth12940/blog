@@ -85,7 +85,7 @@
 
     <p>The stat with the most practical payoff barely made headlines. Among repositories <em>created</em> in 2026, those that included an agent configuration file averaged <strong>eight times more commits</strong> than those without one.</p>
 
-    <p>The report itself flags the obvious caveat: correlation, not proof of cause. Teams that bother writing an <span class="mono">AGENTS.md</span> are probably the teams shipping hard anyway. But the mechanism is real no matter how you discount the multiplier. An agent config file is house rules for a contributor who never sits in your onboarding sessions: it removes guesswork about how to build, how to test, and where the guardrails are. If a new engineer needs it, an agent needs it more.</p>
+    <p>The report itself flags the obvious caveat: correlation, not proof of cause. Teams that bother writing an AGENTS.md are probably the teams shipping hard anyway. But the mechanism is real no matter how you discount the multiplier. An agent config file is house rules for a contributor who never sits in your onboarding sessions: it removes guesswork about how to build, how to test, and where the guardrails are. If a new engineer needs it, an agent needs it more.</p>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20261031-octoverse-agent-prs/images/agent-ready-repo.png" alt="Five-layer stack diagram of an agent-ready repository: an agent config file, branch protection, trustworthy CI, code owners and review routing, and push protection with secret scanning, next to a callout that repos with an agent config file averaged eight times more commits, with a correlation caveat">
     <p class="figcap">Five layers, four of which are free GitHub features you can enable today.</p>
@@ -99,7 +99,7 @@
         <li><strong>Verification steps</strong> — what to run before declaring done, and what "done" means</li>
     </ul>
 
-    <p>The file is one of five layers. The rest of the stack is boring and decisive: branch protection with required checks, CI that is fast and flake-free (an agent that can't trust the signal will improvise around it), <span class="mono">CODEOWNERS</span> so agent changes route to the humans who own that area, and push protection — which ran <strong>5.8 billion secret scans</strong> during the Octoverse year, a number that tells you exactly how often credentials try to walk into git history.</p>
+    <p>The file is one of five layers. The rest of the stack is boring and decisive: branch protection with required checks, CI that is fast and flake-free (an agent that can't trust the signal will improvise around it), CODEOWNERS so agent changes route to the humans who own that area, and push protection — which ran <strong>5.8 billion secret scans</strong> during the Octoverse year, a number that tells you exactly how often credentials try to walk into git history.</p>
 
     <h2>Model Pluralism Got Real</h2>
 
@@ -138,7 +138,7 @@
 
     <p>The pull request has quietly stopped being proof of human craft and become a unit of review. The scarce skill in software is no longer producing a diff — it's judging one.</p>
 
-    <p>After reading the report, I spent twenty minutes on my own repositories: wrote a proper <span class="mono">AGENTS.md</span>, turned on branch protection with required status checks, added a <span class="mono">CODEOWNERS</span> file, and started labeling agent PRs so I can actually measure what the machine contributes. Will the 8x multiplier visit my little blog repo? Probably not — the teams in that stat were shipping at a different scale. What I expect instead is fewer garbage agent contributions, faster reviews, and a repo that keeps working as agents get more capable every month. That part is fully under my control.</p>
+    <p>After reading the report, I spent twenty minutes on my own repositories: wrote a proper AGENTS.md, turned on branch protection with required status checks, added a CODEOWNERS file, and started labeling agent PRs so I can actually measure what the machine contributes. Will the 8x multiplier visit my little blog repo? Probably not — the teams in that stat were shipping at a different scale. What I expect instead is fewer garbage agent contributions, faster reviews, and a repo that keeps working as agents get more capable every month. That part is fully under my control.</p>
 
     <p>The agents showed up for the pull request the way cloud computing showed up for infrastructure — gradually, then in the default settings. Forty percent is not the end state; it's the midpoint of a six-month curve that is still pointing up. The only question worth asking in November is whether your repository is ready for the other half.</p>
 
