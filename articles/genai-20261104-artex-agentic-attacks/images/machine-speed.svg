@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="speedGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="780" fill="url(#speedGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">Machine Speed, Measured</text>
+  <text x="720" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">Verified numbers from the Microsoft, CrowdStrike, and DIVD disclosures</text>
+
+  <!-- Row 1 -->
+  <rect x="100" y="150" width="400" height="240" rx="12" fill="#111827" stroke="#22d3ee" stroke-width="1.2"/>
+  <text x="300" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#22d3ee">&lt; 3 hours</text>
+  <text x="300" y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">from initial targeting to privileged</text>
+  <text x="300" y="320" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">cloud access — multiple instances</text>
+  <text x="300" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">Microsoft on Storm-0940</text>
+
+  <rect x="520" y="150" width="400" height="240" rx="12" fill="#111827" stroke="#f87171" stroke-width="1.2"/>
+  <text x="720" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#f87171">12 minutes</text>
+  <text x="720" y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">initial access to root on DIVD's own</text>
+  <text x="720" y="320" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">network — zero-day plus LPE, chained</text>
+  <text x="720" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">agent acted autonomously</text>
+
+  <rect x="940" y="150" width="400" height="240" rx="12" fill="#111827" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="1140" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#fbbf24">2,900 / min</text>
+  <text x="1140" y="292" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">password-spray attempts across 300+</text>
+  <text x="1140" y="320" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">accounts in 8 organizations</text>
+  <text x="1140" y="356" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">151,000+ failed logons captured</text>
+
+  <!-- Row 2 -->
+  <rect x="100" y="420" width="400" height="240" rx="12" fill="#111827" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="300" y="510" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#a78bfa">2,250+</text>
+  <text x="300" y="562" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">Microsoft 365 tenants the attacker</text>
+  <text x="300" y="590" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">tried to sign into via one backup app</text>
+  <text x="300" y="626" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">ConnectWise supply-chain chain</text>
+
+  <rect x="520" y="420" width="400" height="240" rx="12" fill="#111827" stroke="#34d399" stroke-width="1.2"/>
+  <text x="720" y="510" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#34d399">1.4 billion</text>
+  <text x="720" y="562" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">input tokens consumed by planning</text>
+  <text x="720" y="590" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">agents in a single intrusion</text>
+  <text x="720" y="626" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">CrowdStrike on Vapor Panda</text>
+
+  <rect x="940" y="420" width="400" height="240" rx="12" fill="#111827" stroke="#f0997b" stroke-width="1.2"/>
+  <text x="1140" y="510" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#f0997b">450,000+</text>
+  <text x="1140" y="562" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">requests and 2,500 scripts in one</text>
+  <text x="1140" y="590" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#c9d4e3">attack — DIVD called it loud and messy</text>
+  <text x="1140" y="626" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#64748b">loud is detectable — that matters</text>
+
+  <text x="720" y="720" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">Humans pace themselves. Agents don't — every number here breaks a human-speed detection assumption.</text>
+</svg>

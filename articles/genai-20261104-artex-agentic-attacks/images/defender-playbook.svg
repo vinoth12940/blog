@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="playGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#playGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">The Defender's Playbook for Agent-Speed Attacks</text>
+  <text x="720" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">Every item maps to a documented failure from the ARTEX campaign</text>
+
+  <!-- Card 1 -->
+  <rect x="100" y="150" width="600" height="190" rx="12" fill="#111827" stroke="#22d3ee" stroke-width="1.2"/>
+  <circle cx="150" cy="202" r="22" fill="rgba(34,211,238,0.15)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="150" y="209" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#22d3ee">1</text>
+  <text x="192" y="196" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Rotate stale credentials</text>
+  <text x="192" y="232" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">A 2022 mail-server directory export still held</text>
+  <text x="192" y="260" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">working keys — the agent forged an admin token</text>
+  <text x="192" y="288" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">with them and read the mailboxes</text>
+
+  <!-- Card 2 -->
+  <rect x="740" y="150" width="600" height="190" rx="12" fill="#111827" stroke="#a78bfa" stroke-width="1.2"/>
+  <circle cx="790" cy="202" r="22" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="790" y="209" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#a78bfa">2</text>
+  <text x="832" y="196" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Treat OAuth grants as supply chain</text>
+  <text x="832" y="232" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">One compromised backup app let the attacker</text>
+  <text x="832" y="260" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">attempt sign-ins at more than 2,250 tenants</text>
+  <text x="832" y="288" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">— every grant is a tenant-wide risk</text>
+
+  <!-- Card 3 -->
+  <rect x="100" y="370" width="600" height="190" rx="12" fill="#111827" stroke="#fbbf24" stroke-width="1.2"/>
+  <circle cx="150" cy="422" r="22" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="150" y="429" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#fbbf24">3</text>
+  <text x="192" y="416" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Alert on velocity, not just novelty</text>
+  <text x="192" y="452" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">2,900 spray attempts a minute and 450,000</text>
+  <text x="192" y="480" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">requests are machine pace — rate-based alerts</text>
+  <text x="192" y="508" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">catch what signature-based tools miss</text>
+
+  <!-- Card 4 -->
+  <rect x="740" y="370" width="600" height="190" rx="12" fill="#111827" stroke="#34d399" stroke-width="1.2"/>
+  <circle cx="790" cy="422" r="22" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1"/>
+  <text x="790" y="429" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">4</text>
+  <text x="832" y="416" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Rotate tokens when vendors disclose</text>
+  <text x="832" y="452" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">GitBook revoked every API token; Chainstack</text>
+  <text x="832" y="480" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">treated node credentials as exposed — treat</text>
+  <text x="832" y="508" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">third-party breach notices as your rotation cue</text>
+
+  <!-- Card 5 -->
+  <rect x="100" y="590" width="600" height="190" rx="12" fill="#111827" stroke="#f0997b" stroke-width="1.2"/>
+  <circle cx="150" cy="642" r="22" fill="rgba(240,153,123,0.15)" stroke="#f0997b" stroke-width="1"/>
+  <text x="150" y="649" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f0997b">5</text>
+  <text x="192" y="636" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Segment dev from prod</text>
+  <text x="192" y="672" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">Chainstack's intruder entered through a dev</text>
+  <text x="192" y="700" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">environment via a third-party component, then</text>
+  <text x="192" y="728" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">escalated into production five days later</text>
+
+  <!-- Card 6 -->
+  <rect x="740" y="590" width="600" height="190" rx="12" fill="#111827" stroke="#f87171" stroke-width="1.2"/>
+  <circle cx="790" cy="642" r="22" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="1"/>
+  <text x="790" y="649" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f87171">6</text>
+  <text x="832" y="636" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#f1f5f9">Assume EDR-aware agents</text>
+  <text x="832" y="672" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">Operators explicitly told the agents to skip</text>
+  <text x="832" y="700" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">Falcon-protected hosts — coverage gaps are</text>
+  <text x="832" y="728" font-family="Inter, Arial, sans-serif" font-size="18" fill="#94a3b8">found and exploited at machine speed</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="pipeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#131f36"/>
+    </linearGradient>
+    <marker id="arrowD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="800" fill="url(#pipeGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#f1f5f9">How a Pentest Tool Becomes a Weapon</text>
+  <text x="720" y="102" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">The ARTEX lifecycle — and why it keeps repeating</text>
+
+  <!-- Stage 1 -->
+  <rect x="100" y="160" width="220" height="300" rx="12" fill="#111827" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="210" y="200" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#94a3b8">1</text>
+  <text x="210" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">Open-source</text>
+  <text x="210" y="268" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">release</text>
+  <text x="210" y="310" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Go + Next.js pentest</text>
+  <text x="210" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">framework, works with</text>
+  <text x="210" y="362" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">any LLM, full autonomy</text>
+
+  <line x1="320" y1="310" x2="352" y2="310" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Stage 2 -->
+  <rect x="356" y="160" width="220" height="300" rx="12" fill="#111827" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="466" y="200" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#fbbf24">2</text>
+  <text x="466" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">Abused in</text>
+  <text x="466" y="268" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">the wild</text>
+  <text x="466" y="310" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">attacks on South</text>
+  <text x="466" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Korean financial</text>
+  <text x="466" y="362" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">institutions surface</text>
+
+  <line x1="576" y1="310" x2="608" y2="310" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Stage 3 -->
+  <rect x="612" y="160" width="220" height="300" rx="12" fill="#111827" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="722" y="200" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#a78bfa">3</text>
+  <text x="722" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">Goes</text>
+  <text x="722" y="268" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">proprietary</text>
+  <text x="722" y="310" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">creators lock the</text>
+  <text x="722" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">code — copies and</text>
+  <text x="722" y="362" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">skills already out</text>
+
+  <line x1="832" y1="310" x2="864" y2="310" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Stage 4 -->
+  <rect x="868" y="160" width="220" height="300" rx="12" fill="#111827" stroke="#f0997b" stroke-width="1.2"/>
+  <text x="978" y="200" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#f0997b">4</text>
+  <text x="978" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">Spreads across</text>
+  <text x="978" y="268" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">groups</text>
+  <text x="978" y="310" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Storm-0940, Vapor</text>
+  <text x="978" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Panda, a third</text>
+  <text x="978" y="362" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">China-linked crew</text>
+
+  <line x1="1088" y1="310" x2="1120" y2="310" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowD)"/>
+
+  <!-- Stage 5 -->
+  <rect x="1124" y="160" width="220" height="300" rx="12" fill="#111827" stroke="#f87171" stroke-width="1.2"/>
+  <text x="1234" y="200" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#f87171">5</text>
+  <text x="1234" y="240" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">Commodity</text>
+  <text x="1234" y="268" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="600" fill="#f1f5f9">spillover</text>
+  <text x="1234" y="310" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Chainstack, WorkOS,</text>
+  <text x="1234" y="336" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">GitBook — third-party</text>
+  <text x="1234" y="362" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">blast radius</text>
+
+  <!-- Bottom callout -->
+  <rect x="100" y="520" width="1244" height="200" rx="14" fill="#111827" stroke="#334155" stroke-width="1"/>
+  <text x="720" y="572" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f5f9">And it is not one tool. Kaspersky tracked CyberStrikeAI — another open-source Go</text>
+  <text x="720" y="606" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f5f9">pentest framework — running attacks on schools in Africa and Latin America.</text>
+  <text x="720" y="656" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">The category is the story: capable agent frameworks keep escaping into offense,</text>
+  <text x="720" y="688" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" fill="#94a3b8">and closing one repo closes nothing.</text>
+</svg>

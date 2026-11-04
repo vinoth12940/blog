@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>200 Organizations in 11 Days: Inside the ARTEX Agentic Attack Wave</title>
+    <meta name="description" content="ARTEX, an open-source multi-agent AI pentest framework, powered a Chinese-nexus campaign against 200+ organizations in 11 days — and its spillover breached Chainstack, WorkOS, and GitBook. The verified numbers, the architecture, and a defender's playbook.">
+    <meta property="og:title" content="200 Organizations in 11 Days: Inside the ARTEX Agentic Attack Wave">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-11-04">
+    <meta property="og:description" content="An open-source AI agent framework ran autonomous intrusions at machine speed — 200+ organizations in 11 days, then breached dev-to-prod at Chainstack and forced GitBook to revoke every API token.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20261104-artex-agentic-attacks/images/hero-artex-campaign.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        main { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; color: #b8b8b8; font-style: italic; }
+        ul { margin: 0 0 1.25rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        img { width: 100%; border-radius: 12px; margin: 1.5rem 0 0.5rem; border: 1px solid #1f2937; }
+        .figcap { font-size: 0.85rem; color: #737373; text-align: center; margin-bottom: 1.75rem; font-style: italic; }
+        .stat-list { list-style: none; margin-left: 0; background: #111418; border: 1px solid #1f2937; border-radius: 12px; padding: 1.25rem 1.5rem; }
+        .stat-list li { padding: 0.4rem 0; border-bottom: 1px solid #1a1f26; }
+        .stat-list li:last-child { border-bottom: none; }
+        hr { border: none; border-top: 1px solid #262626; margin: 2.5rem 0; }
+        strong { color: #f1f5f9; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>200 Organizations in 11 Days: Inside the ARTEX Agentic Attack Wave</h1>
+    <p class="meta">November 4, 2026 · AI / Security / Agents · 9 min read</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261104-artex-agentic-attacks/images/hero-artex-campaign.png" alt="Overview of the ARTEX campaign: four stat cards reading 200+ organizations attacked, 14 countries, 11 days on one controller, and 1.4 billion tokens in a single intrusion, above a September-to-November timeline marking Storm-0940 operations, the ConnectWise advisory, the Vapor Panda campaign, Microsoft naming ARTEX, the Chainstack dev-to-production breach, the WorkOS incident, and the GitBook breach">
+    <p class="figcap">One framework, multiple operators, and a month that changed the threat model for everyone who runs agents.</p>
+
+    <p>I run an AI agent around the clock on a headless Linux server. It plans, executes, checks its own work, and reports back — the same controller-planner-worker pattern that shows up in every serious agent framework shipping today. Last week I read three security disclosures that described, almost feature for feature, that exact architecture. Except the operator wasn't drafting blog posts. It was forging administrator tokens and reading government mailboxes.</p>
+
+    <p>The framework is called <strong>ARTEX</strong>. According to <a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/">Microsoft Threat Intelligence</a>, a China-state-aligned actor used it to automate intrusions into hundreds of organizations. According to <a href="https://www.bleepingcomputer.com/news/security/chinese-hackers-use-artex-ai-in-automated-attacks-against-200-orgs/">CrowdStrike, a single ARTEX controller ran simultaneous attacks against more than 200 organizations across 14 countries in 11 days</a>. And this week the spillover hit services ordinary developers touch daily: Chainstack disclosed a production breach on November 3, and GitBook revoked every API token it had ever issued.</p>
+
+    <p>This isn't a story about a vulnerability you can patch on Thursday. It's about what happens when offensive security becomes an orchestration problem — and the people solving it are using the same tooling patterns the rest of us celebrate.</p>
+
+    <h2>What ARTEX Actually Is</h2>
+
+    <p>Strip away the threat-actor tradecraft and ARTEX is recognizable to anyone who has built with LangGraph or CrewAI. Microsoft describes it as <strong>a multi-agent LLM system written in Go with a Next.js frontend</strong>. It can use any AI model. It runs an autonomous penetration test from reconnaissance through data exfiltration with little human interaction. As the agents work, they accumulate discovered assets and vulnerabilities into a shared graph that every other agent can read — the same shared-memory pattern that makes modern agent frameworks useful.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261104-artex-agentic-attacks/images/artex-architecture.png" alt="Architecture diagram of ARTEX: a human operator stepping in at decision points above an ARTEX controller, which dispatches planner agents and worker agents that write to a shared graph memory and drive an autonomous pipeline from reconnaissance through initial access, privilege escalation, credential theft, and exfiltration; a right column shows the swappable model layer running DeepSeek plus an unidentified commercial LLM, documented in-the-wild capabilities, and the framework's open-source origin">
+    <p class="figcap">Planner and worker agents over shared graph memory. If you've built agents, you've drawn this diagram.</p>
+
+    <p>The provenance is the part that should make every open-source maintainer think. ARTEX was developed by Chinese developers and released as an open-source project — a penetration testing suite, the kind of tool that gets starred on GitHub and demoed at conferences. Then it was used in real attacks against South Korean financial institutions, and its creators made it proprietary. Too late. CrowdStrike and Microsoft have now observed <strong>multiple distinct China-nexus groups</strong> running it, including Storm-0940 and a group CrowdStrike tracks as Vapor Panda.</p>
+
+    <p>That sequence — publish, abuse, retract, proliferate anyway — is now a documented lifecycle, not a thought experiment.</p>
+
+    <h2>Three Campaigns, One Framework</h2>
+
+    <h3>The ConnectWise supply chain — Storm-0940</h3>
+
+    <p>Microsoft ties ARTEX to the supply-chain compromise of ConnectWise's Cloud Backup application, disclosed in mid-October. With compromised application credentials in hand, the actor used ARTEX to attempt sign-ins to <strong>more than 2,250 Microsoft 365 tenants</strong>. The password spraying ran at <strong>more than 2,900 attempts per minute</strong> across over 300 accounts in eight organizations, and Microsoft captured more than 151,000 failed logon events. OAuth abuse isn't new for this actor — what's new is the pace. Microsoft flagged multiple intrusions where the time from initial targeting to privileged cloud access was <strong>under three hours</strong>.</p>
+
+    <h3>Two hundred orgs in eleven days — Vapor Panda</h3>
+
+    <p>CrowdStrike's report is the one I keep re-reading. Starting October 17, Vapor Panda used a single ARTEX controller against telecommunications providers, government ministries, and pharmaceutical, semiconductor, defense, and financial targets across 14 countries. The framework ran mostly on <strong>DeepSeek plus a second commercial LLM</strong> that CrowdStrike couldn't identify. Confirmed compromises at nine organizations ended with a BloodAlchemy backdoor installed; at least twelve more were password-sprayed.</p>
+
+    <p>The recovered transcripts read like any agent ops log. The operator issued instructions in Chinese and stepped in at decision points. When one attack path failed, the agents pivoted to another on their own. At one pharmaceutical firm, the agent combined an unsigned SAML assertion with an XXE flaw to reach the cloud metadata service, then climbed to an enterprise admin account. Against a Greek government entity, the operator supplied a <strong>2022 directory export from the organization's own mail server</strong> — the authentication keys in it had likely never been rotated. The agent used them to forge an administrator token and read mailboxes, then found VPN configurations in a user's sent mail to push into the internal network. CrowdStrike also observed the operator instructing agents to <strong>skip every host running Falcon</strong> and work the unprotected ones.</p>
+
+    <blockquote>One intrusion consumed roughly 1.4 billion input tokens. An agent team planning a single breach burned more tokens than most companies' entire monthly API bill.</blockquote>
+
+    <h3>The spillover: Chainstack, WorkOS, GitBook</h3>
+
+    <p>While the espionage campaigns ran, the same wave reached downstream infrastructure vendors. Chainstack, a blockchain node provider, disclosed on November 3 that an attacker entered through a third-party component into a development environment on October 26, escalated into production, and accessed a database holding customer names, emails, and <strong>password hashes</strong> — plus systems holding node credentials, which the company is treating as exposed. The intrusion ran for five days before detection. WorkOS disclosed a smaller incident the same week, limited to go-to-market systems: CRM contacts, sales-call summaries, and excerpts of customer Slack conversations.</p>
+
+    <p>GitBook was hit hardest in developer-visible terms. Attackers accessed infrastructure credentials around 7 p.m. CET on November 2. GitBook suspended its application, revoked <strong>every API token</strong>, and warned that integration credentials, Git Sync secrets, and GitBook Assistant questions may have been exposed. PancakeSwap took its documentation offline entirely and then migrated off GitBook. For a documentation host whose customers publish API references and integration guides, "we rotated everything" is the only responsible ending — and even that cost them a marquee customer.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261104-artex-agentic-attacks/images/machine-speed.png" alt="Six stat cards with verified campaign numbers: under 3 hours from targeting to privileged cloud access, 12 minutes from initial access to root on DIVD's network, 2,900 password-spray attempts per minute, more than 2,250 tenant sign-in attempts, 1.4 billion input tokens in one intrusion, and 450,000 requests with 2,500 scripts in the DIVD attack">
+    <p class="figcap">Machine speed, measured. Each of these numbers breaks a human-paced assumption in classical detection.</p>
+
+    <p>One more disclosure belongs in this section, because it's the most personal. The Dutch Institute for Vulnerability Disclosure — the folks who usually report other people's bugs — confirmed in November that the September attack on their own network was carried out by ARTEX acting <strong>autonomously</strong>. Initial access to root in <strong>12 minutes</strong>, via a Zammad zero-day chained with a local privilege escalation flaw. While it worked, the agent read a compromised mailbox, scanned the internal network, extracted login tokens, and attempted password resets simultaneously. DIVD logged over 450,000 requests and 2,500 scripts and described the activity as "super loud and messy."</p>
+
+    <h2>The Uncomfortable Mirror</h2>
+
+    <p>Here's what I can't shake: nothing in ARTEX's architecture is exotic. Controller, planner agents, worker agents, shared graph memory, model-agnostic routing, human approval at decision points. I have run every one of those pieces — legitimately, on my own hardware, for this blog. The frameworks most of us use are architecturally indistinguishable from what breached a Greek government ministry. The differentiator isn't the stack. It's the objective handed to it.</p>
+
+    <blockquote>CrowdStrike: the campaign "marks an escalation in China-nexus use of AI agents, from single intrusions to multiple simultaneous engagements directed by a human operator."</blockquote>
+
+    <p>That sentence deserves a slow read. Multiple simultaneous engagements, one operator. The scaling law that made agents transformative for software work — one person directing many parallel workers — is now on the attacker's side of the ledger too. In September, "state actor with AI assistance" meant one intrusion with a chatbot in the loop. In November it means one operator running a 14-country campaign from a single console while another group hits 2,250 tenants in the same week.</p>
+
+    <h2>Why Velocity Breaks Defenses</h2>
+
+    <p>Security operations has always assumed a human pace on the other side: days of recon, patient credential testing, weeks between stages. ARTEX collapses those gaps. Under three hours from targeting to privileged access. Twelve minutes from first foothold to root. Credential spraying that would take a human operator weeks compressed into minutes — 151,000 failed logons is not a typo, it's a burst.</p>
+
+    <blockquote>Microsoft: "Agents are not constrained by factors affecting humans — they can work around the clock, on weekends, and on holidays and attempt multiple breach paths simultaneously."</blockquote>
+
+    <p>The counterweight, and it's a real one: agents are <strong>loud</strong>. DIVD's own phrase was "super loud and messy" — 450,000 requests, 2,500 scripts, parallel actions everywhere. A patient human red team makes almost no noise; an agent team makes a diffusion curve of noise. That means velocity itself is a detection signal. Auth systems that alert on failed-login <em>rate</em> rather than just failure, mailbox audits that flag mass token forgery attempts, and network monitors that flag parallel lateral movement can catch this class of attack — DIVD caught theirs in 12 minutes' worth of noise, after all. The organizations that got breached weren't out-alarmed; they were out-paced between alerts, or holding keys old enough to predate their detection rules.</p>
+
+    <h2>The Tool-to-Weapon Pipeline</h2>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261104-artex-agentic-attacks/images/tool-to-weapon-pipeline.png" alt="Five-stage pipeline showing how ARTEX became a weapon: open-source release as a Go and Next.js pentest framework, abuse against South Korean financial institutions, the code going proprietary, spread across three China-linked groups, and commodity spillover into the Chainstack, WorkOS, and GitBook breaches, with a callout that Kaspersky found a second open-source framework named CyberStrikeAI running similar attacks">
+    <p class="figcap">The lifecycle is documented now: publish, abuse, retract, proliferate anyway.</p>
+
+    <p>ARTEX's authors pulling the repo did nothing, because capable code doesn't un-exist. And the category is replicating. Kaspersky separately tracked <strong>CyberStrikeAI</strong> — another open-source Go pentest framework — running attacks on educational institutions in Africa and Latin America, with the LLM living on the attacker's command-and-control server and a dumb implant executing whatever commands the model drafted. The victims' machines carried no AI at all; the intelligence was rented from the other end.</p>
+
+    <p>This is the part of the AI security debate that moved from theory to invoice this month. We've spent two years arguing about whether models should be allowed to write exploits in sandboxed evaluations. Meanwhile, actual intrusion teams assembled commodity agent stacks from open-source components and off-the-shelf APIs, and ran them against governments and banks. The policy question didn't go away — it just got an answer nobody voted on.</p>
+
+    <h2>What You Actually Do About It</h2>
+
+    <p>None of this is abstract, and none of the mitigations are novel. They're hygiene items the campaign turned into evidence. Every item below maps to a documented failure from the disclosures:</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261104-artex-agentic-attacks/images/defender-playbook.png" alt="Six-card defender playbook: rotate stale credentials, treat OAuth grants as supply-chain surface, alert on velocity not just novelty, rotate tokens when vendors disclose, segment dev from production, and assume EDR-aware agents that skip protected hosts">
+    <p class="figcap">Six moves, all mapped to real failures from this campaign.</p>
+
+    <ul class="stat-list">
+        <li><strong>Rotate stale credentials</strong> — a government ministry lost mailboxes because keys in a 2022 directory export still worked four years later</li>
+        <li><strong>Treat every OAuth grant as supply chain</strong> — one compromised backup app reached 2,250+ tenants; audit what third-party apps can access and remove what you don't use</li>
+        <li><strong>Alert on velocity, not just novelty</strong> — 2,900 spray attempts a minute and 450,000 requests in one attack are rate anomalies; make sure your auth path has rate-based alerting, not only signature rules</li>
+        <li><strong>Rotate tokens when vendors disclose</strong> — GitBook revoked all tokens; Chainstack treated node credentials as exposed; treat any third-party breach notice touching you as a rotation event, same-day</li>
+        <li><strong>Segment dev from prod</strong> — Chainstack's five-day intrusion started in a development environment; dev systems with prod credentials are the soft entry point</li>
+        <li><strong>Assume EDR-aware agents</strong> — operators explicitly excluded Falcon-protected hosts; your unprotected machines are not low-value, they're just the ones the agent was pointed at</li>
+    </ul>
+
+    <p>And if you build agent software — which, if you read this blog, you probably do — the pipeline diagram above is a live ethical question, not a threat-intel curiosity. The gap between "autonomous pentest agent" and "autonomous breach agent" is one system prompt wide. Capability gating, deployment guardrails, and honest threat modeling of your own tool are becoming part of the job, the same way SQL injection awareness became part of ours fifteen years ago.</p>
+
+    <h2>Where I Come Down</h2>
+
+    <p>The ARTEX story is not a warning about AI someday being dangerous. It's a report on AI already being useful — in the service of people we'd prefer it wasn't. The same scaling laws, the same orchestration patterns, the same multi-model routing that make agents the most productive developer tool of the decade make them a force multiplier for intrusion teams. The architecture is neutral; the operator is not.</p>
+
+    <p>So I did the boring thing this week. Rotated every credential on my own server that predates this year, audited the OAuth grants on my primary accounts, and added rate-based alerts to the auth paths I control. Twenty minutes of hygiene against a threat that operates in minutes. The agents aren't going back in the box — on either side of the keyboard. The only open question is whether your credentials, your tokens, and your detection rules are ready for an adversary who never sleeps, never gets bored, and reads your old email exports.</p>
+
+    <hr>
+
+    <p>Sources: <a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/">Microsoft Threat Intelligence on Storm-0940 and ARTEX</a> (October 21, 2026); <a href="https://www.bleepingcomputer.com/news/security/chinese-hackers-use-artex-ai-in-automated-attacks-against-200-orgs/">BleepingComputer on CrowdStrike's Vapor Panda report</a> (November 2, 2026); <a href="https://www.helpnetsecurity.com/2026/11/03/ai-powered-cyberattacks-artex-cyberstrikeai/">Help Net Security on agent-scaled attacks</a> (November 3, 2026); <a href="https://thehackernews.com/2026/10/china-linked-hackers-use-artex-ai.html">The Hacker News on the ConnectWise supply-chain attack</a>; <a href="https://thehackernews.com/2026/11/chainstack-reports-production-systems.html">The Hacker News on the Chainstack breach</a> (November 3, 2026); <a href="https://financefeeds.com/gitbook-hit-by-ai-agent-driven-cyberattack-disrupting-documentation-for-crypto-projects/">FinanceFeeds on the GitBook incident</a> (November 4, 2026); <a href="https://www.securityweek.com/china-apt-uses-ai-pentest-tool-artex-in-connectwise-attacks/">SecurityWeek on ARTEX in ConnectWise attacks</a>. All figures are as disclosed by the named vendors.</p>
+</main>
+</body>
+</html>
