@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="hvGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="820" fill="url(#hvGrad)"/>
+
+  <text x="720" y="60" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#22d3ee" letter-spacing="4">WHAT THE AUTONOMOUS PIPELINE ACTUALLY FOUND</text>
+  <text x="720" y="112" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">The Harvest: Validated, Disclosed, Patched</text>
+  <text x="720" y="144" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">OpenAI researchers ran GPT-6 Cyber against two of the most hardened codebases on earth</text>
+
+  <!-- CARD 1: Linux -->
+  <rect x="90" y="190" width="390" height="380" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="2.5"/>
+  <text x="120" y="236" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">Linux Kernel</text>
+  <text x="120" y="262" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b">autonomous exploitation pipeline</text>
+  <text x="120" y="330" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#f8fafc">948</text>
+  <text x="120" y="362" font-family="Inter, Arial, sans-serif" font-size="16" fill="#cbd5e1">local privilege escalation exploits</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="15" fill="#cbd5e1">
+    <text x="120" y="410">- <tspan font-weight="700" fill="#fbbf24">588 previously unknown</tspan> bugs</text>
+    <text x="120" y="444">- Working exploits developed</text>
+    <text x="120" y="478">- Findings + proposed patches sent</text>
+    <text x="120" y="512">for maintainer review</text>
+  </g>
+
+  <!-- CARD 2: Firefox -->
+  <rect x="525" y="190" width="390" height="380" rx="14" fill="#1e1e2e" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="555" y="236" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#22d3ee">Mozilla Firefox</text>
+  <text x="555" y="262" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b">flaws earlier AI testing missed</text>
+  <text x="555" y="330" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700" fill="#f8fafc">81</text>
+  <text x="555" y="362" font-family="Inter, Arial, sans-serif" font-size="16" fill="#cbd5e1">unknown high-severity flaws</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="15" fill="#cbd5e1">
+    <text x="555" y="410">- Found despite extensive prior</text>
+    <text x="555" y="444">frontier-model hardening</text>
+    <text x="555" y="478">- Mozilla already shipping fixes;</text>
+    <text x="555" y="512">model contributed proposed patches</text>
+  </g>
+
+  <!-- CARD 3: Brotli -->
+  <rect x="960" y="190" width="390" height="380" rx="14" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="990" y="236" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#fbbf24">Google Brotli</text>
+  <text x="990" y="262" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b">compression library, embedded everywhere</text>
+  <text x="990" y="330" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#f8fafc">CVE-2026-111497</text>
+  <text x="990" y="362" font-family="Inter, Arial, sans-serif" font-size="16" fill="#cbd5e1">critical &#183; CVSS <tspan font-weight="700" fill="#f87171">9.2</tspan></text>
+  <g font-family="Inter, Arial, sans-serif" font-size="15" fill="#cbd5e1">
+    <text x="990" y="410">- Remote code execution shown in</text>
+    <text x="990" y="444">affected applications</text>
+    <text x="990" y="478">- Exploit developed and validated</text>
+    <text x="990" y="512">alongside other OpenAI models</text>
+  </g>
+
+  <!-- Bottom disclosure strip -->
+  <rect x="240" y="620" width="960" height="104" rx="14" fill="#0c1a2e" stroke="#334155" stroke-width="1.5"/>
+  <text x="720" y="662" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700" fill="#f8fafc">All findings went through coordinated disclosure - no in-the-wild abuse reported</text>
+  <text x="720" y="696" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">The same harvest run by a group without disclosure norms would be a breach catalog.</text>
+
+  <text x="720" y="780" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Sources: The Hacker News, Nov 6, 2026  &#183;  Help Net Security, Nov 6, 2026  &#183;  The Register, Nov 5, 2026</text>
+</svg>

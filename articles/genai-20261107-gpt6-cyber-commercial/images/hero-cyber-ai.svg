@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="860" fill="url(#heroGrad)"/>
+
+  <text x="720" y="64" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#22d3ee" letter-spacing="4">NOVEMBER 5-6, 2026 - TWO REPORTS, ONE DAY APART</text>
+  <text x="720" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#f8fafc">The Week Cyber AI Became a Product</text>
+  <text x="720" y="152" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">OpenAI shipped a Critical-rated exploit machine. METR says the labs are compounding twice as fast.</text>
+
+  <!-- LEFT CARD: GPT-6 Cyber -->
+  <rect x="90" y="200" width="580" height="360" rx="14" fill="#1e1e2e" stroke="#22d3ee" stroke-width="2.5"/>
+  <text x="120" y="246" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#22d3ee">GPT-6 Cyber - OpenAI</text>
+  <text x="120" y="272" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b">Released Nov 5 - API + Codex, vetted Daybreak Red customers only</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="16" fill="#cbd5e1">
+    <text x="120" y="318">- Rated <tspan font-weight="700" fill="#f87171">"Critical"</tspan> under OpenAI's Preparedness Framework</text>
+    <text x="120" y="356">- ExploitGym <tspan font-weight="700" fill="#34d399">48.5%</tspan>, up from 32.1% in one generation</text>
+    <text x="120" y="394">- Stays in scope <tspan font-weight="700" fill="#34d399">99.93%</tspan> of the time (100% with safety prompts)</text>
+    <text x="120" y="432">- <tspan font-weight="700" fill="#f8fafc">948</tspan> Linux kernel exploits, <tspan font-weight="700" fill="#f8fafc">81</tspan> Firefox flaws found</text>
+    <text x="120" y="470">- Built for PoC exploits, pentesting, red teaming</text>
+  </g>
+  <text x="120" y="524" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">A model that can find, prove and chain zero-days - sold to vetted buyers.</text>
+
+  <!-- RIGHT CARD: METR -->
+  <rect x="770" y="200" width="580" height="360" rx="14" fill="#1e1e2e" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="800" y="246" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#fbbf24">METR Assessment - Anthropic</text>
+  <text x="800" y="272" font-family="Inter, Arial, sans-serif" font-size="14" fill="#64748b">Independent evaluation published Nov 5</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="16" fill="#cbd5e1">
+    <text x="800" y="318">- Capability growth at <tspan font-weight="700" fill="#34d399">1.9x</tspan> the historical rate (CI 1.5-2.8x)</text>
+    <text x="800" y="356">- Roughly <tspan font-weight="700" fill="#f8fafc">two years of progress in a single year</tspan></text>
+    <text x="800" y="394">- Internal staff self-report <tspan font-weight="700" fill="#f8fafc">12x</tspan> productivity with AI</text>
+    <text x="800" y="432">- Acceleration driven mostly by AI-assisted research</text>
+    <text x="800" y="470">- Evidence partially redacted; 2x-threshold dispute open</text>
+  </g>
+  <text x="800" y="524" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">The rate of frontier progress itself has nearly doubled.</text>
+
+  <!-- Convergence arrows -->
+  <path d="M 380 570 C 380 620, 620 620, 660 648" fill="none" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arrowCyan)"/>
+  <path d="M 1060 570 C 1060 620, 820 620, 780 648" fill="none" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+
+  <!-- Bottom takeaway bar -->
+  <rect x="240" y="660" width="960" height="110" rx="14" fill="#0c1a2e" stroke="#22d3ee" stroke-width="2"/>
+  <text x="720" y="706" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#f8fafc">Cyber offense and defense are now gated, priced, model products</text>
+  <text x="720" y="740" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">OpenAI Daybreak Red  &#183;  Anthropic Project Glasswing  &#183;  Google Fairwind Program</text>
+
+  <text x="720" y="826" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Sources: OpenAI announcement via The Register / The Hacker News, Nov 5-6, 2026  &#183;  METR assessment via unite.ai / The Verge, Nov 5, 2026</text>
+</svg>
