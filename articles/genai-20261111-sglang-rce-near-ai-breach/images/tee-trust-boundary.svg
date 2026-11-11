@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="teeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="820" fill="url(#teeGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="4">THE TEE TRUST BOUNDARY</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">What the Enclave Guards - and What It Cannot</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Confidential computing fences off the host and the operator. It does not fence off bugs in the software running inside.</text>
+
+  <!-- LEFT PANEL: what TEE protects -->
+  <rect x="80" y="180" width="600" height="440" rx="16" fill="#141d2f" stroke="#34d399" stroke-width="1.5"/>
+  <text x="380" y="216" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#86efac">Protected: everyone outside the box</text>
+
+  <!-- attackers outside -->
+  <g font-family="Inter, Arial, sans-serif" font-size="14.5" fill="#cbd5e1">
+    <rect x="110" y="250" width="250" height="46" rx="8" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+    <text x="235" y="278" text-anchor="middle">Cloud operator / staff</text>
+
+    <rect x="400" y="250" width="250" height="46" rx="8" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+    <text x="525" y="278" text-anchor="middle">Host OS + hypervisor</text>
+
+    <rect x="110" y="316" width="250" height="46" rx="8" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+    <text x="235" y="344" text-anchor="middle">Memory / disk snapshots</text>
+
+    <rect x="400" y="316" width="250" height="46" rx="8" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+    <text x="525" y="344" text-anchor="middle">Other tenants on host</text>
+  </g>
+
+  <!-- enclave -->
+  <rect x="140" y="396" width="480" height="190" rx="14" fill="#2a1a2e" stroke="#a78bfa" stroke-width="2"/>
+  <text x="380" y="426" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#c4b5fd">HARDWARE ENCLAVE (TEE)</text>
+  <rect x="200" y="446" width="360" height="64" rx="10" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1"/>
+  <text x="380" y="472" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#e5e5e5">SGLang + your in-flight prompt</text>
+  <text x="380" y="494" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">memory encrypted at the CPU level</text>
+  <text x="380" y="556" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#86efac">Outside parties are locked out - even the company running the server</text>
+
+  <!-- blocked arrows -->
+  <line x1="235" y1="300" x2="235" y2="388" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrT)" stroke-dasharray="5,6"/>
+  <line x1="525" y1="300" x2="525" y2="388" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrT)" stroke-dasharray="5,6"/>
+
+  <!-- RIGHT PANEL: what TEE cannot protect -->
+  <rect x="760" y="180" width="600" height="440" rx="16" fill="#2a1518" stroke="#f87171" stroke-width="1.5"/>
+  <text x="1060" y="216" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#fca5a5">Not protected: bugs inside the code</text>
+
+  <rect x="810" y="250" width="500" height="72" rx="10" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="1060" y="278" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#f8fafc">A vulnerability in SGLang itself</text>
+  <text x="1060" y="302" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#e5b8b8">unauthenticated RCE - hands the attacker code execution</text>
+
+  <line x1="1060" y1="322" x2="1060" y2="368" stroke="#f87171" stroke-width="2.5" marker-end="url(#arrR)"/>
+
+  <rect x="820" y="372" width="480" height="190" rx="14" fill="#2a1a2e" stroke="#f87171" stroke-width="2"/>
+  <text x="1060" y="402" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#fca5a5">HARDWARE ENCLAVE (TEE)</text>
+  <rect x="880" y="422" width="360" height="64" rx="10" fill="#1e1e2e" stroke="#f87171" stroke-width="1"/>
+  <text x="1060" y="448" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#f8fafc">Attacker code runs here now</text>
+  <text x="1060" y="470" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#e5b8b8">same memory, same encryption, wrong hands</text>
+  <text x="1060" y="532" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#fca5a5">The enclave faithfully protects the attacker's process too -</text>
+  <text x="1060" y="554" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#fca5a5">in-flight requests were observable on Nov 8</text>
+
+  <!-- Bottom banner -->
+  <rect x="200" y="650" width="1040" height="90" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="720" y="686" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#e5e5e5">Enclave + vulnerable app = attacker inside the enclave</text>
+  <text x="720" y="716" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">Confidential mode is a boundary upgrade over plaintext hosting - never a substitute for patching the serving stack</text>
+
+  <text x="720" y="782" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Source: NEAR AI Security Incident Report, Nov 9, 2026 - quoted in the article below</text>
+</svg>

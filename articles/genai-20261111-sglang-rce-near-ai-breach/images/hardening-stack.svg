@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <linearGradient id="stackGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#stackGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#34d399" letter-spacing="4">THE SELF-HOSTER'S HARDENING STACK</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Seven Layers, Straight From the Postmortem</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Every layer here maps to something that actually failed at NEAR AI - or would have stopped it earlier</text>
+
+  <!-- Layer 1 -->
+  <rect x="120" y="180" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <circle cx="168" cy="221" r="22" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="168" y="227" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">1</text>
+  <text x="215" y="212" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Treat the inference server as internet-facing - even on your LAN</text>
+  <text x="215" y="240" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">Never port-forward Ollama, vLLM or SGLang. One tunnel misconfiguration is all the exposure an unauth RCE needs.</text>
+
+  <!-- Layer 2 -->
+  <rect x="120" y="274" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <circle cx="168" cy="315" r="22" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="168" y="321" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">2</text>
+  <text x="215" y="306" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Pin the engine version - and actually watch its advisories</text>
+  <text x="215" y="334" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">SGLang's unauthenticated RCE class was fixed in 0.5.10, published in March. Below that version, you are running the NEAR AI bug class.</text>
+
+  <!-- Layer 3 -->
+  <rect x="120" y="368" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <circle cx="168" cy="409" r="22" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="168" y="415" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">3</text>
+  <text x="215" y="400" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Disable deserialization-hungry features you do not use</text>
+  <text x="215" y="428" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">Custom logit processors, weight-update endpoints, multimodal pipelines, ZMQ ports - each is pickle or dill waiting on a socket.</text>
+
+  <!-- Layer 4 -->
+  <rect x="120" y="462" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <circle cx="168" cy="503" r="22" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="168" y="509" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">4</text>
+  <text x="215" y="494" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Bind RPC and management ports to localhost - never 0.0.0.0</text>
+  <text x="215" y="522" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">One SGLang advisory literally names a socket bound to 0.0.0.0. Internal components become internet services one config line at a time.</text>
+
+  <!-- Layer 5 -->
+  <rect x="120" y="556" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <circle cx="168" cy="597" r="22" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="168" y="603" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">5</text>
+  <text x="215" y="588" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Keep secrets out of logs - and rotate what touched a compromised host</text>
+  <text x="215" y="616" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">Two NEAR AI customers lost API keys to log files. Scrub secrets from log pipelines before the incident, not during it.</text>
+
+  <!-- Layer 6 -->
+  <rect x="120" y="650" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <circle cx="168" cy="691" r="22" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="168" y="697" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#fbbf24">6</text>
+  <text x="215" y="682" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Deprecated means deleted - old deployments are the soft entry point</text>
+  <text x="215" y="710" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">The lateral movement went through a product NEAR AI had already retired. Anything still running is still attack surface.</text>
+
+  <!-- Layer 7 -->
+  <rect x="120" y="744" width="1200" height="82" rx="10" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <circle cx="168" cy="785" r="22" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="168" y="791" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">7</text>
+  <text x="215" y="776" font-family="Inter, Arial, sans-serif" font-size="16.5" font-weight="700" fill="#f8fafc">Confidential mode is a boundary upgrade - not a patch substitute</text>
+  <text x="215" y="804" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#94a3b8">Enclaves protect your prompts from the operator. They do not protect a vulnerable app from itself. Patch first, enclave second.</text>
+
+  <text x="720" y="868" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Built from the NEAR AI incident report (Nov 9, 2026) and SGLang's published advisory history</text>
+</svg>

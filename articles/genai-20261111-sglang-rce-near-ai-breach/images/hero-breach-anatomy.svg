@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="900" fill="url(#heroGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#f87171" letter-spacing="4">ANATOMY OF A BREACH &#183; NOVEMBER 8, 2026</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">One SGLang RCE Bug, Three Compromised Systems</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">How an unauthenticated remote code execution flaw in an open-source inference engine turned into a full infrastructure incident</text>
+
+  <!-- Attack flow row -->
+  <rect x="80" y="185" width="280" height="150" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="100" y="217" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f87171">Remote attacker</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="14" fill="#cbd5e1">
+    <text x="100" y="247">Finds an unauthenticated</text>
+    <text x="100" y="271">RCE vulnerability in SGLang,</text>
+    <text x="100" y="295">the open-source LLM serving</text>
+    <text x="100" y="319">engine on the target host</text>
+  </g>
+
+  <line x1="360" y1="260" x2="430" y2="260" stroke="#f87171" stroke-width="2" marker-end="url(#arrRed)"/>
+
+  <rect x="435" y="185" width="300" height="150" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="455" y="217" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#fbbf24">The SGLang flaw</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="14" fill="#cbd5e1">
+    <text x="455" y="247">Remote code execution,</text>
+    <text x="455" y="271">no authentication needed.</text>
+    <text x="455" y="295">Still unnamed publicly -</text>
+    <text x="455" y="319">no CVE, no advisory yet</text>
+  </g>
+
+  <line x1="735" y1="260" x2="805" y2="260" stroke="#f87171" stroke-width="2" marker-end="url(#arrRed)"/>
+
+  <rect x="810" y="185" width="340" height="150" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="830" y="217" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#a78bfa">Code execution, one server</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="14" fill="#cbd5e1">
+    <text x="830" y="247">Attacker runs code on a single</text>
+    <text x="830" y="271">NEAR AI inference server -</text>
+    <text x="830" y="295">inside its confidential (TEE)</text>
+    <text x="830" y="319">environment - on Nov 8</text>
+  </g>
+
+  <!-- TEE note -->
+  <rect x="1180" y="185" width="180" height="150" rx="12" fill="#2a1a2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="1200" y="217" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#c4b5fd">The twist</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#cbd5e1">
+    <text x="1200" y="247">In-flight requests,</text>
+    <text x="1200" y="271">including confidential</text>
+    <text x="1200" y="295">mode, were observable</text>
+    <text x="1200" y="319">from inside the box</text>
+  </g>
+
+  <!-- Lateral movement band -->
+  <rect x="80" y="380" width="1280" height="64" rx="10" fill="#2a1518" stroke="#f87171" stroke-width="1.5"/>
+  <text x="720" y="405" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#fca5a5">Lateral movement: from the inference server into NEAR AI internal systems</text>
+  <text x="720" y="430" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#e5b8b8">Access closed after detection - but not before three systems were reached</text>
+
+  <!-- Three target cards -->
+  <rect x="80" y="480" width="400" height="240" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="100" y="512" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f87171">Deprecated Private Chat backend</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="14" fill="#cbd5e1">
+    <text x="100" y="542">Account details downloaded for</text>
+    <text x="100" y="566" font-weight="700" fill="#f8fafc">approximately 100 users</text>
+    <text x="100" y="594">Email addresses, names, and for</text>
+    <text x="100" y="618">some accounts plan and balance</text>
+    <text x="100" y="642">information</text>
+    <text x="100" y="678" fill="#86efac">Stored conversations: NOT accessed</text>
+  </g>
+
+  <rect x="520" y="480" width="400" height="240" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="540" y="512" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#fbbf24">Legacy agents deployment</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="14" fill="#cbd5e1">
+    <text x="540" y="542">Data taken from</text>
+    <text x="540" y="566" font-weight="700" fill="#f8fafc">18 AI agents</text>
+    <text x="540" y="594">Chat history, settings and logs -</text>
+    <text x="540" y="618">on an older deployment that did</text>
+    <text x="540" y="642">not run inside the TEE</text>
+    <text x="540" y="678" fill="#86efac">Agent owners contacted directly</text>
+  </g>
+
+  <rect x="960" y="480" width="400" height="240" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="980" y="512" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f87171">API keys sitting in logs</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="14" fill="#cbd5e1">
+    <text x="980" y="542">Cloud API keys exposed for</text>
+    <text x="980" y="566" font-weight="700" fill="#f8fafc">2 customers</text>
+    <text x="980" y="594">Found in logs on compromised</text>
+    <text x="980" y="618">systems - both keys revoked</text>
+    <text x="980" y="642">within the response window</text>
+    <text x="980" y="678" fill="#86efac">A secrets-hygiene failure, not a crypto one</text>
+  </g>
+
+  <!-- Bottom strip -->
+  <rect x="240" y="750" width="960" height="70" rx="12" fill="#14251c" stroke="#34d399" stroke-width="1.5"/>
+  <text x="720" y="778" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#86efac">Contained within roughly a day: sessions and admin credentials revoked, fix deployed fleet-wide,</text>
+  <text x="720" y="800" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#86efac">forensic review completed, service restored, incident published Nov 9</text>
+
+  <text x="720" y="868" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Sources: NEAR AI Security Incident Report, Nov 9, 2026  &#183;  The Hacker News, Nov 10, 2026</text>
+</svg>

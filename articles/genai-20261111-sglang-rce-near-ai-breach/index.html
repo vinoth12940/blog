@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The NEAR AI Breach Proves Your Inference Server Is the Attack Surface</title>
+    <meta name="description" content="An attacker used an SGLang RCE flaw to breach a confidential-AI cloud — and the hardware enclave couldn't stop it. The verified timeline, the 20-advisory history behind it, and a seven-layer hardening checklist for anyone self-hosting LLM inference.">
+    <meta property="og:title" content="The NEAR AI Breach Proves Your Inference Server Is the Attack Surface">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-11-11">
+    <meta property="og:description" content="An SGLang remote code execution flaw gave an attacker code execution inside a confidential-computing enclave. The TEE held — the software inside it didn't. Verified timeline, CVE history, and a hardening checklist for self-hosters.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20261111-sglang-rce-near-ai-breach/images/hero-breach-anatomy.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        main { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; color: #b8b8b8; font-style: italic; }
+        ul { margin: 0 0 1.25rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        img { width: 100%; border-radius: 12px; margin: 1.5rem 0 0.5rem; border: 1px solid #1f2937; }
+        .figcap { font-size: 0.85rem; color: #737373; text-align: center; margin-bottom: 1.75rem; font-style: italic; }
+        .stat-list { list-style: none; margin-left: 0; background: #111418; border: 1px solid #1f2937; border-radius: 12px; padding: 1.25rem 1.5rem; }
+        .stat-list li { padding: 0.4rem 0; border-bottom: 1px solid #1a1f26; }
+        .stat-list li:last-child { border-bottom: none; }
+        hr { border: none; border-top: 1px solid #262626; margin: 2.5rem 0; }
+        strong { color: #f1f5f9; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>The NEAR AI Breach Proves Your Inference Server Is the Attack Surface</h1>
+    <p class="meta">November 11, 2026 · AI / Security / Self-Hosting · 8 min read</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261111-sglang-rce-near-ai-breach/images/hero-breach-anatomy.png" alt="Attack flow diagram titled anatomy of a breach: a remote attacker exploits an unauthenticated-need RCE vulnerability in SGLang, the open-source LLM serving engine, gaining code execution on one NEAR AI inference server inside its confidential TEE environment on November 8; the twist card notes in-flight requests including confidential mode were observable from inside the box; a lateral movement band leads to three target cards: the deprecated Private Chat backend with account details for approximately 100 users, a legacy agents deployment with data from 18 AI agents outside the TEE, and two customers' cloud API keys exposed in logs and revoked; a green bottom strip confirms containment within roughly a day with the incident published November 9">
+    <p class="figcap">One RCE bug, one server, three compromised systems. The full verified path from NEAR AI's own forensics.</p>
+
+    <p>While most of the industry spent the weekend watching election fallout and earnings, an attacker was busy. On <strong>Sunday, November 8</strong>, they exploited a remote code execution vulnerability in <strong>SGLang</strong> — one of the most widely deployed open-source LLM serving engines — and got code execution on an inference server run by NEAR AI, the confidential-computing cloud whose entire pitch is that your prompts are private even from the company operating the hardware. By Monday, NEAR AI had published a full incident report. Everyone involved moved fast. It didn't matter, because the bug was faster.</p>
+
+    <p>I've spent this year covering AI security incidents as they happen — the OpenClaw crisis, agents hacking government sites, the ARTEX agentic attack wave, GPT-6 Cyber going commercial. This one is different, and it's the one I'd most want any self-hoster to read. Because the detail that matters isn't the breach itself. It's this: <strong>requests sent in confidential mode — inside a hardware trusted execution environment — were among what the attacker could observe.</strong> The enclave did exactly what enclaves do. The software running inside it did exactly what buggy software does.</p>
+
+    <h2>What Actually Happened</h2>
+
+    <p>NEAR AI's incident report, published November 9, lays out the path with unusual precision. The attacker exploited an RCE vulnerability in SGLang to execute code on <strong>one inference server</strong>. From that single foothold they moved laterally into internal systems. There they reached the backend of <strong>Private Chat</strong> — a product NEAR AI had already deprecated — and downloaded account details for approximately <strong>100 users</strong>: email addresses, names, and for some accounts, plan and balance information. They reached an older deployment of NEAR AI Agents that ran <strong>outside</strong> the confidential computing environment, and pulled data from <strong>18 agents</strong>: chat history, settings, and logs. And in the detail that should sting every operator: <strong>two customers' API keys were sitting in logs</strong> on the compromised systems. Both were revoked.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261111-sglang-rce-near-ai-breach/images/blast-radius.png" alt="Four stat cards showing the confirmed blast radius per NEAR AI forensics: approximately 100 user accounts with email addresses, names, and for some accounts plan and balance information pulled from the deprecated Private Chat internal system; 18 AI agents exposed with chat history, settings and logs taken from a legacy deployment outside the confidential computing environment; 2 customer API keys found in logs on compromised systems and both revoked; 1 server-day of prompts observable on November 8 including requests sent in confidential mode inside the TEE; a green strip confirms stored Private Chat conversations and uploaded files were not accessed">
+    <p class="figcap">Small numbers by breach standards — but every line item is a lesson in what AI infrastructure leaks first.</p>
+
+    <ul class="stat-list">
+        <li><strong>November 8, 2026</strong> — attacker exploits an SGLang RCE on one inference server; requests in processing that day, including confidential-mode requests, were observable</li>
+        <li><strong>~100 users</strong> — account details (email, name, plan/balance for some) downloaded from the deprecated Private Chat backend</li>
+        <li><strong>18 agents</strong> — chat history, settings, and logs taken from a legacy deployment that ran outside the TEE</li>
+        <li><strong>2 API keys</strong> — customer cloud keys found exposed in logs; both revoked</li>
+        <li><strong>Not accessed</strong> — stored Private Chat conversations and uploaded files, per NEAR AI's forensics</li>
+        <li><strong>November 9</strong> — public incident report published; fix deployed across all inference servers; service restored</li>
+    </ul>
+
+    <blockquote>"We have found no indication that stored Private Chat conversation or uploaded files were accessed." — NEAR AI incident report, November 9, 2026</blockquote>
+
+    <h2>The TEE Paradox</h2>
+
+    <p>Here's the part that should reframe how you think about confidential computing. NEAR AI's product is built on trusted execution environments: hardware enclaves where inference runs in encrypted memory, attested remotely, so that not even the operator can read your prompts. Brave's Leo assistant runs chats this way on NEAR AI's infrastructure — verified by Brave itself, disclosed in October. Confidential inference is a real product category with real adoption, and NEAR AI is one of its most visible implementations.</p>
+
+    <p>And then one of the most consequential sentences any vendor has published this year, in a post written about their own breach:</p>
+
+    <blockquote>"Confidential computing protects data from the operator and the host. It does not protect against a vulnerability in the software running inside the environment, and that is what happened here: the SGLang vulnerability let the party run code inside one inference server and access requests in processing on that server, including confidential ones." — NEAR AI</blockquote>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261111-sglang-rce-near-ai-breach/images/tee-trust-boundary.png" alt="Split panel diagram titled what the enclave guards and what it cannot: the left panel shows four blocked adversaries outside the hardware enclave - cloud operator staff, host OS and hypervisor, memory and disk snapshots, other tenants on host - with SGLang plus your in-flight prompt running inside encrypted memory at the CPU level; the right panel shows a vulnerability in SGLang itself leading through an arrow into the enclave where attacker code now runs in the same encrypted memory with the wrong hands, noting in-flight requests were observable on November 8; a bottom banner reads enclave plus vulnerable app equals attacker inside the enclave">
+    <p class="figcap">The enclave guards against every adversary outside the box. A bug in the code inside the box is not one of them.</p>
+
+    <p>Think about what a TEE actually is: a hardware fence around memory. If the application inside the fence contains a flaw that hands control of that application to an attacker, the fence is now around the attacker. Memory encryption protects the prompt from a curious cloud admin or a stolen memory snapshot. It does nothing whatsoever about pickle.loads() on a socket that accepts unauthenticated input. Confidential mode is a boundary upgrade — a genuinely valuable one — but it sits <em>orthogonal</em> to the security of the serving stack, not above it.</p>
+
+    <h2>SGLang Is Everywhere, and Its Advisory Record Was on the Wall</h2>
+
+    <p>SGLang is not a niche tool. It's a high-performance serving framework for large language and multimodal models with roughly <strong>38,760 GitHub stars</strong> and thousands of production deployments — the engine you spin up when you want fast, batched inference without hand-rolling a serving layer. If you self-host models, there's a decent chance you run it, or something shaped exactly like it.</p>
+
+    <p>Which is why the advisory record matters. As of November 11, the OSV database lists <strong>20 published vulnerabilities</strong> for the project — and several of them are unauthenticated remote code execution with a single repeating root cause: Python deserialization of untrusted data on network-reachable sockets.</p>
+
+    <ul>
+        <li><strong>CVE-2026-3059</strong> — unauthenticated RCE via the multimodal generation module's ZMQ broker, which deserializes untrusted data with <strong>pickle.loads()</strong> and no authentication. Fixed in 0.5.10.</li>
+        <li><strong>CVE-2026-3060</strong> — unauthenticated RCE via the encoder parallel disaggregation module, same <strong>pickle.loads()</strong> pattern. Fixed in 0.5.10.</li>
+        <li><strong>CVE-2026-7304</strong> — unauthenticated RCE when the custom logit processor flag is enabled: Python objects loaded via <strong>dill.loads()</strong> with no validation. Affected versions through 0.5.12.</li>
+        <li><strong>CVE-2026-7301</strong> — the multimodal scheduler deserializes untrusted pickle on a socket bound to <strong>0.0.0.0</strong>.</li>
+        <li><strong>CVE-2026-7302</strong> — unauthenticated path traversal in the multimodal generation runtime.</li>
+        <li><strong>CVE-2025-10164</strong> — RCE via unsafe deserialization in the <strong>update_weights_from_tensor</strong> path.</li>
+    </ul>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261111-sglang-rce-near-ai-breach/images/sglang-cve-history.png" alt="Timeline of SGLang advisories from the OSV database as of November 11 2026: March 12 2026 CVE-2026-3059 and CVE-2026-3060 two unauthenticated RCEs where the ZMQ broker and encoder disaggregation module deserialize untrusted pickle with no authentication, fixed in SGLang 0.5.10; May 18 2026 CVE-2026-7304 unauthenticated RCE when the custom logit processor flag is on with Python objects loaded via dill.loads with no validation, affected versions through 0.5.12; November 8 2026 the NEAR AI breach where an unnamed SGLang RCE was exploited in the wild with no CVE assigned yet and public advisory pending; pattern card explains distributed ML serving leans on Python deserialization on network-reachable ZMQ and RPC sockets; catalog card lists CVE-2026-7301, CVE-2026-7302 and CVE-2025-10164">
+    <p class="figcap">The bug class that breached NEAR AI had six published predecessors. The pattern was on the wall since March.</p>
+
+    <p>Distributed ML serving frameworks lean heavily on Python's object serialization to move tensors, weights, and config between processes and nodes — and pickle and dill will happily execute code during deserialization. Every one of those sockets is an RCE waiting for someone to expose it to the wrong network. This is not an SGLang pathology alone: vLLM, the other dominant open serving engine, has <strong>194 advisories</strong> in the same database, including RCE-class findings like CVE-2026-22807 (dynamic module loading during model initialization) and CVE-2024-11041 (deserialization of untrusted data). The serving layer of the AI boom is built on a deserialization habit that security teams spent the last decade stamping out of every other Python service.</p>
+
+    <p>Now for the uncomfortable part: the specific flaw used against NEAR AI <strong>still has no public name</strong>. As of this writing, there's no CVE number, no affected-version range, and no project advisory — NEAR AI says it deployed a fix across its fleet and reported the vulnerability to the SGLang project, but the public disclosure hasn't landed. If you run SGLang today, you cannot yet check whether you're vulnerable by version number alone. That gap between "vendor knew and patched" and "the world can verify" is exactly where the next attacker operates.</p>
+
+    <h2>Credit Where the Response Is Due</h2>
+
+    <p>Before the lessons, some earned praise. NEAR AI detected the intrusion, revoked every active session and administrative credential, replaced all agent tokens, took the deprecated product offline, deployed the fix across <em>all</em> of its inference servers, completed credential rotation and a full forensic review, restored service, and published a plain-language incident report — all inside roughly a day. Affected users were contacted directly, with a follow-up telling everyone else they need do nothing. And the report is honest about the limits of the company's own core technology, which is rarer than any of the containment metrics.</p>
+
+    <blockquote>"We are now treating the inference software and the services around the enclave with the same rigor as the enclave itself when running security analysis." — NEAR AI</blockquote>
+
+    <p>That last line is the whole industry's homework in one sentence. The confidential-computing stack spent years hardening the enclave. The software that runs inside it — and the deprecated products and log pipelines around it — clearly didn't get the same budget. NEAR AI noticed. The question is whether every other confidential-inference vendor, and every homelab running the same engines, notices without needing their own incident to learn it.</p>
+
+    <hr>
+
+    <h2>The Self-Hoster's Hardening Checklist</h2>
+
+    <p>Everything above maps to concrete moves you can make this week, whether you're running one Ollama box for a household or a small vLLM/SGLang fleet for a product. Seven layers, in order of how fast they pay off:</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261111-sglang-rce-near-ai-breach/images/hardening-stack.png" alt="Seven-layer hardening stack diagram: layer one treat the inference server as internet-facing even on your LAN and never port-forward Ollama, vLLM or SGLang; layer two pin the engine version and watch its advisories since SGLang's unauthenticated RCE class was fixed in 0.5.10 published in March; layer three disable deserialization-hungry features you do not use such as custom logit processors, weight-update endpoints, multimodal pipelines and ZMQ ports; layer four bind RPC and management ports to localhost never 0.0.0.0; layer five keep secrets out of logs and rotate what touched a compromised host; layer six deprecated means deleted since old deployments are the soft entry point; layer seven confidential mode is a boundary upgrade not a patch substitute - patch first, enclave second">
+    <p class="figcap">Seven layers, each mapping to something that actually failed at NEAR AI — or would have stopped it earlier.</p>
+
+    <ul>
+        <li><strong>Treat the inference server as internet-facing — even on your LAN.</strong> Never port-forward Ollama, vLLM, or SGLang through your router or a tunnel. One misconfigured tunnel is all the exposure an unauthenticated RCE needs, and browser-reachable LANs have their own request-forgery paths.</li>
+        <li><strong>Pin the engine version and actually watch its advisories.</strong> SGLang's unauthenticated RCE class was fixed in 0.5.10, published in March. If you're below that, you're running the NEAR AI bug class today. Subscribe to the project's GitHub security advisories or an OSV feed — patch cadence on your inference engine is now a security control, not hygiene theater.</li>
+        <li><strong>Disable deserialization-hungry features you don't use.</strong> Custom logit processors, weight-update endpoints, multimodal pipelines, ZMQ ports. CVE-2026-7304 required an opt-in flag. If a feature moves Python objects over a socket and you don't need it, turn it off.</li>
+        <li><strong>Bind RPC and management ports to localhost — never 0.0.0.0.</strong> One SGLang advisory literally names a socket bound to 0.0.0.0. Internal components become internet services one config line at a time.</li>
+        <li><strong>Keep secrets out of logs.</strong> Two NEAR AI customers lost API keys to log files. Scrub keys and tokens from your log pipelines before the incident, and rotate anything that ever touched a host you don't fully trust.</li>
+        <li><strong>Deprecated means deleted.</strong> The lateral movement went through a product NEAR AI had already retired but was still running. Anything still up is still attack surface — old deployments are the soft entry point in almost every modern breach.</li>
+        <li><strong>Confidential mode is a boundary upgrade, not a patch substitute.</strong> Enclaves protect your prompts from the operator. They do not protect a vulnerable app from itself. Patch first, enclave second — and never let the enclave's marketing become your threat model.</li>
+    </ul>
+
+    <h2>What to Watch Next</h2>
+
+    <p>Three things I'm tracking. First, the <strong>SGLang project's public advisory</strong> — when it lands with a CVE and a version range, check your deployment the same hour. The gap between private fix and public disclosure is where copycat attacks live, and the NEAR AI report has now advertised that this bug exists. Second, whether <strong>confidential-inference vendors respond structurally</strong> — NEAR AI has committed to treating the serving layer with enclave-level rigor, and its stack is public so the claim is verifiable; watch whether others follow or wait for their own incident. Third, the <strong>Brave Leo question</strong> — Brave confirmed its assistant runs private inference on NEAR AI's enclaves, and neither company has said whether the affected server handled any of those chats. Consumer privacy infrastructure is now one deserialization bug deep in the same story.</p>
+
+    <p>The uncomfortable summary: a vendor whose entire product is hardware-enforced privacy got breached through the software running inside the hardware, and the response proved the theory I keep returning to in these articles — <strong>the fence is only as good as the code inside it</strong>. Hardware trust doesn't patch software. If you self-host models, your serving engine is now the most interesting machine in your stack. Treat it that way before someone else demonstrates it for you.</p>
+</main>
+</body>
+</html>

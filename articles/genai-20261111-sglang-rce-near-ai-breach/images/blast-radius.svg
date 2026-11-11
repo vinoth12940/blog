@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="blastGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="780" fill="url(#blastGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#f87171" letter-spacing="4">CONFIRMED BLAST RADIUS &#183; PER NEAR AI'S OWN FORENSICS</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">What the Attacker Actually Got</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Small numbers by breach standards - but every line item is a lesson in what AI infrastructure leaks first</text>
+
+  <!-- Stat cards -->
+  <rect x="80" y="185" width="300" height="290" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="230" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#f87171">~100</text>
+  <text x="230" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">user accounts</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#cbd5e1">
+    <text x="105" y="348">Email addresses, names, and</text>
+    <text x="105" y="372">for some accounts plan and</text>
+    <text x="105" y="396">balance information - pulled</text>
+    <text x="105" y="420">from the deprecated Private</text>
+    <text x="105" y="444">Chat internal system</text>
+  </g>
+
+  <rect x="420" y="185" width="300" height="290" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="570" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#fbbf24">18</text>
+  <text x="570" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">AI agents exposed</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#cbd5e1">
+    <text x="445" y="348">Chat history, settings and</text>
+    <text x="445" y="372">logs taken from a legacy</text>
+    <text x="445" y="396">deployment that ran outside</text>
+    <text x="445" y="420">the confidential computing</text>
+    <text x="445" y="444">environment</text>
+  </g>
+
+  <rect x="760" y="185" width="300" height="290" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="910" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#f87171">2</text>
+  <text x="910" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">customer API keys</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#cbd5e1">
+    <text x="785" y="348">Found sitting in logs on</text>
+    <text x="785" y="372">compromised systems -</text>
+    <text x="785" y="396">both revoked during the</text>
+    <text x="785" y="420">response. The quiet leak</text>
+    <text x="785" y="444">that outlives the incident</text>
+  </g>
+
+  <rect x="1100" y="185" width="260" height="290" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="1230" y="270" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#a78bfa">1</text>
+  <text x="1230" y="312" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">server-day of prompts</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="13.5" fill="#cbd5e1">
+    <text x="1125" y="348">Requests in processing on</text>
+    <text x="1125" y="372">Nov 8 were observable -</text>
+    <text x="1125" y="396">including requests sent in</text>
+    <text x="1125" y="420">confidential mode inside</text>
+    <text x="1125" y="444">the TEE</text>
+  </g>
+
+  <!-- Not accessed strip -->
+  <rect x="200" y="520" width="1040" height="110" rx="12" fill="#14251c" stroke="#34d399" stroke-width="1.5"/>
+  <text x="720" y="556" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#86efac">Confirmed NOT accessed: stored Private Chat conversations and uploaded files</text>
+  <text x="720" y="588" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#a7d9b8">The company drew its own blast-radius boundary and published it - unusual, and worth more than a vague "no user data affected"</text>
+  <text x="720" y="614" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#a7d9b8">Users who were not contacted directly need take no action, per the follow-up post</text>
+
+  <text x="720" y="700" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">Source: NEAR AI Security Incident Report, Nov 9, 2026  &#183;  follow-up post, Nov 10, 2026</text>
+  <text x="720" y="742" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#475569">NEAR AI Cloud is operated by Jasnah Inc. - a confidential-inference product, separate from the NEAR blockchain protocol</text>
+</svg>
