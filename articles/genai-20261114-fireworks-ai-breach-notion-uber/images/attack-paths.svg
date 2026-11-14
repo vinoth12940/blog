@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860">
+  <defs>
+    <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="860" fill="url(#pathGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#fbbf24" letter-spacing="4">HOW THE ATTACKS ACTUALLY RAN</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Two Different Entry Points, One Blast Radius</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Neither incident started at the model. Both started at the plumbing around it.</text>
+
+  <!-- October chain -->
+  <rect x="70" y="185" width="610" height="440" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="375" y="230" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f87171">OCTOBER: INSIDE JOB ON CREDENTIALS</text>
+
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="110" y="260" width="530" height="86" rx="10" fill="#16243d" stroke="#334155" stroke-width="1"/>
+    <text x="375" y="296" font-size="16" font-weight="700" fill="#f8fafc">Hackers break into Fireworks systems</text>
+    <text x="375" y="322" font-size="13.5" fill="#cbd5e1">and steal internal credentials</text>
+
+    <line x1="375" y1="346" x2="375" y2="386" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowR)"/>
+
+    <rect x="110" y="390" width="530" height="86" rx="10" fill="#16243d" stroke="#334155" stroke-width="1"/>
+    <text x="375" y="426" font-size="16" font-weight="700" fill="#f8fafc">Stolen credentials used to reach customer data</text>
+    <text x="375" y="452" font-size="13.5" fill="#cbd5e1">including data belonging to Uber</text>
+
+    <line x1="375" y1="476" x2="375" y2="516" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowR)"/>
+
+    <rect x="110" y="520" width="530" height="86" rx="10" fill="#2a1420" stroke="#f87171" stroke-width="1.5"/>
+    <text x="375" y="556" font-size="16" font-weight="700" fill="#fca5a5">Uber driver's licenses + personal data taken</text>
+    <text x="375" y="582" font-size="13.5" fill="#f1c5c5">2,567 MA &#183; 3,430 SC &#183; 1,873 RI &#183; IL + CA pending</text>
+  </g>
+
+  <!-- November chain -->
+  <rect x="760" y="185" width="610" height="440" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="1065" y="230" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#fbbf24">NOVEMBER: SUPPLY-CHAIN ENTRY</text>
+
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="800" y="260" width="530" height="86" rx="10" fill="#16243d" stroke="#334155" stroke-width="1"/>
+    <text x="1065" y="296" font-size="16" font-weight="700" fill="#f8fafc">Attacker breaches Fireworks' cloud provider</text>
+    <text x="1065" y="322" font-size="13.5" fill="#cbd5e1">the vendor's own infrastructure vendor</text>
+
+    <line x1="1065" y1="346" x2="1065" y2="386" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowR)"/>
+
+    <rect x="800" y="390" width="530" height="86" rx="10" fill="#16243d" stroke="#334155" stroke-width="1"/>
+    <text x="1065" y="426" font-size="16" font-weight="700" fill="#f8fafc">Foothold into a Fireworks development system</text>
+    <text x="1065" y="452" font-size="13.5" fill="#cbd5e1">non-production, still holding customer data</text>
+
+    <line x1="1065" y1="476" x2="1065" y2="516" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowR)"/>
+
+    <rect x="800" y="520" width="530" height="86" rx="10" fill="#2a2214" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="1065" y="556" font-size="16" font-weight="700" fill="#fde68a">Billing info, datasets, Notion AI transcripts taken</text>
+    <text x="1065" y="582" font-size="13.5" fill="#fde9c8">~1% of Notion customers &#183; inputs and outputs of chats</text>
+  </g>
+
+  <!-- Bottom takeaway -->
+  <rect x="70" y="665" width="1300" height="120" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="720" y="712" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f8fafc">The pattern worth staring at: the model layer was never touched.</text>
+  <text x="720" y="742" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14.5" fill="#94a3b8">Credentials and a development system - the boring parts of the stack - carried both intrusions to end users' data.</text>
+  <text x="720" y="766" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-style="italic" fill="#64748b">Fireworks customers include Cursor and Harvey; neither is confirmed affected.</text>
+</svg>

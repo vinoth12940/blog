@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fireworks AI Was Breached Twice in Two Months — Notion and Uber Paid the Price</title>
+    <meta name="description" content="The inference platform behind Notion AI features and Uber driver data disclosed two breaches in two months. The verified timelines, the stolen-token economy driving the attacks, and the vendor checklist every AI builder needs.">
+    <meta property="og:title" content="Fireworks AI Was Breached Twice in Two Months — Notion and Uber Paid the Price">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-11-14">
+    <meta property="og:description" content="One inference vendor, two breaches, and a blast radius that reached Notion users' chat transcripts and thousands of Uber drivers' licenses. What leaked, why attackers want your tokens, and what builders should change now.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/hero-fireworks.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        main { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .mono { font-family: 'JetBrains Mono', monospace; background: #1a1a2e; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85em; color: #f472b6; }
+        blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; color: #b8b8b8; font-style: italic; }
+        ul { margin: 0 0 1.25rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        img { width: 100%; border-radius: 12px; margin: 1.5rem 0 0.5rem; border: 1px solid #1f2937; }
+        .figcap { font-size: 0.85rem; color: #737373; text-align: center; margin-bottom: 1.75rem; font-style: italic; }
+        .stat-list { list-style: none; margin-left: 0; background: #111418; border: 1px solid #1f2937; border-radius: 12px; padding: 1.25rem 1.5rem; }
+        .stat-list li { padding: 0.4rem 0; border-bottom: 1px solid #1a1f26; }
+        .stat-list li:last-child { border-bottom: none; }
+        hr { border: none; border-top: 1px solid #262626; margin: 2.5rem 0; }
+        strong { color: #f1f5f9; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Fireworks AI Was Breached Twice in Two Months — Notion and Uber Paid the Price</h1>
+    <p class="meta">November 14, 2026 · AI / Security / DevOps · 8 min read</p>
+
+    <p>On Friday, while the AI internet argued about <a href="https://cryptobriefing.com/artificial-analysis-coding-agent-index-v2-1/">Artificial Analysis refreshing its Coding Agent Index</a> — Claude Fable 5.2 and Opus 5.5 tying at 58 — Uber was filing breach notices with state attorneys general. The filings said something uncomfortable: driver's license data for thousands of US drivers was stolen from <strong>an AI inference vendor</strong>. Not from Uber. From the company Uber trusted to run AI features.</p>
+
+    <p>That vendor is <a href="https://techcrunch.com/2026/11/13/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/">Fireworks AI</a> — a platform tens of thousands of developers use to serve open models, with customers that include Cursor and Harvey. And it gets worse: this is the <strong>second time Fireworks has been breached in two months</strong>. The November incident spilled over into Notion, exposing chat transcripts from Notion AI's Insights feature. The October incident reached Uber's driver data.</p>
+
+    <p>I've spent this year writing about AI security incidents, and this pair taught me something new. The previous breaches were about the serving layer being an attack surface. These are about something else: the hosted inference layer has quietly become a <strong>data bank</strong> — and nobody updated their threat model to notice.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/hero-fireworks.png" alt="Timeline diagram of two Fireworks AI breaches: an October lane covering unauthorized access starting October 7, credential theft alerts to Uber on October 9, and the October disclosure of stolen billing data and AI datasets, beside a November lane covering Notion disconnecting on November 3, Uber starting driver notifications November 10, the Fireworks advisory November 12, and attorney general filings November 13 confirming 2,567 Massachusetts, 3,430 South Carolina and 1,873 Rhode Island driver's licenses stolen, above a stat strip reading two breaches, about one percent of Notion customers affected, and tens of thousands of Fireworks customers">
+    <figcaption class="figcap">Two incidents, one platform, downstream victims. Dates from state AG filings, Fireworks advisories, and TechCrunch reporting.</figcaption>
+
+    <h2>Two breaches, two months, one platform</h2>
+
+    <p>The October incident ran through stolen credentials. According to Uber's filings, unauthorized access at the vendor began as early as <strong>October 7</strong>. On October 9, the provider told Uber that hackers had broken in and stolen internal credentials — which were then used to access Uber's data. Uber confirmed the access internally on October 13 and started notifying affected drivers on November 10. That's <strong>34 days</strong> from first unauthorized access to the first driver notifications, through a chain of vendor, customer, and regulators.</p>
+
+    <p>The November incident took a different door entirely. Per <a href="https://techcrunch.com/2026/11/12/cyberattack-on-fireworks-ai-allowed-hackers-to-access-notion-customers-chat-transcripts/">Fireworks' latest security advisory</a>: an attacker breached <strong>Fireworks' cloud provider</strong> to gain access to a Fireworks <strong>development system</strong>, and from there reached some customers' data. The criminals took customer billing information and datasets. Fireworks itself called this the second breach affecting the company in as many months.</p>
+
+    <p>Two incidents, two different entry points, and one pattern: <strong>neither touched the model layer</strong>. The frontier models worked perfectly throughout. The boring parts — credentials, a development environment, a cloud-provider relationship — carried both intrusions to real people's data.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/attack-paths.png" alt="Two kill-chain diagrams side by side: the October chain running from hackers breaking into Fireworks systems and stealing internal credentials, to using those credentials to reach customer data including Uber's, to driver's licenses taken across Massachusetts, South Carolina and Rhode Island; and the November chain running from a breach of Fireworks' cloud provider, to a foothold in a Fireworks development system, to billing information, datasets and Notion AI chat transcripts taken affecting about one percent of Notion customers, with a note that the model layer was never touched">
+    <figcaption class="figcap">Neither attack touched the model layer. Credentials and a development system carried both to customer data.</figcaption>
+
+    <h2>What actually leaked</h2>
+
+    <p>The Notion exposure is the one that should make every AI product manager sit up. Notion says the breach affected <strong>around 1% of its own customers</strong>, and that the stolen data includes chat transcripts from people who used the Notion AI <strong>Insights</strong> feature. Here is Notion's own description of what a stolen transcript contains:</p>
+
+    <blockquote>"any input to or output from the model that was written to the chat" — Notion, on the stolen Insights transcripts</blockquote>
+
+    <p>Read that again. Not summaries. Not metadata. The full text of what users typed into an AI feature and what the model sent back — from a productivity tool millions of people treat as a private workspace. There is a specific kind of dread in being the user who pasted a contract, a performance review, or a medical question into that feature in October.</p>
+
+    <p>Uber's exposure was more mundane and more permanent. State filings confirm driver's license data for <strong>2,567 people in Massachusetts, 3,430 in South Carolina, and 1,873 in Rhode Island</strong> — with Illinois counts still pending, California notified without a count, and the total expected to rise. Identity documents don't rot like passwords do.</p>
+
+    <blockquote>"The notices to drivers are in relation to a security incident impacting one of our third-party vendors, Fireworks.ai, which had access to some Uber data." — Uber spokesperson, to TechCrunch</blockquote>
+
+    <p>It's worth pausing on why an inference vendor held driver's licenses at all. Uber used Fireworks for AI features, and somewhere in that integration, <strong>identity documents ended up stored on the vendor's side</strong>. That's not a breach detail. That's an architecture decision somebody approved — and it's the decision that turned a vendor incident into an identity-theft risk for thousands of drivers.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/vendor-exit-playbook.png" alt="Four-step vendor exit playbook based on Notion's response: one, alert received from Fireworks about a security incident; two, disconnect all connectivity between Notion and Fireworks on November 3; three, delete the data Notion had stored in Fireworks systems; four, confirm scope publicly including that chat transcripts of Notion AI Insights users were taken covering any input to or output from the model, with a note that much of the stolen transcript data is unattributable to specific customers">
+    <figcaption class="figcap">Notion's four-step exit: alert, disconnect, delete, confirm. The last step exposed the ugly part — much of the data can't be tied to a customer.</figcaption>
+
+    <h2>The attribution problem nobody planned for</h2>
+
+    <p>Notion's disclosure contains a sentence that deserves more attention than it got: much of the stolen transcript data was <strong>unattributable</strong> — the company could not determine which customer it was obtained from.</p>
+
+    <p>Think about what that means operationally. If you're Notion, you owe notifications to affected customers. If you can't map stolen transcripts back to accounts, you can't notify precisely — you notify broadly, or you disclose vaguely, and either way your users are left wondering if their chats were in the haul. Regulators don't have a clean category for "we know what leaked but not whose it is."</p>
+
+    <p>This is a new failure mode specific to AI pipelines. Data flows through inference vendors in streams — prompts in, completions out, logged somewhere for caching, abuse monitoring, or fine-tuning. Traditional data governance tracks <strong>records</strong>. Inference telemetry is a torrent, and most teams have no way to reconstruct, after the fact, which customer's bytes were in which file the attacker grabbed.</p>
+
+    <p>Fireworks gets credit for surfacing both incidents to affected customers quickly, and Notion's response was textbook — disconnect, delete, verify, disclose, all inside roughly ten days. But the attribution gap isn't a Fireworks bug or a Notion bug. It's an industry-wide blind spot.</p>
+
+    <h2>Why attackers want your tokens</h2>
+
+    <p>Fireworks attributes both incidents to a financially motivated group, and the motive is the most novel part of this story. The goal isn't ransomware and it isn't espionage. It's <strong>selling stolen tokens for accessing large language models</strong>.</p>
+
+    <blockquote>These schemes rely on selling to unauthorized third parties, who can burn through AI model usage without using their own resources. — TechCrunch, reporting Fireworks' advisory</blockquote>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/token-economy.png" alt="Four-node cycle diagram of the stolen token economy: breach an AI platform through cloud providers or credentials, harvest API tokens and internal model access, resell that access to unauthorized third parties who burn model usage without paying, and victims fund the costs while data flowing through leaks as collateral, with a caption explaining tokens are money already inside the firewall and every stolen prompt is resale inventory too">
+    <figcaption class="figcap">Stolen LLM access is the loot and the business model — usage burns on the victim's bill.</figcaption>
+
+    <p>The logic is brutally elegant. Model access is pre-paid, high-value, and <strong>already inside the firewall</strong>. A criminal who steals a platform's token pool doesn't need to fence credit cards or launder crypto — buyers line up to run frontier models at a discount, and the usage lands on the victim's account. Meanwhile the data flowing through those models — transcripts, documents, datasets — leaks as collateral.</p>
+
+    <p>This changes detection, too. If stolen tokens are being burned, someone's usage curve jumps without their traffic jumping. How many AI platforms are watching for that signal today? My guess: far fewer than have dashboards for it.</p>
+
+    <h2>Same week, different layer: the NEAR AI reminder</h2>
+
+    <p>Three days before the Uber filings, I wrote about <a href="/blog/articles/genai-20261111-sglang-rce-near-ai-breach/">NEAR AI getting breached through an SGLang remote-code-execution bug</a> — a confidential-computing cloud whose hardware enclaves didn't matter, because the bug was in the software running inside them. Roughly 100 users' account details and 18 agents' chat histories came out through one inference-server flaw.</p>
+
+    <p>Put the two stories side by side and you get the full picture of AI infrastructure risk in late 2026:</p>
+
+    <ul>
+        <li><strong>NEAR AI</strong>: the open-source serving engine itself was the vulnerability. Self-hosters, that's your attack surface.</li>
+        <li><strong>Fireworks</strong>: the hosted platform was the vulnerability — through its credentials, its cloud provider, and its development systems. API consumers, that's yours.</li>
+    </ul>
+
+    <p>Whether you run the inference layer or rent it, the conclusion converges: <strong>the model is the least of your security problems</strong>. Every layer around it — credentials, dependencies, storage, vendor relationships — is where the actual breaches happen.</p>
+
+    <h2>The clock nobody is winning</h2>
+
+    <p>There's a reason incidents like these keep landing on unpatched or mis-scoped systems. Azul's 2026 AI Vulnerability Gap Report — a Censuswide survey of 300 US security leaders at organizations with substantial Java deployments — put numbers on the asymmetry:</p>
+
+    <ul class="stat-list">
+        <li><strong>69%</strong> believe AI-equipped attackers can build an exploit in three days or less — 22% say under 24 hours</li>
+        <li><strong>56%</strong> say they can deploy a critical patch across production within three days — only 13% in under 24 hours</li>
+        <li><strong>44%</strong> need longer than three days to patch production; 32% need four to six days</li>
+        <li><strong>85%</strong> report an incident, suspected incident, or near miss they attribute to slow patching</li>
+    </ul>
+
+    <p>Those are self-reported survey numbers, not measured breach rates — but the shape is the point. <strong>Two clocks that don't line up:</strong> attacker speed and defender speed, diverging by days in a world where AI vendors run complex multi-tenant systems that depend on other vendors' clouds. Fireworks' November breach started at its cloud provider. The supply chain now has supply chains.</p>
+
+    <h2>What builders should do now</h2>
+
+    <p>Neither of these incidents required a novel exploit or an AI-powered attack. Both walked through doors that exist in almost every AI stack. Here's the checklist I'd run this week, with each layer mapped to a failure that actually happened:</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/defense-stack.png" alt="Five-layer defense stack diagram for AI vendor risk: layer one inventory, know every vendor holding your prompts transcripts or documents; layer two minimize, send and store the least data the feature needs with retention limits; layer three scope credentials assuming vendor-side credentials can be stolen; layer four watch token flow treating usage anomalies as breach signals because stolen tokens burn quota; layer five attribution, log so you can answer whose data leaked in hours not weeks, each layer mapped to a verified failure from the Fireworks incidents">
+    <figcaption class="figcap">Five layers, each mapped to a failure that actually happened in October and November 2026.</figcaption>
+
+    <ul>
+        <li><strong>Inventory your AI vendors.</strong> Uber had driver's licenses sitting at an inference platform — data nobody thinks of as "AI data." List every vendor that touches your prompts, outputs, transcripts, or documents. If that list takes more than five minutes to write, you're Notion before November 3.</li>
+        <li><strong>Minimize what lives at the vendor.</strong> Notion's transcripts leaked because full chats were persisted on the vendor side. Ask what your integrations store, set retention limits, and keep identity documents out of AI vendor systems entirely.</li>
+        <li><strong>Scope vendor credentials like they're already stolen.</strong> In October, credentials stolen at the vendor unlocked customer data. The question for your own stack: what can any single credential touch — and could one stolen key reach every tenant?</li>
+        <li><strong>Watch token flow as a security signal.</strong> Token resale is the stated business model of these attackers. Usage that climbs without traffic climbing is evidence, not a billing curiosity. Alert on it.</li>
+        <li><strong>Build attribution before you need it.</strong> Notion couldn't map stolen transcripts to customers. If your pipeline logs inference traffic, log it in a way that answers "whose data was in the stolen file?" in hours.</li>
+        <li><strong>Have the exit playbook written.</strong> Notion's four steps — disconnect, delete, verify, disclose — worked because someone could execute them in days. Write yours now; you will not be creative mid-incident.</li>
+    </ul>
+
+    <hr>
+
+    <p>The leaderboard race gets the headlines, and I'll keep covering it — the models genuinely are getting better every month. But this fortnight was a reminder of where the trust actually lives. Notion's users didn't choose Fireworks. Uber's drivers definitely didn't. <strong>Your data's security is now the sum of every vendor your vendors use</strong> — and 2026's breach economics mean someone is actively hunting the weakest one.</p>
+
+    <blockquote>The fence is only as good as the company that operates it, the cloud it runs on, and the credentials that open it. In AI, you inherit all three the moment you call the API.</blockquote>
+
+    <p>If you run AI features in production: which of your vendors holds data that would make headlines if it leaked? If you can't answer that from memory, that's the gap to close first.</p>
+</main>
+</body>
+</html>

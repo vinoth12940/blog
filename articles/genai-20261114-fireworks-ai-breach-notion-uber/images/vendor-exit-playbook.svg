@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760">
+  <defs>
+    <linearGradient id="exitGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="exitArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#34d399"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="760" fill="url(#exitGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#34d399" letter-spacing="4">NOTION'S RESPONSE, STEP BY STEP &#183; NOVEMBER 2026</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">The Vendor Exit Playbook</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">When Fireworks alerted Notion to the incident, Notion ran a clean four-step exit inside days</text>
+
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="80" y="210" width="290" height="330" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+    <text x="225" y="262" font-size="52" font-weight="700" fill="#34d399">1</text>
+    <text x="225" y="312" font-size="17" font-weight="700" fill="#f8fafc">Alert received</text>
+    <g font-size="13.5" fill="#cbd5e1">
+      <text x="105" y="352">Fireworks notifies Notion</text>
+      <text x="105" y="376">that a security incident</text>
+      <text x="105" y="400">may involve Notion data</text>
+      <text x="105" y="424">- the vendor surfaced it,</text>
+      <text x="105" y="448">not the customer</text>
+    </g>
+
+    <rect x="400" y="210" width="290" height="330" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+    <text x="545" y="262" font-size="52" font-weight="700" fill="#34d399">2</text>
+    <text x="545" y="312" font-size="17" font-weight="700" fill="#f8fafc">Disconnect (Nov 3)</text>
+    <g font-size="13.5" fill="#cbd5e1">
+      <text x="425" y="352">All connectivity between</text>
+      <text x="425" y="376">Notion systems and</text>
+      <text x="425" y="400">Fireworks is cut -</text>
+      <text x="425" y="424">blast radius stops</text>
+      <text x="425" y="448">growing immediately</text>
+    </g>
+
+    <rect x="720" y="210" width="290" height="330" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+    <text x="865" y="262" font-size="52" font-weight="700" fill="#34d399">3</text>
+    <text x="865" y="312" font-size="17" font-weight="700" fill="#f8fafc">Delete stored data</text>
+    <g font-size="13.5" fill="#cbd5e1">
+      <text x="745" y="352">Data Notion had stored</text>
+      <text x="745" y="376">in Fireworks' systems is</text>
+      <text x="745" y="400">deleted - removing the</text>
+      <text x="745" y="424">next attacker's</text>
+      <text x="745" y="448">starting prize</text>
+    </g>
+
+    <rect x="1040" y="210" width="290" height="330" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+    <text x="1185" y="262" font-size="52" font-weight="700" fill="#34d399">4</text>
+    <text x="1185" y="312" font-size="17" font-weight="700" fill="#f8fafc">Confirm scope publicly</text>
+    <g font-size="13.5" fill="#cbd5e1">
+      <text x="1065" y="352">Confirmed: chat transcripts</text>
+      <text x="1065" y="376">of Notion AI Insights users</text>
+      <text x="1065" y="400">taken - "any input to or</text>
+      <text x="1065" y="424">output from the model"</text>
+      <text x="1065" y="448">written to the chat</text>
+    </g>
+  </g>
+
+  <line x1="370" y1="375" x2="396" y2="375" stroke="#34d399" stroke-width="2.5" marker-end="url(#exitArrow)"/>
+  <line x1="690" y1="375" x2="716" y2="375" stroke="#34d399" stroke-width="2.5" marker-end="url(#exitArrow)"/>
+  <line x1="1010" y1="375" x2="1036" y2="375" stroke="#34d399" stroke-width="2.5" marker-end="url(#exitArrow)"/>
+
+  <rect x="80" y="590" width="1250" height="115" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="705" y="638" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">The honest wrinkle: Notion says much of the stolen transcript data is unattributable.</text>
+  <text x="705" y="666" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">Neither Fireworks nor Notion can fully map what was taken back to specific customers - a notification problem, not just a security one.</text>
+</svg>

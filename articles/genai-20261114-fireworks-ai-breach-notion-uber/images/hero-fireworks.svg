@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#heroGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#f87171" letter-spacing="4">TWO BREACHES &#183; TWO MONTHS &#183; ONE INFERENCE PLATFORM</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Fireworks AI: The Vendor Breach With Downstream Victims</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">The inference vendor behind Notion AI features and Uber driver data - verified dates from AG filings, Fireworks advisories and TechCrunch reporting</text>
+
+  <!-- October lane -->
+  <rect x="80" y="185" width="620" height="360" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="110" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f87171">OCTOBER 2026 &#183; STOLEN CREDENTIALS</text>
+  <line x1="130" y1="262" x2="130" y2="510" stroke="#f87171" stroke-width="2"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="130" cy="278" r="6" fill="#f87171"/>
+    <text x="150" y="284" font-size="15" font-weight="700" fill="#f8fafc">Oct 7</text>
+    <text x="150" y="306" font-size="13.5" fill="#cbd5e1">Unauthorized access begins at the AI vendor</text>
+
+    <circle cx="130" cy="340" r="6" fill="#f87171"/>
+    <text x="150" y="346" font-size="15" font-weight="700" fill="#f8fafc">Oct 9</text>
+    <text x="150" y="368" font-size="13.5" fill="#cbd5e1">Fireworks alerts Uber: internal credentials stolen</text>
+    <text x="150" y="390" font-size="13.5" fill="#cbd5e1">and used to reach Uber driver data</text>
+
+    <circle cx="130" cy="424" r="6" fill="#f87171"/>
+    <text x="150" y="430" font-size="15" font-weight="700" fill="#f8fafc">October</text>
+    <text x="150" y="452" font-size="13.5" fill="#cbd5e1">Fireworks discloses: customer info stolen incl.</text>
+    <text x="150" y="474" font-size="13.5" fill="#cbd5e1">billing data and private AI datasets</text>
+  </g>
+
+  <!-- November lane -->
+  <rect x="740" y="185" width="620" height="360" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="770" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#fbbf24">NOVEMBER 2026 &#183; CLOUD-PROVIDER COMPROMISE</text>
+  <line x1="790" y1="262" x2="790" y2="510" stroke="#fbbf24" stroke-width="2"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="790" cy="278" r="6" fill="#fbbf24"/>
+    <text x="810" y="284" font-size="15" font-weight="700" fill="#f8fafc">Nov 3</text>
+    <text x="810" y="306" font-size="13.5" fill="#cbd5e1">Notion disconnects from Fireworks and deletes</text>
+    <text x="810" y="328" font-size="13.5" fill="#cbd5e1">its stored data after a vendor alert</text>
+
+    <circle cx="790" cy="362" r="6" fill="#fbbf24"/>
+    <text x="810" y="368" font-size="15" font-weight="700" fill="#f8fafc">Nov 10-12</text>
+    <text x="810" y="390" font-size="13.5" fill="#cbd5e1">Uber begins notifying drivers; Fireworks publishes</text>
+    <text x="810" y="412" font-size="13.5" fill="#cbd5e1">advisory: cloud provider breach reached dev system</text>
+
+    <circle cx="790" cy="446" r="6" fill="#fbbf24"/>
+    <text x="810" y="452" font-size="15" font-weight="700" fill="#f8fafc">Nov 13</text>
+    <text x="810" y="474" font-size="13.5" fill="#cbd5e1">Uber AG filings confirm driver's licenses stolen:</text>
+    <text x="810" y="496" font-size="13.5" fill="#cbd5e1">2,567 MA &#183; 3,430 SC &#183; 1,873 RI, more states pending</text>
+  </g>
+
+  <!-- Bottom stat strip -->
+  <rect x="80" y="585" width="1280" height="130" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="240" y="638" font-size="34" font-weight="700" fill="#f87171">2</text>
+    <text x="240" y="668" font-size="13" fill="#94a3b8">breaches in two months</text>
+    <text x="240" y="690" font-size="13" fill="#94a3b8">at the same platform</text>
+
+    <text x="480" y="638" font-size="34" font-weight="700" fill="#fbbf24">~1%</text>
+    <text x="480" y="668" font-size="13" fill="#94a3b8">of Notion customers affected</text>
+    <text x="480" y="690" font-size="13" fill="#94a3b8">chat transcripts taken</text>
+
+    <text x="720" y="638" font-size="34" font-weight="700" fill="#f87171">7,870+</text>
+    <text x="720" y="668" font-size="13" fill="#94a3b8">driver's licenses confirmed</text>
+    <text x="720" y="690" font-size="13" fill="#94a3b8">in MA, SC, RI filings alone</text>
+
+    <text x="960" y="638" font-size="34" font-weight="700" fill="#a78bfa">2,567</text>
+    <text x="960" y="668" font-size="13" fill="#94a3b8">Massachusetts residents</text>
+    <text x="960" y="690" font-size="13" fill="#94a3b8">notified in one state filing</text>
+
+    <text x="1200" y="638" font-size="34" font-weight="700" fill="#fbbf24">10s of 1000s</text>
+    <text x="1200" y="668" font-size="13" fill="#94a3b8">of Fireworks customers</text>
+    <text x="1200" y="690" font-size="13" fill="#94a3b8">incl. Cursor, Harvey</text>
+  </g>
+
+  <text x="720" y="768" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-style="italic" fill="#64748b">Sources: TechCrunch (Nov 12-13, 2026), state AG breach filings, Fireworks security advisories</text>
+</svg>

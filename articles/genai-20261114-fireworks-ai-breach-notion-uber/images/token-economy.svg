@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780">
+  <defs>
+    <linearGradient id="tokGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="tokArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="780" fill="url(#tokGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="4">THE MOTIVE PER FIREWORKS' OWN ATTRIBUTION</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Your Tokens Are the Loot</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Fireworks says the attackers are financially motivated and focused on selling stolen access to LLMs</text>
+
+  <!-- Cycle: 4 nodes -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="100" y="210" width="540" height="150" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+    <text x="370" y="258" font-size="19" font-weight="700" fill="#fca5a5">1 &#183; Breach an AI platform</text>
+    <text x="370" y="290" font-size="14" fill="#cbd5e1">Cloud provider, dev system, credentials -</text>
+    <text x="370" y="316" font-size="14" fill="#cbd5e1">whatever door opens first</text>
+
+    <rect x="800" y="210" width="540" height="150" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="1070" y="258" font-size="19" font-weight="700" fill="#c4b5fd">2 &#183; Harvest model access</text>
+    <text x="1070" y="290" font-size="14" fill="#cbd5e1">API tokens and internal credentials that</text>
+    <text x="1070" y="316" font-size="14" fill="#cbd5e1">unlock frontier-model usage</text>
+
+    <rect x="800" y="440" width="540" height="150" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="1070" y="488" font-size="19" font-weight="700" fill="#c4b5fd">3 &#183; Resell to unauthorized third parties</text>
+    <text x="1070" y="520" font-size="14" fill="#cbd5e1">Buyers get frontier-model capacity</text>
+    <text x="1070" y="546" font-size="14" fill="#cbd5e1">without paying list price - or anything</text>
+
+    <rect x="100" y="440" width="540" height="150" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="370" y="488" font-size="19" font-weight="700" fill="#fde68a">4 &#183; Victims fund the party</text>
+    <text x="370" y="520" font-size="14" fill="#cbd5e1">Stolen tokens burn the victim's usage and</text>
+    <text x="370" y="546" font-size="14" fill="#cbd5e1">the data flowing through leaks as collateral</text>
+  </g>
+
+  <!-- Arrows -->
+  <line x1="640" y1="285" x2="795" y2="285" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#tokArrow)"/>
+  <line x1="1070" y1="360" x2="1070" y2="435" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#tokArrow)"/>
+  <line x1="800" y1="515" x2="645" y2="515" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#tokArrow)"/>
+  <path d="M 370 440 Q 370 360 370 365" stroke="#a78bfa" stroke-width="0" fill="none"/>
+
+  <rect x="100" y="625" width="1240" height="105" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="720" y="668" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Why this economy exists: tokens are money that is already inside the firewall.</text>
+  <text x="720" y="696" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" fill="#94a3b8">Stealing model access monetizes the breach instantly - and every stolen prompt and transcript is resale inventory too.</text>
+</svg>
