@@ -49,7 +49,7 @@
     <p>I've spent this year writing about AI security incidents, and this pair taught me something new. The previous breaches were about the serving layer being an attack surface. These are about something else: the hosted inference layer has quietly become a <strong>data bank</strong> — and nobody updated their threat model to notice.</p>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/hero-fireworks.png" alt="Timeline diagram of two Fireworks AI breaches: an October lane covering unauthorized access starting October 7, credential theft alerts to Uber on October 9, and the October disclosure of stolen billing data and AI datasets, beside a November lane covering Notion disconnecting on November 3, Uber starting driver notifications November 10, the Fireworks advisory November 12, and attorney general filings November 13 confirming 2,567 Massachusetts, 3,430 South Carolina and 1,873 Rhode Island driver's licenses stolen, above a stat strip reading two breaches, about one percent of Notion customers affected, and tens of thousands of Fireworks customers">
-    <figcaption class="figcap">Two incidents, one platform, downstream victims. Dates from state AG filings, Fireworks advisories, and TechCrunch reporting.</figcaption>
+    <p class="figcap">Two incidents, one platform, downstream victims. Dates from state AG filings, Fireworks advisories, and TechCrunch reporting.</p>
 
     <h2>Two breaches, two months, one platform</h2>
 
@@ -60,7 +60,7 @@
     <p>Two incidents, two different entry points, and one pattern: <strong>neither touched the model layer</strong>. The frontier models worked perfectly throughout. The boring parts — credentials, a development environment, a cloud-provider relationship — carried both intrusions to real people's data.</p>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/attack-paths.png" alt="Two kill-chain diagrams side by side: the October chain running from hackers breaking into Fireworks systems and stealing internal credentials, to using those credentials to reach customer data including Uber's, to driver's licenses taken across Massachusetts, South Carolina and Rhode Island; and the November chain running from a breach of Fireworks' cloud provider, to a foothold in a Fireworks development system, to billing information, datasets and Notion AI chat transcripts taken affecting about one percent of Notion customers, with a note that the model layer was never touched">
-    <figcaption class="figcap">Neither attack touched the model layer. Credentials and a development system carried both to customer data.</figcaption>
+    <p class="figcap">Neither attack touched the model layer. Credentials and a development system carried both to customer data.</p>
 
     <h2>What actually leaked</h2>
 
@@ -77,7 +77,7 @@
     <p>It's worth pausing on why an inference vendor held driver's licenses at all. Uber used Fireworks for AI features, and somewhere in that integration, <strong>identity documents ended up stored on the vendor's side</strong>. That's not a breach detail. That's an architecture decision somebody approved — and it's the decision that turned a vendor incident into an identity-theft risk for thousands of drivers.</p>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/vendor-exit-playbook.png" alt="Four-step vendor exit playbook based on Notion's response: one, alert received from Fireworks about a security incident; two, disconnect all connectivity between Notion and Fireworks on November 3; three, delete the data Notion had stored in Fireworks systems; four, confirm scope publicly including that chat transcripts of Notion AI Insights users were taken covering any input to or output from the model, with a note that much of the stolen transcript data is unattributable to specific customers">
-    <figcaption class="figcap">Notion's four-step exit: alert, disconnect, delete, confirm. The last step exposed the ugly part — much of the data can't be tied to a customer.</figcaption>
+    <p class="figcap">Notion's four-step exit: alert, disconnect, delete, confirm. The last step exposed the ugly part — much of the data can't be tied to a customer.</p>
 
     <h2>The attribution problem nobody planned for</h2>
 
@@ -96,7 +96,7 @@
     <blockquote>These schemes rely on selling to unauthorized third parties, who can burn through AI model usage without using their own resources. — TechCrunch, reporting Fireworks' advisory</blockquote>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/token-economy.png" alt="Four-node cycle diagram of the stolen token economy: breach an AI platform through cloud providers or credentials, harvest API tokens and internal model access, resell that access to unauthorized third parties who burn model usage without paying, and victims fund the costs while data flowing through leaks as collateral, with a caption explaining tokens are money already inside the firewall and every stolen prompt is resale inventory too">
-    <figcaption class="figcap">Stolen LLM access is the loot and the business model — usage burns on the victim's bill.</figcaption>
+    <p class="figcap">Stolen LLM access is the loot and the business model — usage burns on the victim's bill.</p>
 
     <p>The logic is brutally elegant. Model access is pre-paid, high-value, and <strong>already inside the firewall</strong>. A criminal who steals a platform's token pool doesn't need to fence credit cards or launder crypto — buyers line up to run frontier models at a discount, and the usage lands on the victim's account. Meanwhile the data flowing through those models — transcripts, documents, datasets — leaks as collateral.</p>
 
@@ -133,7 +133,7 @@
     <p>Neither of these incidents required a novel exploit or an AI-powered attack. Both walked through doors that exist in almost every AI stack. Here's the checklist I'd run this week, with each layer mapped to a failure that actually happened:</p>
 
     <img src="https://vinoth12940.github.io/blog/articles/genai-20261114-fireworks-ai-breach-notion-uber/images/defense-stack.png" alt="Five-layer defense stack diagram for AI vendor risk: layer one inventory, know every vendor holding your prompts transcripts or documents; layer two minimize, send and store the least data the feature needs with retention limits; layer three scope credentials assuming vendor-side credentials can be stolen; layer four watch token flow treating usage anomalies as breach signals because stolen tokens burn quota; layer five attribution, log so you can answer whose data leaked in hours not weeks, each layer mapped to a verified failure from the Fireworks incidents">
-    <figcaption class="figcap">Five layers, each mapped to a failure that actually happened in October and November 2026.</figcaption>
+    <p class="figcap">Five layers, each mapped to a failure that actually happened in October and November 2026.</p>
 
     <ul>
         <li><strong>Inventory your AI vendors.</strong> Uber had driver's licenses sitting at an inference platform — data nobody thinks of as "AI data." List every vendor that touches your prompts, outputs, transcripts, or documents. If that list takes more than five minutes to write, you're Notion before November 3.</li>
