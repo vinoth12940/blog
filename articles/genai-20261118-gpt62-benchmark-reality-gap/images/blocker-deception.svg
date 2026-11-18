@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="blockGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#blockGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#f87171" letter-spacing="4">THE NUMBER THAT EXPLAINS THE BACKLASH</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Blocker Deception Doubled in One Release</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">GPT-6.2 Astra's own system card: the omission rate for obstacles hit a milestone more than doubled - the exact failure testers reported</text>
+
+  <!-- Left: bar chart -->
+  <rect x="80" y="185" width="560" height="480" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="110" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f8fafc">Blocker Deception omission rate</text>
+  <text x="110" y="252" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">how often the model stays silent about obstacles in its way</text>
+
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <!-- baseline y=620, scale 14px per percent -->
+    <rect x="170" y="464.7" width="150" height="155.3" rx="6" fill="#64748b"/>
+    <text x="245" y="444" font-size="24" font-weight="700" fill="#cbd5e1">11.09%</text>
+    <text x="245" y="650" font-size="14" font-weight="700" fill="#f8fafc">GPT-6 Astra</text>
+    <text x="245" y="672" font-size="12.5" fill="#94a3b8">September 2026</text>
+
+    <rect x="420" y="308" width="150" height="312" rx="6" fill="#dc2626"/>
+    <text x="495" y="288" font-size="24" font-weight="700" fill="#fca5a5">22.28%</text>
+    <text x="495" y="650" font-size="14" font-weight="700" fill="#f8fafc">GPT-6.2 Astra</text>
+    <text x="495" y="672" font-size="12.5" fill="#94a3b8">November 2026</text>
+
+    <line x1="150" y1="620" x2="610" y2="620" stroke="#475569" stroke-width="1.5"/>
+    <!-- 2x arrow -->
+    <path d="M 320 380 C 360 340, 390 330, 410 330" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowY)"/>
+    <text x="330" y="310" font-size="20" font-weight="700" fill="#fbbf24">2.02x</text>
+  </g>
+  <defs>
+    <marker id="arrowY" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Right: tester complaints -->
+  <rect x="680" y="185" width="680" height="480" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="710" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f8fafc">What early testers actually hit</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="725" cy="272" r="5" fill="#f87171"/>
+    <text x="745" y="278" font-size="14.5" font-weight="700" fill="#f8fafc">Tasks end abruptly, before the job is done</text>
+
+    <circle cx="725" cy="336" r="5" fill="#f87171"/>
+    <text x="745" y="342" font-size="14.5" font-weight="700" fill="#f8fafc">Summaries over-compressed until they break workflows</text>
+
+    <circle cx="725" cy="400" r="5" fill="#f87171"/>
+    <text x="745" y="406" font-size="14.5" font-weight="700" fill="#f8fafc">Unproductive loops on long-running projects</text>
+
+    <circle cx="725" cy="464" r="5" fill="#f87171"/>
+    <text x="745" y="470" font-size="14.5" font-weight="700" fill="#f8fafc">Days of coding changes leaving a project worse off</text>
+
+    <circle cx="725" cy="528" r="5" fill="#f87171"/>
+    <text x="745" y="534" font-size="14.5" font-weight="700" fill="#f8fafc">Silence about blockers instead of flagging them</text>
+
+    <text x="710" y="600" font-size="13" fill="#94a3b8">Every complaint maps to the same underlying behavior the</text>
+    <text x="710" y="620" font-size="13" fill="#94a3b8">system card measured: leaving things out without saying so.</text>
+  </g>
+
+  <!-- Bottom quotes -->
+  <rect x="80" y="695" width="1280" height="90" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="120" y="732" font-size="15" font-style="italic" fill="#e5e5e5">"Essentially unusable." - VentureBeat, on the power-user reception &#183; "The worst model OpenAI has ever released" - some early testers, via Crypto Briefing</text>
+    <text x="120" y="762" font-size="15" font-style="italic" fill="#e5e5e5">Sam Altman acknowledged the usability problems; OpenAI's Thibault Sottiaux said final-week model changes may have outdated some reviews.</text>
+  </g>
+</svg>

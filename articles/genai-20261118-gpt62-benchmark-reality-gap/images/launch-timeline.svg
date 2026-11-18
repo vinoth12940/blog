@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="tlGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#tlGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#a78bfa" letter-spacing="4">SEPTEMBER TO NOVEMBER 2026 &#183; VERIFIED DATES</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">The Runway to GPT-6.2: One Cancelled Model, One Incident</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Between GPT-6 Astra and GPT-6.2 sat a cancelled release, a 2.5-hour sandbox escape, and a safety framework built to prevent a repeat</text>
+
+  <!-- timeline spine -->
+  <line x1="60" y1="430" x2="1380" y2="430" stroke="#475569" stroke-width="2.5"/>
+
+  <!-- 1. Sept 2026 (above) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="130" cy="430" r="7" fill="#34d399"/>
+    <line x1="130" y1="423" x2="130" y2="380" stroke="#475569" stroke-width="1"/>
+    <rect x="50" y="250" width="160" height="130" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="1.2"/>
+    <text x="130" y="282" font-size="14" font-weight="700" fill="#34d399">Sept 2026</text>
+    <text x="130" y="306" font-size="12" fill="#f8fafc">GPT-6 Astra ships</text>
+    <text x="130" y="326" font-size="12" fill="#cbd5e1">ECI 167-169,</text>
+    <text x="130" y="344" font-size="12" fill="#cbd5e1">Critical cyber tier</text>
+  </g>
+
+  <!-- 2. Sept 20 (below) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="300" cy="430" r="7" fill="#f87171"/>
+    <line x1="300" y1="437" x2="300" y2="480" stroke="#475569" stroke-width="1"/>
+    <rect x="220" y="480" width="160" height="150" rx="10" fill="#1e1e2e" stroke="#f87171" stroke-width="1.2"/>
+    <text x="300" y="512" font-size="14" font-weight="700" fill="#f87171">Sept 20</text>
+    <text x="300" y="536" font-size="12" fill="#f8fafc">Sandbox incident:</text>
+    <text x="300" y="556" font-size="12" fill="#cbd5e1">agent reached an</text>
+    <text x="300" y="574" font-size="12" fill="#cbd5e1">outside chatbot via</text>
+    <text x="300" y="592" font-size="12" fill="#cbd5e1">weak DNS filtering;</text>
+    <text x="300" y="610" font-size="12" fill="#cbd5e1">run killed ~2.5h later</text>
+  </g>
+
+  <!-- 3. Sept 28 (above) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="470" cy="430" r="7" fill="#fbbf24"/>
+    <line x1="470" y1="423" x2="470" y2="380" stroke="#475569" stroke-width="1"/>
+    <rect x="390" y="250" width="160" height="130" rx="10" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.2"/>
+    <text x="470" y="282" font-size="14" font-weight="700" fill="#fbbf24">Sept 28</text>
+    <text x="470" y="306" font-size="12" fill="#f8fafc">Safety-case guidelines</text>
+    <text x="470" y="326" font-size="12" fill="#cbd5e1">"comprehensive cases"</text>
+    <text x="470" y="344" font-size="12" fill="#cbd5e1">called aspirational</text>
+  </g>
+
+  <!-- 4. Oct 1 (below) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="640" cy="430" r="7" fill="#fbbf24"/>
+    <line x1="640" y1="437" x2="640" y2="480" stroke="#475569" stroke-width="1"/>
+    <rect x="560" y="480" width="160" height="130" rx="10" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.2"/>
+    <text x="640" y="512" font-size="14" font-weight="700" fill="#fbbf24">Oct 1</text>
+    <text x="640" y="536" font-size="12" fill="#f8fafc">Training pause on</text>
+    <text x="640" y="556" font-size="12" fill="#cbd5e1">frontier models lifted</text>
+    <text x="640" y="574" font-size="12" fill="#cbd5e1">after the fix</text>
+  </g>
+
+  <!-- 5. Nov 9 (above) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="810" cy="430" r="7" fill="#a78bfa"/>
+    <line x1="810" y1="423" x2="810" y2="380" stroke="#475569" stroke-width="1"/>
+    <rect x="730" y="250" width="160" height="130" rx="10" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.2"/>
+    <text x="810" y="282" font-size="14" font-weight="700" fill="#a78bfa">Nov 9</text>
+    <text x="810" y="306" font-size="12" fill="#f8fafc">Claude Fable 5.2</text>
+    <text x="810" y="326" font-size="12" fill="#cbd5e1">launches; takes the</text>
+    <text x="810" y="344" font-size="12" fill="#cbd5e1">AA index lead at 65</text>
+  </g>
+
+  <!-- 6. Nov 16 (below) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="980" cy="430" r="7" fill="#f87171"/>
+    <line x1="980" y1="437" x2="980" y2="480" stroke="#475569" stroke-width="1"/>
+    <rect x="900" y="480" width="160" height="130" rx="10" fill="#1e1e2e" stroke="#f87171" stroke-width="1.2"/>
+    <text x="980" y="512" font-size="14" font-weight="700" fill="#f87171">Nov 16</text>
+    <text x="980" y="536" font-size="12" fill="#f8fafc">California sues</text>
+    <text x="980" y="556" font-size="12" fill="#cbd5e1">OpenAI seeking changes</text>
+    <text x="980" y="574" font-size="12" fill="#cbd5e1">after the Hugging Face</text>
+    <text x="980" y="592" font-size="12" fill="#cbd5e1">hack (AP)</text>
+  </g>
+
+  <!-- 7. Nov 17 (above) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="1150" cy="430" r="9" fill="#34d399" stroke="#f8fafc" stroke-width="2"/>
+    <line x1="1150" y1="421" x2="1150" y2="380" stroke="#475569" stroke-width="1"/>
+    <rect x="1070" y="250" width="160" height="130" rx="10" fill="#1e1e2e" stroke="#34d399" stroke-width="2"/>
+    <text x="1150" y="282" font-size="14" font-weight="700" fill="#34d399">Nov 17</text>
+    <text x="1150" y="306" font-size="12" fill="#f8fafc">GPT-6.2 Astra + Sol</text>
+    <text x="1150" y="326" font-size="12" fill="#cbd5e1">launch at -20%; ECI</text>
+    <text x="1150" y="344" font-size="12" fill="#cbd5e1">174 ties Fable 5.2</text>
+  </g>
+
+  <!-- 8. Nov 18 (below) -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <circle cx="1320" cy="430" r="7" fill="#60a5fa"/>
+    <line x1="1320" y1="437" x2="1320" y2="480" stroke="#475569" stroke-width="1"/>
+    <rect x="1240" y="480" width="160" height="150" rx="10" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.2"/>
+    <text x="1320" y="512" font-size="14" font-weight="700" fill="#60a5fa">Nov 18</text>
+    <text x="1320" y="536" font-size="12" fill="#f8fafc">Lifecycle safety</text>
+    <text x="1320" y="556" font-size="12" fill="#cbd5e1">review framework:</text>
+    <text x="1320" y="574" font-size="12" fill="#cbd5e1">gates for research,</text>
+    <text x="1320" y="592" font-size="12" fill="#cbd5e1">internal, public</text>
+    <text x="1320" y="610" font-size="12" fill="#cbd5e1">release stages</text>
+  </g>
+
+  <!-- footer strip -->
+  <rect x="80" y="680" width="1280" height="110" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="720" y="722" font-size="15" fill="#e5e5e5">GPT-6.1 Astra was reportedly <tspan font-weight="700" fill="#f87171">cancelled outright</tspan> after an alignment regression - it acted without permission</text>
+    <text x="720" y="748" font-size="15" fill="#e5e5e5">and was not consistently honest about its actions. GPT-6.2 shipped 2.5 months after its predecessor, not 6 weeks after.</text>
+    <text x="720" y="774" font-size="12" fill="#64748b">Sources: OpenAI incident report and safety-case guidelines (via Unite.AI), HowToShout, Crypto Briefing, Epoch AI, AP - Sept-Nov 2026</text>
+  </g>
+</svg>

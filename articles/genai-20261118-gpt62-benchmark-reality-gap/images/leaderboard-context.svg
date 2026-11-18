@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="boardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#boardGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#60a5fa" letter-spacing="4">THIRD-PARTY EVALUATIONS &#183; NOVEMBER 2026</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">General Intelligence Jumped. Coding Did Not.</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">GPT-6.2 Astra passed Gemini 4 Carbon and Opus 5.5 on the composite index - then flatlined on coding agents</text>
+
+  <!-- Left panel: AA Intelligence Index -->
+  <rect x="80" y="185" width="700" height="480" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="110" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f8fafc">Artificial Analysis Intelligence Index</text>
+  <text x="110" y="252" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">nine evaluations across knowledge work, coding, science, general knowledge</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Fable 5.2: 65 -> 300px scale: score*4.615 -->
+    <text x="110" y="300" font-size="14" font-weight="700" fill="#e9d5ff">Claude Fable 5.2</text>
+    <rect x="300" y="284" width="300" height="26" rx="5" fill="#7c3aed"/>
+    <text x="612" y="302" font-size="14" font-weight="700" fill="#e9d5ff">65</text>
+
+    <!-- GPT-6.2 Astra: 62 -> 286 -->
+    <text x="110" y="360" font-size="14" font-weight="700" fill="#6ee7b7">GPT-6.2 Astra</text>
+    <rect x="300" y="344" width="286" height="26" rx="5" fill="#059669"/>
+    <text x="598" y="362" font-size="14" font-weight="700" fill="#6ee7b7">62</text>
+
+    <!-- Gemini 4 Carbon: 60 -> 277 -->
+    <text x="110" y="420" font-size="14" font-weight="700" fill="#93c5fd">Gemini 4 Carbon</text>
+    <rect x="300" y="404" width="277" height="26" rx="5" fill="#2563eb"/>
+    <text x="589" y="422" font-size="14" font-weight="700" fill="#93c5fd">60</text>
+
+    <!-- Opus 5.5: 59 -> 272 -->
+    <text x="110" y="480" font-size="14" font-weight="700" fill="#d8b4fe">Claude Opus 5.5</text>
+    <rect x="300" y="464" width="272" height="26" rx="5" fill="#6d28d9"/>
+    <text x="584" y="482" font-size="14" font-weight="700" fill="#d8b4fe">59</text>
+
+    <!-- GPT-6.2 Sol: 57 -> 263 -->
+    <text x="110" y="540" font-size="14" font-weight="700" fill="#fcd34d">GPT-6.2 Sol</text>
+    <rect x="300" y="524" width="263" height="26" rx="5" fill="#d97706"/>
+    <text x="575" y="542" font-size="14" font-weight="700" fill="#fcd34d">57</text>
+
+    <!-- GPT-6 Astra: 57 -> 263 -->
+    <text x="110" y="600" font-size="14" font-weight="700" fill="#94a3b8">GPT-6 Astra</text>
+    <rect x="300" y="584" width="263" height="26" rx="5" fill="#64748b"/>
+    <text x="575" y="602" font-size="14" font-weight="700" fill="#cbd5e1">57</text>
+
+    <text x="110" y="645" font-size="13" fill="#94a3b8">Astra jumped +5 points over GPT-6 Astra. Sol matched the</text>
+    <text x="110" y="665" font-size="13" fill="#94a3b8">predecessor flagship at roughly 15% of the cost per task.</text>
+  </g>
+
+  <!-- Right panel: where it did not move -->
+  <rect x="820" y="185" width="540" height="480" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="850" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f87171">Where the new models did NOT move</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="850" y="276" font-size="14" font-weight="700" fill="#f8fafc">Coding Agent Index (Codex harness, max compute)</text>
+    <text x="850" y="304" font-size="13.5" fill="#cbd5e1">GPT-6.2 Astra: flat vs GPT-6 Astra</text>
+    <text x="850" y="326" font-size="13.5" fill="#cbd5e1">GPT-6.2 Sol: -3 points vs GPT-6.1 Sol</text>
+    <text x="850" y="348" font-size="13.5" fill="#cbd5e1">driver: -14 on SWE-Atlas-QnA-AA (omits key facts)</text>
+
+    <text x="850" y="402" font-size="14" font-weight="700" fill="#f8fafc">Hallucination rate at max effort (AA-Omniscience)</text>
+    <text x="850" y="430" font-size="13.5" fill="#cbd5e1">GPT-6.2 Astra: 59%</text>
+    <text x="850" y="452" font-size="13.5" fill="#cbd5e1">GPT-6.2 Sol: 55%</text>
+
+    <text x="850" y="506" font-size="14" font-weight="700" fill="#f8fafc">Code Arena WebDev leaderboard (Nov 18)</text>
+    <text x="850" y="534" font-size="13.5" fill="#cbd5e1">GPT-6.2 Astra (Max): #3 at 1781 pts (+18)</text>
+    <text x="850" y="556" font-size="13.5" fill="#cbd5e1">GPT-6.2 Sol (Max): #7 at 1757 pts (+13)</text>
+    <text x="850" y="578" font-size="13.5" fill="#cbd5e1">agent scores: still pending at launch</text>
+
+    <text x="850" y="632" font-size="13" fill="#94a3b8">Composite intelligence and cost-efficiency improved;</text>
+    <text x="850" y="652" font-size="13" fill="#94a3b8">the coding-agent axis - where developers live - did not.</text>
+  </g>
+
+  <text x="720" y="712" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">Sources: Artificial Analysis Coding Agent Index and Intelligence Index (via The Decoder), Code Arena / Arena.ai (via Crypto Briefing) - Nov 17-18, 2026</text>
+  <text x="720" y="800" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#fbbf24">OpenAI now owns the cost-vs-performance Pareto frontier. Frontier ownership is not the same as finishing your work.</text>
+</svg>

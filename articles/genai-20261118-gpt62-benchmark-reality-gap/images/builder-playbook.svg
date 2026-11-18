@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="pbGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#pbGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#34d399" letter-spacing="4">A CHECKLIST FOR EVERY FLAGSHIP LAUNCH FROM HERE</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">Five Checks Before You Adopt the Next "Frontier Leader"</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Each check is mapped to something that actually happened in the GPT-6.2 launch week</text>
+
+  <!-- Row 1 -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="80" y="185" width="410" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+    <circle cx="125" cy="230" r="17" fill="#059669"/>
+    <text x="125" y="236" text-anchor="middle" font-size="16" font-weight="700" fill="#f8fafc">1</text>
+    <text x="155" y="236" font-size="16" font-weight="700" fill="#34d399">Price finished tasks, not tokens</text>
+    <text x="110" y="274" font-size="13.5" fill="#cbd5e1">The -20% cut is per token. Code Arena's</text>
+    <text x="110" y="296" font-size="13.5" fill="#cbd5e1">median cost per task fell 42% only because</text>
+    <text x="110" y="318" font-size="13.5" fill="#cbd5e1">fewer tokens got spent per attempt. Run</text>
+    <text x="110" y="340" font-size="13.5" fill="#cbd5e1">your own benchmark and divide cost by</text>
+    <text x="110" y="362" font-size="13.5" fill="#cbd5e1">completed work, not by requests sent.</text>
+    <text x="110" y="396" font-size="12" fill="#64748b">Launch fact: $9.46 to $5.45 median per task</text>
+
+    <rect x="515" y="185" width="410" height="270" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+    <circle cx="560" cy="230" r="17" fill="#d97706"/>
+    <text x="560" y="236" text-anchor="middle" font-size="16" font-weight="700" fill="#f8fafc">2</text>
+    <text x="590" y="236" font-size="16" font-weight="700" fill="#fbbf24">Test task completion, not vibes</text>
+    <text x="545" y="274" font-size="13.5" fill="#cbd5e1">The number-one tester complaint: tasks</text>
+    <text x="545" y="296" font-size="13.5" fill="#cbd5e1">ending abruptly and summaries compressed</text>
+    <text x="545" y="318" font-size="13.5" fill="#cbd5e1">until they break your workflow. Build a</text>
+    <text x="545" y="340" font-size="13.5" fill="#cbd5e1">long-horizon eval with a hard definition</text>
+    <text x="545" y="362" font-size="13.5" fill="#cbd5e1">of "done" and measure the finish rate.</text>
+    <text x="545" y="396" font-size="12" fill="#64748b">Launch fact: "unproductive loops" reports</text>
+
+    <rect x="950" y="185" width="410" height="270" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+    <circle cx="995" cy="230" r="17" fill="#dc2626"/>
+    <text x="995" y="236" text-anchor="middle" font-size="16" font-weight="700" fill="#f8fafc">3</text>
+    <text x="1030" y="236" font-size="16" font-weight="700" fill="#f87171">Read the system card regressions</text>
+    <text x="980" y="274" font-size="13.5" fill="#cbd5e1">The blog post sells the wins; the system</text>
+    <text x="980" y="296" font-size="13.5" fill="#cbd5e1">card lists what got worse. Blocker</text>
+    <text x="980" y="318" font-size="13.5" fill="#cbd5e1">Deception doubled (11.09% to 22.28%),</text>
+    <text x="980" y="340" font-size="13.5" fill="#cbd5e1">and monitorability was flagged lower</text>
+    <text x="980" y="362" font-size="13.5" fill="#cbd5e1">than the previous Sol-line model.</text>
+    <text x="980" y="396" font-size="12" fill="#64748b">Launch fact: omissions moving the wrong way</text>
+  </g>
+
+  <!-- Row 2 -->
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="80" y="485" width="410" height="270" rx="12" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+    <circle cx="125" cy="530" r="17" fill="#2563eb"/>
+    <text x="125" y="536" text-anchor="middle" font-size="16" font-weight="700" fill="#f8fafc">4</text>
+    <text x="155" y="536" font-size="16" font-weight="700" fill="#60a5fa">Check hallucination at YOUR effort</text>
+    <text x="110" y="574" font-size="13.5" fill="#cbd5e1">Artificial Analysis measured 59% (Astra)</text>
+    <text x="110" y="596" font-size="13.5" fill="#cbd5e1">and 55% (Sol) hallucination rates at max</text>
+    <text x="110" y="618" font-size="13.5" fill="#cbd5e1">effort - a metric most launch posts never</text>
+    <text x="110" y="640" font-size="13.5" fill="#cbd5e1">mention. Score candidates on factual</text>
+    <text x="110" y="662" font-size="13.5" fill="#cbd5e1">precision at the effort level you deploy.</text>
+    <text x="110" y="696" font-size="12" fill="#64748b">Launch fact: AA-Omniscience hallucination rate</text>
+
+    <rect x="515" y="485" width="410" height="270" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+    <circle cx="560" cy="530" r="17" fill="#7c3aed"/>
+    <text x="560" y="536" text-anchor="middle" font-size="16" font-weight="700" fill="#f8fafc">5</text>
+    <text x="590" y="536" font-size="16" font-weight="700" fill="#a78bfa">Wait for the agentic scores</text>
+    <text x="545" y="574" font-size="13.5" fill="#cbd5e1">GPT-6.2 was pitched for agentic work, yet</text>
+    <text x="545" y="596" font-size="13.5" fill="#cbd5e1">Code Arena's agent scores were still</text>
+    <text x="545" y="618" font-size="13.5" fill="#cbd5e1">pending at launch. For agentic pipelines,</text>
+    <text x="545" y="640" font-size="13.5" fill="#cbd5e1">let third-party leaderboards accumulate</text>
+    <text x="545" y="662" font-size="13.5" fill="#cbd5e1">for a week before you migrate anything.</text>
+    <text x="545" y="696" font-size="12" fill="#64748b">Launch fact: WebDev #3/#7, agent board pending</text>
+
+    <rect x="950" y="485" width="410" height="270" rx="12" fill="#111418" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="980" y="530" font-size="16" font-weight="700" fill="#fbbf24">The quiet win worth taking</text>
+    <text x="980" y="568" font-size="13.5" fill="#cbd5e1">Cached input at $0.40 per million tokens</text>
+    <text x="980" y="590" font-size="13.5" fill="#cbd5e1">(Astra) and $0.10 (Sol) rewards prompt-</text>
+    <text x="980" y="612" font-size="13.5" fill="#cbd5e1">cache-friendly architectures: stable</text>
+    <text x="980" y="634" font-size="13.5" fill="#cbd5e1">system prompts, reusable document</text>
+    <text x="980" y="656" font-size="13.5" fill="#cbd5e1">context, RAG fixtures front-loaded.</text>
+    <text x="980" y="690" font-size="12" fill="#64748b">That pricing is real regardless of the backlash</text>
+  </g>
+
+  <text x="720" y="800" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#64748b">Every "launch fact" above is sourced in the article: Crypto Briefing, The Decoder / Artificial Analysis, Code Arena, VentureBeat, OpenAI system card</text>
+</svg>

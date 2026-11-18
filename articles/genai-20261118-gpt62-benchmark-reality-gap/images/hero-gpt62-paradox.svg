@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="840" fill="url(#heroGrad)"/>
+
+  <text x="720" y="56" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#fbbf24" letter-spacing="4">GPT-6.2 ASTRA + SOL &#183; LAUNCHED NOVEMBER 17, 2026</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#f8fafc">The Benchmark-Reality Gap, Quantified</text>
+  <text x="720" y="140" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">OpenAI tied Claude on capability and cut prices 20 percent - and its own system card shows reliability moving the other way</text>
+
+  <!-- Paper case -->
+  <rect x="80" y="185" width="400" height="400" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="110" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#34d399">THE PAPER CASE</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="120" cy="266" r="4" fill="#34d399"/>
+    <text x="138" y="272" font-size="14" font-weight="700" fill="#f8fafc">AA Intelligence Index: 62</text>
+    <text x="138" y="293" font-size="13" fill="#cbd5e1">#2 overall, behind Fable 5.2 (65)</text>
+
+    <circle cx="120" cy="326" r="4" fill="#34d399"/>
+    <text x="138" y="332" font-size="14" font-weight="700" fill="#f8fafc">Epoch Capabilities Index: 174</text>
+    <text x="138" y="353" font-size="13" fill="#cbd5e1">exactly ties Claude Fable 5.2</text>
+
+    <circle cx="120" cy="386" r="4" fill="#34d399"/>
+    <text x="138" y="392" font-size="14" font-weight="700" fill="#f8fafc">Agents' Last Exam: +5.5 pts</text>
+    <text x="138" y="413" font-size="13" fill="#cbd5e1">over Fable 5.2 at about 5% of the cost</text>
+
+    <circle cx="120" cy="446" r="4" fill="#34d399"/>
+    <text x="138" y="452" font-size="14" font-weight="700" fill="#f8fafc">Pareto frontier: owned</text>
+    <text x="138" y="473" font-size="13" fill="#cbd5e1">no model is both cheaper and better</text>
+
+    <circle cx="120" cy="506" r="4" fill="#34d399"/>
+    <text x="138" y="512" font-size="14" font-weight="700" fill="#f8fafc">Self-improvement: High</text>
+    <text x="138" y="533" font-size="13" fill="#cbd5e1">first deployed OpenAI model at that tier</text>
+  </g>
+
+  <!-- Price cut -->
+  <rect x="520" y="185" width="400" height="400" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="550" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#fbbf24">THE PRICE CUT</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="560" cy="266" r="4" fill="#fbbf24"/>
+    <text x="578" y="272" font-size="14" font-weight="700" fill="#f8fafc">Astra API: $8 in / $40 out</text>
+    <text x="578" y="293" font-size="13" fill="#cbd5e1">per M tokens - down 20% from GPT-6 Astra</text>
+
+    <circle cx="560" cy="326" r="4" fill="#fbbf24"/>
+    <text x="578" y="332" font-size="14" font-weight="700" fill="#f8fafc">Code Arena cost per task</text>
+    <text x="578" y="353" font-size="13" fill="#cbd5e1">median $9.46 to $5.45 (-42%)</text>
+
+    <circle cx="560" cy="386" r="4" fill="#fbbf24"/>
+    <text x="578" y="392" font-size="14" font-weight="700" fill="#f8fafc">Sol: $2 in / $10 out</text>
+    <text x="578" y="413" font-size="13" fill="#cbd5e1">GPT-6 Astra-level output at ~15% of cost</text>
+
+    <circle cx="560" cy="446" r="4" fill="#fbbf24"/>
+    <text x="578" y="452" font-size="14" font-weight="700" fill="#f8fafc">Cached input: $0.40 / M</text>
+    <text x="578" y="473" font-size="13" fill="#cbd5e1">the quiet win for high-volume workloads</text>
+
+    <circle cx="560" cy="506" r="4" fill="#fbbf24"/>
+    <text x="578" y="512" font-size="14" font-weight="700" fill="#f8fafc">Sol cost per task: -21%</text>
+    <text x="578" y="533" font-size="13" fill="#cbd5e1">$1.84 to $1.45 on Code Arena</text>
+  </g>
+
+  <!-- Reality -->
+  <rect x="960" y="185" width="400" height="400" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="990" y="228" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" fill="#f87171">THE REALITY</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="1000" cy="266" r="4" fill="#f87171"/>
+    <text x="1018" y="272" font-size="14" font-weight="700" fill="#f8fafc">"Essentially unusable"</text>
+    <text x="1018" y="293" font-size="13" fill="#cbd5e1">how power users described the launch</text>
+
+    <circle cx="1000" cy="326" r="4" fill="#f87171"/>
+    <text x="1018" y="332" font-size="14" font-weight="700" fill="#f8fafc">Blocker omission: 11.09% to 22.28%</text>
+    <text x="1018" y="353" font-size="13" fill="#cbd5e1">doubled, per OpenAI's own system card</text>
+
+    <circle cx="1000" cy="386" r="4" fill="#f87171"/>
+    <text x="1018" y="392" font-size="14" font-weight="700" fill="#f8fafc">Hallucination at max effort</text>
+    <text x="1018" y="413" font-size="13" fill="#cbd5e1">Astra 59%, Sol 55% (Artificial Analysis)</text>
+
+    <circle cx="1000" cy="446" r="4" fill="#f87171"/>
+    <text x="1018" y="452" font-size="14" font-weight="700" fill="#f8fafc">Coding Agent Index: flat</text>
+    <text x="1018" y="473" font-size="13" fill="#cbd5e1">Sol actually fell 3 points vs GPT-6.1 Sol</text>
+
+    <circle cx="1000" cy="506" r="4" fill="#f87171"/>
+    <text x="1018" y="512" font-size="14" font-weight="700" fill="#f8fafc">Code Arena WebDev: #3 and #7</text>
+    <text x="1018" y="533" font-size="13" fill="#cbd5e1">strong, but not the leaderboard claims</text>
+  </g>
+
+  <!-- Bottom stat strip -->
+  <rect x="80" y="620" width="1280" height="150" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="230" y="672" font-size="30" font-weight="700" fill="#34d399">174</text>
+    <text x="230" y="700" font-size="13" fill="#94a3b8">Epoch index - tie with</text>
+    <text x="230" y="720" font-size="13" fill="#94a3b8">Claude Fable 5.2</text>
+
+    <text x="510" y="672" font-size="30" font-weight="700" fill="#fbbf24">-20%</text>
+    <text x="510" y="700" font-size="13" fill="#94a3b8">Astra API price vs</text>
+    <text x="510" y="720" font-size="13" fill="#94a3b8">GPT-6 Astra</text>
+
+    <text x="790" y="672" font-size="30" font-weight="700" fill="#f87171">2x</text>
+    <text x="790" y="700" font-size="13" fill="#94a3b8">blocker omission rate</text>
+    <text x="790" y="720" font-size="13" fill="#94a3b8">vs predecessor</text>
+
+    <text x="1070" y="672" font-size="30" font-weight="700" fill="#f87171">59%</text>
+    <text x="1070" y="700" font-size="13" fill="#94a3b8">hallucination rate</text>
+    <text x="1070" y="720" font-size="13" fill="#94a3b8">at max effort (Astra)</text>
+  </g>
+
+  <text x="720" y="812" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">Sources: Artificial Analysis, Epoch AI, Code Arena, OpenAI system card and launch post, via The Decoder, Crypto Briefing, HowToShout, VentureBeat - Nov 17-18, 2026</text>
+</svg>
