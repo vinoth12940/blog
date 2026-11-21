@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft's Agent Framework Was Hijacked on PyPI — Rotation Won't Save You</title>
+    <meta name="description" content="Two malicious releases of Microsoft's official agent-framework package ran a credential stealer through a .pth startup hook — no import required — and minted fresh cloud tokens instead of just stealing stored ones. The verified attack chain, why secret rotation is no longer enough, and the six-layer defense that breaks each step.">
+    <meta property="og:title" content="Microsoft's Agent Framework Was Hijacked on PyPI — Rotation Won't Save You">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-11-21">
+    <meta property="og:description" content="192,000 monthly downloads, a stolen release-pipeline certificate, a .pth hook that runs without an import, and fresh tokens minted from your own build system. The supply-chain playbook just changed.">
+    <meta property="og:image" content="https://vinoth12940.github.io/blog/articles/genai-20261121-agent-framework-pypi-hack/images/hero-attack-chain.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.75; }
+        main { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+        .meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; font-weight: 600; color: #d4d4d4; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1.25rem; color: #c9c9c9; }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        blockquote { border-left: 3px solid #a78bfa; padding: 1rem 1.25rem; margin: 1.5rem 0; background: #0f1729; border-radius: 0 8px 8px 0; color: #b8b8b8; font-style: italic; }
+        ul { margin: 0 0 1.25rem 1.5rem; color: #c9c9c9; }
+        li { margin-bottom: 0.5rem; }
+        img { width: 100%; border-radius: 12px; margin: 1.5rem 0 0.5rem; border: 1px solid #1f2937; }
+        .figcap { font-size: 0.85rem; color: #737373; text-align: center; margin-bottom: 1.75rem; font-style: italic; }
+        .stat-list { list-style: none; margin-left: 0; background: #111418; border: 1px solid #1f2937; border-radius: 12px; padding: 1.25rem 1.5rem; }
+        .stat-list li { padding: 0.4rem 0; border-bottom: 1px solid #1a1f26; }
+        .stat-list li:last-child { border-bottom: none; }
+        hr { border: none; border-top: 1px solid #262626; margin: 2.5rem 0; }
+        strong { color: #f1f5f9; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Microsoft's Agent Framework Was Hijacked on PyPI — Rotation Won't Save You</h1>
+    <p class="meta">November 21, 2026 · AI / Security / DevOps · 9 min read</p>
+
+    <p>On November 17, someone published two versions of <strong>agent-framework</strong> — Microsoft's official open-source toolkit for building AI agents — to PyPI. They came from <strong>Microsoft's own publisher account</strong>. They looked like a routine update to a package with roughly <strong>192,000 monthly downloads</strong>. And both of them carried a credential stealer that runs <em>every time Python starts</em>, whether or not you ever import the framework.</p>
+
+    <p>By the time PyPI quarantined both releases, roughly an hour had passed, the attacker had demonstrated they still held valid publishing access, and the malware had moved on to something uglier than stealing keys: <strong>asking cloud providers to mint fresh tokens</strong> from the compromised machine's own managed identity and CI federation.</p>
+
+    <p>I've spent the last two days reading the incident reports from Wiz, Socket, StepSecurity, and OX Security, and I think this is the most instructive supply-chain attack of the year — not because of who got hit, but because of what it teaches about the assumptions we build our Python workflows on. Every one of them — "my dependency file tells me what runs," "rotation cleans up a leak," "my build runner is plumbing, not a credential" — died this week.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261121-agent-framework-pypi-hack/images/hero-attack-chain.png" alt="Six-step attack chain diagram titled anatomy of the agent-framework hijack. Step one, the entry: a stolen client certificate and private key for Microsoft's Engineering System Release Pipeline, the internal signing service. Step two, the cover: published through Microsoft's own account, looking like a routine update to a 192,000-download package. Step three, the drop: versions 1.26.1 and 1.26.2 published to PyPI on November 17 carrying a dot-pth startup hook. Step four, the trigger: any Python start executes dot-pth hooks before any import. Step five, the haul: environment variables, 300 process environments, credential files, plus requests for fresh Azure and GitHub tokens. Step six, the exit: compressed, encoded exfiltration in a single request to an attacker-controlled webhook endpoint. A stat strip below reads 192,534 monthly downloads per OX Security, 2.5 minutes between release one and release two, about 8 minutes to quarantine the second release, and 3 unique successful thefts per Wiz estimate.">
+    <p class="figcap">The full chain, entry to exit. Every number here comes from the vendor incident reports, Nov 17–20, 2026.</p>
+
+    <h2>Why this package, specifically</h2>
+
+    <p>Agent Framework is Microsoft's consolidation of its Semantic Kernel and AutoGen lines — the toolkit it now positions as the official way to build AI agents and multi-agent workflows in Python. It sits at the center of exactly the kind of development the whole industry is pushing right now: agents that hold API keys, call tools, touch cloud resources, and run inside CI pipelines.</p>
+
+    <p>Which is precisely what made it a target. An agent framework is, by design, <strong>connective tissue</strong> — its whole job is to hold credentials and use them. Compromise one install on one developer machine or one build runner, and you inherit everything that environment can reach: cloud consoles, package registries, git providers, container registries, model hubs.</p>
+
+    <blockquote>An agent framework is the software category whose literal purpose is holding API keys and authority. Of course the supply-chain attackers came for it.</blockquote>
+
+    <ul class="stat-list">
+        <li><strong>Package:</strong> agent-framework — Microsoft's official PyPI project, ~192,534 monthly downloads per OX Security</li>
+        <li><strong>Poisoned versions:</strong> 1.26.1 and 1.26.2, both published November 17, 2026</li>
+        <li><strong>Last clean version:</strong> 1.26.0 — everything above it on the index that day was hostile</li>
+        <li><strong>Caught by:</strong> Socket, StepSecurity, and OX Security, independently</li>
+    </ul>
+
+    <h2>The 70-minute window</h2>
+
+    <p>The timeline shows both sides moving fast. PyPI quarantined the first malicious release quickly — real credit to the automated detection that Socket, StepSecurity, and OX Security's telemetry feeds enable. Then the attacker did something that should reframe how you think about this incident: <strong>they published 1.26.2 about two and a half minutes later.</strong> PyPI caught that one too, roughly eight minutes after upload. But the message was unmistakable — quarantining packages does not revoke whatever publishing credential the attacker was using.</p>
+
+    <p>And what a credential it was. Wiz's analysis traced the publishing access to a <strong>client certificate and private key for Microsoft's Engineering System Release Pipeline</strong> — the internal service Microsoft uses to sign and publish its own packages. The service's address filtering actually blocked the attacker's first attempt, which came from AWS address space. The second attempt came from <strong>Microsoft-owned address space</strong> and went through. How the certificate leaked is still unknown; Microsoft had not responded to press inquiries as of the latest reports.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261121-agent-framework-pypi-hack/images/entry-and-window.png" alt="Two-part diagram. Top: three-box entry path — a client certificate and private key obtained for Microsoft's Engineering System Release Pipeline; a first publish attempt from AWS address space blocked by address filtering; a second attempt from Microsoft-owned address space that succeeded, publishing both malicious releases under Microsoft's own account. Middle: a November 17 quarantine timeline — 1.26.1 published with the agent_framework_meta hook; PyPI quarantines it; plus 2.5 minutes 1.26.2 published with the hook renamed to af_runtime_diag; plus about 8 minutes 1.26.2 quarantined; within about 1 hour both fully pulled. Bottom notes: publishing after quarantine proved access was still live, and Wiz observed the attacker's tooling identifying itself as Cairn, an open-source AI-powered penetration-testing framework.">
+    <p class="figcap">The certificate got them in; the 2.5-minute re-publish proved they still held it.</p>
+
+    <p>One more detail from Wiz's report that I can't stop thinking about: the attacker's own operational tooling reported its progress to <strong>the same public webhook</strong> it was using to collect stolen data, and identified itself as <strong>Cairn — an open-source, AI-powered penetration-testing framework</strong>. The AI-security story of 2026 has mostly been about AI defending or AI attacking vulnerabilities. This was quieter: AI tooling managing the logistics of a supply-chain heist, timestamping its own work into a webhook any defender was also reading.</p>
+
+    <h2>The trick that beats your dependency audit</h2>
+
+    <p>Here's the part every Python developer should internalize. The payload wasn't delivered through the package's importable code. It was delivered through a <strong>.pth file</strong> — a file type Python executes automatically at interpreter startup, processing it before your application code, before your imports, before anything.</p>
+
+    <p>Version 1.26.1 planted the hook as <strong>agent_framework_meta.pth</strong>, pointing at a module innocuously named <em>_telemetry.py</em>. When researchers caught it, version 1.26.2 restored Microsoft's original package initializer and moved the payload to <strong>af_runtime_diag.pth</strong> — a fresh name, a smaller diff, harder to spot. Both versions kept the genuine <strong>agent-framework-core 1.26.0</strong> as their dependency, so the framework functioned perfectly normally while the stealer ran underneath.</p>
+
+    <blockquote>The best camouflage for malware is a product that works exactly as advertised. Your import scanner had nothing to find, because the malicious code never appears in an import statement.</blockquote>
+
+    <p>This is the assumption that died: <em>my dependency file tells me what code runs in my environment.</em> It doesn't. A .pth hook lives one level below the import system. Cloudsmith's head of security James Matchett put the operational consequence bluntly: a production dependency list might show no trace of the framework at all, while a build runner installed it and was shut down before anyone's alert fired.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261121-agent-framework-pypi-hack/images/pth-mechanism.png" alt="Split diagram titled the malware runs one level below your imports. Left panel, what the dependency file shows: agent-framework pinned at 1.26.0 in requirements, the legitimate agent-framework-core 1.26.0 dependency untouched, and an audit verdict of nothing suspicious — the view every dependency scanner reported. Right panel, what actually ran: pip install resolves 1.26.2, a dot-pth file lands in site-packages disguised as telemetry plumbing, every interpreter start executes it before any import, and the stealer runs with your shell's access whether or not the framework is imported. Footer: a requirements freeze looks clean because the payload never appears as an import; release two renamed the hook to af_runtime_diag.pth to shrink the diff; and per OpenSourceMalware it is a focused credential and token stealer with no persistence and no RAT behavior.">
+    <p class="figcap">Two views of the same environment. The left one is what your tools showed you.</p>
+
+    <h2>What it copied — and what it minted</h2>
+
+    <p>Once running, the malware did two things, and the second is the one that matters for the rest of this decade. First, the expected part: it swept <strong>environment variables</strong> whose names matched TOKEN, SECRET, AZURE, AWS, or GITHUB; read the environments of <strong>up to 300 other running processes</strong>; copied <strong>.env files</strong>; and lifted credential files for Azure CLI, pip, npm, git, Docker, and Hugging Face.</p>
+
+    <p>Then the part that changes incident response. Per Endor Labs, it requested <strong>Azure managed-identity tokens for 12 separate resources</strong>. It requested <strong>Azure DevOps OIDC federation tokens</strong>. Version 1.26.2 added <strong>GitHub Actions OIDC tokens</strong> and started scanning GitHub runner directories. This wasn't a burglar copying what was in the drawer — it was asking the bank to issue new cards, in the victim's own name, from the victim's own address.</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261121-agent-framework-pypi-hack/images/theft-map.png" alt="Two-column diagram titled one install, two kinds of theft. Left column, copied stored secrets: environment variables matching TOKEN, SECRET, AZURE, AWS, or GITHUB; environments of up to 300 running processes; .env files from project directories; credential files for Azure CLI, pip, npm, git, Docker, and Hugging Face; and OX Security's guidance to treat every secret reachable from that host as compromised. Right column, minted tokens actively requested: Azure managed-identity tokens for 12 separate resources per Endor Labs; Azure DevOps OIDC federation tokens; GitHub Actions OIDC tokens added in version 1.26.2; and runner directory scans, also new in 1.26.2 — with StepSecurity's caution that requests were attempted with no confirmation any tokens were issued. Footer: rotating stored keys does not cancel tokens already minted, so OIDC permissions, federated credentials, and managed-identity role assignments need their own review.">
+    <p class="figcap">Copied secrets rotate. Minted tokens don't — they need their own revocation path.</p>
+
+    <p>To be fair to the ambiguity: StepSecurity explicitly cautioned that these token requests were <em>attempts</em>, with no confirmation any tokens were actually issued. And per malware trackers at OpenSourceMalware, this was a <strong>focused credential and token stealer — no persistence, no RAT behavior</strong>. It stole, sent, and left. The haul was compressed, encoded, and exfiltrated in a single request to an attacker-controlled webhook.site endpoint.</p>
+
+    <blockquote>A build system that can ask a cloud provider for new access tokens is itself a credential. — Eric Paulsen, Field CTO EMEA, Coder</blockquote>
+
+    <h2>Three victims — and why that number misleads</h2>
+
+    <p>The blast radius estimate comes with an asterisk the size of the number itself. Wiz observed the attacker's free webhook.site account, which retained just 50 requests. Of those, 17 represented data thefts — and only <strong>3 were unique victims</strong>. The rest were the attacker's own machines and the automated traffic of sandbox and security-vendor scanners.</p>
+
+    <p>So: three confirmed victims. That's the good news, and I'd treat it as preliminary for three reasons. The free webhook retained only the most recent 50 requests — anything earlier is invisible. Quarantine windows being what they are, installs during that first hour may never have phoned home at all, leaving no trace in anyone's telemetry. And a compromised build runner that touched a deployment token before being torn down leaves exactly no evidence in the places teams usually look. "Three victims" is the floor, not the census.</p>
+
+    <h2>This is now a pattern, not an incident</h2>
+
+    <p>Zoom out and this stops looking like a one-off. In May, Microsoft's <strong>durabletask</strong> PyPI package was hijacked after its publishing token was stolen — an attack attributed to TeamPCP, the same group behind the <strong>LiteLLM</strong> compromise. OVHcloud's CLI releases got backdoored on GitHub for developer secrets. Wiz has not linked this month's certificate theft to TeamPCP, but the target selection is converging: <strong>the packages developers trust to talk to AI infrastructure are the ones being poisoned.</strong> The LiteLLM releases pipeline, the durabletask token, and now a Microsoft signing certificate — each breach walked one step further up the trust chain.</p>
+
+    <p>That last hop is the disturbing one. Previous PyPI hijacks stole a maintainer's token. This one used a <strong>certificate for the pipeline that signs and publishes</strong> — closer to the source of trust itself. If you're a platform engineer, the question this incident should plant is uncomfortable: how many steps are there between a leaked credential and your production dependency tree, and do you actually know where they all are?</p>
+
+    <h2>Rotation is the beginning now, not the finish line</h2>
+
+    <p>The standard breach response — rotate your secrets — is exactly half right here, and the half that's wrong is the dangerous half. Rotating stored keys does <strong>nothing</strong> to tokens already minted through managed identity or OIDC federation. Those live in the identity provider's ledger, not in your .env file. StepSecurity's guidance is that teams need to review OIDC permissions, federated credentials, and managed-identity role assignments as their own distinct workstream.</p>
+
+    <p>If you installed either 1.26.1 or 1.26.2, the vendor consensus sequence is:</p>
+
+    <ul>
+        <li><strong>Isolate the machine or runner first</strong> — before running python or pip again, because every interpreter start re-fires the hook</li>
+        <li><strong>Rebuild from a known-clean base</strong>, pinning agent-framework to 1.26.0, the last clean release</li>
+        <li><strong>Treat every secret reachable from that host as compromised</strong> — OX Security's phrasing, and the right one</li>
+        <li><strong>Rotate stored secrets AND review federated access</strong> — OIDC configs, managed-identity role assignments, CI federation trusts</li>
+        <li><strong>Check egress logs for the webhook path</strong>, distinguishing blocked requests from completed transfers — that distinction is the difference between "exposed" and "breached"</li>
+    </ul>
+
+    <h2>The defense playbook</h2>
+
+    <p>The longer-term fix isn't a package manager setting — it's shrinking what any single install can reach. Within 48 hours, five security vendors' guidance had converged on the same six layers, and each one maps cleanly onto a step of this specific attack:</p>
+
+    <img src="https://vinoth12940.github.io/blog/articles/genai-20261121-agent-framework-pypi-hack/images/defense-playbook.png" alt="Six-card defense playbook diagram titled six layers, each one breaks a step of this attack. Card one, pin versions and mirror internally — resolve from an internal mirror of approved versions, breaking default-resolution and fresh-release cache poisoning. Card two, treat build systems as credentials — review OIDC federation configs and managed-identity role assignments, breaking minted tokens that survive every secret rotation. Card three, ephemeral build runners — environments deleted after every job, breaking persistence and cross-job credential reach. Card four, hour-level credential TTL — secrets that expire fast have little resale value, breaking the exfil-then-sell economics. Card five, egress allow-listing — block outbound to non-approved hosts, killing the single POST to webhook.site. Card six, audit startup hooks not imports — watch site-packages for dot-pth files, breaking the no-import execution trick. Footer: Coder's line that a compromised package then has very little to steal and nowhere to send it, plus the incident response sequence.">
+    <p class="figcap">Six layers from five vendors' guidance, each mapped to the step of the attack it defeats.</p>
+
+    <ul>
+        <li><strong>Resolve from an internal mirror of approved versions.</strong> The public index is a distribution channel, not a trust boundary. Internal mirrors turn "whatever published last night" into "what we reviewed."</li>
+        <li><strong>Treat your build system as a credential.</strong> Paulsen's framing is the right mental model — if a runner can mint tokens, the runner IS a key. Audit OIDC federation and managed-identity assignments with the same rigor as secrets.</li>
+        <li><strong>Run builds ephemeral.</strong> Environments deleted after each job cap the blast radius of anything that fires during a build — and there's nothing persistent for a stealer to come back to.</li>
+        <li><strong>Expire credentials within the hour.</strong> A leaked token with a 60-minute TTL is worth a fraction of a leaked long-lived key. Most CI platforms support this today; the friction is organizational, not technical.</li>
+        <li><strong>Allow-list egress from dev machines and runners.</strong> The entire exit of this attack was one HTTPS POST to a public webhook service. Egress filtering doesn't prevent the theft — it prevents the delivery, which is nearly as good.</li>
+        <li><strong>Monitor startup hooks, not just imports.</strong> .pth files in site-packages are a legitimate mechanism that this attack weaponized. A diff of unexpected .pth files is cheap to collect and would have flagged both malicious releases instantly.</li>
+    </ul>
+
+    <hr>
+
+    <p>Stepping back: the genuinely new thing here isn't the stealer — info-stealers in npm and PyPI packages are regrettably routine. It's the combination. A signing-pipeline certificate got them in past the obvious controls. A startup hook got them execution without a trace in any import graph. And identity federation turned a stolen session into the ability to mint unlimited fresh authority. Three force multipliers, one package, 70 minutes.</p>
+
+    <p>And the target choice tells you where this is heading. The tools we're all adopting to build agents are, structurally, credential orchestration layers — that's what makes them useful, and it's what makes their supply chain the highest-leverage attack surface in the Python ecosystem. The next inflection of AI security isn't a model misbehaving. It's the plumbing underneath every agent quietly becoming the thing worth stealing.</p>
+
+    <blockquote>Trust on install is the vulnerability. Everything else — the certificate, the hook, the tokens — is just exploitation of it.</blockquote>
+
+    <p>Does your CI resolve straight from the public index? Be honest — mine did until this week. If this changed how you think about your Python supply chain, the share button is right there; the build runners you save may be your own.</p>
+</main>
+</body>
+</html>

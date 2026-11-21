@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="800" viewBox="0 0 1440 800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arrG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#f87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="800" fill="url(#bgGrad)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#fbbf24" letter-spacing="4">THE .PTH MECHANISM</text>
+  <text x="720" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fafc">The malware runs one level below your imports</text>
+  <text x="720" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Why dependency audits showed nothing: the payload never appears in an import statement</text>
+
+  <!-- Left panel: the assumption -->
+  <rect x="80" y="170" width="600" height="430" rx="16" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="110" y="210" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#34d399">WHAT THE DEPENDENCY FILE SHOWS</text>
+
+  <rect x="120" y="240" width="520" height="72" rx="8" fill="#111418" stroke="#334155" stroke-width="0.5"/>
+  <text x="144" y="270" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">agent-framework, pinned</text>
+  <text x="144" y="294" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">requirements.txt holds 1.26.0 - the last clean release</text>
+
+  <line x1="380" y1="312" x2="380" y2="344" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrG)"/>
+
+  <rect x="120" y="350" width="520" height="72" rx="8" fill="#111418" stroke="#334155" stroke-width="0.5"/>
+  <text x="144" y="380" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">agent-framework-core 1.26.0</text>
+  <text x="144" y="404" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">the real dependency - untouched, exactly as Microsoft shipped it</text>
+
+  <line x1="380" y1="422" x2="380" y2="454" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrG)"/>
+
+  <rect x="120" y="460" width="520" height="72" rx="8" fill="#111418" stroke="#334155" stroke-width="0.5"/>
+  <text x="144" y="490" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Audit verdict: nothing suspicious</text>
+  <text x="144" y="514" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">no odd imports, no odd packages, framework behaves normally</text>
+
+  <text x="380" y="572" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-style="italic" fill="#94a3b8">This is what every dependency scanner reported after the fact.</text>
+
+  <!-- Right panel: the reality -->
+  <rect x="760" y="170" width="600" height="430" rx="16" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="790" y="210" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f87171">WHAT ACTUALLY RAN</text>
+
+  <rect x="800" y="240" width="520" height="64" rx="8" fill="#111418" stroke="#334155" stroke-width="0.5"/>
+  <text x="824" y="268" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">1. pip install resolves 1.26.2</text>
+  <text x="824" y="290" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">default resolution grabs the newest version on the index</text>
+
+  <line x1="1060" y1="304" x2="1060" y2="330" stroke="#f87171" stroke-width="1.5" marker-end="url(#arrR)"/>
+
+  <rect x="800" y="336" width="520" height="64" rx="8" fill="#111418" stroke="#334155" stroke-width="0.5"/>
+  <text x="824" y="364" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">2. A .pth file lands in site-packages</text>
+  <text x="824" y="386" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">agent_framework_meta.pth - disguised as telemetry plumbing</text>
+
+  <line x1="1060" y1="400" x2="1060" y2="426" stroke="#f87171" stroke-width="1.5" marker-end="url(#arrR)"/>
+
+  <rect x="800" y="432" width="520" height="64" rx="8" fill="#111418" stroke="#334155" stroke-width="0.5"/>
+  <text x="824" y="460" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">3. Every interpreter start executes it</text>
+  <text x="824" y="482" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">Python processes .pth hooks at startup - before any import</text>
+
+  <line x1="1060" y1="496" x2="1060" y2="522" stroke="#f87171" stroke-width="1.5" marker-end="url(#arrR)"/>
+
+  <rect x="800" y="528" width="520" height="56" rx="8" fill="#2a1215" stroke="#f87171" stroke-width="1"/>
+  <text x="824" y="552" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f87171">4. The stealer runs with your shell's access</text>
+  <text x="824" y="572" font-family="Inter, Arial, sans-serif" font-size="13" fill="#f1c0c0">import agent-framework or not - the code has already executed</text>
+
+  <!-- Bottom takeaway -->
+  <rect x="80" y="640" width="1280" height="100" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="720" y="680" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#fbbf24">The trap: a requirements freeze looks clean because the malicious code never appears as an import.</text>
+  <text x="720" y="706" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Release two went further - it restored the original initializer and renamed the hook to af_runtime_diag.pth, making the diff harder to spot.</text>
+  <text x="720" y="726" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">OpenSourceMalware: a focused credential and token stealer - no persistence, no RAT behavior. It steals, sends, and leaves.</text>
+</svg>

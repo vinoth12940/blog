@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="880" viewBox="0 0 1440 880">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="880" fill="url(#bgGrad5)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#34d399" letter-spacing="4">THE DEFENSE PLAYBOOK</text>
+  <text x="720" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fafc">Six layers, each one breaks a step of this attack</text>
+  <text x="720" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">What StepSecurity, OX Security, Socket, Cloudsmith, and Coder converged on within 48 hours</text>
+
+  <!-- Row 1 -->
+  <rect x="80" y="170" width="380" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="104" y="204" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">01</text>
+  <text x="104" y="236" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Pin versions, mirror internally</text>
+  <text x="104" y="264" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Resolve dependencies from an</text>
+  <text x="104" y="284" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">internal mirror of approved</text>
+  <text x="104" y="304" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">versions - not straight from the</text>
+  <text x="104" y="324" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">public index on every build.</text>
+  <text x="104" y="360" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Breaks: default-resolution and</text>
+  <text x="104" y="380" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">cache poisoning of fresh releases</text>
+
+  <rect x="530" y="170" width="380" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="554" y="204" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">02</text>
+  <text x="554" y="236" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Treat build systems as credentials</text>
+  <text x="554" y="264" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Review OIDC federation configs</text>
+  <text x="554" y="284" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">and managed-identity role</text>
+  <text x="554" y="304" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">assignments - not just stored</text>
+  <text x="554" y="324" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">keys and passwords.</text>
+  <text x="554" y="360" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Breaks: minted tokens that</text>
+  <text x="554" y="380" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">survive every secret rotation</text>
+
+  <rect x="980" y="170" width="380" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="1004" y="204" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">03</text>
+  <text x="1004" y="236" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Ephemeral build runners</text>
+  <text x="1004" y="264" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Run builds in environments</text>
+  <text x="1004" y="284" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">that are deleted after every</text>
+  <text x="1004" y="304" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">job. Cloudsmith: a runner can</text>
+  <text x="1004" y="324" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">install it and vanish before the</text>
+  <text x="1004" y="344" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">alert even arrives.</text>
+  <text x="1004" y="380" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Breaks: persistence and</text>
+  <text x="1004" y="400" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">cross-job credential reach</text>
+
+  <!-- Row 2 -->
+  <rect x="80" y="480" width="380" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="104" y="514" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">04</text>
+  <text x="104" y="546" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Hour-level credential TTL</text>
+  <text x="104" y="574" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Make sure credentials reachable</text>
+  <text x="104" y="594" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">from build jobs expire within the</text>
+  <text x="104" y="614" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">hour - a leak that dies fast has</text>
+  <text x="104" y="634" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">little resale value.</text>
+  <text x="104" y="670" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Breaks: the exfil-then-sell</text>
+  <text x="104" y="690" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">economics of stolen tokens</text>
+
+  <rect x="530" y="480" width="380" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="554" y="514" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">05</text>
+  <text x="554" y="546" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Egress allow-listing</text>
+  <text x="554" y="574" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Block outbound connections from</text>
+  <text x="554" y="594" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">dev machines and runners to</text>
+  <text x="554" y="614" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">anything not on an approved list.</text>
+  <text x="554" y="650" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Breaks: the single POST to</text>
+  <text x="554" y="670" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">webhook.site - the whole exit</text>
+
+  <rect x="980" y="480" width="380" height="270" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="1004" y="514" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#34d399">06</text>
+  <text x="1004" y="546" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Audit startup hooks, not imports</text>
+  <text x="1004" y="574" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Watch site-packages for .pth</text>
+  <text x="1004" y="594" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">files and unexpected startup</text>
+  <text x="1004" y="614" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">hooks - they execute without an</text>
+  <text x="1004" y="634" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">import, below your scanners.</text>
+  <text x="1004" y="670" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Breaks: the no-import</text>
+  <text x="1004" y="690" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">execution trick itself</text>
+
+  <!-- Bottom strip -->
+  <rect x="80" y="780" width="1280" height="70" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="720" y="808" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">If you do these six things, in Coder's words, "a compromised package has very little to steal and nowhere to send it."</text>
+  <text x="720" y="832" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">If you installed either version: isolate before running python or pip again, rebuild from 1.26.0, rotate everything reachable.</text>
+</svg>

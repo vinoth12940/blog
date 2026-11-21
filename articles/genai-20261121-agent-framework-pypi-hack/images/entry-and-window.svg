@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+    <marker id="arr4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="820" fill="url(#bgGrad4)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#f87171" letter-spacing="4">HOW THEY GOT IN - AND HOW FAST PYPI MOVED</text>
+  <text x="720" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fafc">A stolen certificate and a 70-minute window</text>
+  <text x="720" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">Wiz traced the entry path; the quarantine timeline shows both sides racing</text>
+
+  <!-- Entry path: 3 boxes -->
+  <rect x="80" y="175" width="380" height="180" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="104" y="207" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">1. Credentials obtained</text>
+  <text x="104" y="235" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">A client certificate and private</text>
+  <text x="104" y="255" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">key for Microsoft's Engineering</text>
+  <text x="104" y="275" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">System Release Pipeline - the</text>
+  <text x="104" y="295" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">internal service that signs and</text>
+  <text x="104" y="315" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">publishes packages</text>
+
+  <line x1="460" y1="265" x2="524" y2="265" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr4)"/>
+
+  <rect x="530" y="175" width="380" height="180" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="554" y="207" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">2. First attempt - blocked</text>
+  <text x="554" y="235" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">The attacker tried to publish</text>
+  <text x="554" y="255" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">from AWS address space;</text>
+  <text x="554" y="275" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">the service's address filtering</text>
+  <text x="554" y="295" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">rejected the request</text>
+
+  <line x1="910" y1="265" x2="974" y2="265" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr4)"/>
+
+  <rect x="980" y="175" width="380" height="180" rx="12" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="1004" y="207" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">3. Second attempt - through</text>
+  <text x="1004" y="235" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Same certificate, but now from</text>
+  <text x="1004" y="255" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Microsoft-owned address space.</text>
+  <text x="1004" y="275" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">The filter passed it, and both</text>
+  <text x="1004" y="295" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">malicious releases published</text>
+  <text x="1004" y="315" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">under Microsoft's own account</text>
+
+  <!-- Timeline -->
+  <text x="720" y="425" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#94a3b8">NOVEMBER 17, 2026 - THE QUARANTINE RACE</text>
+
+  <line x1="120" y1="500" x2="1320" y2="500" stroke="#334155" stroke-width="2"/>
+
+  <circle cx="160" cy="500" r="8" fill="#f87171"/>
+  <text x="160" y="470" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">1.26.1 published</text>
+  <text x="160" y="530" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8">hook: agent_framework_meta</text>
+
+  <circle cx="450" cy="500" r="8" fill="#fbbf24"/>
+  <text x="450" y="470" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">PyPI quarantines 1.26.1</text>
+  <text x="450" y="530" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8">detected by the vendors</text>
+
+  <circle cx="740" cy="500" r="8" fill="#f87171"/>
+  <text x="740" y="470" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">+2.5 min: 1.26.2 published</text>
+  <text x="740" y="530" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8">hook renamed to af_runtime_diag</text>
+
+  <circle cx="1030" cy="500" r="8" fill="#fbbf24"/>
+  <text x="1030" y="470" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">+~8 min: 1.26.2 quarantined</text>
+  <text x="1030" y="530" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8">both releases now gone</text>
+
+  <circle cx="1280" cy="500" r="8" fill="#34d399"/>
+  <text x="1270" y="470" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">within ~1 hour</text>
+  <text x="1270" y="530" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8">fully pulled, window closed</text>
+
+  <!-- Bottom notes -->
+  <rect x="80" y="600" width="610" height="160" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="110" y="636" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#fbbf24">Publishing after quarantine = access still live</text>
+  <text x="110" y="664" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Uploading 1.26.2 minutes after 1.26.1 was</text>
+  <text x="110" y="684" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">quarantined proved the attacker still held valid</text>
+  <text x="110" y="704" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">publishing access. How the certificate leaked is</text>
+  <text x="110" y="724" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">still unknown - Microsoft had not commented as</text>
+  <text x="110" y="744" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">of the latest reports.</text>
+
+  <rect x="750" y="600" width="610" height="160" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="780" y="636" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#60a5fa">Attacker tooling identified itself: Cairn</text>
+  <text x="780" y="664" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">Wiz observed the operation's tooling reporting</text>
+  <text x="780" y="684" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">progress to the same webhook used for stolen</text>
+  <text x="780" y="704" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">data - and identifying itself as Cairn, an</text>
+  <text x="780" y="724" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">open-source, AI-powered penetration-testing</text>
+  <text x="780" y="744" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">framework now working for the other side.</text>
+</svg>

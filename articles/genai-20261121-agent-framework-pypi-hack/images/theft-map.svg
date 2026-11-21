@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#16243d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="820" fill="url(#bgGrad3)"/>
+
+  <text x="720" y="52" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#fbbf24" letter-spacing="4">BLAST RADIUS OF ONE INSTALL</text>
+  <text x="720" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fafc">One install, two kinds of theft</text>
+  <text x="720" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" fill="#94a3b8">The stealer did not only copy what was lying around - it asked cloud providers to mint new credentials</text>
+
+  <!-- Left card: copied -->
+  <rect x="80" y="170" width="610" height="440" rx="16" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="110" y="210" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#fbbf24">COPIED - STORED SECRETS</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="122" cy="248" r="4" fill="#fbbf24"/>
+    <text x="142" y="254" font-size="14" font-weight="700" fill="#f8fafc">Environment variables</text>
+    <text x="142" y="276" font-size="13" fill="#cbd5e1">any name containing TOKEN, SECRET,</text>
+    <text x="142" y="296" font-size="13" fill="#cbd5e1">AZURE, AWS, or GITHUB</text>
+
+    <circle cx="122" cy="330" r="4" fill="#fbbf24"/>
+    <text x="142" y="336" font-size="14" font-weight="700" fill="#f8fafc">Other processes' environments</text>
+    <text x="142" y="358" font-size="13" fill="#cbd5e1">read from up to 300 running processes</text>
+    <text x="142" y="378" font-size="13" fill="#cbd5e1">where permissions allowed</text>
+
+    <circle cx="122" cy="412" r="4" fill="#fbbf24"/>
+    <text x="142" y="418" font-size="14" font-weight="700" fill="#f8fafc">.env files</text>
+    <text x="142" y="440" font-size="13" fill="#cbd5e1">copied straight from project directories</text>
+
+    <circle cx="122" cy="474" r="4" fill="#fbbf24"/>
+    <text x="142" y="480" font-size="14" font-weight="700" fill="#f8fafc">Credential files on disk</text>
+    <text x="142" y="502" font-size="13" fill="#cbd5e1">Azure CLI, pip, npm, git, Docker,</text>
+    <text x="142" y="522" font-size="13" fill="#cbd5e1">and Hugging Face token caches</text>
+
+    <circle cx="122" cy="556" r="4" fill="#fbbf24"/>
+    <text x="142" y="562" font-size="14" font-weight="700" fill="#f8fafc">Everything your shell could reach</text>
+    <text x="142" y="584" font-size="13" fill="#cbd5e1">OX Security: treat every secret reachable</text>
+    <text x="142" y="604" font-size="13" fill="#cbd5e1">from that host as compromised</text>
+  </g>
+
+  <!-- Right card: minted -->
+  <rect x="750" y="170" width="610" height="440" rx="16" fill="#1e1e2e" stroke="#f87171" stroke-width="1.5"/>
+  <text x="780" y="210" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" fill="#f87171">MINTED - TOKENS ACTIVELY REQUESTED</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <circle cx="792" cy="248" r="4" fill="#f87171"/>
+    <text x="812" y="254" font-size="14" font-weight="700" fill="#f8fafc">Azure managed-identity tokens</text>
+    <text x="812" y="276" font-size="13" fill="#cbd5e1">requests aimed at 12 separate resources</text>
+    <text x="812" y="296" font-size="13" fill="#cbd5e1">(count per Endor Labs)</text>
+
+    <circle cx="792" cy="330" r="4" fill="#f87171"/>
+    <text x="812" y="336" font-size="14" font-weight="700" fill="#f8fafc">Azure DevOps OIDC tokens</text>
+    <text x="812" y="358" font-size="13" fill="#cbd5e1">CI federation credentials, requested</text>
+    <text x="812" y="378" font-size="13" fill="#cbd5e1">fresh from the identity provider</text>
+
+    <circle cx="792" cy="412" r="4" fill="#f87171"/>
+    <text x="812" y="418" font-size="14" font-weight="700" fill="#f8fafc">GitHub Actions OIDC tokens</text>
+    <text x="812" y="440" font-size="13" fill="#cbd5e1">added in version 1.26.2 - the stealer</text>
+    <text x="812" y="460" font-size="13" fill="#cbd5e1">evolved between releases</text>
+
+    <circle cx="792" cy="494" r="4" fill="#f87171"/>
+    <text x="812" y="500" font-size="14" font-weight="700" fill="#f8fafc">Runner directory scans</text>
+    <text x="812" y="522" font-size="13" fill="#cbd5e1">also new in 1.26.2 - hunting CI machines</text>
+
+    <circle cx="792" cy="556" r="4" fill="#f87171"/>
+    <text x="812" y="562" font-size="14" font-weight="700" fill="#f8fafc">StepSecurity's caution</text>
+    <text x="812" y="584" font-size="13" fill="#cbd5e1">requests were attempted - no confirmation</text>
+    <text x="812" y="604" font-size="13" fill="#cbd5e1">that any tokens were actually issued</text>
+  </g>
+
+  <!-- Footer -->
+  <rect x="80" y="650" width="1280" height="110" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="720" y="690" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">The part that changes incident response: rotating stored keys does not cancel tokens already minted.</text>
+  <text x="720" y="716" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" fill="#cbd5e1">StepSecurity: teams must also review OIDC permissions, federated credentials, and managed-identity role assignments.</text>
+  <text x="720" y="738" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#64748b">Coder's Eric Paulsen: "a build system that can ask a cloud provider for new access tokens is itself a credential."</text>
+</svg>
