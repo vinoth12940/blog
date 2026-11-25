@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 820" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="820" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" font-size="32" font-weight="700" fill="#f1f5f9">Three agents, one pipeline — two of three still beta</text>
+  <text x="720" y="90" text-anchor="middle" font-size="17" fill="#94a3b8">What each Claude Ship component is allowed to do — and what it is explicitly barred from</text>
+
+  <!-- Code Review card -->
+  <rect x="70" y="130" width="400" height="380" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="94" y="154" width="66" height="26" rx="13" fill="#052e22" stroke="#34d399" stroke-width="1"/>
+  <text x="127" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">GA</text>
+  <text x="176" y="172" font-size="21" font-weight="700" fill="#f1f5f9">Code Review</text>
+  <text x="94" y="208" font-size="14.5" fill="#94a3b8">Examines the PR against the whole</text>
+  <text x="94" y="228" font-size="14.5" fill="#94a3b8">codebase, not just the diff.</text>
+  <text x="94" y="262" font-size="15" font-weight="600" fill="#34d399">Can</text>
+  <text x="94" y="286" font-size="14.5" fill="#e2e8f0">· Analyze from several perspectives</text>
+  <text x="94" y="310" font-size="14.5" fill="#e2e8f0">· Cross-check and verify findings</text>
+  <text x="94" y="334" font-size="14.5" fill="#e2e8f0">· Categorize and post to the PR</text>
+  <text x="94" y="358" font-size="14.5" fill="#e2e8f0">· Quick / Standard / Deep per repo</text>
+  <line x1="94" y1="440" x2="446" y2="440" stroke="#334155" stroke-width="1"/>
+  <text x="94" y="470" font-size="15" font-weight="600" fill="#f87171">Cannot</text>
+  <text x="94" y="494" font-size="14.5" fill="#e2e8f0">change code, or approve anything</text>
+
+  <!-- PR Steward card -->
+  <rect x="520" y="130" width="400" height="380" rx="14" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <rect x="544" y="154" width="66" height="26" rx="13" fill="#0c1f3d" stroke="#60a5fa" stroke-width="1"/>
+  <text x="577" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">BETA</text>
+  <text x="626" y="172" font-size="21" font-weight="700" fill="#f1f5f9">PR Steward</text>
+  <text x="544" y="208" font-size="14.5" fill="#94a3b8">Keeps the pull request green and</text>
+  <text x="544" y="228" font-size="14.5" fill="#94a3b8">ready to be approved.</text>
+  <text x="544" y="262" font-size="15" font-weight="600" fill="#60a5fa">Can</text>
+  <text x="544" y="286" font-size="14.5" fill="#e2e8f0">· Fix failing CI checks and conflicts</text>
+  <text x="544" y="310" font-size="14.5" fill="#e2e8f0">· Act on feedback from bots and devs</text>
+  <text x="544" y="334" font-size="14.5" fill="#e2e8f0">· Comment per push: what changed,</text>
+  <text x="544" y="358" font-size="14.5" fill="#e2e8f0">  and how to roll it back</text>
+  <text x="544" y="382" font-size="14.5" fill="#e2e8f0">· Be steered with @claude, halted</text>
+  <text x="544" y="406" font-size="14.5" fill="#e2e8f0">  with @claude stop</text>
+  <line x1="544" y1="440" x2="896" y2="440" stroke="#334155" stroke-width="1"/>
+  <text x="544" y="470" font-size="15" font-weight="600" fill="#f87171">Cannot</text>
+  <text x="544" y="494" font-size="14.5" fill="#e2e8f0">approve or merge pull requests</text>
+
+  <!-- Claude Approvals card -->
+  <rect x="970" y="130" width="400" height="380" rx="14" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <rect x="994" y="154" width="66" height="26" rx="13" fill="#251a3d" stroke="#a78bfa" stroke-width="1"/>
+  <text x="1027" y="172" text-anchor="middle" font-size="13" font-weight="700" fill="#a78bfa">BETA</text>
+  <text x="1076" y="172" font-size="21" font-weight="700" fill="#f1f5f9">Claude Approvals</text>
+  <text x="994" y="208" font-size="14.5" fill="#94a3b8">The novel part: AI-granted approval</text>
+  <text x="994" y="228" font-size="14.5" fill="#94a3b8">authority, scoped by policy.</text>
+  <text x="994" y="262" font-size="15" font-weight="600" fill="#a78bfa">Can</text>
+  <text x="994" y="286" font-size="14.5" fill="#e2e8f0">· Read .claude/approvals.yml (default</text>
+  <text x="994" y="310" font-size="14.5" fill="#e2e8f0">  branch) with natural-language rules</text>
+  <text x="994" y="334" font-size="14.5" fill="#e2e8f0">· Auto-approve routine changes</text>
+  <text x="994" y="358" font-size="14.5" fill="#e2e8f0">· Escalate sensitive changes to humans</text>
+  <text x="994" y="382" font-size="14.5" fill="#e2e8f0">· Run observe-only to trial decisions</text>
+  <line x1="994" y1="440" x2="1346" y2="440" stroke="#334155" stroke-width="1"/>
+  <text x="994" y="470" font-size="15" font-weight="600" fill="#f87171">Cannot</text>
+  <text x="994" y="494" font-size="14.5" fill="#e2e8f0">bypass branch protection rules</text>
+
+  <!-- admin band -->
+  <rect x="70" y="540" width="1300" height="104" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="100" y="572" font-size="15" font-weight="700" fill="#e2e8f0">Admin controls</text>
+  <text x="100" y="598" font-size="14.5" fill="#94a3b8">Enable per repository · set review level and frequency · monthly spending limits · disable Approvals at any time</text>
+  <text x="100" y="622" font-size="14.5" fill="#94a3b8">Coexists with existing branch protection rules and required checks — merging still needs the developer's permissions</text>
+
+  <!-- entry points -->
+  <rect x="70" y="668" width="1300" height="104" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="100" y="700" font-size="15" font-weight="700" fill="#e2e8f0">Entry points</text>
+  <text x="100" y="726" font-size="14.5" fill="#94a3b8">/ship command in Claude Code and the desktop app (rolling out): push, open the PR, review, address findings — in one step</text>
+  <text x="100" y="750" font-size="14.5" fill="#94a3b8">Or repo-wide automation: admins enable the agents to work PRs without anyone invoking the command</text>
+</svg>

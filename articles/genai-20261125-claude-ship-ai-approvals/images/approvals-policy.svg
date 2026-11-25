@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+    <marker id="arr3-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#34d399"/></marker>
+    <marker id="arr3-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/></marker>
+  </defs>
+  <rect width="1440" height="800" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" font-size="32" font-weight="700" fill="#f1f5f9">Delegation is a file, not a promise</text>
+  <text x="720" y="90" text-anchor="middle" font-size="17" fill="#94a3b8">How Claude Approvals decides — every gate lives in .claude/approvals.yml on the default branch</text>
+
+  <!-- flow -->
+  <rect x="70" y="210" width="280" height="150" rx="12" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="94" y="245" font-size="17" font-weight="700" fill="#60a5fa">PR ready</text>
+  <text x="94" y="274" font-size="14.5" fill="#e2e8f0">Change pushed, Code Review</text>
+  <text x="94" y="296" font-size="14.5" fill="#e2e8f0">findings attached to the</text>
+  <text x="94" y="318" font-size="14.5" fill="#e2e8f0">pull request</text>
+
+  <rect x="400" y="210" width="290" height="150" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="424" y="245" font-size="17" font-weight="700" fill="#a78bfa">Policy loaded</text>
+  <text x="424" y="274" font-size="14.5" fill="#e2e8f0">.claude/approvals.yml read</text>
+  <text x="424" y="296" font-size="14.5" fill="#e2e8f0">from the repo's default branch —</text>
+  <text x="424" y="318" font-size="14.5" fill="#e2e8f0">versioned like any code</text>
+
+  <line x1="350" y1="285" x2="394" y2="285" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- three gates -->
+  <rect x="740" y="130" width="300" height="106" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1.5"/>
+  <text x="764" y="163" font-size="15.5" font-weight="700" fill="#e2e8f0">Finding gates</text>
+  <text x="764" y="188" font-size="14" fill="#94a3b8">Code Review severity and</text>
+  <text x="764" y="210" font-size="14" fill="#94a3b8">categories must clear the bar</text>
+
+  <rect x="740" y="252" width="300" height="106" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1.5"/>
+  <text x="764" y="285" font-size="15.5" font-weight="700" fill="#e2e8f0">Team classifiers</text>
+  <text x="764" y="310" font-size="14" fill="#94a3b8">rules written in natural language,</text>
+  <text x="764" y="332" font-size="14" fill="#94a3b8">billed by tokens consumed</text>
+
+  <rect x="740" y="374" width="300" height="106" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1.5"/>
+  <text x="764" y="407" font-size="15.5" font-weight="700" fill="#e2e8f0">Risk tier</text>
+  <text x="764" y="432" font-size="14" fill="#94a3b8">routine changes vs sensitive</text>
+  <text x="764" y="454" font-size="14" fill="#94a3b8">paths the policy names</text>
+
+  <line x1="690" y1="285" x2="734" y2="196" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+  <line x1="690" y1="285" x2="734" y2="300" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+  <line x1="690" y1="285" x2="734" y2="412" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- decision -->
+  <rect x="1110" y="240" width="260" height="150" rx="12" fill="#251a3d" stroke="#a78bfa" stroke-width="2"/>
+  <text x="1240" y="288" text-anchor="middle" font-size="19" font-weight="700" fill="#e2e8f0">Decision</text>
+  <text x="1240" y="316" text-anchor="middle" font-size="14" fill="#c4b5fd">all gates evaluated</text>
+  <text x="1240" y="338" text-anchor="middle" font-size="14" fill="#c4b5fd">per the policy file</text>
+
+  <line x1="1040" y1="196" x2="1104" y2="262" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+  <line x1="1040" y1="414" x2="1104" y2="368" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- outcomes -->
+  <line x1="1240" y1="240" x2="1240" y2="150" stroke="#34d399" stroke-width="2" marker-end="url(#arr3-g)"/>
+  <rect x="1110" y="86" width="260" height="60" rx="30" fill="#052e22" stroke="#34d399" stroke-width="1.5"/>
+  <text x="1240" y="112" text-anchor="middle" font-size="15.5" font-weight="700" fill="#34d399">Auto-approve</text>
+  <text x="1240" y="134" text-anchor="middle" font-size="13" fill="#a7f3d0">routine · all gates pass</text>
+
+  <line x1="1240" y1="390" x2="1240" y2="480" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr3-a)"/>
+  <rect x="1110" y="484" width="260" height="60" rx="30" fill="#2d2305" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="1240" y="510" text-anchor="middle" font-size="15.5" font-weight="700" fill="#fbbf24">Escalate to human</text>
+  <text x="1240" y="532" text-anchor="middle" font-size="13" fill="#fde68a">sensitive · ambiguous · policy miss</text>
+
+  <!-- observe mode band -->
+  <rect x="70" y="580" width="1300" height="170" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="100" y="614" font-size="16" font-weight="700" fill="#e2e8f0">Observe-only mode: the trial period</text>
+  <text x="100" y="642" font-size="14.5" fill="#94a3b8">Approvals logs the decision it WOULD make, with no authority to act — Anthropic recommends starting here before any branch protection depends on it.</text>
+  <text x="100" y="666" font-size="14.5" fill="#94a3b8">Teams watch the log, tune the policy, then wire protection rules to require Claude approval on chosen repositories.</text>
+  <text x="100" y="700" font-size="14.5" font-weight="600" fill="#fbbf24">Costs start on day one: observe mode is already billable when policies read Code Review findings — reviews trigger token charges even with zero approvals granted.</text>
+  <text x="100" y="726" font-size="14" fill="#64748b">Approvals itself carries no base charge; classifier calls and dependent reviews are metered tokens.</text>
+</svg>

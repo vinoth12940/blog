@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1440" height="800" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" font-size="32" font-weight="700" fill="#f1f5f9">A pragmatic ladder for giving up the merge button</text>
+  <text x="720" y="90" text-anchor="middle" font-size="17" fill="#94a3b8">Anthropic's own rollout advice, hardened with the analysts' caveats — run the steps in order, don't skip</text>
+
+  <!-- row 1 -->
+  <rect x="70" y="130" width="400" height="250" rx="14" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="94" y="168" font-size="30" font-weight="700" fill="#60a5fa">1</text>
+  <text x="94" y="198" font-size="18" font-weight="700" fill="#f1f5f9">Observe only, first</text>
+  <text x="94" y="226" font-size="14.5" fill="#e2e8f0">Run Approvals in observe mode and read</text>
+  <text x="94" y="248" font-size="14.5" fill="#e2e8f0">the decisions it would have made. Tune</text>
+  <text x="94" y="270" font-size="14.5" fill="#e2e8f0">the policy for weeks, not days.</text>
+  <text x="94" y="302" font-size="13.5" fill="#fbbf24">Budget note: already billable when the</text>
+  <text x="94" y="322" font-size="13.5" fill="#fbbf24">policy reads Code Review findings.</text>
+  <text x="94" y="356" font-size="13.5" fill="#64748b">Source: Anthropic rollout guidance</text>
+
+  <rect x="520" y="130" width="400" height="250" rx="14" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="544" y="168" font-size="30" font-weight="700" fill="#60a5fa">2</text>
+  <text x="544" y="198" font-size="18" font-weight="700" fill="#f1f5f9">One repository, not the org</text>
+  <text x="544" y="226" font-size="14.5" fill="#e2e8f0">Pick where blast radius is small — docs,</text>
+  <text x="544" y="248" font-size="14.5" fill="#e2e8f0">internal tooling. Anthropic explicitly</text>
+  <text x="544" y="270" font-size="14.5" fill="#e2e8f0">advises starting with a single repo.</text>
+  <text x="544" y="302" font-size="13.5" fill="#94a3b8">Admins enable agents per repository,</text>
+  <text x="544" y="322" font-size="13.5" fill="#94a3b8">so containment is a first-class feature.</text>
+  <text x="544" y="356" font-size="13.5" fill="#64748b">Source: Anthropic rollout guidance</text>
+
+  <rect x="970" y="130" width="400" height="250" rx="14" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="994" y="168" font-size="30" font-weight="700" fill="#fbbf24">3</text>
+  <text x="994" y="198" font-size="18" font-weight="700" fill="#f1f5f9">Low-risk tiers only</text>
+  <text x="994" y="226" font-size="14.5" fill="#e2e8f0">Auto-approve docs, tests, dependency</text>
+  <text x="994" y="248" font-size="14.5" fill="#e2e8f0">bumps. Route auth, payments, schemas,</text>
+  <text x="994" y="270" font-size="14.5" fill="#e2e8f0">and infra to humans — permanently.</text>
+  <text x="994" y="302" font-size="13.5" fill="#94a3b8">IDC: restrict automated approvals to</text>
+  <text x="994" y="322" font-size="13.5" fill="#94a3b8">low-risk changes from day one.</text>
+  <text x="994" y="356" font-size="13.5" fill="#64748b">Source: IDC analyst guidance</text>
+
+  <!-- row 2 -->
+  <rect x="70" y="410" width="400" height="250" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="94" y="448" font-size="30" font-weight="700" fill="#34d399">4</text>
+  <text x="94" y="478" font-size="18" font-weight="700" fill="#f1f5f9">Keep the gates independent</text>
+  <text x="94" y="506" font-size="14.5" fill="#e2e8f0">SAST, dependency scans, unit tests stay</text>
+  <text x="94" y="528" font-size="14.5" fill="#e2e8f0">as required checks the agent cannot</text>
+  <text x="94" y="550" font-size="14.5" fill="#e2e8f0">waive. The agent reviews; it is not the</text>
+  <text x="94" y="572" font-size="14.5" fill="#e2e8f0">only reviewer.</text>
+  <text x="94" y="604" font-size="13.5" fill="#94a3b8">Gartner: a non-deterministic model is</text>
+  <text x="94" y="624" font-size="13.5" fill="#94a3b8">unsuitable as the sole quality gate.</text>
+  <text x="94" y="636" font-size="13.5" fill="#64748b"></text>
+
+  <rect x="520" y="410" width="400" height="250" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="544" y="448" font-size="30" font-weight="700" fill="#34d399">5</text>
+  <text x="544" y="478" font-size="18" font-weight="700" fill="#f1f5f9">Give the agent an identity</text>
+  <text x="544" y="506" font-size="14.5" fill="#e2e8f0">Every auto-approval should be attributable</text>
+  <text x="544" y="528" font-size="14.5" fill="#e2e8f0">to an agent identity linked to the team</text>
+  <text x="544" y="550" font-size="14.5" fill="#e2e8f0">responsible for the PR — audit trail first,</text>
+  <text x="544" y="572" font-size="14.5" fill="#e2e8f0">authority second.</text>
+  <text x="544" y="604" font-size="13.5" fill="#94a3b8">Gartner: separate identities for review</text>
+  <text x="544" y="624" font-size="13.5" fill="#94a3b8">agents, tied to responsible teams.</text>
+
+  <rect x="970" y="410" width="400" height="250" rx="14" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="994" y="448" font-size="30" font-weight="700" fill="#34d399">6</text>
+  <text x="994" y="478" font-size="18" font-weight="700" fill="#f1f5f9">Cap the spend, keep PRs small</text>
+  <text x="994" y="506" font-size="14.5" fill="#e2e8f0">Set monthly spending limits per repo.</text>
+  <text x="994" y="528" font-size="14.5" fill="#e2e8f0">Deep review of a large diff is expensive</text>
+  <text x="994" y="550" font-size="14.5" fill="#e2e8f0">and less effective — small PRs review</text>
+  <text x="994" y="572" font-size="14.5" fill="#e2e8f0">better and cost less.</text>
+  <text x="994" y="604" font-size="13.5" fill="#94a3b8">Gartner: smaller changes make reviews</text>
+  <text x="994" y="624" font-size="13.5" fill="#94a3b8">more effective and contain tokens.</text>
+
+  <!-- credits callout -->
+  <rect x="70" y="690" width="1300" height="80" rx="12" fill="#251a3d" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="100" y="722" font-size="15.5" font-weight="700" fill="#c4b5fd">Enterprise incentive</text>
+  <text x="100" y="748" font-size="14.5" fill="#e2e8f0">Claimable credits of $10,000–$50,000 depending on Claude Code seats — one redemption, deadline Jan 15, 2027, valid for 30 days after claiming.</text>
+</svg>

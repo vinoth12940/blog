@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 820" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+    <marker id="arr4-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#34d399"/></marker>
+  </defs>
+  <rect width="1440" height="820" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" font-size="32" font-weight="700" fill="#f1f5f9">The reviewer inherits the author's blind spots</text>
+  <text x="720" y="90" text-anchor="middle" font-size="17" fill="#94a3b8">When one model family both writes and reviews the code, the errors it tends to make are the errors it tends to miss</text>
+
+  <!-- left: correlated model -->
+  <rect x="70" y="130" width="560" height="150" rx="14" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="350" y="172" text-anchor="middle" font-size="21" font-weight="700" fill="#e2e8f0">One model family (Claude)</text>
+  <text x="350" y="202" text-anchor="middle" font-size="15" fill="#94a3b8">writes ~90% of Claude Code · reviews and approves the result</text>
+  <text x="350" y="228" text-anchor="middle" font-size="15" fill="#94a3b8">same training data · same blind spots · same failure modes</text>
+  <text x="350" y="256" text-anchor="middle" font-size="13" fill="#64748b">Anthropic: Claude writes most of the Claude Code team's code</text>
+
+  <line x1="260" y1="280" x2="260" y2="380" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr4)"/>
+  <text x="90" y="340" font-size="13.5" fill="#94a3b8">writes</text>
+  <line x1="440" y1="280" x2="440" y2="380" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr4)"/>
+  <text x="452" y="340" font-size="13.5" fill="#94a3b8">reviews + approves</text>
+
+  <!-- blind spot zone -->
+  <ellipse cx="350" cy="352" rx="200" ry="42" fill="rgba(248,113,113,0.08)" stroke="#f87171" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="350" y="348" text-anchor="middle" font-size="14.5" font-weight="700" fill="#f87171">correlated blind spots</text>
+  <text x="350" y="370" text-anchor="middle" font-size="13" fill="#fca5a5">defects both gates share pass both gates</text>
+
+  <rect x="170" y="390" width="360" height="110" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="350" y="430" text-anchor="middle" font-size="18" font-weight="700" fill="#34d399">Pull request: approved</text>
+  <text x="350" y="458" text-anchor="middle" font-size="14" fill="#e2e8f0">merged the same evening —</text>
+  <text x="350" y="480" text-anchor="middle" font-size="14" fill="#e2e8f0">with nobody but Claude in the loop</text>
+
+  <!-- right: independent gates -->
+  <rect x="700" y="130" width="670" height="370" rx="14" fill="#111418" stroke="#34d399" stroke-width="1.5"/>
+  <text x="730" y="172" font-size="19" font-weight="700" fill="#34d399">Keep the deterministic gates OUTSIDE the agent</text>
+  <text x="730" y="200" font-size="14.5" fill="#94a3b8">Different failure modes. Required checks Claude Approvals cannot waive.</text>
+  <text x="730" y="238" font-size="15.5" fill="#e2e8f0">· Linters and type checkers — mechanical, reproducible</text>
+  <text x="730" y="272" font-size="15.5" fill="#e2e8f0">· SAST and dependency scanning — known-vulnerability classes</text>
+  <text x="730" y="306" font-size="15.5" fill="#e2e8f0">· Unit and integration tests — CI as required checks</text>
+  <text x="730" y="340" font-size="15.5" fill="#e2e8f0">· Runtime canaries and telemetry — production is the last reviewer</text>
+  <text x="730" y="374" font-size="15.5" fill="#e2e8f0">· A named human owner per merge — accountability that survives</text>
+  <line x1="730" y1="404" x2="1340" y2="404" stroke="#334155" stroke-width="1"/>
+  <text x="730" y="436" font-size="14.5" fill="#94a3b8">IDC's guidance: restrict auto-approvals to low-risk changes, keep security</text>
+  <text x="730" y="460" font-size="14.5" fill="#94a3b8">scans and CI independent of the agent, and always assign a human owner.</text>
+
+  <!-- analyst strip -->
+  <rect x="70" y="530" width="420" height="240" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="94" y="564" font-size="14" font-weight="700" fill="#60a5fa">IDC · Deepika Giri</text>
+  <text x="94" y="592" font-size="14.5" fill="#e2e8f0">Generator and reviewer can share</text>
+  <text x="94" y="616" font-size="14.5" fill="#e2e8f0">blind spots — defects pass undetected.</text>
+  <text x="94" y="640" font-size="14.5" fill="#e2e8f0">GitHub and GitLab still hold a platform</text>
+  <text x="94" y="664" font-size="14.5" fill="#e2e8f0">integration advantage.</text>
+
+  <rect x="510" y="530" width="420" height="240" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="534" y="564" font-size="14" font-weight="700" fill="#60a5fa">Gartner · Nitish Tyagi</text>
+  <text x="534" y="592" font-size="14.5" fill="#e2e8f0">Models are non-deterministic —</text>
+  <text x="534" y="616" font-size="14.5" fill="#e2e8f0">unsuitable as the sole quality gate.</text>
+  <text x="534" y="640" font-size="14.5" fill="#e2e8f0">Give review agents separate identities</text>
+  <text x="534" y="664" font-size="14.5" fill="#e2e8f0">tied to the responsible team.</text>
+
+  <rect x="950" y="530" width="420" height="240" rx="12" fill="#1e1e2e" stroke="#334155" stroke-width="1"/>
+  <text x="974" y="564" font-size="14" font-weight="700" fill="#60a5fa">Omdia · Lian Jye Su</text>
+  <text x="974" y="592" font-size="14.5" fill="#e2e8f0">Agents may not keep up with evolving</text>
+  <text x="974" y="616" font-size="14.5" fill="#e2e8f0">industry security and compliance</text>
+  <text x="974" y="640" font-size="14.5" fill="#e2e8f0">requirements — scope their authority</text>
+  <text x="974" y="664" font-size="14.5" fill="#e2e8f0">to what they can actually judge.</text>
+
+  <!-- footer -->
+  <rect x="70" y="782" width="1300" height="0" rx="0" fill="none"/>
+  <text x="720" y="800" text-anchor="middle" font-size="13" fill="#64748b">Anthropic's own counters: merged PRs more than doubled Jun–Sep 2026, reverted share fell over 40% — attribution to AI review not specified</text>
+</svg>

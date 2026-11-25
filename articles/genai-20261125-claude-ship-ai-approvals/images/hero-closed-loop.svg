@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 880" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+    <marker id="arr-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/></marker>
+    <marker id="arr-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/></marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#34d399"/></marker>
+  </defs>
+  <rect width="1440" height="880" fill="#0f172a"/>
+  <text x="720" y="56" text-anchor="middle" font-size="34" font-weight="700" fill="#f1f5f9">The review loop just closed</text>
+  <text x="720" y="90" text-anchor="middle" font-size="17" fill="#94a3b8">Claude Ship (beta) — AI agents now write, fix, review, and approve pull requests. Humans author the policy.</text>
+
+  <!-- human policy band -->
+  <rect x="70" y="120" width="1300" height="76" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="100" y="150" font-size="14" font-weight="600" fill="#a78bfa" letter-spacing="2">HUMANS AUTHOR THE CONTRACT</text>
+  <text x="100" y="178" font-size="16" fill="#e2e8f0">A policy file in the repo — .claude/approvals.yml — defines what Claude may auto-approve and what must reach a person</text>
+
+  <!-- row 1 -->
+  <rect x="110" y="250" width="380" height="150" rx="12" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="135" y="285" font-size="20" font-weight="700" fill="#60a5fa">1 · Write</text>
+  <text x="135" y="314" font-size="15" fill="#e2e8f0">Claude Code implements the change.</text>
+  <text x="135" y="338" font-size="15" fill="#e2e8f0">On Anthropic's Claude Code team,</text>
+  <text x="135" y="360" font-size="15" fill="#e2e8f0">Claude now writes ~90% of the code.</text>
+
+  <rect x="530" y="250" width="380" height="150" rx="12" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="555" y="285" font-size="20" font-weight="700" fill="#60a5fa">2 · Open</text>
+  <text x="555" y="314" font-size="15" fill="#e2e8f0">/ship pushes the branch and opens</text>
+  <text x="555" y="338" font-size="15" fill="#e2e8f0">the pull request on GitHub.</text>
+  <text x="555" y="360" font-size="15" fill="#94a3b8">Merge rights stay with the developer.</text>
+
+  <rect x="950" y="250" width="380" height="150" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="975" y="285" font-size="20" font-weight="700" fill="#fbbf24">3 · Steward</text>
+  <text x="975" y="314" font-size="15" fill="#e2e8f0">PR Steward fixes failing CI checks,</text>
+  <text x="975" y="338" font-size="15" fill="#e2e8f0">merge conflicts, review feedback.</text>
+  <text x="975" y="360" font-size="15" fill="#94a3b8">@claude steers · @claude stop halts</text>
+
+  <line x1="490" y1="325" x2="524" y2="325" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="910" y1="325" x2="944" y2="325" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- fix loop between review and steward -->
+  <line x1="1140" y1="444" x2="1140" y2="406" stroke="#a78bfa" stroke-width="2" marker-end="url(#arr-p)"/>
+  <text x="1160" y="430" font-size="13" fill="#a78bfa">findings → fixes (loop)</text>
+
+  <!-- row 2 (right to left flow) -->
+  <rect x="950" y="448" width="380" height="150" rx="12" fill="#1e1e2e" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="975" y="483" font-size="20" font-weight="700" fill="#60a5fa">4 · Review</text>
+  <text x="975" y="512" font-size="15" fill="#e2e8f0">Code Review (GA) analyzes the PR from</text>
+  <text x="975" y="534" font-size="15" fill="#e2e8f0">several perspectives, cross-checks each</text>
+  <text x="975" y="556" font-size="15" fill="#e2e8f0">finding · Quick / Standard / Deep levels</text>
+
+  <rect x="530" y="448" width="380" height="150" rx="12" fill="#1e1e2e" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="555" y="483" font-size="20" font-weight="700" fill="#a78bfa">5 · Approve</text>
+  <text x="555" y="512" font-size="15" fill="#e2e8f0">Claude Approvals evaluates the policy:</text>
+  <text x="555" y="534" font-size="15" fill="#e2e8f0">review findings + natural-language</text>
+  <text x="555" y="556" font-size="15" fill="#e2e8f0">classifiers written by the team</text>
+
+  <rect x="110" y="448" width="380" height="150" rx="12" fill="#1e1e2e" stroke="#34d399" stroke-width="1.5"/>
+  <text x="135" y="483" font-size="20" font-weight="700" fill="#34d399">6 · Merge</text>
+  <text x="135" y="512" font-size="15" fill="#e2e8f0">All gates pass → auto-approve.</text>
+  <text x="135" y="534" font-size="15" fill="#e2e8f0">Branch protection rules and developer</text>
+  <text x="135" y="556" font-size="15" fill="#e2e8f0">permissions still govern every merge.</text>
+
+  <line x1="944" y1="523" x2="916" y2="523" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="524" y1="523" x2="496" y2="523" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- escalate path -->
+  <line x1="720" y1="598" x2="720" y2="648" stroke="#fbbf24" stroke-width="2" marker-end="url(#arr-a)"/>
+  <text x="740" y="628" font-size="13" fill="#fbbf24">sensitive or ambiguous → human</text>
+  <rect x="530" y="652" width="380" height="96" rx="12" fill="#1e1e2e" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="720" y="688" text-anchor="middle" font-size="17" font-weight="700" fill="#fbbf24">Human reviewer</text>
+  <text x="720" y="714" text-anchor="middle" font-size="14" fill="#e2e8f0">sensitive paths, policy misses, final accountability</text>
+
+  <!-- stat strip -->
+  <rect x="70" y="786" width="1300" height="64" rx="12" fill="#111418" stroke="#1f2937" stroke-width="1"/>
+  <text x="100" y="812" font-size="14" fill="#94a3b8">Launched Nov 23, 2026 · beta</text>
+  <text x="100" y="834" font-size="14" fill="#94a3b8">Team and Enterprise plans · GitHub only</text>
+  <text x="480" y="812" font-size="14" fill="#94a3b8">Token-billed, separate from plan usage</text>
+  <text x="480" y="834" font-size="14" fill="#94a3b8">Not available: ZDR · HIPAA · customer-managed keys</text>
+  <text x="900" y="812" font-size="14" fill="#94a3b8">Enterprise credits $10k–$50k by seats,</text>
+  <text x="900" y="834" font-size="14" fill="#94a3b8">one redemption, deadline Jan 15, 2027</text>
+</svg>
